@@ -1,28 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <style>
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-    h2 {
-      font-size: 1.5em;
-      margin-bottom: 0.5em;
-    }
-    h3 {
-      font-size: 1.3em;
-      margin-bottom: 0.5em;
-    }
-    p,
-    li {
-      font-size: 1em;
-      margin-bottom: 0.5em;
-    }
-  </style>
-</head>
-
 <body>
   <h1>Message from GitGuy [@tqoe]</h1>
   <p>Welcome to the project repository! This README will guide you through the process of using Git with Unity in our team environment. :smile: Don't worry, we're all learning, and it's really hard to break things. Message me on discord if you have any questions!</p>
