@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,14 +17,14 @@ public class S_EnemyAiBehviour : MonoBehaviour
     public LayerMask whatIsGround, whatisPlayer;
 
     // Patroling and chasing
-    public Vector3 walkPosition;
-    public float walkRange;
+    public Vector3 walkPoint;
+    public float walkPointRange;
     [SerializeField] bool walkPointSet;
 
 
     // States
     public float detectionRange, agroRange;
-    public bool playerInRange, playerInAgroRange;
+    public bool playerInDetectionRange, playerInAgroRange;
 
     private void Awake()
     {
@@ -37,16 +38,54 @@ public class S_EnemyAiBehviour : MonoBehaviour
     private void Update()
     {
         // Check for player in range & chase player when they are in agro range
-        playerInRange = Physics.CheckSphere(transform.position, detectionRange, whatisPlayer);
+        playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, whatisPlayer);
         playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, whatisPlayer);
+
+        if (!playerInDetectionRange && !playerInAgroRange)
+        {
+            Patroling();
+        }
+
+        if (playerInDetectionRange && !playerInAgroRange) 
+        { 
+            FollowPlayer();
+        }
+
+        if (playerInDetectionRange && playerInAgroRange)
+        {
+            ChasePlayer();
+        }
     }
 
     private void Patroling()
     {
+         if (!walkPointSet)
+        {
+            SearchWalkPoint();
+        }
+    }
+
+    private void SearchWalkPoint()
+    {
+        // Generate a random position to walk to
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        // Check if point generated exists
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        {
+            walkPointSet = true;
+        }
+    }
+
+    private void FollowPlayer()
+    {
 
     }
 
-    private void Chaseplayer()
+    private void ChasePlayer()
     {
 
     }
