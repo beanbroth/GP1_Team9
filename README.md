@@ -10,7 +10,8 @@
 <h1>Git</h1>
 
 <h2>Git GUI Apps</h2>
-  <p>Using git with manual commands is more difficult than using an git on a GUI app, so I suggest using a GUI client. I personally use <a href="https://www.gitkraken.com/"><strong>GitKraken</strong></a> but you can use whatever you want. The guide below uses the git commands, but the process is basically the same for a GUI app, just easier and with pretty buttons.</p>
+  <p>Using git with manual commands is more difficult than using an git on a GUI app, so I suggest using a GUI client. One of the most common is <a href="https://desktop.github.com/"><strong>GitHub Desktop</strong></a>.I personally use <a href="https://www.gitkraken.com/"><strong>GitKraken</strong></a> but you can use whatever you want. The guide below uses the git commands, but the process is basically the same for a GUI app, just easier and with pretty buttons.
+  <a href="https://www.youtube.com/watch?v=8Dd7KRpKeaE"><strong>Here</strong></a> are some tutorials for Github Desktop.</p>
 
 <h2>Cloning the Repo</h2>
 <p>Once you've got your client, you're ready to clone the repo and make your branch! It's different for each GUI, but your program should have an option to clone. From there click the green [<> Code] button on this page (scroll up), copy the HTTPS link and follow the steps in your program to clone the repo.</p>
@@ -43,10 +44,11 @@ Replace <code>your_branch_name</code> with a descriptive name for your branch, u
   </ol>
   <p>If there are no conflicts, your branch will be up to date with the main branch and therefore really easy to merge into main.</p>
   <h2>[OPTIONAL] Handling Merge Conflicts</h2>
-  <p>Only do this if you want to learn git/challenge yourself! If you encounter merge conflicts, while merging the main branch into your development branch, you will need to resolve them manually. Open the conflicting files in a text editor and look for the conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>). Edit the file to resolve the conflicts, remove the conflict markers, and save the changes.</p>
+  <p>Only do this if you want to learn git/challenge yourself! If you encounter merge conflicts, while merging the main branch into your development branch, you will need to resolve them manually. Most Unity files don'tt merge well, so you'll have to either take the oncoming or changes from the current branch. If it's something you meant to change, pick your current changes, if not, take the one from main. </p>
+    <p>For code, open the conflicting files in a text editor and look for the conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>). Edit the file to resolve the conflicts, remove the conflict markers, and save the changes.</p>
   <p>After resolving all conflicts, stage the changes with <code>git add .</code>, commit them with <code>git commit</code>, and push the changes to the remote repository with <code>git push origin your_branch_name</code>.</p>
-  <h2>Conclusion and Additional Resources</h2>
-  <p>By following these instructions, you will be well-equipped to use Git with Unity in our team environment. </p>
+  <h2>You are now a git-xpert! :smile:</h2>
+  <p>Message me with any questions @tqoe on discord.</p>
 </body>
 
 </html>
