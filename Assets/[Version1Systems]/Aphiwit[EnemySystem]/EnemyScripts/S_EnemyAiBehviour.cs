@@ -31,7 +31,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
         // [Improvement; Get the player from a game manager.]
         // This script currently uses the 'GameObject.Find' to locate the player and their position (this is data heavy).
 
-        playerTransform = GameObject.Find("TestPlayer").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
