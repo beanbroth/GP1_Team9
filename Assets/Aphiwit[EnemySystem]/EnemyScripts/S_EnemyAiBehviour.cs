@@ -12,9 +12,9 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     public NavMeshAgent navMeshAgent;
 
-    public Transform playerPosition;
+    public Transform playerTransform;
 
-    public LayerMask whatIsGround, whatisPlayer;
+    public LayerMask groundLayerMask, playerLayerMask;
 
     // Patroling and chasing
     public Vector3 walkPoint;
@@ -31,15 +31,15 @@ public class S_EnemyAiBehviour : MonoBehaviour
         // [Later; Get the player from a game manager.]
         // (For now; follow the tutorial video to get a working behaviour script)
 
-        playerPosition = GameObject.Find("PlayerObj").transform;
+        playerTransform = GameObject.Find("TestPlayer").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
         // Check for player in range & chase player when they are in agro range
-        playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, whatisPlayer);
-        playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, whatisPlayer);
+        playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, playerLayerMask);
+        playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, playerLayerMask);
 
         if (!playerInDetectionRange && !playerInAgroRange)
         {
@@ -59,10 +59,26 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void Patroling()
     {
+        // Searching for walkpoint
          if (!walkPointSet)
         {
             SearchWalkPoint();
         }
+
+         if (walkPointSet)
+        {
+            navMeshAgent.SetDestination(walkPoint);
+        }
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+         // Walkpoint reached
+         if (distanceToWalkPoint.magnitude <= 1f)
+        {
+            walkPointSet = false;
+        }
+
+
     }
 
     private void SearchWalkPoint()
@@ -74,7 +90,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         // Check if point generated exists
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayerMask))
         {
             walkPointSet = true;
         }
@@ -82,12 +98,24 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void FollowPlayer()
     {
+        navMeshAgent.SetDestination(playerTransform.position);
 
+        // Edit enemy speed variable
     }
 
     private void ChasePlayer()
     {
+        navMeshAgent.SetDestination(playerTransform.position);
 
+        // Edit enemy speed variable
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere (transform.position, agroRange);
     }
 
 }
