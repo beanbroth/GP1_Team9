@@ -1964,7 +1964,7 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 50
   walkPointSet: 0
-  detectionRange: 30
+  detectionRange: 17.5
   agroRange: 10
   playerInDetectionRange: 0
   playerInAgroRange: 0
