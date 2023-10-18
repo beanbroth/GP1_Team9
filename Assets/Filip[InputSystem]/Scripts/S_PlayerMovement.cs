@@ -8,8 +8,8 @@ public class S_PlayerMovement : MonoBehaviour
     S_PlayerControls playerControls;
 
     private float turnDirection = 0f;
-    [SerializeField] private float turnSpeed = 5f;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float turnSpeed = 0.7f;
+    [SerializeField] private float moveSpeed = 6f;
 
     private void Awake()
     {
@@ -20,6 +20,11 @@ public class S_PlayerMovement : MonoBehaviour
         {
             turnDirection = context.ReadValue<float>();
         };
+        
+        playerControls.Player.Turn.canceled += context =>
+        {
+            turnDirection = 0f;
+        };
     }
 
     private void OnDisable()
@@ -29,6 +34,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(playerControls.Player.Turn.ReadValue<float>());
         // rb.rotation = new
         Turn();
         ForwardMovement();
@@ -39,7 +45,7 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void Turn()
     {
-        transform.Rotate(0.0f, turnDirection, 0.0f);
+        transform.Rotate(0.0f, turnDirection * turnSpeed, 0.0f);
     }
     
 }
