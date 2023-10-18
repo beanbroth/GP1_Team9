@@ -1,0 +1,8 @@
+1) Make a cool weapon as a prefab. It should work as a child of the player
+2) Check out the weapon prefabs in "WeaponPrefabs" for referance 
+3) Make some weapon variations! 
+4) Make a scriptable object by rightlicking -> Create -> WeaponSystem -> WeaponData
+5) Add a name to your scriptable obejct
+6) Add your weapon upgrade prefabs to the scriptable object
+7) Add the scriptable object to the "WeaponInvintory" scriptable object in "AllWeapons"
+8) Good to go!!! Add your weapon unlocked weapons to test it!!
