@@ -9,7 +9,10 @@
 <p>Finally, make prefabs for important stuff, and commit in git a lot!</p>
 <h1>Git</h1>
 
+<h2><strong>YOU SHOULD USE A GUI APPLICATION IT'S WAY BETTER</strong></h2>
+
 <h2>Git GUI Apps</h2>
+
   <p>Using git with manual commands is more difficult than using an git on a GUI app, so I suggest using a GUI client. One of the most common is <a href="https://desktop.github.com/"><strong>GitHub Desktop</strong></a>.I personally use <a href="https://www.gitkraken.com/"><strong>GitKraken</strong></a> but you can use whatever you want. The guide below uses the git commands, but the process is basically the same for a GUI app, just easier and with pretty buttons.
   <a href="https://www.youtube.com/watch?v=8Dd7KRpKeaE"><strong>Here</strong></a> are some tutorials for Github Desktop.</p>
 
