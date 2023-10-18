@@ -7,12 +7,23 @@ public class AndieAreaDamage : MonoBehaviour
     public float radius;
     public float maxDistance;
     public LayerMask enemyMask;
+    public GameObject areaObject;
 
     public float damage;
-    private bool hasDamaged;
     public float waitTime;
 
+
+    private void Start()
+    {
+        InvokeRepeating("SphereCheck", 0.0f, waitTime);
+    }
+
     private void Update()
+    {
+        areaObject.transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
+    }
+
+    private void SphereCheck()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, enemyMask);
 
@@ -23,24 +34,14 @@ public class AndieAreaDamage : MonoBehaviour
             {
                 print("hit");
                 Damage(damage, hitCollider.GetComponent<AndieEnemy>());
+
             }
         }
-
     }
 
     public void Damage(float damage, AndieEnemy enemy)
     {
-        if (!hasDamaged)
-        {
-            enemy.TakeDamage(damage);
-            hasDamaged = true;
-            Invoke("ResetAttack", waitTime);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        hasDamaged = false;
+        enemy.TakeDamage(damage);
     }
 
     private void OnDrawGizmos()
