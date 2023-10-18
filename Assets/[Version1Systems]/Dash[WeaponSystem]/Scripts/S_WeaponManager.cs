@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class S_WeaponManager : MonoBehaviour
@@ -30,8 +31,32 @@ public class S_WeaponManager : MonoBehaviour
         {
             if (unlockedWeapon.level >= 0)
             {
-                Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level],transform).SetActive(true);
+                Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level], transform).SetActive(true);
             }
         }
+    }
+
+    void UpdateWeaponsEditMode()
+    {
+        if (Application.isEditor && !Application.isPlaying)
+        {
+            for (int i = this.transform.childCount; i > 0; --i)
+                DestroyImmediate(this.transform.GetChild(0).gameObject);
+            foreach (UnlockedWeaponInfo unlockedWeapon in weaponInventory.unlockedWeapons)
+            {
+                if (unlockedWeapon.level >= 0)
+                {
+                    Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level], transform)
+                        .SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.delayCall += () => { UpdateWeaponsEditMode(); };
+#endif
     }
 }

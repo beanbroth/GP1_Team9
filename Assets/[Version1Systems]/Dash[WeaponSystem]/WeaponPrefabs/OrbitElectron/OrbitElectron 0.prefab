@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4818727756246606993}
-  - component: {fileID: 8589091396926345229}
+  - component: {fileID: -8229880212672534745}
   m_Layer: 0
   m_Name: OrbitElectron 0
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_GameObject: {fileID: 6361174243417944010}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3979366751842130664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8589091396926345229
+--- !u!114 &-8229880212672534745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6361174243417944010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 946f931c6ec04144ba841add06a10d72, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f30d4aeaa5ac9741a0d048d8935ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 2
+  orbitingObjectPrefab: {fileID: 5025087449525425086, guid: 045cb356a70a119469327cd018e85023, type: 3}
+  numberOfRings: 1
+  objectsPerRingList: 02000000
+  radius: 2
+  distanceBetweenRings: 3
+  rotationSpeed: 180
 --- !u!1 &7436385347124095241
 GameObject:
   m_ObjectHideFlags: 0

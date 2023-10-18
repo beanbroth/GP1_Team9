@@ -85,11 +85,11 @@ public class SO_WeaponInventory : ScriptableObject
         {
             UnlockedWeaponInfo weapon = unlockedWeapons[i];
             weapon.maxLevel = weapon.weaponData.WeaponPrefabs.Count;
-            if (weapon.level > weapon.maxLevel)
+            if (weapon.level > weapon.maxLevel-1)
             {
                 if (Application.isPlaying)
                     Debug.Log("Weapon level is greater than max level");
-                weapon.level = weapon.maxLevel;
+                weapon.level = weapon.maxLevel-1;
             }
 
             if (weapon.level < 0)
