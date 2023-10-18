@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class S_BasicBulletController : MonoBehaviour
@@ -11,8 +12,9 @@ public class S_BasicBulletController : MonoBehaviour
     [SerializeField] private Color bulletColor = Color.cyan;
     private Transform _transform;
     [SerializeField] private float bulletLifeTime = 5f;
-    
-    private void Start()
+
+
+    private void OnEnable()
     {
         GetComponent<SpriteRenderer>().color = bulletColor;
         _transform = transform;
@@ -23,6 +25,7 @@ public class S_BasicBulletController : MonoBehaviour
     
     private void ReturnBulletToPool()
     {
+        //Debug.Log("returning object to pool");
         S_ObjectPoolManager.Instance.ReturnObject(gameObject);
     }
 

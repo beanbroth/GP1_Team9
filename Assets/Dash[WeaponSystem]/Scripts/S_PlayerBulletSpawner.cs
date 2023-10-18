@@ -54,11 +54,12 @@ public class S_PlayerBulletSpawner : MonoBehaviour
 
     void SpawnEvenBullets()
     {
+        float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         if (bulletsPerShot <= 1)
         {
+            SpawnPooledBullet(Quaternion.Euler(0, 0, angleCenter));
             return;
         }
-        float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float currentAngle = minAngle + angleStep * i;
@@ -69,9 +70,10 @@ public class S_PlayerBulletSpawner : MonoBehaviour
 
     private void SpawnPooledBullet(Quaternion rotation)
     {
+        //GameObject pooledBullet = Instantiate(bulletPrefab);
         GameObject pooledBullet = S_ObjectPoolManager.Instance.GetObject(bulletPrefab);
         pooledBullet.transform.position = transform.position;
-        //pooledBullet.transform.rotation = rotation;
+        pooledBullet.transform.rotation = rotation;
         pooledBullet.gameObject.SetActive(true);
     }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MyObjectPool
@@ -25,14 +26,21 @@ public class MyObjectPool
     {
         if (pool.Count == 0)
         {
+            prefab.SetActive(false);
             GameObject obj = Object.Instantiate(prefab);
-            obj.SetActive(false);
             pool.Enqueue(obj);
         }
 
         GameObject pooledObj = pool.Dequeue();
         pooledObj.SetActive(true);
+        
+        Debug.Log((pool.Count) + " items in the pool");
+        
+        
         return pooledObj;
+        
+        
+        
     }
 
     public void ReturnObject(GameObject obj)

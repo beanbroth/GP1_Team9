@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
   m_Name: ShootForward
   m_EditorClassIdentifier: 
-  weaponName: 
-  weaponPrefabs: []
+  weaponName: ShootForward
+  weaponPrefabs:
+  - {fileID: 5744300782444405494, guid: caf111d1fdd08c449a71178d60e626af, type: 3}
+  - {fileID: 5744300782444405494, guid: b70ed57cb6506f643a45817dedce6608, type: 3}
+  - {fileID: 5744300782444405494, guid: 0879d6bb0f17def4f8430ae8956759a9, type: 3}
+  - {fileID: 5744300782444405494, guid: a9b37336e1b66734b8069bcb776315eb, type: 3}

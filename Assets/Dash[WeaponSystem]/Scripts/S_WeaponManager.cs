@@ -28,9 +28,9 @@ public class S_WeaponManager : MonoBehaviour
 
         foreach (UnlockedWeaponInfo unlockedWeapon in weaponInventory.unlockedWeapons)
         {
-            if (unlockedWeapon.level > 0)
+            if (unlockedWeapon.level >= 0)
             {
-                Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level]);
+                Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level],transform).SetActive(true);
             }
         }
     }

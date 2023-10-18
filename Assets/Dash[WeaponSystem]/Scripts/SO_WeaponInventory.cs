@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,8 +8,18 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "WeaponInventory", menuName = "WeaponSystem/WeaponInventory", order = 0)]
 public class SO_WeaponInventory : ScriptableObject
 {
+    [SerializeField] bool resetInventoryOnEnable = false;
+    [Header("Weapon Info")]
     [SerializeField] public List<UnlockedWeaponInfo> unlockedWeapons;
     [SerializeField] public List<SO_SingleWeaponClass> allWeapons;
+    
+    private void OnEnable()
+    {
+        if (resetInventoryOnEnable)
+        {
+            unlockedWeapons = new List<UnlockedWeaponInfo>();
+        }
+    }
 
     //event for weapon info change
     public delegate void WeaponInfoChange();
@@ -31,6 +42,7 @@ public class SO_WeaponInventory : ScriptableObject
             weaponInfo.level += levelIncrease - 1;
         }
 
+        ValidateWeaponLevels();
         OnWeaponInfoChange?.Invoke();
     }
 
@@ -59,6 +71,36 @@ public class SO_WeaponInventory : ScriptableObject
         newWeapon.maxLevel = weapon.WeaponPrefabs.Count;
         unlockedWeapons.Add(newWeapon);
         OnWeaponInfoChange?.Invoke();
+    }
+
+    private void OnValidate()
+    {
+        ValidateWeaponLevels();
+        OnWeaponInfoChange?.Invoke();
+    }
+
+    private void ValidateWeaponLevels()
+    {
+        for (int i = 0; i < unlockedWeapons.Count; i++)
+        {
+            UnlockedWeaponInfo weapon = unlockedWeapons[i];
+            weapon.maxLevel = weapon.weaponData.WeaponPrefabs.Count;
+            if (weapon.level > weapon.maxLevel)
+            {
+                if (Application.isPlaying)
+                    Debug.Log("Weapon level is greater than max level");
+                weapon.level = weapon.maxLevel;
+            }
+
+            if (weapon.level < 0)
+            {
+                if (Application.isPlaying)
+                    Debug.Log("Weapon level is less than 0");
+                weapon.level = 0;
+            }
+
+            unlockedWeapons[i] = weapon;
+        }
     }
 }
 

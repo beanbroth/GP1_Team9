@@ -12,8 +12,6 @@ public class PoolManagerEditor : Editor
 
         EditorGUILayout.LabelField("Pools", EditorStyles.boldLabel);
         
-        
-        
         foreach (S_ObjectPoolManager.PoolInfo poolInfo in poolManager.PoolInfoList)
         {
             EditorGUILayout.BeginHorizontal();
