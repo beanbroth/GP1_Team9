@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 447966014281112915}
   - component: {fileID: 8959113588454195761}
   m_Layer: 0
-  m_Name: RadiationArea
+  m_Name: RadiationArea[OLD]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

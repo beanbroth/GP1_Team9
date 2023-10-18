@@ -63,7 +63,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float currentAngle = minAngle + angleStep * i;
-            Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAngle));
+            Quaternion rotation = Quaternion.Euler(new Vector3(0f, currentAngle, 0f ));
             SpawnPooledBullet(rotation);
         }
     }
@@ -125,12 +125,12 @@ public class S_PlayerBulletSpawner : MonoBehaviour
             return;
         Gizmos.color = gizmoColor;
         float angleStep = angleWidth / gizmoSegments;
-        Vector3 previousPoint = transform.position + Quaternion.Euler(0, 0, minAngle) * Vector3.up * gizmoRadius;
+        Vector3 previousPoint = transform.position + Quaternion.Euler(0, 0, minAngle) * Vector3.forward * gizmoRadius;
         Gizmos.DrawLine(transform.position, previousPoint);
         for (int i = 1; i <= gizmoSegments; i++)
         {
             float currentAngle = minAngle + angleStep * i;
-            Vector3 currentPoint = transform.position + Quaternion.Euler(0, 0, currentAngle) * Vector3.up * gizmoRadius;
+            Vector3 currentPoint = transform.position + Quaternion.Euler(0, 0, currentAngle) * Vector3.forward * gizmoRadius;
             Gizmos.DrawLine(previousPoint, currentPoint);
             previousPoint = currentPoint;
         }
