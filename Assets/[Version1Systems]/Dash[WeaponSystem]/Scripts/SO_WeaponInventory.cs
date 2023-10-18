@@ -84,6 +84,10 @@ public class SO_WeaponInventory : ScriptableObject
         for (int i = 0; i < unlockedWeapons.Count; i++)
         {
             UnlockedWeaponInfo weapon = unlockedWeapons[i];
+            if (weapon.weaponData == null)
+            {
+                return;
+            }
             weapon.maxLevel = weapon.weaponData.WeaponPrefabs.Count;
             if (weapon.level > weapon.maxLevel-1)
             {

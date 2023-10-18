@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 9021839866227342375, guid: 028c75ec0e9cd484394ce2d99ae70582, type: 3}
   timeBetweenShots: 0.5
-  bulletsPerShot: 171
+  bulletsPerShot: 1
   spacing: 0
-  angleCenter: -47.199997
-  angleWidth: 147.3
+  angleCenter: 0
+  angleWidth: 0
   angleRange: {x: -45, y: 45}
   gizmosEnabled: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  gizmoRadius: 4.2
-  gizmoSegments: 58
+  gizmoRadius: 2
+  gizmoSegments: 20

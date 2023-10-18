@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e434f09dd6b3bd04aa95f89852fe631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
+  bulletSpeed: 20
   bulletDamage: 5
   bulletSizeMultiplier: 1
   bulletColor: {r: 0, g: 1, b: 1, a: 1}

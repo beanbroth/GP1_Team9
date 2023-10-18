@@ -73,7 +73,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         //GameObject pooledBullet = Instantiate(bulletPrefab);
         GameObject pooledBullet = S_ObjectPoolManager.Instance.GetObject(bulletPrefab);
         pooledBullet.transform.position = transform.position;
-        pooledBullet.transform.rotation = rotation;
+        pooledBullet.transform.rotation = rotation * transform.root.rotation;
         pooledBullet.gameObject.SetActive(true);
     }
 
