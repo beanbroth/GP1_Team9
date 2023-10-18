@@ -27,19 +27,18 @@ public class S_PlayerMovement : MonoBehaviour
         playerControls.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // rb.rotation = new
         Turn();
         ForwardMovement();
     }
     private void ForwardMovement()
     {
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.fixedDeltaTime);
     }
     private void Turn()
     {
-        transform.Rotate(0.0f, turnDirection, 0.0f);
+        transform.Rotate(0.0f, turnDirection * turnSpeed, 0.0f);
     }
     
 }
