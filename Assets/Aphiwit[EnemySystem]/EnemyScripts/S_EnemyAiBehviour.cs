@@ -28,8 +28,8 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void Awake()
     {
-        // [Later; Get the player from a game manager.]
-        // (For now; follow the tutorial video to get a working behaviour script)
+        // [Improvement; Get the player from a game manager.]
+        // This script currently uses the 'GameObject.Find' to locate the player and their position (this is data heavy).
 
         playerTransform = GameObject.Find("TestPlayer").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
