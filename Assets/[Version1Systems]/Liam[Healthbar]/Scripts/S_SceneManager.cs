@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class S_SceneManager : MonoBehaviour
 {
+    [SerializeField] private string gameSceneName;
     void Update()
     {
         // Check if the left arrow key is pressed
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             // Load the "GamePrototypeV1Liam" scene
-            SceneManager.LoadScene("GamePrototypeV1Liam");
+            SceneManager.LoadScene(gameSceneName);
         }
 
         // Check if the right arrow key is pressed
