@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndieOrbit : MonoBehaviour
+public class S_ElectronOrbit : MonoBehaviour
 {
     public float rotationSpeed;
 

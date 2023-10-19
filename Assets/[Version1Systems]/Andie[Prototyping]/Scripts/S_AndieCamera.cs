@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndieCamera : MonoBehaviour
+public class S_AndieCamera : MonoBehaviour
 {
     public Transform target;
 

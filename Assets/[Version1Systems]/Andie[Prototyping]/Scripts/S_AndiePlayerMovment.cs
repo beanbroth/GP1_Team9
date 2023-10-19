@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class AndiePlayerMovment : MonoBehaviour
+public class S_AndiePlayerMovment : MonoBehaviour
 {
     public float speed;
     private bool isMoving = true;
@@ -11,7 +11,6 @@ public class AndiePlayerMovment : MonoBehaviour
     public float turnSpeed;
     public float turnSpeedMultiplier;
 
-    private bool hasFlipped = false;
     public float flipCooldown;
 
     float acceleration;
@@ -49,8 +48,4 @@ public class AndiePlayerMovment : MonoBehaviour
         }*/
     }
 
-    private void ResetFlip()
-    {
-        hasFlipped = false;
-    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndieAreaDamage : MonoBehaviour
+public class S_AreaDamage : MonoBehaviour
 {
     public float radius;
     public float maxDistance;
@@ -30,16 +30,16 @@ public class AndieAreaDamage : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             print("hit1");
-            if (hitCollider.GetComponent<AndieEnemy>() != null)
+            if (hitCollider.GetComponent<S_AndieEnemy>() != null)
             {
                 print("hit");
-                Damage(damage, hitCollider.GetComponent<AndieEnemy>());
+                Damage(damage, hitCollider.GetComponent<S_AndieEnemy>());
 
             }
         }
     }
 
-    public void Damage(float damage, AndieEnemy enemy)
+    public void Damage(float damage, S_AndieEnemy enemy)
     {
         enemy.TakeDamage(damage);
     }
