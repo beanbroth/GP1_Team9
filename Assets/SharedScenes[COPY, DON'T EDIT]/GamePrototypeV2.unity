@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a6af8786cb80f164aa2e71dc57c3594f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &384792896
 Transform:
@@ -2777,9 +2777,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a6d86f29bf41a459ac68e62c07ee37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   _enemyPrefabList:
   - {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
-  _spawnRate: 0
+  _spawnPoint: {x: 0, y: 0, z: 0}
+  _spawnRate: 1
+  _spawnPointRange: 20
+  _spawnPointExist: 0
   _isSpawning: 0
 --- !u!1 &2065895584
 GameObject:
