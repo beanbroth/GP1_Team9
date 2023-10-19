@@ -57,4 +57,10 @@ public class S_EnemySpawnManager : MonoBehaviour
             Debug.Log("Spawn point found!");
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, _spawnPointRange);
+    }
 }
