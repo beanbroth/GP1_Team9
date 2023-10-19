@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 70133677}
-  currentTime: 3
+  currentTime: 6000
   timeLimit: 0
   countUp: 0
 --- !u!4 &1310318105
