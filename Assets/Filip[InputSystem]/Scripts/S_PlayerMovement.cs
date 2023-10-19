@@ -32,7 +32,7 @@ public class S_PlayerMovement : MonoBehaviour
         playerControls.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Debug.Log(playerControls.Player.Turn.ReadValue<float>());
         // rb.rotation = new
