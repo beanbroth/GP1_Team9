@@ -49,7 +49,7 @@ MonoBehaviour:
   bulletsPerShot: 1
   spacing: 0
   angleCenter: 0
-  angleWidth: 30
+  angleWidth: 0
   angleRange: {x: -45, y: 45}
   gizmosEnabled: 1
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}

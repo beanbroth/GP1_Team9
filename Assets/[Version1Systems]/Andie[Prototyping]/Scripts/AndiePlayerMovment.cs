@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class AndiePlayerMovment : MonoBehaviour
@@ -16,15 +15,10 @@ public class AndiePlayerMovment : MonoBehaviour
 
     float acceleration;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+
     private void Update()
     {
-        if (isMoving)
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
+        
         if (Input.GetKey("left"))
         {
             /*acceleration += turnSpeedMultiplier + Time.deltaTime;
@@ -47,6 +41,14 @@ public class AndiePlayerMovment : MonoBehaviour
             transform.Rotate(0.0f, 180f, 0.0f);
             Invoke("ResetFlip", flipCooldown);
         }*/
+    }
+    
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            transform.position += transform.forward * (speed * Time.deltaTime);
+        }
     }
 
     private void ResetFlip()
