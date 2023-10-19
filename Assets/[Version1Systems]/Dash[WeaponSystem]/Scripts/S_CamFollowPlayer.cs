@@ -11,16 +11,13 @@ public class S_CamFollowPlayer : MonoBehaviour
 
     private void Start()
     {
-        offset =  transform.position - player.position;
+        offset = transform.position - player.position;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-
-            Vector3 desiredPosition = player.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = desiredPosition;
-        
+        Vector3 desiredPosition = player.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
     }
-    
 }
