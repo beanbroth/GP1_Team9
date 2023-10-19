@@ -57,7 +57,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         if (bulletsPerShot <= 1)
         {
-            SpawnPooledBullet(Quaternion.Euler(0, 0, angleCenter));
+            SpawnPooledBullet(Quaternion.Euler(0f, angleCenter, 0f));
             return;
         }
         for (int i = 0; i < bulletsPerShot; i++)
@@ -73,7 +73,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         //GameObject pooledBullet = Instantiate(bulletPrefab);
         GameObject pooledBullet = S_ObjectPoolManager.Instance.GetObject(bulletPrefab);
         pooledBullet.transform.position = transform.position;
-        pooledBullet.transform.rotation = rotation;
+        pooledBullet.transform.rotation = rotation * transform.root.rotation;
         pooledBullet.gameObject.SetActive(true);
     }
 
@@ -82,7 +82,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float currentAngle = Random.Range(minAngle, maxAngle);
-            Quaternion rotation = Quaternion.Euler(0, 0, currentAngle);
+            Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f );
             SpawnPooledBullet(rotation);
         }
     }
@@ -102,7 +102,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
                 currentAngle = maxAngle - (currentAngle - minAngle);
             }
 
-            Quaternion rotation = Quaternion.Euler(0, 0, currentAngle);
+            Quaternion rotation = Quaternion.Euler(0, currentAngle, 0f);
             SpawnPooledBullet(rotation);
             yield return new WaitForSeconds(timeBetweenBulletSpawns);
         }
@@ -125,12 +125,12 @@ public class S_PlayerBulletSpawner : MonoBehaviour
             return;
         Gizmos.color = gizmoColor;
         float angleStep = angleWidth / gizmoSegments;
-        Vector3 previousPoint = transform.position + Quaternion.Euler(0, 0, minAngle) * Vector3.forward * gizmoRadius;
+        Vector3 previousPoint = transform.position + Quaternion.Euler(0, minAngle, 0) * Vector3.forward * gizmoRadius;
         Gizmos.DrawLine(transform.position, previousPoint);
         for (int i = 1; i <= gizmoSegments; i++)
         {
             float currentAngle = minAngle + angleStep * i;
-            Vector3 currentPoint = transform.position + Quaternion.Euler(0, 0, currentAngle) * Vector3.forward * gizmoRadius;
+            Vector3 currentPoint = transform.position + Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * gizmoRadius;
             Gizmos.DrawLine(previousPoint, currentPoint);
             previousPoint = currentPoint;
         }
