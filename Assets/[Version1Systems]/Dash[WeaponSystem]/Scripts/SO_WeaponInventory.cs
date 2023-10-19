@@ -1,7 +1,8 @@
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,24 +30,38 @@ public class SO_WeaponInventory : ScriptableObject
     public void LevelUpWeapon(SO_SingleWeaponClass weapon, int levelIncrease)
     {
         if (levelIncrease <= 0)
-            Debug.LogError("Level increase must greater than 0");
-        if (IsWeaponUnlocked(weapon))
         {
-            UnlockedWeaponInfo weaponInfo = unlockedWeapons.Find(x => x.weaponData == weapon);
+            //Debug.LogError("Level increase must be greater than 0");
+            return;
+        }
+
+        //Debug.Log($"Attempting to level up weapon: {weapon.weaponName} by {levelIncrease} levels.");
+
+        int weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
+
+        if (weaponIndex != -1)
+        {
+            UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
+            //Debug.Log($"Weapon level: {weaponInfo.level}");
             weaponInfo.level += levelIncrease;
+            //Debug.Log($"Leveled up weapon: {weapon.weaponName} to level {weaponInfo.level}");
+            unlockedWeapons[weaponIndex] = weaponInfo; // Update the weapon info in the list
         }
         else
         {
             AddWeapon(weapon.weaponName);
-            UnlockedWeaponInfo weaponInfo = unlockedWeapons.Find(x => x.weaponData == weapon);
+            weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
+            UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
             weaponInfo.level += levelIncrease - 1;
+            //Debug.Log($"Added and leveled up weapon: {weapon.weaponName} to level {weaponInfo.level}");
+            unlockedWeapons[weaponIndex] = weaponInfo; // Update the weapon info in the list
         }
 
         ValidateWeaponLevels();
         OnWeaponInfoChange?.Invoke();
     }
 
-    SO_SingleWeaponClass GetWeaponByName(string weaponName)
+    public SO_SingleWeaponClass GetWeaponByName(string weaponName)
     {
         return allWeapons.Find(x => x.weaponName == weaponName);
     }

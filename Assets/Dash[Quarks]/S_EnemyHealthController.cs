@@ -42,7 +42,8 @@ public class S_EnemyHealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
-            S_ObjectPoolManager.Instance.GetObject(quarkPrefab);
+            GameObject temp = S_ObjectPoolManager.Instance.GetObject(quarkPrefab);
+            temp.transform.position = transform.position;
         }
     }
 

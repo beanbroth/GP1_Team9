@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 #if UNITY_EDITOR
 [ExecuteInEditMode]
@@ -53,10 +47,8 @@ public class S_WeaponManager : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
-
     }
 
     void UpdateWeaponsEditMode()
