@@ -23,12 +23,17 @@ public class S_OrbitWeaponController : MonoBehaviour
 
     private void OnValidate()
     {
-        numberOfRings = objectsPerRingList.Count;
+        if (objectsPerRingList!=null && objectsPerRingList.Count != numberOfRings)
+        {
+            numberOfRings = objectsPerRingList.Count;
+        }
+
     }
 
     private void Update()
     {
         transform.localRotation = Quaternion.Inverse(player.rotation);
+
         for (int i = 0; i < numberOfRings; i++)
         {
             float direction = i % 2 == 0 ? 1 : -1;
