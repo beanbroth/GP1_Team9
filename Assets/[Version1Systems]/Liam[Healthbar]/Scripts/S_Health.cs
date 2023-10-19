@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class S_Health : MonoBehaviour
 {
     public int health; // Health
     public int numOfHearts; // Max number of hearts
 
-    public GameObject[] hearts; // GameObject for the hearts in the topleft
+    public GameObject[] hearts; // GameObject for the hearts in the top left
     public Sprite fullHeart;
     [SerializeField]
     private bool isInvincible = false; // Player's invincibility status
@@ -26,6 +27,12 @@ public class S_Health : MonoBehaviour
                 health--;
                 isInvincible = true;
                 Invoke("DisableInvincibility", cooldownDuration);
+
+                if (health <= 0)
+                {
+                    // Player has lost all their health, switch to the "Lose" scene
+                    SceneManager.LoadScene("Lose");
+                }
             }
         }
     }

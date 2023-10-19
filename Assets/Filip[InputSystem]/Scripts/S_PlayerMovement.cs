@@ -34,7 +34,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log(playerControls.Player.Turn.ReadValue<float>());
+        Debug.Log(playerControls.Player.Turn.ReadValue<float>());
         // rb.rotation = new
         Turn();
         ForwardMovement();
