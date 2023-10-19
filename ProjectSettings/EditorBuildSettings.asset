@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/[Version1Systems]/Filip[Win Timer]/Win Timer.unity
+    guid: 5ee93ba897c2d8749af2d5b9ece0f74d
+  - enabled: 1
+    path: Assets/[Version1Systems]/Filip[Win Timer]/Victory.unity
+    guid: 1f73344f4cb8f2a4685100844e718319
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4f7de953fd5a7b044b480a369c90d12f, type: 2}

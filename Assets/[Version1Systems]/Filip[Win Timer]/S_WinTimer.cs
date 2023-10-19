@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class S_WinTimer : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class S_WinTimer : MonoBehaviour
     [SerializeField] float currentTime = 600f;
     [SerializeField] float timeLimit = 0f;
     [SerializeField] private bool countUp;
+ 
 
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class S_WinTimer : MonoBehaviour
             TimerText();
             timeText.color = Color.green;
             enabled = false;
-            Time.timeScale = 0;
+            SceneManager.LoadScene("Victory");
         }
 
         TimerText();
