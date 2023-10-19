@@ -7,16 +7,17 @@ public class S_WinTimer : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
 
-    public float currentTime = 0f;
-    public float timeLimit = 600f;
+    [SerializeField] float currentTime = 600f;
+    [SerializeField] float timeLimit = 0f;
+    [SerializeField] private bool countUp;
 
 
     // Update is called once per frame
     void Update()
     {
-        currentTime = currentTime += Time.deltaTime;
+        currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
 
-        if (currentTime >= timeLimit)
+        if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
         {
             currentTime = timeLimit;
             TimerText();
