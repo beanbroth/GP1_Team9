@@ -151,9 +151,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 50
+  walkPointRange: 0
   walkPointSet: 0
-  detectionRange: 30
+  detectionRange: 100
   agroRange: 10
   playerInDetectionRange: 0
   playerInAgroRange: 0
