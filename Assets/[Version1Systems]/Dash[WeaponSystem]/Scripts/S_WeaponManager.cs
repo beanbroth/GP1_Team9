@@ -53,7 +53,7 @@ public class S_WeaponManager : MonoBehaviour
 
     void UpdateWeaponsEditMode()
     {
-        if (Application.isEditor && !Application.isPlaying)
+        if (Application.isEditor && !Application.isPlaying &&  this.transform.childCount != 0)
         {
             for (int i = this.transform.childCount; i > 0; --i)
                 DestroyImmediate(this.transform.GetChild(0).gameObject);
