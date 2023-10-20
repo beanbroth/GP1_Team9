@@ -1,24 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class S_GeneralMethods 
 {
-    public static Vector3 GeneratePointOnNavMesh(Transform transform, float pointRange, Vector3 pointVector3, LayerMask walkableLayerMask, bool pointSet)
+    public static (bool, Vector3) GeneratePointOnNavMesh(Transform transform, float minSpawnRange, float maxSpawnRange, Vector3 spawnPoint, LayerMask walkableLayerMask, bool spawnPointSet)
     {
         // Generate a random position to walk or spawn to
-        float randomZ = UnityEngine.Random.Range(-pointRange, pointRange);
-        float randomX = UnityEngine.Random.Range(-pointRange, pointRange);
+        float randomZ = UnityEngine.Random.Range(minSpawnRange, maxSpawnRange);
+        float randomX = UnityEngine.Random.Range(minSpawnRange, maxSpawnRange);
 
-        pointVector3 = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        spawnPoint = new Vector3(randomX, transform.position.y, randomZ);
 
         // Check if point generated exists
-        if (Physics.Raycast(pointVector3, -transform.up, 2f, walkableLayerMask))
+        if (Physics.Raycast(spawnPoint, -transform.up, 2f, walkableLayerMask))
         {
-            pointSet = true;
+            spawnPointSet = true;
         }
 
-        Debug.Log("GMP is running!");
-        return pointVector3;
+        return (spawnPointSet, spawnPoint);
     }
 }
