@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6121553314023942440}
   - component: {fileID: 6338202542461524572}
   - component: {fileID: 7270549768109097379}
+  - component: {fileID: -365354314727690350}
   m_Layer: 0
   m_Name: DamageTrail
   m_TagString: Untagged
@@ -4933,3 +4934,16 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-365354314727690350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629374011504788508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b571f1eac32714a8c86e71d4fa329b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3

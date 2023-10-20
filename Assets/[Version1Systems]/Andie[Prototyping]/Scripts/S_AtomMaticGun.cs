@@ -8,6 +8,7 @@ public class S_AtomMaticGun : MonoBehaviour
     GameObject[] enemies;
     Transform[] enemiesTransform;
     public float bulletSpeed = 20;
+    [SerializeField] private int damage;
 
     private GameObject player;
 
@@ -28,6 +29,10 @@ public class S_AtomMaticGun : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetEnemy.position, bulletSpeed * Time.deltaTime);
+        if (enemies.Length <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public Transform GetClosestEnemy(Transform[] enemies)
@@ -45,5 +50,14 @@ public class S_AtomMaticGun : MonoBehaviour
             }
         }
         return tMin;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<S_EnemyHealthController>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }
