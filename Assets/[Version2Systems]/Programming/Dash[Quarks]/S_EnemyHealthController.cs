@@ -39,12 +39,7 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         currentHealth -= damage;
         StartCoroutine(FlashOnDamage());
-        if (currentHealth <= 0)
-        {
-            gameObject.SetActive(false);
-            GameObject temp = S_ObjectPoolManager.Instance.GetObject(quarkPrefab);
-            temp.transform.position = transform.position;
-        }
+        
     }
 
     private IEnumerator FlashOnDamage()
@@ -54,6 +49,14 @@ public class S_EnemyHealthController : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
         enemyRenderer.material.color = originalColor;
         enemyAiBehviour.enabled = true;
+        
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);
+            GameObject temp = S_ObjectPoolManager.Instance.GetObject(quarkPrefab);
+            temp.transform.position = transform.position;
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

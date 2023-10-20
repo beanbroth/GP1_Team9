@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3629374011504788508}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.02, z: 0.03}
   m_LocalScale: {x: 0.1540299, y: 0.1929067, z: 0.12556}
   m_ConstrainProportionsScale: 0
@@ -4922,8 +4922,8 @@ TrailRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 3
+    numCapVertices: 10
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -4946,4 +4946,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b571f1eac32714a8c86e71d4fa329b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  spikePrefab: {fileID: 1532296738100885058, guid: e76ff5616496e9a47b7bd9d8d41836db, type: 3}
+  spawnInterval: 0.1
+  trailLengthTime: 3
+  damageTickSpeed: 1
+  damageAmount: 1
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
