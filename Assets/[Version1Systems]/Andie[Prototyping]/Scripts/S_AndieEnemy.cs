@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndieEnemy : MonoBehaviour
+public class S_AndieEnemy : MonoBehaviour
 {
     public GameObject player;
     public float speed;
