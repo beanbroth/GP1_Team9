@@ -34,7 +34,7 @@ public class MyObjectPool
         GameObject pooledObj = pool.Dequeue();
         pooledObj.SetActive(true);
         
-        Debug.Log((pool.Count) + " items in the pool");
+        //Debug.Log((pool.Count) + " items in the pool");
         
         
         return pooledObj;

@@ -16,7 +16,7 @@ public class S_BasicBulletController : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<SpriteRenderer>().color = bulletColor;
+        GetComponentInChildren<Renderer>().material.color = bulletColor;
         _transform = transform;
         _transform.localScale *= bulletSizeMultiplier;
         //invoke after a delay
@@ -38,6 +38,6 @@ public class S_BasicBulletController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _transform.position += transform.up * (bulletSpeed * Time.fixedDeltaTime);
+        transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
     }
 }

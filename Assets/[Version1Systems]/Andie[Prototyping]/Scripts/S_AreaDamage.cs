@@ -1,47 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class S_AreaDamage : MonoBehaviour
+public class AndieAreaDamage : MonoBehaviour
 {
     public float radius;
-    public float maxDistance;
     public LayerMask enemyMask;
     public GameObject areaObject;
-
-    public float damage;
-    public float waitTime;
-
+    //public float damage;
+    [FormerlySerializedAs("waitTime")] public float timeBetweenAttacks;
+    public float flashDuration = 0.1f;
+    private Renderer _renderer;
+    [FormerlySerializedAs("color")] [SerializeField] private Color flashColor;
 
     private void Start()
     {
-        InvokeRepeating("SphereCheck", 0.0f, waitTime);
+        _renderer = areaObject.GetComponent<Renderer>();
+        InvokeRepeating("SphereCheck", 0.0f, timeBetweenAttacks);
     }
 
     private void Update()
     {
-        areaObject.transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
+        areaObject.transform.localScale = new Vector3(radius * 2, 0.25f, radius * 2);
+    }
+
+    private void OnValidate()
+    {
+        areaObject.transform.localScale = new Vector3(radius * 2, 0.07f, radius * 2);
     }
 
     private void SphereCheck()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, enemyMask);
+        StartCoroutine(FlashWhite());
 
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, enemyMask);
         foreach (var hitCollider in hitColliders)
         {
-            print("hit1");
-            if (hitCollider.GetComponent<S_AndieEnemy>() != null)
-            {
-                print("hit");
-                Damage(damage, hitCollider.GetComponent<S_AndieEnemy>());
-
-            }
+            //damage enmy   
         }
     }
 
-    public void Damage(float damage, S_AndieEnemy enemy)
+    private IEnumerator FlashWhite()
     {
-        enemy.TakeDamage(damage);
+        Color originalColor = _renderer.material.color;
+        _renderer.material.color = flashColor;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        _renderer.material.color = originalColor;
     }
 
     private void OnDrawGizmos()

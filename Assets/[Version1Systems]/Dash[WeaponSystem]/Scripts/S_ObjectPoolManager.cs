@@ -69,12 +69,12 @@ public class S_ObjectPoolManager : MonoBehaviour
         string key = obj.name.Replace("(Clone)", "");
         if (!pools.ContainsKey(key))
         {
-            Debug.Log("pool not found, creating new pool" + key + " " + obj.name);
+            //Debug.Log("pool not found, creating new pool" + key + " " + obj.name);
             CreatePool(obj, 5);
         }
 
         MyObjectPool pool = pools[key] as MyObjectPool;
-        Debug.Log("returning object to pool: " + key + " " + obj.name + pool.ObjectCount); 
+        //Debug.Log("returning object to pool: " + key + " " + obj.name + pool.ObjectCount); 
         pool.ReturnObject(obj);
     }
 }

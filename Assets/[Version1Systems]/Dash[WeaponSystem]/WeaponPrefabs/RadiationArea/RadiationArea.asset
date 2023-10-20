@@ -15,3 +15,6 @@ MonoBehaviour:
   weaponName: RadiationArea
   weaponPrefabs:
   - {fileID: 563342054848135308, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
+  - {fileID: 1856572272474196961, guid: 60db3fd62baea11469f8ed7396864509, type: 3}
+  - {fileID: 1856572272474196961, guid: fa6a82ba0bae0614781d3364c82ce014, type: 3}
+  - {fileID: 1856572272474196961, guid: cbd3d0fae1b988842bc83bb254dfb4fc, type: 3}
