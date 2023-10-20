@@ -36,6 +36,11 @@ public class S_EnemyAiBehviour : MonoBehaviour
         playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, playerLayerMask);
         playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, playerLayerMask);
 
+       
+    }
+
+    private void FixedUpdate()
+    {
         if (!playerInDetectionRange && !playerInAgroRange)
         {
             Patroling();
