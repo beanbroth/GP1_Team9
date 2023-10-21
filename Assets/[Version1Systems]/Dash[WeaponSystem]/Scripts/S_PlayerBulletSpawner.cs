@@ -1,11 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -60,10 +54,11 @@ public class S_PlayerBulletSpawner : MonoBehaviour
             SpawnPooledBullet(Quaternion.Euler(0f, angleCenter, 0f));
             return;
         }
+
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float currentAngle = minAngle + angleStep * i;
-            Quaternion rotation = Quaternion.Euler(new Vector3(0f, currentAngle, 0f ));
+            Quaternion rotation = Quaternion.Euler(new Vector3(0f, currentAngle, 0f));
             SpawnPooledBullet(rotation);
         }
     }
@@ -82,7 +77,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         for (int i = 0; i < bulletsPerShot; i++)
         {
             float currentAngle = Random.Range(minAngle, maxAngle);
-            Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f );
+            Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f);
             SpawnPooledBullet(rotation);
         }
     }
@@ -115,7 +110,6 @@ public class S_PlayerBulletSpawner : MonoBehaviour
     {
         angleCenter = Mathf.Clamp(angleCenter, -180f, 180f);
         angleWidth = Mathf.Clamp(angleWidth, 0f, 360f);
-
         bulletsPerShot = Mathf.Clamp(bulletsPerShot, 1, 1000);
     }
 
@@ -130,7 +124,8 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         for (int i = 1; i <= gizmoSegments; i++)
         {
             float currentAngle = minAngle + angleStep * i;
-            Vector3 currentPoint = transform.position + Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * gizmoRadius;
+            Vector3 currentPoint =
+                transform.position + Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * gizmoRadius;
             Gizmos.DrawLine(previousPoint, currentPoint);
             previousPoint = currentPoint;
         }

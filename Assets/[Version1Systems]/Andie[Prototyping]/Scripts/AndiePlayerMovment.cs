@@ -10,7 +10,7 @@ public class AndiePlayerMovment : MonoBehaviour
     public float turnSpeed;
     public float turnSpeedMultiplier;
 
-    private bool hasFlipped = false;
+    //private bool hasFlipped = false;
     public float flipCooldown;
 
     float acceleration;
@@ -53,6 +53,6 @@ public class AndiePlayerMovment : MonoBehaviour
 
     private void ResetFlip()
     {
-        hasFlipped = false;
+        //hasFlipped = false;
     }
 }

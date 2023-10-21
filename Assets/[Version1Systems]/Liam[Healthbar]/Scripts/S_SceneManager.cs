@@ -4,21 +4,43 @@ using UnityEngine.SceneManagement;
 public class S_SceneManager : MonoBehaviour
 {
     [SerializeField] private string gameSceneName;
-    void Update()
-    {
-        // Check if the left arrow key is pressed
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            // Load the "GamePrototypeV1Liam" scene
-            SceneManager.LoadScene(gameSceneName);
-        }
+    private S_PlayerControls playerControls;
+    private bool turnKeyPressed;
 
-        // Check if the right arrow key is pressed
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+    private void Awake()
+    {
+        playerControls = new S_PlayerControls();
+        playerControls.Player.Turn.performed += context =>
         {
-            // Exit the application
-            Debug.Log("Exiting the game.");
-            Application.Quit();
+            turnKeyPressed = true;
+        };
+
+        playerControls.Player.Turn.canceled += context =>
+        {
+            turnKeyPressed = false;
+        };
+    }
+
+    private void Update()
+    {
+        if (turnKeyPressed)
+        {
+            LoadGameScene();
         }
+    }
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
+    private void LoadGameScene()
+    {
+        SceneManager.LoadScene(gameSceneName);
     }
 }
