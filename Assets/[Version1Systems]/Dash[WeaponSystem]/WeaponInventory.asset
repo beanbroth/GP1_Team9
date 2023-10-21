@@ -13,13 +13,7 @@ MonoBehaviour:
   m_Name: WeaponInventory
   m_EditorClassIdentifier: 
   resetInventoryOnEnable: 1
-  unlockedWeapons:
-  - weaponData: {fileID: 11400000, guid: 1ad294fb03c554043a7e053f7710cc67, type: 2}
-    level: 10
-    maxLevel: 11
-  - weaponData: {fileID: 11400000, guid: 6b67a96704bdfed43a09f1a7925312ea, type: 2}
-    level: 3
-    maxLevel: 4
+  unlockedWeapons: []
   allWeapons:
   - {fileID: 11400000, guid: 1ad294fb03c554043a7e053f7710cc67, type: 2}
   - {fileID: 11400000, guid: 6b67a96704bdfed43a09f1a7925312ea, type: 2}
