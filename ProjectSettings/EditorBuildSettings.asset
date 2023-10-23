@@ -4,5 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/GamePrototypeV2.unity
+    guid: cf36583fe98a909478cc0aa89bc32862
+  - enabled: 1
+    path: Assets/[Version1Systems]/Liam[Healthbar]/Scenes/Victory.unity
+    guid: e41973c82e672b340bc3316fea320bfb
+  - enabled: 0
+    path: Assets/[Version1Systems]/Liam[Healthbar]/Scenes/GamePrototypeV1Liam.unity
+    guid: 44a06cd978d1ee7458f193f741449dcb
+  - enabled: 1
+    path: Assets/[Version1Systems]/Liam[Healthbar]/Scenes/Lose.unity
+    guid: 29c949a71a7a7f942864bfbda86e7982
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 4f7de953fd5a7b044b480a369c90d12f, type: 2}
