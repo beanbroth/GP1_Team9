@@ -18,7 +18,7 @@ public class S_EnemySpawnManagerV2 : MonoBehaviour
         _spawnTimer = _spawnRate;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _spawnTimer -= Time.deltaTime;
 

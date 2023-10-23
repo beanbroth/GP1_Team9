@@ -123,7 +123,7 @@ MonoBehaviour:
   quarkManager: {fileID: 11400000, guid: 7e5f0707ecd12354e8afe9bc6f2b2f56, type: 2}
   startingMoveSpeed: 4
   maxSpeedMult: 6
-  pickupRange: 5
+  pickupRange: 100
   accelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6214948098047261745
 Transform:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3506711569906600673}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: d70b289d2e0cca34f88822e17bdfe2ad, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
