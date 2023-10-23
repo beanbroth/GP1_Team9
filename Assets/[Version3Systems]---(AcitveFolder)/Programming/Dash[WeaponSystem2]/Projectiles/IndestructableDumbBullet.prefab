@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2d07d7f9de3a44cb8f39eabd927a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyOnCollisionWithEnemy: 0
-  destroyOnCollisionWithOther: 0
+  enemyDestroyOnCollision: 0
+  otherDestroyOnCollision: 0
   damage: 1
