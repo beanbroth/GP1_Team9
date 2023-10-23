@@ -2,57 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_EnemySpawnManagerV2 : MonoBehaviour
+public class S_EnemySpawnManager : MonoBehaviour
 {
-    public LayerMask groundLayerMask;
+    // Key time points
+    [SerializeField] float[] phaseTimeWindow;
 
-    [SerializeField] GameObject[] _enemyPrefabList;
-    [SerializeField] float _spawnRate;
-    [SerializeField] float _minSpawnRange=20f;
-    [SerializeField] float _maxSpawnRange=25f;
+    // Attached spawners
+    [SerializeField] GameObject[] enemySpawners;
 
-    private float _spawnTimer;
+    private int currentIndex = 0;
+    private float elapsedTime = 0;
+    private bool canIncrease = false;
 
+    // Start is called before the first frame update
     void Start()
     {
-        _spawnTimer = _spawnRate;
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        _spawnTimer -= Time.deltaTime;
+        elapsedTime += Time.deltaTime;
 
-        if (_spawnTimer < 0)
+        if (elapsedTime >= phaseTimeWindow[currentIndex])
         {
-            Vector3 spawnPoint = GenerateSpawnPoint();
-            Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
-            _spawnTimer = _spawnRate;
-        }
-    }
-
-    private Vector3 GenerateSpawnPoint()
-    {
-        Vector3 spawnPoint;
-        float randomAngle = Random.Range(0, 360);
-        float randomDistance = Random.Range(_minSpawnRange, _maxSpawnRange);
-
-        spawnPoint = new Vector3(transform.position.x + randomDistance * Mathf.Cos(randomAngle), 0, transform.position.z + randomDistance * Mathf.Sin(randomAngle));
-
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPoint + Vector3.up * 100, Vector3.down, out hit, 200, groundLayerMask))
-        {
-            spawnPoint = hit.point;
+            enemySpawners[currentIndex].SetActive(true);
+            canIncrease = true;
         }
 
-        return spawnPoint;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _minSpawnRange);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, _maxSpawnRange);
+        if (canIncrease && currentIndex != phaseTimeWindow.Length - 1)
+        {
+            currentIndex++;
+            canIncrease = false;
+        }
     }
 }
