@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
-public class SpikeTrail : MonoBehaviour
+public class S_DamageTrailController: MonoBehaviour
 {
-    public GameObject spikePrefab;
+    public GameObject trailColliderPrefab;
     public float spawnInterval = 1.0f;
     public float trailLengthTime = 10.0f;
-    public float damageTickSpeed = 1.0f;
+    public float damageTickInterval = 1.0f;
     public int damageAmount = 10;
     public Color flashColor = Color.white;
     public float flashDuration = 0.1f;
     private float spawnTimer;
     private float damageTimer;
     private int maxTrailLength;
-    private Queue<GameObject> spikeQueue;
+    private Queue<GameObject> trailBulletQueue;
     private float trailWdith;
     private TrailRenderer trailRenderer;
 
     private void Start()
     {
         maxTrailLength = Mathf.FloorToInt(trailLengthTime / spawnInterval);
-        spikeQueue = new Queue<GameObject>();
+        trailBulletQueue = new Queue<GameObject>();
         trailWdith = GetComponent<TrailRenderer>().startWidth;
         trailRenderer = GetComponent<TrailRenderer>();
+        trailRenderer.time = trailLengthTime;
     }
 
     private void Update()
@@ -33,41 +34,41 @@ public class SpikeTrail : MonoBehaviour
         damageTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval)
         {
-            SpawnSpike();
+            SpawntrailBullet();
             spawnTimer = 0;
         }
 
-        if (damageTimer >= damageTickSpeed)
+        if (damageTimer >= damageTickInterval)
         {
             DamageEnemies();
             damageTimer = 0;
         }
     }
 
-    private void SpawnSpike()
+    private void SpawntrailBullet()
     {
         Vector3 spawnPosition = transform.position;
-        GameObject newSpike;
-        if (spikeQueue.Count < maxTrailLength)
+        GameObject newtrailBullet;
+        if (trailBulletQueue.Count < maxTrailLength)
         {
-            newSpike = Instantiate(spikePrefab, spawnPosition, Quaternion.identity);
-            newSpike.transform.localScale = Vector3.one * trailWdith;
+            newtrailBullet = Instantiate(trailColliderPrefab, spawnPosition, Quaternion.identity);
+            newtrailBullet.transform.localScale = Vector3.one * trailWdith;
         }
         else
         {
-            newSpike = spikeQueue.Dequeue();
-            newSpike.transform.position = spawnPosition;
+            newtrailBullet = trailBulletQueue.Dequeue();
+            newtrailBullet.transform.position = spawnPosition;
         }
 
-        spikeQueue.Enqueue(newSpike);
+        trailBulletQueue.Enqueue(newtrailBullet);
     }
 
     private void DamageEnemies()
     {
         StartCoroutine(FlashTrail());
-        foreach (GameObject spike in spikeQueue)
+        foreach (GameObject trailBullet in trailBulletQueue)
         {
-            Collider[] overlappingColliders = Physics.OverlapSphere(spike.transform.position, trailWdith / 2);
+            Collider[] overlappingColliders = Physics.OverlapSphere(trailBullet.transform.position, trailWdith / 2);
             foreach (Collider col in overlappingColliders)
             {
                 S_EnemyHealthController enemy = col.gameObject.GetComponent<S_EnemyHealthController>();
@@ -83,14 +84,13 @@ public class SpikeTrail : MonoBehaviour
     {
         Gradient originalGradient = trailRenderer.colorGradient;
         Gradient flashGradient = new Gradient();
-        flashGradient.SetKeys(originalGradient.colorKeys, originalGradient.alphaKeys);
-        GradientColorKey[] colorKeys = flashGradient.colorKeys;
-        for (int i = 0; i < colorKeys.Length; i++)
-        {
-            colorKeys[i].color = flashColor;
-        }
+        GradientColorKey[] colorKeys = new GradientColorKey[2];
+        colorKeys[0] = new GradientColorKey(flashColor, 0);
+        colorKeys[1] = new GradientColorKey(flashColor, 1);
 
-        flashGradient.colorKeys = colorKeys;
+        GradientAlphaKey[] alphaKeys = originalGradient.alphaKeys;
+        flashGradient.SetKeys(colorKeys, alphaKeys);
+
         trailRenderer.colorGradient = flashGradient;
         yield return new WaitForSeconds(flashDuration);
         trailRenderer.colorGradient = originalGradient;

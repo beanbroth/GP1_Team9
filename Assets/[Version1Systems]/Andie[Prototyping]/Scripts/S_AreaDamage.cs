@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,36 +10,41 @@ public class AndieAreaDamage : MonoBehaviour
     public float radius;
     public LayerMask enemyMask;
     public GameObject areaObject;
-    //public float damage;
+    public int damage;
     [FormerlySerializedAs("waitTime")] public float timeBetweenAttacks;
     public float flashDuration = 0.1f;
     private Renderer _renderer;
-    [FormerlySerializedAs("color")] [SerializeField] private Color flashColor;
+    [FormerlySerializedAs("color")][SerializeField] private Color flashColor;
 
     private void Start()
     {
         _renderer = areaObject.GetComponent<Renderer>();
-        InvokeRepeating("SphereCheck", 0.0f, timeBetweenAttacks);
+        InvokeRepeating("DamageTick", 0.0f, timeBetweenAttacks);
     }
 
     private void Update()
     {
-        areaObject.transform.localScale = new Vector3(radius * 2, 0.25f, radius * 2);
+        areaObject.transform.localScale = new Vector3(radius * 2, areaObject.transform.localScale.y, radius * 2);
     }
 
     private void OnValidate()
     {
-        areaObject.transform.localScale = new Vector3(radius * 2, 0.07f, radius * 2);
+        areaObject.transform.localScale = new Vector3(radius * 2, areaObject.transform.localScale.y, radius * 2);
     }
 
-    private void SphereCheck()
+    private void DamageTick()
     {
         StartCoroutine(FlashWhite());
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius, enemyMask);
-        foreach (var hitCollider in hitColliders)
+        Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, radius, enemyMask);
+
+        foreach (Collider enemyCollider in enemiesInRange)
         {
-            //damage enmy   
+            S_EnemyHealthController emc = enemyCollider.GetComponent<S_EnemyHealthController>();
+            if (emc != null)
+            {
+                emc.TakeDamage(damage);
+            }
         }
     }
 

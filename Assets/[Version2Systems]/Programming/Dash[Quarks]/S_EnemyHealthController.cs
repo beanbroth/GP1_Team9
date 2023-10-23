@@ -53,16 +53,8 @@ public class S_EnemyHealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
-            GameObject temp = S_ObjectPoolManager.Instance.GetObject(quarkPrefab);
-            temp.transform.position = transform.position;
+            ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
         }
         
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Triggered");
-        if (other.tag == "PlayerBullet")
-            TakeDamage(1);
     }
 }

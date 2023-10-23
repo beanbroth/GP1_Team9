@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fca1185fee68594c82d38a8db06a423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 4
+  maxHealth: 3
+  currentHealth: 3
   flashDuration: 0.1
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   quarkPrefab: {fileID: 2975559733665031248, guid: e1c463faa3bbcd940878455947814d84, type: 3}

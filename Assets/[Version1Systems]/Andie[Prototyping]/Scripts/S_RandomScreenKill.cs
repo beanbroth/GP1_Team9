@@ -16,13 +16,22 @@ public class S_RandomScreenKill : MonoBehaviour
     public float timeBetweenKills = 1f;
     public float boltLifetime = 0.1f;
     public int numKills = 1;
-    
+
     private void Awake()
     {
         CreateBoltPool(initialBoltPoolSize);
         InvokeRepeating("Kill", 0.0f, timeBetweenKills);
     }
-    
+
+    private void OnDisable()
+    {
+        foreach (GameObject bolt in boltPool)
+        {
+            if (bolt != null)
+                bolt.SetActive(false);
+        }
+    }
+
     private void CreateBoltPool(int size)
     {
         for (int i = 0; i < size; i++)

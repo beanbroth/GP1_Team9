@@ -26,13 +26,13 @@ public class S_BasicBulletController : MonoBehaviour
     private void ReturnBulletToPool()
     {
         //Debug.Log("returning object to pool");
-        S_ObjectPoolManager.Instance.ReturnObject(gameObject);
+        ObjectPoolManager.ReturnObject(gameObject);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         
-        S_ObjectPoolManager.Instance.ReturnObject(gameObject);
+        ObjectPoolManager.ReturnObject(gameObject);
     }
 
 
