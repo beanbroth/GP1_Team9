@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4418322992253099303}
   - component: {fileID: 577752067107232867}
   - component: {fileID: -1073665847781637560}
+  - component: {fileID: -3041828212687546103}
   m_Layer: 3
   m_Name: ChaseBullet
   m_TagString: Untagged
@@ -120,3 +121,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   damage: 1
+--- !u!114 &-3041828212687546103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503858307881935170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2d07d7f9de3a44cb8f39eabd927a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDestroyOnCollision: 1
+  otherDestroyOnCollision: 1
+  damage: 1
+  penetration: 0

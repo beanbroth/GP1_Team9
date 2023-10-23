@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class S_BulletDamageController : MonoBehaviour
 {
-    [SerializeField] private bool enemyDestroyOnCollision = true;
-    [SerializeField] private bool otherDestroyOnCollision = true;
+    [SerializeField] private bool destroyOnEnemyCollision = true;
+    [SerializeField] private bool destroyOnOtherCollision = true;
     [SerializeField] int damage = 1;
     [SerializeField] private int penetration;
     private int bulletHealth;
+    private Vector3 lastPos;
+    private Vector3 velocityDir;
 
     private void Start()
     {
+        lastPos = transform.position;
         bulletHealth = penetration;
+    }
+
+    private void FixedUpdate()
+    {
+        velocityDir = (transform.position - lastPos).normalized;
+        lastPos = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,22 +33,26 @@ public class S_BulletDamageController : MonoBehaviour
             S_EnemyHealthController emc = other.GetComponent<S_EnemyHealthController>();
             if (emc != null)
             {
-                emc.TakeDamage(damage);
+                Debug.Log("velocity dir: " + velocityDir);
+                emc.TakeDamage(damage, velocityDir);
             }
 
-            if (enemyDestroyOnCollision)
+            if (destroyOnEnemyCollision)
             {
                 bulletHealth--;
                 if (bulletHealth <= 0)
                 {
+                    Debug.Log("Bullet Destroyed Enemy" + other.gameObject.name);
                     ObjectPoolManager.Destroy(gameObject);
                 }
             }
         }
 
-        if (other.gameObject.tag != "Player" && otherDestroyOnCollision)
+        if (other.gameObject.tag != "Player" && destroyOnOtherCollision)
         {
+            Debug.Log("Bullet Destroyed on other" + other.gameObject.name);
+
             ObjectPoolManager.Destroy(gameObject);
         }
-    }
+    } 
 }

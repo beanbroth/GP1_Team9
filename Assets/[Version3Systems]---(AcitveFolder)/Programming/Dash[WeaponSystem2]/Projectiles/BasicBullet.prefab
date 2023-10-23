@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 9021839866227342375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.73, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 177095726195853643}
@@ -85,9 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2d07d7f9de3a44cb8f39eabd927a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyOnCollisionWithEnemy: 1
-  destroyOnCollisionWithOther: 1
+  destroyOnEnemyCollision: 1
+  destroyOnOtherCollision: 0
   damage: 1
+  penetration: 0
 --- !u!1 &9139954468927611634
 GameObject:
   m_ObjectHideFlags: 0
