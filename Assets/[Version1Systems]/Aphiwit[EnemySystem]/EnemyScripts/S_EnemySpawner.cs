@@ -26,14 +26,14 @@ public class S_EnemySpawner : MonoBehaviour
         // SpawnTimer gets reduced every second by a intervall variable and time
         _tempSpawnInterval -= Time.deltaTime;
 
-        if (_tempSpawnInterval < 0)
-        {
-            SpawnEnemy();
-        }
+        if (_tempSpawnInterval < 0) { SpawnEnemy(); }
 
-        if (_tempSpawnInterval > _finalSpawnInterval)
+        // Foreach second that passes; reduce og value by set reduction value.
+        if (_originalSpawnInterval > _finalSpawnInterval) { _originalSpawnInterval -= _spawnIntervalReductionValue * Time.deltaTime; }
+
+        if (_originalSpawnInterval <= _finalSpawnInterval)
         {
-            _tempSpawnInterval -= _spawnIntervalReductionValue * Time.deltaTime;
+            Debug.Log("Spawn interval has reached stone bottom!");
         }
     }
 

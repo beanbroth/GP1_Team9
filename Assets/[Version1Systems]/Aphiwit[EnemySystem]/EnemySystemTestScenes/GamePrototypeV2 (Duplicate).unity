@@ -2265,7 +2265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872999613533029164, guid: c01f251bb2844b541b8a9882cc8a03ac, type: 3}
       propertyPath: _spawnIntervalReductionValue
-      value: 0.001
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4872999613533029164, guid: c01f251bb2844b541b8a9882cc8a03ac, type: 3}
       propertyPath: _enemyPrefabList.Array.data[0]
@@ -3355,7 +3355,7 @@ MonoBehaviour:
   _enemyPrefabList:
   - {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
   _originalSpawnInterval: 1
-  _spawnIntervalReductionValue: 0.001
+  _spawnIntervalReductionValue: 0.1
   _finalSpawnInterval: 0.5
   _minSpawnRange: 20
   _maxSpawnRange: 25
