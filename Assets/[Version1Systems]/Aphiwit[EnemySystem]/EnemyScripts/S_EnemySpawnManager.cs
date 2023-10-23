@@ -13,7 +13,7 @@ public class S_EnemySpawnManager : MonoBehaviour
     [SerializeField] float _spawnRate;
     [SerializeField] float _spawnPointRange;
     [SerializeField] bool _spawnPointExist;
-    [SerializeField] bool _isSpawning;
+    //[SerializeField] bool _isSpawning;
     
     private float _spawnTimer;
 
@@ -54,7 +54,7 @@ public class S_EnemySpawnManager : MonoBehaviour
         if (!Physics.Raycast(_spawnPoint, -transform.up, 2f, groundLayerMask))
         {
             _spawnPointExist = true;
-            Debug.Log("Spawn point found!");
+            //Debug.Log("Spawn point found!");
         }
     }
 

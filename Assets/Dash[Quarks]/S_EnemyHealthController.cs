@@ -9,8 +9,9 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject quarkPrefab;
-    private Renderer enemyRenderer;
+    [SerializeField] private Renderer enemyRenderer;
     private Color originalColor;
+    [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
 
     public int CurrentHealth
     {
@@ -26,7 +27,6 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private void Awake()
     {
-        enemyRenderer = GetComponent<Renderer>();
         originalColor = enemyRenderer.material.color;
     }
 
@@ -50,8 +50,10 @@ public class S_EnemyHealthController : MonoBehaviour
     private IEnumerator FlashOnDamage()
     {
         enemyRenderer.material.color = flashColor;
+        enemyAiBehviour.enabled = false;
         yield return new WaitForSeconds(flashDuration);
         enemyRenderer.material.color = originalColor;
+        enemyAiBehviour.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

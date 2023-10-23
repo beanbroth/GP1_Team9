@@ -21,9 +21,13 @@ public class PlayerMeshController : MonoBehaviour
     private float currentZAngle;
     private float zAngleVelocity;
     private bool isAtBottom;
+    private float bobOffset;
 
+    private float randomTimerOffset;
+    
     void Start()
     {
+        randomTimerOffset = Random.Range(0f, bobFrequency);
         initialPosition = transform.localPosition;
     }
 
@@ -44,13 +48,13 @@ public class PlayerMeshController : MonoBehaviour
     private void UpdateTilt(float horizontalInput)
     {
         float targetZAngle = -horizontalInput * tiltAngle;
-        currentZAngle = Mathf.SmoothDampAngle(currentZAngle, targetZAngle, ref zAngleVelocity, tiltSmoothTime);
+        currentZAngle = Mathf.SmoothDampAngle(currentZAngle, targetZAngle, ref zAngleVelocity, tiltSmoothTime, Mathf.Infinity, Time.unscaledDeltaTime);
         transform.localRotation = Quaternion.Euler(0, 0, currentZAngle);
     }
 
     private void UpdateBob()
     {
-        float bobOffset = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
+        bobOffset = Mathf.Sin((Time.time + randomTimerOffset) * bobFrequency) * bobAmplitude;
         transform.localPosition = initialPosition + new Vector3(0, bobOffset, 0);
     }
 
@@ -69,7 +73,7 @@ public class PlayerMeshController : MonoBehaviour
 
     private bool IsAtBottomOfBob()
     {
-        float bobOffset = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
+        //float bobOffset = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
         if (bobOffset < -bobAmplitude * 0.99f && !isAtBottom)
         {
             isAtBottom = true;
@@ -87,7 +91,6 @@ public class PlayerMeshController : MonoBehaviour
         float randomXRotation = Random.Range(-randomRotationRange, randomRotationRange);
         float randomZRotation = Random.Range(-randomRotationRange, randomRotationRange);
         float randomYRotation = Random.Range(-randomRotationRange, randomRotationRange);
-        // Toggle forward and back rotation
         toggleForwardBackRotation = !toggleForwardBackRotation;
         float forwardBackRotation = toggleForwardBackRotation ? forwardBackRotationAngle : -forwardBackRotationAngle;
 
