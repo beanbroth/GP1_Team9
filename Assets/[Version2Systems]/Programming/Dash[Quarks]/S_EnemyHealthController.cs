@@ -7,10 +7,12 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private float flashDuration = 0.1f;
+
+    private Color originalColor;
     [SerializeField] private Color flashColor = Color.red;
+
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
-    private Color originalColor;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
 
     public int CurrentHealth

@@ -41,6 +41,8 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Add check to see if navagent is on field
+        // Add intervall
         if (!playerInDetectionRange && !playerInAgroRange)
         {
             Patroling();
