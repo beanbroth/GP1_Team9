@@ -151,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailColliderPrefab: {fileID: 1532296738100885058, guid: e76ff5616496e9a47b7bd9d8d41836db, type: 3}
   spawnInterval: 0.15
-  trailLengthTime: 0.5
-  damageTickSpeed: 1
+  trailLengthTime: 1.5
+  damageTickInterval: 0.7
   damageAmount: 1
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.1

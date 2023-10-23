@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: trailLengthTime
-      value: 2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: damageTickInterval
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3629374011504788508, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: m_Name

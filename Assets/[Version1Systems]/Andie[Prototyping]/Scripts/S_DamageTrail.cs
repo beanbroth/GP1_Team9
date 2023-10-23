@@ -23,8 +23,9 @@ public class S_DamageTrailController: MonoBehaviour
     {
         maxTrailLength = Mathf.FloorToInt(trailLengthTime / spawnInterval);
         trailBulletQueue = new Queue<GameObject>();
-        trailWdith = GetComponent<TrailRenderer>().startWidth;
         trailRenderer = GetComponent<TrailRenderer>();
+        trailWdith = trailRenderer.startWidth;
+
         trailRenderer.time = trailLengthTime;
     }
 
@@ -80,19 +81,16 @@ public class S_DamageTrailController: MonoBehaviour
         }
     }
 
+    
     private IEnumerator FlashTrail()
     {
-        Gradient originalGradient = trailRenderer.colorGradient;
-        Gradient flashGradient = new Gradient();
-        GradientColorKey[] colorKeys = new GradientColorKey[2];
-        colorKeys[0] = new GradientColorKey(flashColor, 0);
-        colorKeys[1] = new GradientColorKey(flashColor, 1);
+        Color originalColor = trailRenderer.startColor;
+        trailRenderer.startColor = flashColor;
+        trailRenderer.endColor = flashColor;
 
-        GradientAlphaKey[] alphaKeys = originalGradient.alphaKeys;
-        flashGradient.SetKeys(colorKeys, alphaKeys);
-
-        trailRenderer.colorGradient = flashGradient;
         yield return new WaitForSeconds(flashDuration);
-        trailRenderer.colorGradient = originalGradient;
+
+        trailRenderer.endColor = originalColor;
+        trailRenderer.startColor = originalColor;
     }
 }

@@ -2780,6 +2780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c094539bbc445245aa56ce454bebf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   health: 5
   numOfHearts: 5
   hearts:
@@ -3631,7 +3634,7 @@ MonoBehaviour:
     m_Bits: 256
   _enemyPrefabList:
   - {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
-  _spawnRate: 0.45
+  _spawnRate: 0.3
   _minSpawnRange: 20
   _maxSpawnRange: 25
 --- !u!4 &2063693011 stripped
@@ -3765,7 +3768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755462592807679037, guid: e1c463faa3bbcd940878455947814d84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.56
+      value: -12.9
       objectReference: {fileID: 0}
     - target: {fileID: 7755462592807679037, guid: e1c463faa3bbcd940878455947814d84, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3773,7 +3776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755462592807679037, guid: e1c463faa3bbcd940878455947814d84, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.07
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 7755462592807679037, guid: e1c463faa3bbcd940878455947814d84, type: 3}
       propertyPath: m_LocalRotation.w

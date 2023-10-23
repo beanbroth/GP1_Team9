@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class S_Health : MonoBehaviour
 {
+    public UnityEvent OnDeath; // Event for when the player dies
+    
+    
     public int health; // Health
     public int numOfHearts; // Max number of hearts
 

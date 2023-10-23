@@ -33,7 +33,7 @@ public class S_BulletDamageController : MonoBehaviour
             S_EnemyHealthController emc = other.GetComponent<S_EnemyHealthController>();
             if (emc != null)
             {
-                Debug.Log("velocity dir: " + velocityDir);
+//                Debug.Log("velocity dir: " + velocityDir);
                 emc.TakeDamage(damage, velocityDir);
             }
 
@@ -42,7 +42,7 @@ public class S_BulletDamageController : MonoBehaviour
                 bulletHealth--;
                 if (bulletHealth <= 0)
                 {
-                    Debug.Log("Bullet Destroyed Enemy" + other.gameObject.name);
+                    // Debug.Log("Bullet Destroyed Enemy" + other.gameObject.name);
                     ObjectPoolManager.Destroy(gameObject);
                 }
             }
@@ -51,8 +51,7 @@ public class S_BulletDamageController : MonoBehaviour
         if (other.gameObject.tag != "Player" && destroyOnOtherCollision)
         {
             Debug.Log("Bullet Destroyed on other" + other.gameObject.name);
-
             ObjectPoolManager.Destroy(gameObject);
         }
-    } 
+    }
 }
