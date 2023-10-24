@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MyObjectPool
@@ -13,6 +12,7 @@ public class MyObjectPool
     {
         this.prefab = prefab;
         pool = new Queue<GameObject>(initialSize);
+        MaxSpawnedObjects = initialSize;
 
         for (int i = 0; i < initialSize; i++)
         {
@@ -29,18 +29,13 @@ public class MyObjectPool
             prefab.SetActive(false);
             GameObject obj = Object.Instantiate(prefab);
             pool.Enqueue(obj);
+            MaxSpawnedObjects++; // Update the max spawned objects count
         }
 
         GameObject pooledObj = pool.Dequeue();
         pooledObj.SetActive(true);
-        
-        //Debug.Log((pool.Count) + " items in the pool");
-        
-        
+
         return pooledObj;
-        
-        
-        
     }
 
     public void ReturnObject(GameObject obj)
