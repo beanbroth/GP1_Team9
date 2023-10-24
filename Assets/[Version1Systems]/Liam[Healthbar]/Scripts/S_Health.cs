@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class S_Health : MonoBehaviour
 {
+    public UnityEvent OnDeath; // Event for when the player dies
+    
+    
     public int health; // Health
     public int numOfHearts; // Max number of hearts
 
@@ -23,7 +27,7 @@ public class S_Health : MonoBehaviour
         {
             if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
             {
-                Debug.Log("Player collided with an enemy!");
+                //Debug.Log("Player collided with an enemy!");
                 health--;
                 isInvincible = true;
                 Invoke("DisableInvincibility", cooldownDuration);
