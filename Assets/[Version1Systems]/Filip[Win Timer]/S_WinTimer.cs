@@ -59,13 +59,13 @@ public class S_WinTimer : MonoBehaviour
         if (timeSinceLastPhase > timePerPhase)
         {
             currentPhase++;
+            timeSinceLastPhase = 0f;
             Debug.Log("New phase: " + currentPhase);
             if(newPhase != null)
             {
                 newPhase.Invoke(currentPhase);
             }
             ActivatePhaseObject(currentPhase-1);
-            timeSinceLastPhase = 0f;
         }
         UpdatePhaseSlider((maxTime-currentTime)/maxTime);
     }

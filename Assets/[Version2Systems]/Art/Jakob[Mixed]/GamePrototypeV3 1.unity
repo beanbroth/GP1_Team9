@@ -4949,7 +4949,7 @@ MonoBehaviour:
   - {fileID: 37170432}
   - {fileID: 2014700560}
   - {fileID: 363082514}
-  timePerPhase: 10
+  timePerPhase: 120
   currentPhase: 1
 --- !u!4 &1390313513 stripped
 Transform:
