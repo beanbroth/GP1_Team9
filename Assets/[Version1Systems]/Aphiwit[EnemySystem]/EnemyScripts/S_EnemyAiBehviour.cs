@@ -6,19 +6,17 @@ using UnityEngine.AI;
 
 public class S_EnemyAiBehviour : MonoBehaviour
 {
-    // This behaviour script will be used for simple enemy AI movement and behaviour
     // I'm currently reviewing the tutorials use of publics and the necessity, if needed; I'll cahnge it to a private [SerializedField] and add 'm_' to them.
-    // Properties and such will also be utilized for the stats off the enemies.
 
-    public NavMeshAgent navMeshAgent;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
-    public Transform playerTransform;
+    [SerializeField] Transform playerTransform;
 
-    public LayerMask groundLayerMask, playerLayerMask;
+    [SerializeField] LayerMask groundLayerMask, playerLayerMask;
 
     // Patroling and chasing
-    public Vector3 walkPoint;
-    public float walkPointRange;
+    [SerializeField] float walkPointRange;
+    private Vector3 walkPoint;
     [SerializeField] bool walkPointSet;
 
 
@@ -28,9 +26,6 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void Awake()
     {
-        // [Improvement; Get the player from a game manager.]
-        // This script currently uses the 'GameObject.Find' to locate the player and their position (this is data heavy).
-
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -46,6 +41,8 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Add check to see if navagent is on field
+        // Add intervall
         if (!playerInDetectionRange && !playerInAgroRange)
         {
             Patroling();

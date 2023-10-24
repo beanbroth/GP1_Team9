@@ -13,31 +13,23 @@ public class S_BasicBulletController : MonoBehaviour
     private Transform _transform;
     [SerializeField] private float bulletLifeTime = 5f;
 
+    private float timer;
 
     private void OnEnable()
     {
         GetComponentInChildren<Renderer>().material.color = bulletColor;
         _transform = transform;
         _transform.localScale *= bulletSizeMultiplier;
-        //invoke after a delay
-        Invoke(nameof(ReturnBulletToPool), bulletLifeTime);
+        timer = bulletLifeTime;
     }
     
-    private void ReturnBulletToPool()
-    {
-        //Debug.Log("returning object to pool");
-        S_ObjectPoolManager.Instance.ReturnObject(gameObject);
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        
-        S_ObjectPoolManager.Instance.ReturnObject(gameObject);
-    }
-
-
     private void FixedUpdate()
     {
         transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            ObjectPoolManager.Destroy(gameObject);
+        }
     }
 }
