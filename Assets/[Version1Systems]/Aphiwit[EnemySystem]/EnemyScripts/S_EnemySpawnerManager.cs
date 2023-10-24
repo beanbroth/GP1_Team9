@@ -60,6 +60,7 @@ public class S_EnemySpawnerManager : MonoBehaviour
     }*/
     void ActivateSpawner(int spawnerIndex)
     {
-        enemySpawners[spawnerIndex-1].SetActive(true);
+        if(spawnerIndex < enemySpawners.Length)
+            enemySpawners[spawnerIndex-1].SetActive(true);
     }
 }
