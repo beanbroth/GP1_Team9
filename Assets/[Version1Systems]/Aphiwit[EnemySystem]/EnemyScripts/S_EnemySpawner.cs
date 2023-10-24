@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class S_EnemySpawner : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class S_EnemySpawner : MonoBehaviour
         }
     }
 
-    private Vector3 GenerateSpawnPoint()
+    private (Vector3, bool) GenerateSpawnPoint()
     {
         Vector3 spawnPoint;
         float randomAngle = Random.Range(0, 360);
@@ -45,19 +46,27 @@ public class S_EnemySpawner : MonoBehaviour
 
         spawnPoint = new Vector3(transform.position.x + randomDistance * Mathf.Cos(randomAngle), 0, transform.position.z + randomDistance * Mathf.Sin(randomAngle));
 
-        RaycastHit hit;
-        if (Physics.Raycast(spawnPoint + Vector3.up * 100, Vector3.down, out hit, 200, groundLayerMask))
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(spawnPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
-            spawnPoint = hit.point;
+            spawnPoint = hit.position;
+            Debug.Log("Enemy inside navmesh!");
+            return (spawnPoint, true);
         }
 
-        return spawnPoint;
+        return (spawnPoint, false);
     }
 
     private float SpawnEnemy()
     {
-        Vector3 spawnPoint = GenerateSpawnPoint();
-        Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
+        var result = GenerateSpawnPoint();
+        Vector3 spawnPoint = result.Item1;
+        bool canSpawn = result.Item2;
+        if (canSpawn)
+        {
+            Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
+            canSpawn = false;
+        }
         return _tempSpawnInterval = _originalSpawnInterval;
     }
 
