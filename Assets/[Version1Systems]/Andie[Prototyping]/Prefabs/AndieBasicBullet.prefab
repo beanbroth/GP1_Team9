@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4311442219454919516}
   - component: {fileID: -6769431912794836646}
   - component: {fileID: -7460983281156112422}
+  - component: {fileID: 2522029618636419674}
   m_Layer: 3
   m_Name: AndieBasicBullet
   m_TagString: PlayerBullet
@@ -81,6 +82,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleOverTime: 1.03
+--- !u!135 &2522029618636419674
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021839866227342375}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9139954468927611634
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +143,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9139954468927611634}
-  m_Mesh: {fileID: -2432090755550338912, guid: 36bf7ca2193caa340b7c4c45cac1e72b, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1241497213706257118
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3649631653336742366}
   - component: {fileID: 267914013692334002}
   m_Layer: 0
-  m_Name: AndieShootForward 0
+  m_Name: ExpandingShootForward 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

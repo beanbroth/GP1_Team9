@@ -2735,7 +2735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1721716334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,7 +3191,7 @@ MonoBehaviour:
     m_Bits: 256
   _enemyPrefabList:
   - {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
-  _spawnRate: 0.01
+  _spawnRate: 0.5
   _minSpawnRange: 20
   _maxSpawnRange: 25
 --- !u!1 &2065895584

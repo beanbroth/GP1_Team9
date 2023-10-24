@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
-  m_Name: AndieShootForward
+  m_Name: ExpandingShootForward
   m_EditorClassIdentifier: 
   weaponName: ShootForward
   weaponPrefabs:
   - {fileID: 5744300782444405494, guid: bc6dc01922c13b64bbaa48bbc2a5da25, type: 3}
+  - {fileID: 5744300782444405494, guid: c0a3260e9394e5440bf622d2a961d2b7, type: 3}
+  - {fileID: 5744300782444405494, guid: 7a8ba4a11c9936649b8c7d9fc6aa9b04, type: 3}
+  - {fileID: 5744300782444405494, guid: ac6a8bfb9a38364459e792e088c478f2, type: 3}
