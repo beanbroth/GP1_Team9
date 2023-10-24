@@ -18,6 +18,7 @@ public class S_WinTimer : MonoBehaviour
 
     [Header("Phase Management")]
     [SerializeField] Slider phaseSlider;
+    [SerializeField] GameObject[] phasesObjects;
     public static Action<int> newPhase;
     [SerializeField] float timePerPhase = 120f;
     private float timeSinceLastPhase;
@@ -27,6 +28,15 @@ public class S_WinTimer : MonoBehaviour
     private void Start()
     {
         maxTime = currentTime;
+        int phaseObjectIndex = 0;
+        foreach (var phasesObject in phasesObjects)
+        {
+            if (phaseObjectIndex == 0)
+                phasesObject.SetActive(true);
+            else
+                phasesObject.SetActive(false);
+            phaseObjectIndex++;
+        }
     }
 
 
@@ -54,6 +64,7 @@ public class S_WinTimer : MonoBehaviour
             {
                 newPhase.Invoke(currentPhase);
             }
+            ActivatePhaseObject(currentPhase-1);
             timeSinceLastPhase = 0f;
         }
         UpdatePhaseSlider((maxTime-currentTime)/maxTime);
@@ -62,6 +73,10 @@ public class S_WinTimer : MonoBehaviour
     private void UpdatePhaseSlider(float sliderPercent)
     {
         phaseSlider.value = sliderPercent;
+    }
+    private void ActivatePhaseObject(int objectIndex, bool status = true)
+    {
+        phasesObjects[objectIndex].SetActive(status);
     }
 
     private void TimerText()
