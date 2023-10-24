@@ -1,66 +1,58 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_EnemySpawnManager : MonoBehaviour
+public class S_EnemySpawnManagerV2 : MonoBehaviour
 {
     public LayerMask groundLayerMask;
 
-    // This script will manage the enemies and their spawn rate. 
     [SerializeField] GameObject[] _enemyPrefabList;
-    [SerializeField] Vector3 _spawnPoint;
     [SerializeField] float _spawnRate;
-    [SerializeField] float _spawnPointRange;
-    [SerializeField] bool _spawnPointExist;
-    //[SerializeField] bool _isSpawning;
-    
-    private float _spawnTimer;
+    [SerializeField] float _minSpawnRange=20f;
+    [SerializeField] float _maxSpawnRange=25f;
 
-    S_GeneralMethods generalMethods;
-    // S_GeneralVariables generalVariables;
+    private float _spawnTimer;
 
     void Start()
     {
         _spawnTimer = _spawnRate;
-
-        // generalVariables = gameObject.AddComponent<S_GeneralVariables>();
-        // generalMethods = gameObject.AddComponent<S_GeneralMethods>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        GenerateSpawnPoint();
-
         _spawnTimer -= Time.deltaTime;
 
         if (_spawnTimer < 0)
         {
+            Vector3 spawnPoint = GenerateSpawnPoint();
+            Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
             _spawnTimer = _spawnRate;
-            Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], _spawnPoint, Quaternion.identity);
         }
     }
 
-    private void GenerateSpawnPoint()
+    private Vector3 GenerateSpawnPoint()
     {
-        // Generate a random position to spawn on
-        float randomZ = UnityEngine.Random.Range(-_spawnPointRange, _spawnPointRange);
-        float randomX = UnityEngine.Random.Range(-_spawnPointRange, _spawnPointRange);
+        Vector3 spawnPoint;
+        float randomAngle = Random.Range(0, 360);
+        float randomDistance = Random.Range(_minSpawnRange, _maxSpawnRange);
 
-        _spawnPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        spawnPoint = new Vector3(transform.position.x + randomDistance * Mathf.Cos(randomAngle), 0, transform.position.z + randomDistance * Mathf.Sin(randomAngle));
 
-        // Check if point generated exists
-        if (!Physics.Raycast(_spawnPoint, -transform.up, 2f, groundLayerMask))
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPoint + Vector3.up * 100, Vector3.down, out hit, 200, groundLayerMask))
         {
-            _spawnPointExist = true;
-            //Debug.Log("Spawn point found!");
+            spawnPoint = hit.point;
         }
+
+        return spawnPoint;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, _spawnPointRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _minSpawnRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _maxSpawnRange);
     }
 }
