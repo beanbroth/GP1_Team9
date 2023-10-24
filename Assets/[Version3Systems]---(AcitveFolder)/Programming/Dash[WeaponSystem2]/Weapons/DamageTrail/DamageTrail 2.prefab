@@ -9,16 +9,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+      propertyPath: flashColor.a
+      value: 0.16470589
+      objectReference: {fileID: 0}
+    - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: damageTickSpeed
       value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: trailLengthTime
-      value: 0.8
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3629374011504788508, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: m_Name
       value: DamageTrail 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270549768109097379, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7270549768109097379, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0.22352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270549768109097379, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.38039216
       objectReference: {fileID: 0}
     - target: {fileID: 8957084737057994644, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: m_LocalPosition.x

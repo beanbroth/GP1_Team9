@@ -7,11 +7,13 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private float flashDuration = 0.1f;
+    private Color originalColor;
     [SerializeField] private Color flashColor = Color.red;
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
-    private Color originalColor;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
+    [SerializeField] GameObject directionalHitEffectPrefab;
+    [SerializeField] GameObject topHitEffectPrefab;
 
     public int CurrentHealth
     {
@@ -37,9 +39,25 @@ public class S_EnemyHealthController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
         StartCoroutine(FlashOnDamage());
-        
+    }
+
+    public void TakeDamage(int damage, Vector3 direction)
+    {
+        if (direction.y < 0) // Assuming the hit is from the top if the direction has a negative Y value
+        {
+            ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Quaternion effectRotation = Quaternion.LookRotation(direction);
+            ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
+        }
+
+        currentHealth -= damage;
+        StartCoroutine(FlashOnDamage());
     }
 
     private IEnumerator FlashOnDamage()
@@ -49,12 +67,11 @@ public class S_EnemyHealthController : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
         enemyRenderer.material.color = originalColor;
         enemyAiBehviour.enabled = true;
-        
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
+            
+            ObjectPoolManager.Destroy(gameObject);
         }
-        
     }
 }

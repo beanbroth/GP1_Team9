@@ -1,7 +1,10 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+
+
 
 public class WeaponInventoryEditor : Editor
 {
@@ -35,3 +38,4 @@ public class WeaponInventoryEditor : Editor
         Debug.Log("Populated weapon inventory with S_WeaponData scriptable objects.");
     }
 }
+#endif
