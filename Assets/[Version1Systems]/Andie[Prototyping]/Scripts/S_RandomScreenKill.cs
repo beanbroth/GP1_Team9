@@ -62,20 +62,16 @@ public class S_RandomScreenKill : MonoBehaviour
         killableEnemies.Clear();
         foreach (Collider enemy in Physics.OverlapSphere(transform.position, killRange, enemyLayer))
         {
-            Debug.Log(enemy.name);
+            // Debug.Log(enemy.name);
             killableEnemies.Add(enemy.gameObject);
         }
 
         if (killableEnemies.Count <= 0)
             return;
-
         for (int i = 0; i < numKills; i++)
         {
             KillRandomEnemy();
         }
-
-
-
     }
 
     private void KillRandomEnemy()
@@ -83,7 +79,6 @@ public class S_RandomScreenKill : MonoBehaviour
         GameObject tempEnemy = killableEnemies[Random.Range(0, killableEnemies.Count)];
         S_EnemyHealthController tempHealthController = tempEnemy.GetComponent<S_EnemyHealthController>();
         tempHealthController.TakeDamage(damage);
-
         CreateBolt(tempEnemy.transform);
     }
 

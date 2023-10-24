@@ -27,7 +27,7 @@ public class S_Health : MonoBehaviour
         {
             if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
             {
-                Debug.Log("Player collided with an enemy!");
+                //Debug.Log("Player collided with an enemy!");
                 health--;
                 isInvincible = true;
                 Invoke("DisableInvincibility", cooldownDuration);

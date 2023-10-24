@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
+      propertyPath: currentHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: m_Name
-      value: TestEnemyVer1
+      value: EnemyVariant1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8425670504965896735, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: m_LocalPosition.x

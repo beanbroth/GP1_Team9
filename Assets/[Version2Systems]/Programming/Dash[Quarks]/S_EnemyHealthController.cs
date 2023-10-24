@@ -7,10 +7,8 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private float flashDuration = 0.1f;
-
     private Color originalColor;
     [SerializeField] private Color flashColor = Color.red;
-
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
@@ -54,10 +52,10 @@ public class S_EnemyHealthController : MonoBehaviour
         }
         else
         {
-            Quaternion effectRotation = Quaternion.LookRotation(direction);  
+            Quaternion effectRotation = Quaternion.LookRotation(direction);
             ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
         }
-    
+
         currentHealth -= damage;
         StartCoroutine(FlashOnDamage());
     }
@@ -71,8 +69,9 @@ public class S_EnemyHealthController : MonoBehaviour
         enemyAiBehviour.enabled = true;
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
+            
+            ObjectPoolManager.Destroy(gameObject);
         }
     }
 }

@@ -49,8 +49,8 @@ public class S_EnemySpawner : MonoBehaviour
         NavMeshHit hit;
         if (NavMesh.SamplePosition(spawnPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
-            spawnPoint = hit.position;
-            Debug.Log("Enemy inside navmesh!");
+            spawnPoint = hit.position; 
+            //Debug.Log("Enemy inside navmesh!");
             return (spawnPoint, true);
         }
 
@@ -64,7 +64,7 @@ public class S_EnemySpawner : MonoBehaviour
         bool canSpawn = result.Item2;
         if (canSpawn)
         {
-            Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
+            ObjectPoolManager.Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
             canSpawn = false;
         }
         return _tempSpawnInterval = _originalSpawnInterval;
