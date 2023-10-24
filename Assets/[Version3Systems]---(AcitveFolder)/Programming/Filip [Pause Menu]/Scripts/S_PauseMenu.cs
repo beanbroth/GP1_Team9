@@ -36,6 +36,7 @@ public class S_PauseMenu : MonoBehaviour
     private void Pause()
     {
         isPaused = !isPaused; // Switch the bool, paused or not.
+        bool alreadyPaused = (Time.timeScale == 0);
 
         if (isPaused) // If paused show the pause screen and pause time.
         {
@@ -45,7 +46,8 @@ public class S_PauseMenu : MonoBehaviour
         else // Otherwise hide the pause screen and resumeause time.
         {
             PauseMenu.SetActive(false);
-            Time.timeScale = 1;
+            if (!alreadyPaused)
+                Time.timeScale = 1;
         }
     }
 
@@ -57,5 +59,10 @@ public class S_PauseMenu : MonoBehaviour
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+
+    public bool GetIsPaused()
+    {
+        return isPaused;
     }
 }
