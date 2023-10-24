@@ -41,13 +41,18 @@ public class S_EnemyAiBehviour : MonoBehaviour
         playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, playerLayerMask);
         playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, playerLayerMask);
 
+       
+    }
+
+    private void FixedUpdate()
+    {
         if (!playerInDetectionRange && !playerInAgroRange)
         {
             Patroling();
         }
 
         if (playerInDetectionRange && !playerInAgroRange) 
-        { 
+        {
             FollowPlayer();
         }
 
@@ -77,8 +82,6 @@ public class S_EnemyAiBehviour : MonoBehaviour
         {
             walkPointSet = false;
         }
-
-
     }
 
     private void SearchWalkPoint()
@@ -90,7 +93,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         // Check if point generated exists
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayerMask))
+        if (!Physics.Raycast(walkPoint, -transform.up, 2f, groundLayerMask))
         {
             walkPointSet = true;
         }

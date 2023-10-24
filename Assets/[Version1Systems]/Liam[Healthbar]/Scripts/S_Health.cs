@@ -2,14 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class S_Health : MonoBehaviour
 {
     public int health; // Health
     public int numOfHearts; // Max number of hearts
 
-    public GameObject[] hearts;
+    public GameObject[] hearts; // GameObject for the hearts in the top left
     public Sprite fullHeart;
+    [SerializeField]
+    private bool isInvincible = false; // Player's invincibility status
+
+    [SerializeField]
+    private float cooldownDuration = 2.0f; // Cooldown duration in seconds (for invincibility)
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
+            {
+                Debug.Log("Player collided with an enemy!");
+                health--;
+                isInvincible = true;
+                Invoke("DisableInvincibility", cooldownDuration);
+
+                if (health <= 0)
+                {
+                    // Player has lost all their health, switch to the "Lose" scene
+                    SceneManager.LoadScene("Lose");
+                }
+            }
+        }
+    }
+
+    private void DisableInvincibility()
+    {
+        isInvincible = false;
+    }
 
     void Update()
     {

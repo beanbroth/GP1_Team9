@@ -1,17 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+[ExecuteInEditMode]
+#endif
 public class S_WeaponManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] Transform weaponSpawnPoint;
 
-    void Start()
+    void OnEnable()
+    {
+        SO_WeaponInventory.OnWeaponInfoChange += UpdateWeapons;
+    }
+
+    private void Start()
     {
         UpdateWeapons();
-        SO_WeaponInventory.OnWeaponInfoChange += UpdateWeapons;
     }
 
     private void OnDestroy()
@@ -21,17 +25,58 @@ public class S_WeaponManager : MonoBehaviour
 
     void UpdateWeapons()
     {
-        foreach (Transform child in weaponSpawnPoint)
+        if (Application.isEditor && !Application.isPlaying)
         {
-            Destroy(child.gameObject);
+            UpdateWeaponsWithDelay();
         }
-
-        foreach (UnlockedWeaponInfo unlockedWeapon in weaponInventory.unlockedWeapons)
+        else
         {
-            if (unlockedWeapon.level >= 0)
+            foreach (Transform child in weaponSpawnPoint)
             {
-                Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level],transform).SetActive(true);
+                Destroy(child.gameObject);
+            }
+
+            foreach (UnlockedWeaponInfo unlockedWeapon in weaponInventory.unlockedWeapons)
+            {
+                if (unlockedWeapon.level >= 0)
+                {
+                    Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level], transform)
+                        .SetActive(true);
+                }
             }
         }
+    }
+
+    private void Update()
+    {
+    }
+
+    void UpdateWeaponsEditMode()
+    {
+        if (Application.isEditor && !Application.isPlaying &&  this.transform.childCount != 0)
+        {
+            for (int i = this.transform.childCount; i > 0; --i)
+                DestroyImmediate(this.transform.GetChild(0).gameObject);
+            foreach (UnlockedWeaponInfo unlockedWeapon in weaponInventory.unlockedWeapons)
+            {
+                if (unlockedWeapon.weaponData != null && unlockedWeapon.level >= 0)
+                {
+                    Instantiate(unlockedWeapon.weaponData.WeaponPrefabs[unlockedWeapon.level], transform)
+                        .SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void OnValidate()
+    {
+        UpdateWeapons();
+    }
+
+    private void UpdateWeaponsWithDelay()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.delayCall += () => { UpdateWeaponsEditMode(); };
+#endif
     }
 }
