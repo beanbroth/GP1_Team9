@@ -6980,7 +6980,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  health: 1
+  health: 5
   numOfHearts: 5
   hearts:
   - {fileID: 770494667}
@@ -9785,6 +9785,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sHealthScript: {fileID: 1451518545}
   lossMenuCanvas: {fileID: 957380233}
+  loseTimerText: {fileID: 1544320827}
+  losePhaseText: {fileID: 1174960572}
 --- !u!1 &2099586404
 GameObject:
   m_ObjectHideFlags: 0
