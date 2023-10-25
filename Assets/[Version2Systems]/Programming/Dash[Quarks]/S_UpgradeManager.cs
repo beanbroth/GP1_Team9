@@ -24,7 +24,7 @@ public class S_UpgradeManager : MonoBehaviour
             pauseMenu = FindFirstObjectByType<S_PauseMenu>();
         playerControls.Player.Turn.performed += context =>
         {
-            if (isUpgrading && !pauseMenu.GetIsPaused())
+            if (isUpgrading && !pauseMenu.GetIsGamePaused())
             {
                 float turnDirection = context.ReadValue<float>();
                 if (turnDirection < 0)
