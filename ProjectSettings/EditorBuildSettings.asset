@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/SharedScenes[COPY, DON'T EDIT]/GamePrototypeV2.unity
     guid: cf36583fe98a909478cc0aa89bc32862
-  - enabled: 1
+  - enabled: 0
     path: Assets/[Version1Systems]/Liam[Healthbar]/Scenes/Victory.unity
     guid: e41973c82e672b340bc3316fea320bfb
   - enabled: 0

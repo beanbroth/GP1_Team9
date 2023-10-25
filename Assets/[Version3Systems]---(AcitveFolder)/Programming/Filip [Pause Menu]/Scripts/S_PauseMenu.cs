@@ -23,7 +23,7 @@ public class S_PauseMenu : MonoBehaviour
             if (turnValue == 1f && isPaused)
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene(0);
             }
 
             if (turnValue == -1f && isPaused)

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class S_MainMenu : MonoBehaviour
+public class S_Victory : MonoBehaviour
 {
     private S_PlayerControls playerControls; // Reference to player inputs.
 
@@ -10,23 +10,22 @@ public class S_MainMenu : MonoBehaviour
         playerControls = new S_PlayerControls(); // Initialize the player inputs.
         playerControls.Player.Turn.performed += context =>
         {
+            float turnValue = context.ReadValue<float>();
 
-           float turnValue = context.ReadValue<float>();
-
-           if (turnValue == 1f)
-           {
-               //quit application
+            if (turnValue == 1f)
+            {
+                // Switch to build index 0
                 Application.Quit();
-                Debug.Log("quitting application");
-           }
-           
-           if (turnValue == -1f)
-           {
-                // We have to change this name so that the start menu is found! 
-                SceneManager.LoadScene(1);
-           }
-       };
+            }
+
+            if (turnValue == -1f)
+            {
+                // Switch to build index 1
+                SceneManager.LoadScene(0);
+            }
+        };
     }
+
     private void OnEnable()
     {
         playerControls.Enable();
