@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New WeaponCardInfo", menuName = "WeaponSystem/WeaponCardInfo")]
 public class SO_WeaponCardInfo : ScriptableObject
 {
-    [SerializeField] string weaponName;
-    [SerializeField] SO_WeaponLevelCardInfo[] cardInfoPerLevel;
+    public string weaponCardName;
+    public SO_WeaponLevelCardInfo[] cardInfoPerLevel;
 }

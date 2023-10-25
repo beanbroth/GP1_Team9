@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class S_UpgradeManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] SO_QuarkManager quarkManager;
-    [SerializeField] GameObject upgradeUIObject;
     [SerializeField] List<TextMeshProUGUI> cardText;
     [SerializeField] private int upgradeCost = 20;
     [SerializeField] private TextMeshProUGUI quarkCounterText;
@@ -16,6 +16,10 @@ public class S_UpgradeManager : MonoBehaviour
     private bool isWaitingToUpgrade;
 
     private S_PlayerControls playerControls;
+    [Header("UI References")]
+    [SerializeField] GameObject upgradeUIObject;
+    Transform[] _cards;
+    SO_SingleWeaponClass[] _weapons = new SO_SingleWeaponClass[2];
 
     private void Awake()
     {
@@ -35,6 +39,10 @@ public class S_UpgradeManager : MonoBehaviour
                 }
             }
         };
+        Transform _rightCard = upgradeUIObject.transform.Find("UpgradeCards/RightCard");
+        Transform _leftCard = upgradeUIObject.transform.Find("UpgradeCards/LeftCard");
+        _cards = new Transform[] { _leftCard, _rightCard};
+        upgradeUIObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -55,15 +63,27 @@ public class S_UpgradeManager : MonoBehaviour
             {
                 StartCoroutine(AllowUpgradeAfterDelay(1f));
                 Time.timeScale = 0;
-                foreach (TextMeshProUGUI text in cardText)
+                int idx = 0;
+                foreach (Transform _card in _cards)
                 {
                     SO_SingleWeaponClass weapon =
                         weaponInventory.allWeapons[UnityEngine.Random.Range(0, weaponInventory.allWeapons.Count)];
 
-                    upgradeUIObject.SetActive(true);//text.transform.parent.transform.gameObject.SetActive(true);
-
-                    text.text = weapon.weaponName;
+                    //Update card UI
+                    _weapons[idx] = weapon;
+                    _card.Find("WeaponName").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.weaponCardName;
+                    int currentWeaponLevel = -1;
+                    if (weaponInventory.unlockedWeapons != null && weaponInventory.IsWeaponUnlocked(weapon))
+                    {
+                        currentWeaponLevel = weaponInventory.GetUnlockedWeaponInfoForWeapon(weapon).level;
+                    }
+                    currentWeaponLevel++;
+                    _card.Find("Level").GetComponent<TextMeshProUGUI>().text = "LVL "+weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].level.ToString();
+                    _card.Find("Description").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].description;
+                    _card.Find("Icon").GetComponent<Image>().sprite = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].image;
+                    idx++;
                 }
+                upgradeUIObject.SetActive(true);
             }
             quarkCounterText.text = $"{quarkManager.quarkCount} / {upgradeCost} quarks";
 
@@ -73,7 +93,7 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void UpgradeLeft()
     {
-        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(cardText[1].text), 1);
+        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(_weapons[0].weaponName), 1);
         DisableText();
         quarkManager.quarkCount -= upgradeCost;
         upgradeCost += Mathf.Max(1, (int)(upgradeCost * 0.2f));
@@ -82,7 +102,7 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void UpgradeRight()
     {
-        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(cardText[0].text), 1);
+        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(_weapons[1].weaponName), 1);
         DisableText();
         quarkManager.quarkCount -= upgradeCost;
         upgradeCost += Mathf.Max(1, (int)(upgradeCost * 0.2f));
@@ -102,7 +122,7 @@ public class S_UpgradeManager : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in cardText)
         {
-            upgradeUIObject.SetActive(false);//text.transform.parent.transform.gameObject.SetActive(false);
+            upgradeUIObject.SetActive(false);
         }
 
         isUpgrading = false;

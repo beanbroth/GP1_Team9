@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 3453280485183460316, guid: 5a29a2f182416f445b7d8909fe8d1d72, type: 3}
   - {fileID: 3453280485183460316, guid: 3355c6cdd1a6a6d46a2247c5431d1230, type: 3}
   - {fileID: 3453280485183460316, guid: f7197399bfd3f9146b6e1a1ff56df10a, type: 3}
+  weaponCardInfo: {fileID: 11400000, guid: 8f8790e19141bd841bd53767e687fdfe, type: 2}
