@@ -26,3 +26,9 @@ MonoBehaviour:
   - level: 4
     description: Shoot 10 bullets forward.
     image: {fileID: 0}
+  - level: 4
+    description: Shoot 10 bullets forward.
+    image: {fileID: 0}
+  - level: 4
+    description: Shoot 10 bullets forward.
+    image: {fileID: 0}

@@ -26,3 +26,9 @@ MonoBehaviour:
   - level: 4
     description: Larger damage area. Attack more often.
     image: {fileID: 0}
+  - level: 4
+    description: Larger damage area. Attack more often.
+    image: {fileID: 0}
+  - level: 4
+    description: Larger damage area. Attack more often.
+    image: {fileID: 0}

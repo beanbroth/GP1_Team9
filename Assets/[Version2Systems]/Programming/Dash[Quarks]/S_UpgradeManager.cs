@@ -21,9 +21,13 @@ public class S_UpgradeManager : MonoBehaviour
     Transform[] _cards;
     SO_SingleWeaponClass[] _weapons = new SO_SingleWeaponClass[2];
 
+    [SerializeField] AudioClip cardSelectSound;
+    AudioSource audioSource;
+
     private void Awake()
     {
         playerControls = new S_PlayerControls();
+        audioSource = GetComponent<AudioSource>();
         if(pauseMenu == null)
             pauseMenu = FindFirstObjectByType<S_PauseMenu>();
         playerControls.Player.Turn.performed += context =>
@@ -39,6 +43,7 @@ public class S_UpgradeManager : MonoBehaviour
                 {
                     UpgradeRight();
                 }
+                audioSource.PlayOneShot(cardSelectSound);
             }
         };
         Transform _rightCard = upgradeUIObject.transform.Find("UpgradeCards/RightCard");
@@ -81,9 +86,16 @@ public class S_UpgradeManager : MonoBehaviour
                         currentWeaponLevel = weaponInventory.GetUnlockedWeaponInfoForWeapon(weapon).level;
                     }
                     currentWeaponLevel++;
-                    _card.Find("Level").GetComponent<TextMeshProUGUI>().text = "LVL "+weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].level.ToString();
-                    _card.Find("Description").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].description;
-                    _card.Find("Icon").GetComponent<Image>().sprite = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].image;
+                    try
+                    {
+                        _card.Find("Level").GetComponent<TextMeshProUGUI>().text = "LVL " + weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].level.ToString();
+                        _card.Find("Description").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].description;
+                        _card.Find("Icon").GetComponent<Image>().sprite = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].image;
+                    }
+                    catch
+                    {
+                        print("Couldn't find weapon info for weapon: " + weapon.weaponName);
+                    }
                     idx++;
                 }
                 upgradeUIObject.SetActive(true);

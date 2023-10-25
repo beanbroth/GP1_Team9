@@ -47,3 +47,9 @@ MonoBehaviour:
   - level: 11
     description: Shoot 4 more shoots in all directions. 30 in total.
     image: {fileID: 0}
+  - level: 11
+    description: Shoot 4 more shoots in all directions. 30 in total.
+    image: {fileID: 0}
+  - level: 11
+    description: Shoot 4 more shoots in all directions. 30 in total.
+    image: {fileID: 0}

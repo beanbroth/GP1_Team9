@@ -29,3 +29,9 @@ MonoBehaviour:
   - level: 5
     description: Longer damage trail. Attack more often.
     image: {fileID: 0}
+  - level: 5
+    description: Longer damage trail. Attack more often.
+    image: {fileID: 0}
+  - level: 5
+    description: Longer damage trail. Attack more often.
+    image: {fileID: 0}
