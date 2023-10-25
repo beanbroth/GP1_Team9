@@ -23,7 +23,7 @@ public class S_MainMenu : MonoBehaviour
            if (turnValue == -1f)
            {
                 // We have to change this name so that the start menu is found! Needs to be settled ASAP.
-                SceneManager.LoadScene("GamePrototypeV3");
+                SceneManager.LoadScene(1);
            }
        };
     }
