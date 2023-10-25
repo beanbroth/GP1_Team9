@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 public class S_Health : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class S_Health : MonoBehaviour
     [SerializeField]
     private float cooldownDuration = 2.0f; // Cooldown duration in seconds (for invincibility)
 
+    private void Awake()
+    {
+        UpdateHealthUI();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -29,28 +35,39 @@ public class S_Health : MonoBehaviour
             {
                 //Debug.Log("Player collided with an enemy!");
                 health--;
+                health = Mathf.Clamp(health, 0, numOfHearts);
+                UpdateHealthUI();
                 isInvincible = true;
                 Invoke("DisableInvincibility", cooldownDuration);
-
-                if (health <= 0)
-                {
-                    // Player has lost all their health, switch to the "Lose" scene
-                    SceneManager.LoadScene("Lose");
-                }
             }
         }
     }
 
+
+    /*if (health <= 0)
+    {
+        // Player has lost all their health, switch to the "Lose" scene
+        SceneManager.LoadScene("Lose");
+    }
+    }
+    }
+    }*/
     private void DisableInvincibility()
     {
         isInvincible = false;
     }
 
-    void Update()
-    {
-        health = Mathf.Clamp(health, 0, numOfHearts);
 
-        for (int i = 0; i < hearts.Length; i++) 
+
+    public void AddHealth(int healthToAdd)
+    {
+        health += healthToAdd;
+        health = Mathf.Clamp(health, 0, numOfHearts);
+        UpdateHealthUI();
+    }
+    void UpdateHealthUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
             {

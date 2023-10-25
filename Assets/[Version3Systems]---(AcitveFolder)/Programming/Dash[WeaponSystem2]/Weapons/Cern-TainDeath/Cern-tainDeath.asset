@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 4867354423592457395, guid: 5cc97643909992c4c88c0b40a73cc492, type: 3}
   - {fileID: 4867354423592457395, guid: c6342e53d02c4ee4e8da472dff07c281, type: 3}
   - {fileID: 4867354423592457395, guid: 6c2fc7d266eab3742872aad9b00d33a8, type: 3}
+  weaponCardInfo: {fileID: 11400000, guid: ad87582ad948b0b4ea5b02c99d808ef0, type: 2}
