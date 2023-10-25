@@ -25,10 +25,16 @@ public class S_Health : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     S_LossMenu loseMenu;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip deathSound;
+    AudioSource audioSource;
+
     private void Awake()
     {
         UpdateHealthUI();
         loseMenu = FindFirstObjectByType<S_LossMenu>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,16 +44,21 @@ public class S_Health : MonoBehaviour
             if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
             {
                 health--;
-                if(health <= 0)
+                health = Mathf.Clamp(health, 0, numOfHearts);
+                UpdateHealthUI();
+                if (health <= 0)
                 {
                     playerAnimator.SetTrigger("Death");
                     loseMenu.LoseGame();
+                    audioSource.PlayOneShot(deathSound);
                 }
-                health = Mathf.Clamp(health, 0, numOfHearts);
-                UpdateHealthUI();
-                isInvincible = true;
-                playerAnimator.SetTrigger("Take Damage");
-                Invoke("DisableInvincibility", cooldownDuration);
+                else
+                {
+                    audioSource.PlayOneShot(damageSound);
+                    isInvincible = true;
+                    playerAnimator.SetTrigger("Take Damage");
+                    Invoke("DisableInvincibility", cooldownDuration);
+                }
             }
         }
     }
