@@ -60,5 +60,5 @@ public class S_PauseMenu : MonoBehaviour
     {
         playerControls.Disable();
     }
-    {
+    
 }
