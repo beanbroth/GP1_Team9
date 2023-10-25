@@ -34,7 +34,7 @@ public class S_LossMenu : MonoBehaviour
             {
                 // Go to main menu.
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene(0);
             }
 
             if (turnValue == -1f && isDead)
