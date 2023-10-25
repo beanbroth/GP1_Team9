@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/[Version1Systems]/Liam[Healthbar]/Scenes/Lose.unity
     guid: 29c949a71a7a7f942864bfbda86e7982
+  - enabled: 1
+    path: Assets/Reyn[ColoredUI]/Menu.unity
+    guid: 9bd7f0fe68b3065448d6d1889f74a2bc
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4f7de953fd5a7b044b480a369c90d12f, type: 2}
