@@ -20,6 +20,7 @@ public class S_PhaseManager : MonoBehaviour
     private S_PlayerControls playerControls;
     private S_Health healthManager;
     private S_QuarkController quarkController;
+    private S_WinTimer winTimer;
     private bool isUpgrading = false;
 
     private void OnEnable()
@@ -37,6 +38,7 @@ public class S_PhaseManager : MonoBehaviour
     {
         healthManager = FindFirstObjectByType<S_Health>();
         quarkController = FindFirstObjectByType<S_QuarkController>();
+        winTimer = FindFirstObjectByType<S_WinTimer>();
         playerControls = new S_PlayerControls();
         playerControls.Player.Turn.performed += context =>
         {
@@ -87,5 +89,11 @@ public class S_PhaseManager : MonoBehaviour
         phasesUICollectionObject.SetActive(false);
         Time.timeScale = 1;
         isUpgrading = false;
+    }
+
+    public string GetCurrentPhaseString()
+    {
+        int curPhase = winTimer.currentPhase;
+        return "LEVEL " + curPhase + " | " + phases[curPhase - 1].phaseName;
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class S_WinTimer : MonoBehaviour
 {
     [Header("Time Management")]
-    public TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI timeText;
 
     [SerializeField] float currentTime = 600f;
     [SerializeField] float timeLimit = 0f;
@@ -79,12 +79,15 @@ public class S_WinTimer : MonoBehaviour
         phasesObjects[objectIndex].SetActive(status);
     }
 
-    private void TimerText()
+    public string TimerText()
     {
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
+        
+        string formattedText = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = formattedText;
+        return formattedText;
     }
 
 }

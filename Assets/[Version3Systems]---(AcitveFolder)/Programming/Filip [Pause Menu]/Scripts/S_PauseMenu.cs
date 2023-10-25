@@ -7,6 +7,7 @@ public class S_PauseMenu : MonoBehaviour
     private S_PlayerControls playerControls; // Reference to player inputs.
     private bool isPaused = false; // Variable for if the game is paused or not.
     private float originalTimeScale;
+  
 
     private void Awake()
     {
