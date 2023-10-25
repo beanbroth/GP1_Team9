@@ -13,15 +13,18 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI quarkCounterText;
     private bool isUpgrading;
     private bool isWaitingToUpgrade;
+    public S_PauseMenu pauseMenu;
 
     private S_PlayerControls playerControls;
 
     private void Awake()
     {
         playerControls = new S_PlayerControls();
+        if(pauseMenu == null)
+            pauseMenu = FindFirstObjectByType<S_PauseMenu>();
         playerControls.Player.Turn.performed += context =>
         {
-            if (isUpgrading)
+            if (isUpgrading && !pauseMenu.GetIsPaused())
             {
                 float turnDirection = context.ReadValue<float>();
                 if (turnDirection < 0)
