@@ -7467,6 +7467,7 @@ MonoBehaviour:
   - {fileID: 674990498}
   upgradeCost: 3
   quarkCounterText: {fileID: 827450419}
+  pauseMenu: {fileID: 0}
 --- !u!4 &1721716335
 Transform:
   m_ObjectHideFlags: 0
@@ -9324,7 +9325,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _spawnerType: normal
+  _spawnerType: 
   _enemyPrefabList:
   - {fileID: 579091512583623384, guid: d3042fa2bb2168243a977bc474c3d796, type: 3}
   _originalSpawnInterval: 1
