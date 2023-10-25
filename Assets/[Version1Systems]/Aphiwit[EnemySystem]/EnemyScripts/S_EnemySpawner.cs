@@ -19,6 +19,7 @@ public class S_EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] _enemyPatternList;
     [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
+    [SerializeField] private float _tempSpawnInterval;
 
     void Start()
     {
