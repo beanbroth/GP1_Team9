@@ -19,7 +19,7 @@ public class S_EnemySpawner : MonoBehaviour
 
     [Header("For pattern spawner")]
     [SerializeField] GameObject[] _enemyPatternList;
-    [SerializeField] Vector2 _patternCooldown = new Vector2(30f,60f);
+    [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
 
 
