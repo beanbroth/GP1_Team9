@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132c089f9cb46d14e92427b826e4d4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltPrefab: {fileID: 1701031015599229488, guid: eff4c5ef7f0f8d8468999e99b77b7a03, type: 3}
+  boltPrefab: {fileID: 7843771605818600523, guid: 3c0be1e766dc60a48a38c9d59e4ef403, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

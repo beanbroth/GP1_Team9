@@ -1473,7 +1473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b4f548f427906c468873dfbb5a93fcb, type: 2}
+  - {fileID: 2100000, guid: c1ff81bd92d986a41af4bbe1e7686b76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1513,7 +1513,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _spawnerType
-      value: pattern
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _patternCooldown
@@ -1858,7 +1858,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _spawnerType
-      value: pattern
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _patternCooldown
@@ -2190,7 +2190,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 0c1046ba98d5e0c41964b1d6705db25b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &384792896
 Transform:
@@ -3670,7 +3670,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _spawnerType
-      value: pattern
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _patternCooldown
@@ -5041,8 +5041,8 @@ Transform:
   - {fileID: 362143499}
   - {fileID: 726336855}
   - {fileID: 3760727598260414145}
-  - {fileID: 2067990951}
   - {fileID: 1848639882}
+  - {fileID: 2067990951}
   m_Father: {fileID: 1727308299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &954070445
@@ -5059,7 +5059,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawners:
   - {fileID: 362143498}
+  - {fileID: 726336854}
   - {fileID: 2572774073997615275}
+  - {fileID: 1848639881}
+  - {fileID: 2067990950}
   disableSpawnersOnAwake: 1
 --- !u!1 &961409126
 GameObject:
@@ -9386,6 +9389,7 @@ GameObject:
   - component: {fileID: 1668154416}
   - component: {fileID: 1668154420}
   - component: {fileID: 1668154421}
+  - component: {fileID: 1668154422}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9526,6 +9530,18 @@ MonoBehaviour:
   player: {fileID: 1727308299}
   smoothSpeed: 0.4
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &1668154422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668154415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1afab86549c703247a1ff366e0d9b6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695511094
 GameObject:
   m_ObjectHideFlags: 0
@@ -10590,11 +10606,11 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _spawnerType: 
+  _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: 6b4e7035801949545b7a4cce802f1cfc, type: 3}
   _originalSpawnInterval: 1
-  _spawnIntervalReductionValue: 0.1
+  _spawnIntervalReductionValue: 0
   _finalSpawnInterval: 1
   _minSpawnRange: 20
   _maxSpawnRange: 25
@@ -12257,7 +12273,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _spawnerType
-      value: pattern
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: _patternCooldown
@@ -12418,7 +12434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125608345539510263, guid: 96e2674807791ef40a490e83a6a32ed6, type: 3}
       propertyPath: _spawnerType
-      value: normal
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8125608345539510263, guid: 96e2674807791ef40a490e83a6a32ed6, type: 3}
       propertyPath: _spawnIntervalReductionValue
@@ -12444,7 +12460,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  _spawnerType: 
+  _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: 8bfe6dbabf620624594142c1d41ba67a, type: 3}
   _originalSpawnInterval: 1

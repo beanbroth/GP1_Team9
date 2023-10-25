@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
+public enum enemySpawnerType
+{
+    normal,
+    pattern
+}
+
 public class S_EnemySpawner : MonoBehaviour
 {
     public LayerMask groundLayerMask;
 
-    [SerializeField] string _spawnerType;
+    [SerializeField] enemySpawnerType _spawnerType;
 
     [Header("For normal spawner")]
     [SerializeField] GameObject[] _enemyPrefabList;
@@ -21,7 +28,6 @@ public class S_EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] _enemyPatternList;
     [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
-
 
     private float _tempSpawnInterval;
 
@@ -41,7 +47,7 @@ public class S_EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (_spawnerType == "normal")
+        if (_spawnerType == enemySpawnerType.normal)
         {
             // SpawnTimer gets reduced every second by a intervall variable and time
             _tempSpawnInterval -= Time.deltaTime;
@@ -60,7 +66,7 @@ public class S_EnemySpawner : MonoBehaviour
             }
         } 
         
-        else if (_spawnerType == "pattern")
+        else if (_spawnerType == enemySpawnerType.pattern)
         {
             _inSceneCooldown -= Time.deltaTime;
 

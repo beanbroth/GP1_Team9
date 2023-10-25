@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8824747384590748993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -121,12 +121,13 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  spawnerType: pattern
+  _spawnerType: 
   _enemyPrefabList: []
-  _enemyPatternList:
-  - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
   _originalSpawnInterval: 1
   _spawnIntervalReductionValue: 0
   _finalSpawnInterval: 1
   _minSpawnRange: 20
   _maxSpawnRange: 25
+  _enemyPatternList:
+  - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+  _patternCooldown: {x: 0, y: 0}

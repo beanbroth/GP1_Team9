@@ -57,6 +57,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 3a957a8d9a685be4a98184bc6386e88a, type: 3}
     - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
+      propertyPath: boltPrefab
+      value: 
+      objectReference: {fileID: 7843771605818600523, guid: 3c0be1e766dc60a48a38c9d59e4ef403, type: 3}
+    - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 3a957a8d9a685be4a98184bc6386e88a, type: 3}
