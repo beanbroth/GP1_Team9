@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
-  m_Name: DamageTrail
+  m_Name: Atom-matic[OLD]
   m_EditorClassIdentifier: 
-  weaponName: DamageTrail
+  weaponName: Atom-matic
   weaponPrefabs:
-  - {fileID: 3629374011504788508, guid: e70c4101e0de1cc4991c0c000396c018, type: 3}
+  - {fileID: 5744300782444405494, guid: 3e7770cb37ebb0b48bd1820854adad60, type: 3}
+  - {fileID: 5744300782444405494, guid: 7a484d494ada8d448ae5c6c7b35147ed, type: 3}
+  - {fileID: 5744300782444405494, guid: 77d418d79c52c8b499f93fdd4b7cd486, type: 3}
+  - {fileID: 5744300782444405494, guid: f159fc3d61fedcb4b83c1e71378347ad, type: 3}

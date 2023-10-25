@@ -51,4 +51,17 @@ public class S_QuarkController : MonoBehaviour
             ObjectPoolManager.ReturnObject(gameObject);
         }
     }
+
+    public void SetPickupRange(float newRange)
+    {
+        pickupRange = newRange;
+    }
+    public float GetPickupRange()
+    {
+        return pickupRange;
+    }
+    public void AddPickupRange(float extraRange)
+    {
+        pickupRange += extraRange;
+    }
 }

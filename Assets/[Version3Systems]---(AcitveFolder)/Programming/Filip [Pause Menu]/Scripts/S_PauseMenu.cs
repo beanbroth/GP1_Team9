@@ -39,4 +39,9 @@ public class S_PauseMenu : MonoBehaviour
     {
         playerControls.Disable();
     }
+
+    public bool GetIsGamePaused()
+    {
+        return isPaused;
+    }
 }
