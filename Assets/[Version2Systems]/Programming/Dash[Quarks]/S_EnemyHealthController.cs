@@ -15,6 +15,10 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] GameObject directionalHitEffectPrefab;
     [SerializeField] GameObject topHitEffectPrefab;
 
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip deathSound; //Not used at the moment
+    AudioSource audioSource;
+
     public int CurrentHealth
     {
         get => currentHealth;
@@ -30,6 +34,7 @@ public class S_EnemyHealthController : MonoBehaviour
     private void Awake()
     {
         originalColor = enemyRenderer.material.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -41,6 +46,7 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
+        audioSource.PlayOneShot(damageSound);
         StartCoroutine(FlashOnDamage());
     }
 
@@ -55,7 +61,7 @@ public class S_EnemyHealthController : MonoBehaviour
             Quaternion effectRotation = Quaternion.LookRotation(direction);
             ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
         }
-
+        audioSource.PlayOneShot(damageSound);
         currentHealth -= damage;
         StartCoroutine(FlashOnDamage());
     }
