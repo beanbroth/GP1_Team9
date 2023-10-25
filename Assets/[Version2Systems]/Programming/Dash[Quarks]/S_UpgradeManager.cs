@@ -8,6 +8,7 @@ public class S_UpgradeManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] SO_QuarkManager quarkManager;
+    [SerializeField] GameObject upgradeUIObject;
     [SerializeField] List<TextMeshProUGUI> cardText;
     [SerializeField] private int upgradeCost = 20;
     [SerializeField] private TextMeshProUGUI quarkCounterText;
@@ -59,7 +60,7 @@ public class S_UpgradeManager : MonoBehaviour
                     SO_SingleWeaponClass weapon =
                         weaponInventory.allWeapons[UnityEngine.Random.Range(0, weaponInventory.allWeapons.Count)];
 
-                    text.transform.parent.transform.gameObject.SetActive(true);
+                    upgradeUIObject.SetActive(true);//text.transform.parent.transform.gameObject.SetActive(true);
 
                     text.text = weapon.weaponName;
                 }
@@ -101,7 +102,7 @@ public class S_UpgradeManager : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in cardText)
         {
-            text.transform.parent.transform.gameObject.SetActive(false);
+            upgradeUIObject.SetActive(false);//text.transform.parent.transform.gameObject.SetActive(false);
         }
 
         isUpgrading = false;
