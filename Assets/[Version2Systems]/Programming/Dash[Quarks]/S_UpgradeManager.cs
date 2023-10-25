@@ -9,7 +9,6 @@ public class S_UpgradeManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] SO_QuarkManager quarkManager;
-    [SerializeField] List<TextMeshProUGUI> cardText;
     [SerializeField] private int upgradeCost = 20;
     [SerializeField] private TextMeshProUGUI quarkCounterText;
     private bool isUpgrading;
@@ -124,11 +123,7 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void DisableText()
     {
-        foreach (TextMeshProUGUI text in cardText)
-        {
-            upgradeUIObject.SetActive(false);
-        }
-
+        upgradeUIObject.SetActive(false);
         isUpgrading = false;
         Time.timeScale = 1;
     }

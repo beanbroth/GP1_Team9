@@ -17,8 +17,12 @@ public class S_RandomScreenKill : MonoBehaviour
     public float boltLifetime = 0.1f;
     public int numKills = 1;
 
+    [SerializeField] AudioClip boltSound;
+    AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         CreateBoltPool(initialBoltPoolSize);
         InvokeRepeating("Kill", 0.0f, timeBetweenKills);
     }
@@ -84,6 +88,7 @@ public class S_RandomScreenKill : MonoBehaviour
 
     private void CreateBolt(Transform enemyTransform)
     {
+        audioSource.PlayOneShot(boltSound);
         GameObject bolt = GetBoltFromPool();
         bolt.transform.position = enemyTransform.position;
         bolt.transform.rotation = Quaternion.identity;
