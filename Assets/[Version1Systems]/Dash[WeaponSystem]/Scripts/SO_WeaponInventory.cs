@@ -73,6 +73,18 @@ public class SO_WeaponInventory : ScriptableObject
         OnWeaponInfoChange?.Invoke();
     }
 
+    public UnlockedWeaponInfo GetUnlockedWeaponInfoForWeapon(SO_SingleWeaponClass weapon)
+    {
+        foreach(UnlockedWeaponInfo unlockedWeaponInfo in unlockedWeapons)
+        {
+            if(unlockedWeaponInfo.weaponData == weapon)
+            {
+                return unlockedWeaponInfo;
+            }
+        }
+        return new UnlockedWeaponInfo();
+    }
+
     public SO_SingleWeaponClass GetWeaponByName(string weaponName)
     {
         return allWeapons.Find(x => x.weaponName == weaponName);
