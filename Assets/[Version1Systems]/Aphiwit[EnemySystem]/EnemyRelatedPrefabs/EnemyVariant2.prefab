@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyVariant2
       objectReference: {fileID: 0}
+    - target: {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4845398306082232230, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: m_Speed
       value: 1

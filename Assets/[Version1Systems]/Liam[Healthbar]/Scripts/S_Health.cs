@@ -21,6 +21,11 @@ public class S_Health : MonoBehaviour
     [SerializeField]
     private float cooldownDuration = 2.0f; // Cooldown duration in seconds (for invincibility)
 
+    private void Awake()
+    {
+        UpdateHealthUI();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -29,6 +34,8 @@ public class S_Health : MonoBehaviour
             {
                 //Debug.Log("Player collided with an enemy!");
                 health--;
+                health = Mathf.Clamp(health, 0, numOfHearts);
+                UpdateHealthUI();
                 isInvincible = true;
                 Invoke("DisableInvincibility", cooldownDuration);
 
@@ -46,11 +53,33 @@ public class S_Health : MonoBehaviour
         isInvincible = false;
     }
 
-    void Update()
+    /*void Update()
     {
         health = Mathf.Clamp(health, 0, numOfHearts);
 
         for (int i = 0; i < hearts.Length; i++) 
+        {
+            if (i < health)
+            {
+                hearts[i].GetComponent<Image>().sprite = fullHeart;
+                hearts[i].SetActive(true);
+            }
+            else
+            {
+                hearts[i].SetActive(false); // Turns off the gameobject
+            }
+        }
+    }*/
+
+    public void AddHealth(int healthToAdd)
+    {
+        health += healthToAdd;
+        health = Mathf.Clamp(health, 0, numOfHearts);
+        UpdateHealthUI();
+    }
+    void UpdateHealthUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
             {
