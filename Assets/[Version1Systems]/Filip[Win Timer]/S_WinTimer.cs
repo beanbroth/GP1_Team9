@@ -1,18 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
 public class S_WinTimer : MonoBehaviour
 {
+    [Header("Time Management")]
     public TextMeshProUGUI timeText;
 
     [SerializeField] float currentTime = 600f;
     [SerializeField] float timeLimit = 0f;
-    [SerializeField] private bool countUp;
- 
+    private bool countUp = false; //if true, change the maxtime current time calculation for the phase slider
+
+    [Header("Phase Management")]
+    [SerializeField] Slider phaseSlider;
+    [SerializeField] GameObject[] phasesObjects;
+    public static Action<int> newPhase;
+    [SerializeField] float timePerPhase = 120f;
+    private float timeSinceLastPhase;
+    private float maxTime;
+    public int currentPhase = 1;
+
+    private void Start()
+    {
+        maxTime = currentTime;
+        int phaseObjectIndex = 0;
+        foreach (var phasesObject in phasesObjects)
+        {
+            if (phaseObjectIndex == 0)
+                phasesObject.SetActive(true);
+            else
+                phasesObject.SetActive(false);
+            phaseObjectIndex++;
+        }
+    }
 
 
     // Update is called once per frame
@@ -24,12 +49,34 @@ public class S_WinTimer : MonoBehaviour
         {
             currentTime = timeLimit;
             TimerText();
-            timeText.color = Color.green;
             enabled = false;
             SceneManager.LoadScene("Victory");
         }
 
         TimerText();
+
+        timeSinceLastPhase += Time.deltaTime;
+        if (timeSinceLastPhase > timePerPhase)
+        {
+            currentPhase++;
+            timeSinceLastPhase = 0f;
+            Debug.Log("New phase: " + currentPhase);
+            if(newPhase != null)
+            {
+                newPhase.Invoke(currentPhase);
+            }
+            ActivatePhaseObject(currentPhase-1);
+        }
+        UpdatePhaseSlider((maxTime-currentTime)/maxTime);
+    }
+
+    private void UpdatePhaseSlider(float sliderPercent)
+    {
+        phaseSlider.value = sliderPercent;
+    }
+    private void ActivatePhaseObject(int objectIndex, bool status = true)
+    {
+        phasesObjects[objectIndex].SetActive(status);
     }
 
     private void TimerText()
