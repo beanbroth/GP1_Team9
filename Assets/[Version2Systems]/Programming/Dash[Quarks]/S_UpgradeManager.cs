@@ -24,7 +24,7 @@ public class S_UpgradeManager : MonoBehaviour
             pauseMenu = FindFirstObjectByType<S_PauseMenu>();
         playerControls.Player.Turn.performed += context =>
         {
-            if (isUpgrading && !pauseMenu.GetIsGamePaused())
+            if (isUpgrading && !pauseMenu.GetIsPaused())
             {
                 float turnDirection = context.ReadValue<float>();
                 if (turnDirection < 0)
@@ -37,6 +37,7 @@ public class S_UpgradeManager : MonoBehaviour
                 }
             }
         };
+        quarkManager.ResetQuarks();
     }
 
     private void OnEnable()

@@ -30,24 +30,24 @@ public class S_LossMenu : MonoBehaviour
         playerControls.Player.Turn.performed += context =>
         {
             float turnValue = context.ReadValue<float>();
-            print("pressed button");
             if (turnValue == 1f && isDead)
             {
-                print("menu");
                 // Go to main menu.
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("Menu");
             }
 
             if (turnValue == -1f && isDead)
             {
-                print("reload");
                 // Restart the game.
+                Time.timeScale = 1f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         };
 
         winTimer = FindFirstObjectByType<S_WinTimer>();
         phaseManager = FindFirstObjectByType<S_PhaseManager>();
+        Time.timeScale = 1f;
     }
     private void Start()
     {

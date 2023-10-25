@@ -8,6 +8,15 @@ public class SO_QuarkManager : ScriptableObject
 {
     public int quarkCount;
 
+    private void Awake()
+    {
+        quarkCount = 0;
+    }
+    public void ResetQuarks()
+    {
+        quarkCount = 0;
+    }
+
     public int QuarkCount
     {
         get => quarkCount;

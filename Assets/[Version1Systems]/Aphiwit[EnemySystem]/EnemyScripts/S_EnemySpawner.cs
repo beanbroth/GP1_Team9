@@ -73,7 +73,7 @@ public class S_EnemySpawner : MonoBehaviour
             enemyPatternBoxPosition = spawnCheck.Item1;
             canSpawn = spawnCheck.Item2;
 
-            if (canSpawn && _inSceneCooldown < 0)
+            if (canSpawn && _inSceneCooldown < 0 && enemyPatternBoxPosition != null)
             {
                 // Spawns enemy pattern on the location of the spawner
                 ObjectPoolManager.Instantiate(_enemyPatternList[Random.Range(0, _enemyPrefabList.Length)], enemyPatternBoxPosition, _player.rotation);

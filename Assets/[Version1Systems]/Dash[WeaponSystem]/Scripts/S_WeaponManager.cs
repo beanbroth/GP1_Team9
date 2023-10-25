@@ -8,6 +8,10 @@ public class S_WeaponManager : MonoBehaviour
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] Transform weaponSpawnPoint;
 
+    private void Awake()
+    {
+        weaponInventory.ResetUnlockedWeapons();
+    }
     void OnEnable()
     {
         SO_WeaponInventory.OnWeaponInfoChange += UpdateWeapons;
