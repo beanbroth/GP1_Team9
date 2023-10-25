@@ -19,6 +19,8 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] AudioClip deathSound; //Not used at the moment
     AudioSource audioSource;
 
+    [SerializeField] Animator animator;
+
     public int CurrentHealth
     {
         get => currentHealth;
@@ -47,6 +49,7 @@ public class S_EnemyHealthController : MonoBehaviour
         ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
         audioSource.PlayOneShot(damageSound);
+        animator.SetTrigger("Take Damage");
         StartCoroutine(FlashOnDamage());
     }
 
