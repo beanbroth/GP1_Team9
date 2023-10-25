@@ -22,9 +22,13 @@ public class S_Health : MonoBehaviour
     [SerializeField]
     private float cooldownDuration = 2.0f; // Cooldown duration in seconds (for invincibility)
 
+    [SerializeField] Animator playerAnimator;
+    S_LossMenu loseMenu;
+
     private void Awake()
     {
         UpdateHealthUI();
+        loseMenu = FindFirstObjectByType<S_LossMenu>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,25 +37,21 @@ public class S_Health : MonoBehaviour
         {
             if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
             {
-                //Debug.Log("Player collided with an enemy!");
                 health--;
+                if(health <= 0)
+                {
+                    playerAnimator.SetTrigger("Death");
+                    loseMenu.LoseGame();
+                }
                 health = Mathf.Clamp(health, 0, numOfHearts);
                 UpdateHealthUI();
                 isInvincible = true;
+                playerAnimator.SetTrigger("Take Damage");
                 Invoke("DisableInvincibility", cooldownDuration);
             }
         }
     }
 
-
-    /*if (health <= 0)
-    {
-        // Player has lost all their health, switch to the "Lose" scene
-        SceneManager.LoadScene("Lose");
-    }
-    }
-    }
-    }*/
     private void DisableInvincibility()
     {
         isInvincible = false;
