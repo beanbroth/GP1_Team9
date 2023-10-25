@@ -61,4 +61,8 @@ public class S_PauseMenu : MonoBehaviour
         playerControls.Disable();
     }
     
+    public bool GetIsPaused()
+    {
+        return isPaused;
+    }
 }
