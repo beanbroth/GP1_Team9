@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,7 +19,18 @@ public class SO_WeaponInventory : ScriptableObject
     {
         if (resetInventoryOnEnable)
         {
-            unlockedWeapons = new List<UnlockedWeaponInfo>();
+            ResetUnlockedWeapons();
+        }
+    }
+    public void ResetUnlockedWeapons()
+    {
+        unlockedWeapons = new List<UnlockedWeaponInfo>();
+    }
+    private void Awake()
+    {
+        if (resetInventoryOnEnable)
+        {
+            ResetUnlockedWeapons();
         }
     }
 

@@ -5487,6 +5487,7 @@ MonoBehaviour:
   - {fileID: 674990498}
   upgradeCost: 3
   quarkCounterText: {fileID: 827450419}
+  pauseMenu: {fileID: 0}
 --- !u!4 &1721716335
 Transform:
   m_ObjectHideFlags: 0
