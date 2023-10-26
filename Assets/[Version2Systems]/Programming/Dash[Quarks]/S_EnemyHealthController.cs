@@ -6,9 +6,12 @@ public class S_EnemyHealthController : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
+
+    [Header("Flash When Taking Damage")]
     [SerializeField] private float flashDuration = 0.1f;
-    private Color originalColor;
     [SerializeField] private Color flashColor = Color.red;
+    private Color originalColor;
+
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
@@ -64,6 +67,7 @@ public class S_EnemyHealthController : MonoBehaviour
             Quaternion effectRotation = Quaternion.LookRotation(direction);
             ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
         }
+        animator.SetTrigger("Take Damage");
         audioSource.PlayOneShot(damageSound);
         currentHealth -= damage;
         StartCoroutine(FlashOnDamage());
@@ -71,6 +75,7 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private IEnumerator FlashOnDamage()
     {
+        // Change from color editing to materials instead
         enemyRenderer.material.color = flashColor;
         enemyAiBehviour.enabled = false;
         yield return new WaitForSeconds(flashDuration);
