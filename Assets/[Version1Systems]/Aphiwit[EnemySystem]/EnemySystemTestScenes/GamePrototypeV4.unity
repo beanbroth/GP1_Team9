@@ -8407,7 +8407,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   health: 5
-  numOfHearts: 5
+  numOfHearts: 6
   hearts:
   - {fileID: 770494667}
   - {fileID: 130405187}
