@@ -47,7 +47,6 @@ public class S_LossMenu : MonoBehaviour
 
         winTimer = FindFirstObjectByType<S_WinTimer>();
         phaseManager = FindFirstObjectByType<S_PhaseManager>();
-        Time.timeScale = 1f;
     }
     private void Start()
     {

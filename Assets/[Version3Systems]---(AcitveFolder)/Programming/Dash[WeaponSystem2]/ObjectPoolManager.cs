@@ -102,5 +102,8 @@ public static class ObjectPoolManager
         ReturnObject(obj);
     }
 
-
+    public static void ClearPools()
+    {
+        pools.Clear();
+    }
 }

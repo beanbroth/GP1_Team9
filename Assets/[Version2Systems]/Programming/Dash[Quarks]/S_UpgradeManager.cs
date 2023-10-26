@@ -50,17 +50,19 @@ public class S_UpgradeManager : MonoBehaviour
         Transform _leftCard = upgradeUIObject.transform.Find("UpgradeCards/LeftCard");
         _cards = new Transform[] { _leftCard, _rightCard};
         upgradeUIObject.SetActive(false);
-        quarkManager.ResetQuarks();
+        //quarkManager.ResetQuarks(); //moved to gamesceneresetmanager
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+        print("enable controls");
     }
 
     private void OnDisable()
     {
         playerControls.Disable();
+        print("disable controls");
     }
 
     private void Update()
@@ -138,5 +140,10 @@ public class S_UpgradeManager : MonoBehaviour
         upgradeUIObject.SetActive(false);
         isUpgrading = false;
         Time.timeScale = 1;
+    }
+
+    public SO_WeaponInventory GetWeaponInventory()
+    {
+        return weaponInventory;
     }
 }
