@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
 
 public class S_Health : MonoBehaviour
 {
+    public UnityEvent OnDeath; // Event for when the player dies
+    
+    
     public int health; // Health
     public int numOfHearts; // Max number of hearts
 
@@ -17,21 +22,46 @@ public class S_Health : MonoBehaviour
     [SerializeField]
     private float cooldownDuration = 2.0f; // Cooldown duration in seconds (for invincibility)
 
+    [SerializeField] Animator playerAnimator;
+    S_LossMenu loseMenu;
+
+    S_FlashMaterials flasher;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip deathSound;
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        UpdateHealthUI();
+        loseMenu = FindFirstObjectByType<S_LossMenu>();
+        audioSource = GetComponent<AudioSource>();
+        flasher = GetComponent<S_FlashMaterials>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
             {
-                Debug.Log("Player collided with an enemy!");
                 health--;
-                isInvincible = true;
-                Invoke("DisableInvincibility", cooldownDuration);
-
+                health = Mathf.Clamp(health, 0, numOfHearts);
+                UpdateHealthUI();
+                flasher.Flash();
                 if (health <= 0)
                 {
-                    // Player has lost all their health, switch to the "Lose" scene
-                    SceneManager.LoadScene("Lose");
+                    playerAnimator.SetTrigger("Death");
+                    loseMenu.LoseGame();
+                    audioSource.PlayOneShot(deathSound);
+                }
+                else
+                {
+                    audioSource.PlayOneShot(damageSound);
+                    isInvincible = true;
+                    playerAnimator.SetTrigger("Take Damage");
+                    Invoke("DisableInvincibility", cooldownDuration);
                 }
             }
         }
@@ -42,11 +72,17 @@ public class S_Health : MonoBehaviour
         isInvincible = false;
     }
 
-    void Update()
-    {
-        health = Mathf.Clamp(health, 0, numOfHearts);
 
-        for (int i = 0; i < hearts.Length; i++) 
+
+    public void AddHealth(int healthToAdd)
+    {
+        health += healthToAdd;
+        health = Mathf.Clamp(health, 0, numOfHearts);
+        UpdateHealthUI();
+    }
+    void UpdateHealthUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
             {

@@ -51,7 +51,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         if (bulletsPerShot <= 1)
         {
-            SpawnPooledBullet(Quaternion.Euler(0f, angleCenter, 0f));
+            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, angleCenter, 0f) * transform.root.rotation);
             return;
         }
 
@@ -59,17 +59,8 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         {
             float currentAngle = minAngle + angleStep * i;
             Quaternion rotation = Quaternion.Euler(new Vector3(0f, currentAngle, 0f));
-            SpawnPooledBullet(rotation);
+            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, rotation * transform.root.rotation);
         }
-    }
-
-    private void SpawnPooledBullet(Quaternion rotation)
-    {
-        //GameObject pooledBullet = Instantiate(bulletPrefab);
-        GameObject pooledBullet = S_ObjectPoolManager.Instance.GetObject(bulletPrefab);
-        pooledBullet.transform.position = transform.position;
-        pooledBullet.transform.rotation = rotation * transform.root.rotation;
-        pooledBullet.gameObject.SetActive(true);
     }
 
     void SpawnRandomBullets()
@@ -78,7 +69,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         {
             float currentAngle = Random.Range(minAngle, maxAngle);
             Quaternion rotation = Quaternion.Euler(0f, currentAngle, 0f);
-            SpawnPooledBullet(rotation);
+            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, rotation * transform.root.rotation);
         }
     }
 
@@ -98,11 +89,9 @@ public class S_PlayerBulletSpawner : MonoBehaviour
             }
 
             Quaternion rotation = Quaternion.Euler(0, currentAngle, 0f);
-            SpawnPooledBullet(rotation);
+            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, rotation * transform.root.rotation);
             yield return new WaitForSeconds(timeBetweenBulletSpawns);
         }
-
-        // Toggle the side variable for the next time the coroutine is called
         shootFromLeft = !shootFromLeft;
     }
 
