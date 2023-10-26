@@ -8338,6 +8338,7 @@ GameObject:
   - component: {fileID: 1451518543}
   - component: {fileID: 1451518546}
   - component: {fileID: 1451518545}
+  - component: {fileID: 1451518549}
   - component: {fileID: 1451518544}
   - component: {fileID: 1451518547}
   - component: {fileID: 1451518548}
@@ -8555,6 +8556,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1451518549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451518542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbebf2eabb6e90a4796e2f3b3b3f6575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentWithMaterials: {fileID: 449441525}
+  flashMaterial: {fileID: 2100000, guid: f2f12f038b68e46489c8c8575f6178bf, type: 2}
+  isEnemy: 0
+  flashDuration: 0.2
+  enemyAiBehviour: {fileID: 0}
 --- !u!1 &1471060795
 GameObject:
   m_ObjectHideFlags: 0

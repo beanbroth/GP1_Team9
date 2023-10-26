@@ -50,7 +50,7 @@ public class S_UpgradeManager : MonoBehaviour
         Transform _leftCard = upgradeUIObject.transform.Find("UpgradeCards/LeftCard");
         _cards = new Transform[] { _leftCard, _rightCard};
         upgradeUIObject.SetActive(false);
-        //quarkManager.ResetQuarks(); //moved to gamesceneresetmanager
+        quarkManager.ResetQuarks(); //tried moving to gamesceneresetmanager, didn't work
     }
 
     private void OnEnable()

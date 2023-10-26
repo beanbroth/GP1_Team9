@@ -25,6 +25,8 @@ public class S_Health : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     S_LossMenu loseMenu;
 
+    S_FlashMaterials flasher;
+
     [Header("Sounds")]
     [SerializeField] AudioClip damageSound;
     [SerializeField] AudioClip deathSound;
@@ -35,6 +37,7 @@ public class S_Health : MonoBehaviour
         UpdateHealthUI();
         loseMenu = FindFirstObjectByType<S_LossMenu>();
         audioSource = GetComponent<AudioSource>();
+        flasher = GetComponent<S_FlashMaterials>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +49,7 @@ public class S_Health : MonoBehaviour
                 health--;
                 health = Mathf.Clamp(health, 0, numOfHearts);
                 UpdateHealthUI();
+                flasher.Flash();
                 if (health <= 0)
                 {
                     playerAnimator.SetTrigger("Death");

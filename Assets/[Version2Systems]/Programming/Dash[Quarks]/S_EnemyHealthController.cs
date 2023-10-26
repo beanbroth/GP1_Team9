@@ -23,6 +23,7 @@ public class S_EnemyHealthController : MonoBehaviour
     AudioSource audioSource;
 
     [SerializeField] Animator animator;
+    S_FlashMaterials flasher;
 
     public int CurrentHealth
     {
@@ -40,6 +41,7 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         originalColor = enemyRenderer.material.color;
         audioSource = GetComponent<AudioSource>();
+        flasher = GetComponent<S_FlashMaterials>();
     }
 
     private void OnEnable()
@@ -53,7 +55,7 @@ public class S_EnemyHealthController : MonoBehaviour
         currentHealth -= damage;
         audioSource.PlayOneShot(damageSound);
         animator.SetTrigger("Take Damage");
-        StartCoroutine(FlashOnDamage());
+        flasher.Flash();
     }
 
     public void TakeDamage(int damage, Vector3 direction)
@@ -70,7 +72,18 @@ public class S_EnemyHealthController : MonoBehaviour
         animator.SetTrigger("Take Damage");
         audioSource.PlayOneShot(damageSound);
         currentHealth -= damage;
-        StartCoroutine(FlashOnDamage());
+        flasher.Flash();
+        //StartCoroutine(FlashOnDamage());
+    }
+
+    public void TrySpawnQuark()
+    {
+        if (currentHealth <= 0)
+        {
+            ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
+
+            ObjectPoolManager.Destroy(gameObject);
+        }
     }
 
     private IEnumerator FlashOnDamage()

@@ -12,7 +12,7 @@ public class S_GameSceneReset : MonoBehaviour
     private void Awake()
     {
         ResetScene();
-        FindFirstObjectByType<SO_QuarkManager>().ResetQuarks();
+        //FindFirstObjectByType<SO_QuarkManager>().ResetQuarks();
         FindFirstObjectByType<S_UpgradeManager>().GetWeaponInventory().ResetUnlockedWeapons();
         Time.timeScale = 1.0f;
     }
