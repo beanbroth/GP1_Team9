@@ -43,6 +43,9 @@ public class S_WinTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
 
         if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
@@ -61,13 +64,13 @@ public class S_WinTimer : MonoBehaviour
             currentPhase++;
             timeSinceLastPhase = 0f;
             Debug.Log("New phase: " + currentPhase);
-            if(newPhase != null)
+            if (newPhase != null)
             {
                 newPhase.Invoke(currentPhase);
             }
-            ActivatePhaseObject(currentPhase-1);
+            ActivatePhaseObject(currentPhase - 1);
         }
-        UpdatePhaseSlider((maxTime-currentTime)/maxTime);
+        UpdatePhaseSlider((maxTime - currentTime) / maxTime);
     }
 
     private void UpdatePhaseSlider(float sliderPercent)
@@ -83,7 +86,7 @@ public class S_WinTimer : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
-        
+
         string formattedText = string.Format("{0:00}:{1:00}", minutes, seconds);
 
         timeText.text = formattedText;

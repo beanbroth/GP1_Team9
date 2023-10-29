@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMeshController : MonoBehaviour
 {
     [SerializeField] private float tiltAngle = 15f;
-    [SerializeField] private float tiltSpeed = 0.1f;
     [SerializeField] private float bobAmplitude = 0.1f;
     [SerializeField] private float bobFrequency = 1f;
     [SerializeField] private float yRotationSpeed = 0.1f;

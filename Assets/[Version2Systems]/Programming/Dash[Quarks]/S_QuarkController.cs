@@ -5,7 +5,6 @@ using UnityEngine;
 public class S_QuarkController : MonoBehaviour
 {
     private static Transform player;
-    [SerializeField] private SO_QuarkManager quarkManager;
     [SerializeField] private float startingMoveSpeed = 5f;
     [SerializeField] private float maxSpeedMult = 8f;
     [SerializeField] private float pickupRange = 7f;
@@ -47,7 +46,7 @@ public class S_QuarkController : MonoBehaviour
     {
         if (other.gameObject.transform.root.tag == "Player")
         {
-            quarkManager.AddQuarks(1);
+            QuarkManager.AddQuarks(1);
             ObjectPoolManager.ReturnObject(gameObject);
         }
     }
