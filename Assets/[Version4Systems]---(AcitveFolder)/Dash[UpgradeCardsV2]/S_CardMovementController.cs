@@ -41,7 +41,6 @@ public class S_CardMovementController : MonoBehaviour
         transform.rotation *= initalRotation;
 
         frequencyOffset = Random.Range(-floatFrequency, 10f);
-        Debug.Log(frequencyOffset);
         initialLocalPosition = transform.localPosition;
 
         GenerateRandomRotation();

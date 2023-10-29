@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7755462592807679037
 Transform:
   m_ObjectHideFlags: 0
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ead6ee2ea7b59489a4caa061e2bde4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quarkManager: {fileID: 11400000, guid: 7e5f0707ecd12354e8afe9bc6f2b2f56, type: 2}
   startingMoveSpeed: 4
   maxSpeedMult: 6
   pickupRange: 6

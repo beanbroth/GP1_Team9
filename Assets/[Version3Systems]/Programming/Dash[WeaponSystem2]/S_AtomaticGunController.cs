@@ -10,13 +10,6 @@ public class S_AtomaticGunController : MonoBehaviour
     public LayerMask enemyLayer;
 
     private float nextFireTime;
-    [SerializeField] AudioClip shootSound;
-    AudioSource audioSource;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     private void Update()
     {
@@ -44,7 +37,7 @@ public class S_AtomaticGunController : MonoBehaviour
 
     private void Shoot(Transform targetEnemy)
     {
-        audioSource.PlayOneShot(shootSound);
+        AudioManager.Instance.PlaySound3D("AtomaticGunShot", transform.position);
         GameObject bullet = ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         S_AtomaticBulletController bulletController = bullet.GetComponent<S_AtomaticBulletController>();
         bulletController.SetTarget(targetEnemy);

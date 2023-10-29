@@ -47,17 +47,13 @@ public class S_FlashMaterials : MonoBehaviour
     }
     private IEnumerator FlashCoroutine()
     {
-        // Change from color editing to materials instead
-        foreach(Renderer renderer in renderers)
-        {
-
-        }
         foreach (Renderer renderer in renderers)
         {
             renderer.material = flashMaterial;
         }
         if (isEnemy)
             enemyAiBehviour.enabled = false;
+
         yield return new WaitForSeconds(flashDuration);
 
         int idx = 0;
