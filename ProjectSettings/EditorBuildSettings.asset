@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/[Version4Systems]---(AcitveFolder)/Filip[VictoryScene]/VictoryScene.unity
     guid: 8121c0bc9550aee4da6463bca4c1e85e
+  - enabled: 1
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/CreditsScene.unity
+    guid: 4a1bec41661165543bb83b1cd0710969
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4f7de953fd5a7b044b480a369c90d12f, type: 2}

@@ -10,7 +10,8 @@ public enum sceneEnum
     introCutScene,
     game,
     outroCutScene,
-    victoryScreen
+    victoryScreen,
+    credits
 }
 public class S_SceneIndexManager : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class S_SceneIndexManager : MonoBehaviour
     [SerializeField] public static readonly int gameIndex = 3;
     [SerializeField] public static readonly int outroCutSceneIndex = 4;
     [SerializeField] public static readonly int victoryScreenIndex = 5;
-    
+    [SerializeField] public static readonly int creditsIndex = 6;
+
     public static int GetIndexFromEnum(sceneEnum sceneName)
     {
         switch (sceneName)
@@ -31,6 +33,7 @@ public class S_SceneIndexManager : MonoBehaviour
             case sceneEnum.game: return gameIndex;
             case sceneEnum.outroCutScene: return outroCutSceneIndex;
             case sceneEnum.victoryScreen: return victoryScreenIndex;
+            case sceneEnum.credits: return creditsIndex;
             default: return -1;
 
         }
