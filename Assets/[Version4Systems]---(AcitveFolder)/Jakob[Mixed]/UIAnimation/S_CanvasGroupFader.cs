@@ -9,6 +9,13 @@ public class S_CanvasGroupFader : MonoBehaviour
     [SerializeField] float animationFPS = 60f;
     [SerializeField] float animationDuration = 2f;
     [SerializeField] bool ignoreTimeScale = true;
+    float timePerFrame;
+
+    private void Awake()
+    {
+        timePerFrame = 1 / animationFPS;
+        canvasRenderer.SetAlpha(0);
+    }
 
     public void FadeIn()
     {
@@ -24,7 +31,6 @@ public class S_CanvasGroupFader : MonoBehaviour
     IEnumerator FadeRoutine(bool fadeIn = true)
     {
         float animationTime = 0f;
-        float timePerFrame = 1 / animationFPS;
         float currentAlpha = 0;
         if (!fadeIn)
             currentAlpha = 1;
@@ -46,5 +52,25 @@ public class S_CanvasGroupFader : MonoBehaviour
             else
                 yield return new WaitForSeconds(timePerFrame);
         }
+        if (fadeIn)
+            canvasRenderer.SetAlpha(1);
+        else
+            canvasRenderer.SetAlpha(0);
+    }
+
+    public void FadeInAndOut()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeInAndOutRoutine());
+    }
+
+    IEnumerator FadeInAndOutRoutine()
+    {
+        StartCoroutine(FadeRoutine(true));
+        if (ignoreTimeScale)
+            yield return new WaitForSecondsRealtime(timePerFrame);
+        else
+            yield return new WaitForSeconds(timePerFrame);
+        StartCoroutine(FadeRoutine(false));
     }
 }
