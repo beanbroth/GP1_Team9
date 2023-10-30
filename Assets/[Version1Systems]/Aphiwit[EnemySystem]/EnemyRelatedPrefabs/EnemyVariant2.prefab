@@ -100,6 +100,9 @@ PrefabInstance:
       addedObject: {fileID: 1404815822367888809}
     - targetCorrespondingSourceObject: {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7155625623678976179}
+    - targetCorrespondingSourceObject: {fileID: 1650562461894145987, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7583892563832104241}
   m_SourcePrefab: {fileID: 100100000, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
 --- !u!1 &3064681967817674891 stripped
@@ -124,6 +127,22 @@ MonoBehaviour:
   isEnemy: 1
   flashDuration: 0.2
   enemyAiBehviour: {fileID: 0}
+--- !u!114 &7155625623678976179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3064681967817674891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1862c4c97a518b143bc3dd741e457734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentWithMaterials: {fileID: 8501843836978294682}
+  dissolveDuration: 2
+  dissolveOnStart: 0
+  ignoreIsPaused: 0
 --- !u!82 &7583892563832104241
 AudioSource:
   m_ObjectHideFlags: 0

@@ -26,12 +26,14 @@ public class S_Health : MonoBehaviour
     S_LossMenu loseMenu;
 
     S_FlashMaterials flasher;
+    S_DissolveController dissolveController;
 
     private void Awake()
     {
         UpdateHealthUI();
         loseMenu = FindFirstObjectByType<S_LossMenu>();
         flasher = GetComponent<S_FlashMaterials>();
+        dissolveController= GetComponent<S_DissolveController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,6 +49,7 @@ public class S_Health : MonoBehaviour
                 if (health <= 0)
                 {
                     playerAnimator.SetTrigger("Death");
+                    dissolveController.StartDissolve();
                     loseMenu.LoseGame();
                     AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
                 }
