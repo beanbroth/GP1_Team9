@@ -24,17 +24,17 @@ public class S_SceneTransition : MonoBehaviour
 
     public void SceneFadeIn(Color fadeColor)
     {
-        backgroundImage.gameObject.SetActive(true);
+        backgroundImage.enabled = true;
         backgroundImage.color = new Color(fadeColor.r,fadeColor.g, fadeColor.b,1);
         StartCoroutine(FadeRoutine(fadeColor,false));
     }
 
-    public void SceneFadeOutAndLoadScene(Color fadeColor, int sceneIndex)
+    public void SceneFadeOutAndLoadScene(Color fadeColor, sceneEnum sceneRef)
     {
-        backgroundImage.gameObject.SetActive(true);
+        backgroundImage.enabled = true;
         backgroundImage.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 0);
         StartCoroutine(FadeRoutine(fadeColor, true));
-        StartCoroutine(LoadSceneRoutine(sceneIndex));
+        StartCoroutine(LoadSceneRoutine(S_SceneIndexManager.GetIndexFromEnum(sceneRef)));
     }
 
     IEnumerator LoadSceneRoutine(int sceneIndex)

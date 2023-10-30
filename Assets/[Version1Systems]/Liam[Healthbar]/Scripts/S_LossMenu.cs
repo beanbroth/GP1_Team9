@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class S_LossMenu : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class S_LossMenu : MonoBehaviour
     private bool isDead = false;
     S_WinTimer winTimer;
     S_PhaseManager phaseManager;
+    S_SceneTransition sceneTransitionManager;
 
     private void OnEnable()
     {
@@ -27,21 +29,18 @@ public class S_LossMenu : MonoBehaviour
     private void Awake()
     {
         playerControls = new S_PlayerControls(); // Initialize the player inputs.
+        sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
         playerControls.Player.Turn.performed += context =>
         {
             float turnValue = context.ReadValue<float>();
             if (turnValue == 1f && isDead)
             {
-                // Go to main menu.
-                Time.timeScale = 1f;
-                SceneManager.LoadScene(0);
+                sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.menu);
             }
 
             if (turnValue == -1f && isDead)
             {
-                // Restart the game.
-                Time.timeScale = 1f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
             }
         };
 

@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayUntilFadeOut: 1
-  sceneRef: 1
+  sceneRef: 3
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &671140240
 GameObject:

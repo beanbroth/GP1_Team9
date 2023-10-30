@@ -17,6 +17,6 @@ public class S_WaitAndFadeOutScene : MonoBehaviour
 
     void TransitionScene()
     {
-        sceneTransition.SceneFadeOutAndLoadScene(fadeColor,S_SceneIndexManager.GetIndexFromEnum(sceneRef));
+        sceneTransition.SceneFadeOutAndLoadScene(fadeColor,sceneRef);
     }
 }

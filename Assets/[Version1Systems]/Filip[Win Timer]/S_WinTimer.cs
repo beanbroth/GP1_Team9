@@ -25,6 +25,12 @@ public class S_WinTimer : MonoBehaviour
     private float maxTime;
     public int currentPhase = 1;
 
+    S_SceneTransition sceneTransitionManager;
+    private void Awake()
+    {
+        sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
+    }
+
     private void Start()
     {
         maxTime = currentTime;
@@ -53,7 +59,7 @@ public class S_WinTimer : MonoBehaviour
             currentTime = timeLimit;
             TimerText();
             enabled = false;
-            SceneManager.LoadScene(2);
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
         }
 
         TimerText();
