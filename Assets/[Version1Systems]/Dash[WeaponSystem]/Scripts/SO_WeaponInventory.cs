@@ -73,8 +73,6 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
         }
 
         // Check if the weapon has been upgraded to max level
-
-
         ValidateWeaponLevels();
         OnWeaponInfoChange?.Invoke();
     }
@@ -88,7 +86,13 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
                 return unlockedWeaponInfo;
             }
         }
-        return new UnlockedWeaponInfo();
+        
+        UnlockedWeaponInfo newWeapon = new UnlockedWeaponInfo();
+        newWeapon.weaponData = weapon;
+        newWeapon.currentLevel = -1;
+        newWeapon.maxLevel = weapon.WeaponPrefabs.Count;
+
+        return newWeapon;
     }
 
     public SO_SingleWeaponClass GetWeaponByName(string weaponName)
@@ -159,4 +163,4 @@ public struct UnlockedWeaponInfo
     public SO_SingleWeaponClass weaponData;
     public int currentLevel;
     public int maxLevel;
-}
+    }

@@ -9,7 +9,10 @@ public class S_PauseMenu : MonoBehaviour
     private static bool isPauseMenuActive = false;
     bool originalPauseState;
 
-    public static bool IsPauseMenuActive { get => isPauseMenuActive; }
+    public static bool IsPauseMenuActive
+    {
+        get => isPauseMenuActive;
+    }
 
     private void Awake()
     {
@@ -18,9 +21,11 @@ public class S_PauseMenu : MonoBehaviour
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             isPauseMenuActive = pauseMenu.activeSelf;
-            if (pauseMenu.activeSelf && !PauseManager.IsPaused)
+            if (pauseMenu.activeSelf)
             {
                 originalPauseState = PauseManager.IsPaused;
+                Debug.Log("Pause button pressed: " + originalPauseState);
+
                 PauseManager.Pause();
             }
             if (!pauseMenu.activeSelf)
@@ -32,7 +37,6 @@ public class S_PauseMenu : MonoBehaviour
             }
         };
     }
-
 
     private void OnEnable()
     {
