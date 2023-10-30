@@ -15,6 +15,8 @@ public class S_LossMenu : MonoBehaviour
     S_WinTimer winTimer;
     S_PhaseManager phaseManager;
     S_SceneTransition sceneTransitionManager;
+    [SerializeField] UIScaleBounce leftButtonUI;
+    [SerializeField] UIScaleBounce rightButtonUI;
 
     private void OnEnable()
     {
@@ -35,11 +37,13 @@ public class S_LossMenu : MonoBehaviour
             float turnValue = context.ReadValue<float>();
             if (turnValue == 1f && isDead)
             {
+                rightButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.menu);
             }
 
             if (turnValue == -1f && isDead)
             {
+                leftButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
             }
         };

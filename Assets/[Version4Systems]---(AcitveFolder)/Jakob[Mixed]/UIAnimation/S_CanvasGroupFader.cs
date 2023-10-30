@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class S_CanvasGroupFader : MonoBehaviour
 {
-    [SerializeField] CanvasRenderer canvasRenderer;
+    [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] float animationFPS = 60f;
     [SerializeField] float animationDuration = 2f;
     [SerializeField] bool ignoreTimeScale = true;
@@ -13,8 +13,10 @@ public class S_CanvasGroupFader : MonoBehaviour
 
     private void Awake()
     {
+        if(canvasGroup == null)
+            canvasGroup = GetComponent<CanvasGroup>();
         timePerFrame = 1 / animationFPS;
-        canvasRenderer.SetAlpha(0);
+        canvasGroup.alpha = 0;
     }
 
     public void FadeIn()
@@ -37,7 +39,7 @@ public class S_CanvasGroupFader : MonoBehaviour
 
         while (animationTime < animationDuration)
         {
-            canvasRenderer.SetAlpha(currentAlpha);
+            canvasGroup.alpha = currentAlpha;
             animationTime += timePerFrame;
             if (fadeIn)
             {
@@ -53,9 +55,9 @@ public class S_CanvasGroupFader : MonoBehaviour
                 yield return new WaitForSeconds(timePerFrame);
         }
         if (fadeIn)
-            canvasRenderer.SetAlpha(1);
+            canvasGroup.alpha = 1f;
         else
-            canvasRenderer.SetAlpha(0);
+            canvasGroup.alpha = 0;
     }
 
     public void FadeInAndOut()
@@ -72,5 +74,10 @@ public class S_CanvasGroupFader : MonoBehaviour
         else
             yield return new WaitForSeconds(timePerFrame);
         StartCoroutine(FadeRoutine(false));
+    }
+
+    public bool GetIsActive()
+    {
+        return canvasGroup.alpha > 0;
     }
 }

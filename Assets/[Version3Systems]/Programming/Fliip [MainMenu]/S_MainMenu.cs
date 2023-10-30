@@ -6,6 +6,9 @@ public class S_MainMenu : MonoBehaviour
     private S_PlayerControls playerControls; // Reference to player inputs.
     S_SceneTransition sceneTransitionManager;
     [SerializeField] sceneEnum sceneToLoad = sceneEnum.introCutScene;
+    [SerializeField] UIScaleBounce rightButtonUI;
+    [SerializeField] UIScaleBounce leftButtonUI;
+
 
     private void Awake()
     {
@@ -19,17 +22,25 @@ public class S_MainMenu : MonoBehaviour
            if (turnValue == 1f)
            {
                 //quit application
-                Debug.Log("quitting application");
-                Application.Quit();
+                rightButtonUI.PerformBounceAnimation();
+                Invoke("QuitGame",1);
            }
            
            if (turnValue == -1f)
            {
                 // We have to change this name so that the start menu is found! 
+                leftButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneToLoad);
            }
        };
     }
+
+    void QuitGame()
+    {
+        Debug.Log("quitting application");
+        Application.Quit();
+    }
+
     private void OnEnable()
     {
         playerControls.Enable();
