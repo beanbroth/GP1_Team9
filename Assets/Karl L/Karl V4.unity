@@ -3290,7 +3290,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 47.937256, y: 32.125492, z: 6.7764707, w: 0}
+        m_Name: Spark Colour
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
