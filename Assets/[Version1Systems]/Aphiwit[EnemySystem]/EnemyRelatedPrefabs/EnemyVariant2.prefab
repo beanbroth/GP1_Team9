@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentWithMaterials: {fileID: 8501843836978294682}
-  dissolveDuration: 2
+  dissolveDuration: 1
   dissolveOnStart: 0
   ignoreIsPaused: 0
 --- !u!82 &7583892563832104241

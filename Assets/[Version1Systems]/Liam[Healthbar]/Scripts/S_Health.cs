@@ -48,10 +48,7 @@ public class S_Health : MonoBehaviour
                 flasher.Flash();
                 if (health <= 0)
                 {
-                    playerAnimator.SetTrigger("Death");
-                    dissolveController.StartDissolve();
-                    loseMenu.LoseGame();
-                    AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
+                    PlayerDeath();
                 }
                 else
                 {
@@ -67,6 +64,20 @@ public class S_Health : MonoBehaviour
     private void DisableInvincibility()
     {
         isInvincible = false;
+    }
+
+    void PlayerDeath()
+    {
+        PauseManager.Pause();
+        playerAnimator.SetTrigger("Death");
+        dissolveController.StartDissolve();
+        AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
+        Invoke("OpenLoseMenu", dissolveController.GetDissolveDuration());
+    }
+
+    void OpenLoseMenu()
+    {
+        loseMenu.LoseGame();
     }
 
 

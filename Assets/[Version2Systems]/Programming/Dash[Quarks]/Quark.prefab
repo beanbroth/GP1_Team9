@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3492906219996549597}
   - component: {fileID: 8429242322872017699}
   - component: {fileID: -3216899780050692275}
+  - component: {fileID: -7563401549512194871}
   m_Layer: 0
   m_Name: Quark
   m_TagString: Untagged
@@ -122,7 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMoveSpeed: 4
   maxSpeedMult: 6
-  pickupRange: 6
   accelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -148,6 +148,20 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lifetime: 30
+--- !u!114 &-7563401549512194871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975559733665031248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd56e1da78d38c14dac08d6612ce58b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToDisable:
+  - {fileID: -3216899780050692275}
 --- !u!1 &3506711569906600673
 GameObject:
   m_ObjectHideFlags: 0

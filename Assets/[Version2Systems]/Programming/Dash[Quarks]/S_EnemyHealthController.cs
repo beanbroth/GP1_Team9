@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class S_EnemyHealthController : MonoBehaviour
 {
@@ -83,14 +84,16 @@ public class S_EnemyHealthController : MonoBehaviour
 
             AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
             enemyAiBehviour.enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
             dissolveController.StartDissolve();
-            Invoke("DestroyAndSpawnQuark",dissolveController.GetDissolveDuration());
+            ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
+            Invoke("DestroyGameobject", dissolveController.GetDissolveDuration());
         }
     }
 
-    void DestroyAndSpawnQuark()
+    void DestroyGameobject()
     {
-        ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
         ObjectPoolManager.Destroy(gameObject);
     }
 }
