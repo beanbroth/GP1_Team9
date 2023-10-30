@@ -7,7 +7,7 @@ public class S_LerpFOV : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] float targetFOV = 15f;
     float startFOV;
-    [SerializeField] float lerpDuration;
+    [SerializeField] float lerpDuration = 3f;
 
     private void Awake()
     {
