@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentWithMaterials: {fileID: 1141841034111033504}
-  dissolveDuration: 1
+  dissolveDuration: 1.5
   dissolveOnStart: 0
-  ignoreIsPaused: 0
+  ignoreIsPaused: 1
 --- !u!82 &7583892563832104241
 AudioSource:
   m_ObjectHideFlags: 0

@@ -87,6 +87,7 @@ public class S_EnemyHealthController : MonoBehaviour
             GetComponent<SphereCollider>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
             dissolveController.StartDissolve();
+            animator.SetTrigger("Death");
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
             Invoke("DestroyGameobject", dissolveController.GetDissolveDuration());
         }
