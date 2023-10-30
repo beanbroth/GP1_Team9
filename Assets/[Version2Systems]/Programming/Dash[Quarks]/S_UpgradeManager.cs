@@ -113,7 +113,6 @@ public class S_UpgradeManager : MonoBehaviour
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
         foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
         {
-
             if (!weaponInventory.IsWeaponMaxLevel(weaponClass))
             {
                 tempAvilibleWeapons.Add(weaponClass);
@@ -122,6 +121,11 @@ public class S_UpgradeManager : MonoBehaviour
 
         for (int i = 0; i < upgradeChoices; i++)
         {
+            if (tempAvilibleWeapons.Count == 0)
+            {
+                break;
+            }
+
             UpgradeCardInfo upgradeCardInfo = new UpgradeCardInfo();
             SO_SingleWeaponClass weaponClass =
                 tempAvilibleWeapons[UnityEngine.Random.Range(0, tempAvilibleWeapons.Count)];
@@ -143,6 +147,16 @@ public class S_UpgradeManager : MonoBehaviour
             upgradeCardInfo.prefab = weaponClass.weaponPrefabs[upgradeCardInfo.level];
             upgradeCardInfo.image = null;
             upgradeCardInfos.Add(upgradeCardInfo);
+        }
+
+        if (upgradeCardInfos.Count == 0)
+        {
+            Debug.Log("Player has unlocked every possible weapon!");
+            isUpgrading = false;
+            QuarkManager.upgradeCost = 999999;
+            upgradeCost = 999999;
+            PauseManager.Unpause();
+            return;
         }
 
         upgradeCardManager.DisplayCards(upgradeCardInfos.ToArray());
