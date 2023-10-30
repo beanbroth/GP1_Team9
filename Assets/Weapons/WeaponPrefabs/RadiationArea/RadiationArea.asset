@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: RadiationArea
+  m_EditorClassIdentifier: 
+  weaponName: RadiationArea
+  weaponPrefabs:
+  - {fileID: 563342054848135308, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
+  - {fileID: 1856572272474196961, guid: 60db3fd62baea11469f8ed7396864509, type: 3}
+  - {fileID: 1856572272474196961, guid: fa6a82ba0bae0614781d3364c82ce014, type: 3}
+  - {fileID: 1856572272474196961, guid: cbd3d0fae1b988842bc83bb254dfb4fc, type: 3}
+  weaponDescriptions:
+  - Damage enemies near you.
+  - Larger damage area. Attack more often.
+  - Larger damage area. Attack more often.
+  - Larger damage area. Attack more often.
+  - 'Default Weapon Upgrade Description For: RadiationArea 4 (UnityEngine.GameObject)'
+  weaponCardInfo: {fileID: 11400000, guid: 4106c2e34f0444443ba97c27b9b25717, type: 2}

@@ -42,6 +42,9 @@ public class S_EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (_spawnerType == enemySpawnerType.normal)
         {
             // SpawnTimer gets reduced every second by a intervall variable and time
@@ -123,7 +126,6 @@ public class S_EnemySpawner : MonoBehaviour
         bool canSpawn = result.Item2;
         if (canSpawn)
         {
-            Debug.Log("can spawn!");
             ObjectPoolManager.Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
         }
         return _tempSpawnInterval = _originalSpawnInterval;

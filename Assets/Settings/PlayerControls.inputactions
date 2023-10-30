@@ -15,9 +15,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "TurnLeft",
+                    "type": "Button",
+                    "id": "2b857b09-31f4-4c53-8ace-2ce22cbed896",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "758f15e7-710f-4505-8bea-58779325a4fa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnRight",
+                    "type": "Button",
+                    "id": "5ef5d604-b077-4be6-a01f-76d3996dd748",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -156,6 +174,138 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis Keyboard Shift",
+                    "id": "8bb1196b-f253-4a42-ad90-93b99d8f59b3",
+                    "path": "1DAxis(minValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "7482ac5d-b9ea-4dff-afe7-0bbae0cefad0",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis Keyboard Arrows",
+                    "id": "1e30ffc0-58f3-4294-bae5-72ba05985bfa",
+                    "path": "1DAxis(minValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "096bc898-b7f9-4061-87d1-3a9c731d3eb0",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis XBOX",
+                    "id": "409e297b-132a-4365-a075-fb3032889c30",
+                    "path": "1DAxis(minValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "2e54fae3-feee-4046-b829-523b02f8df56",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis Keyboard Shift",
+                    "id": "8953d8e3-1570-411a-ae37-176575824afa",
+                    "path": "1DAxis(maxValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "4e860af7-3872-4358-a10c-222a3b27f890",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis Keyboard Arrows",
+                    "id": "26bf056b-d4a1-4294-a566-83382aa45a13",
+                    "path": "1DAxis(maxValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "69f7fdca-d8ba-425b-bc38-800ea97c626a",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis XBOX",
+                    "id": "fa4b7e02-5b13-45d3-86e4-5dd559ac5918",
+                    "path": "1DAxis(maxValue=0)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3c844685-ff76-428c-894b-fa7a05e58ec8",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

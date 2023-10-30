@@ -1,43 +1,39 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class AndieAreaDamage : MonoBehaviour
+public class S_RadiationAreaController : MonoBehaviour
 {
     public float radius;
     public LayerMask enemyMask;
     public GameObject areaObject;
     public int damage;
-    [FormerlySerializedAs("waitTime")] public float timeBetweenAttacks;
-    public float flashDuration = 0.1f;
+    public float timeBetweenAttacks;
     private Renderer _renderer;
-    [FormerlySerializedAs("color")][SerializeField] private Color flashColor;
+    [SerializeField] private Color flashColor;
+    private Color originalColor;
+
+    private float timer;
 
     private void Start()
     {
         _renderer = areaObject.GetComponent<Renderer>();
+        originalColor = _renderer.material.color;
         InvokeRepeating("DamageTick", 0.0f, timeBetweenAttacks);
     }
 
     private void Update()
     {
-        areaObject.transform.localScale = new Vector3(radius * 2, areaObject.transform.localScale.y, radius * 2);
-    }
+        // Constantly change color
+        timer += Time.deltaTime;
+        float lerpValue = (Mathf.Sin(timer / timeBetweenAttacks * Mathf.PI * 2) + 1) / 2; // Oscillates between 0 and 1
+        _renderer.material.color = Color.Lerp(originalColor, flashColor, lerpValue);
 
-    private void OnValidate()
-    {
         areaObject.transform.localScale = new Vector3(radius * 2, areaObject.transform.localScale.y, radius * 2);
     }
 
     private void DamageTick()
     {
-        StartCoroutine(FlashWhite());
-
         Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, radius, enemyMask);
-
         foreach (Collider enemyCollider in enemiesInRange)
         {
             S_EnemyHealthController emc = enemyCollider.GetComponent<S_EnemyHealthController>();
@@ -46,16 +42,8 @@ public class AndieAreaDamage : MonoBehaviour
                 emc.TakeDamage(damage);
             }
         }
-    }
 
-    private IEnumerator FlashWhite()
-    {
-        Color originalColor = _renderer.material.color;
-        _renderer.material.color = flashColor;
-
-        yield return new WaitForSeconds(flashDuration);
-
-        _renderer.material.color = originalColor;
+     
     }
 
     private void OnDrawGizmos()

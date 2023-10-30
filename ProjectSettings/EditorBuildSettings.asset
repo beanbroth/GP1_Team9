@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Reyn[ColoredUI]/Menu.unity
+    path: Assets/[Version4Systems]---(AcitveFolder)/Reyn[ColoredUI]/Menu.unity
     guid: 9bd7f0fe68b3065448d6d1889f74a2bc
   - enabled: 0
     path: Assets/[Version3Systems]---(AcitveFolder)/Programming/Dash[WeaponSystem2]/UpgradeSystem2.unity
@@ -31,7 +31,7 @@ EditorBuildSettings:
       (2nd Duplicate) 1.unity
     guid: b4b62a4c85ff3834286c115a465ae21f
   - enabled: 1
-    path: Assets/Filip [Version4]/VictoryScene.unity
+    path: Assets/[Version4Systems]---(AcitveFolder)/Filip[VictoryScene]/VictoryScene.unity
     guid: 8121c0bc9550aee4da6463bca4c1e85e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4f7de953fd5a7b044b480a369c90d12f, type: 2}

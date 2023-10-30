@@ -4,8 +4,6 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 
-
-
 public class WeaponInventoryEditor : Editor
 {
     [MenuItem("Assets/Populate Weapon Inventory")]
@@ -22,14 +20,14 @@ public class WeaponInventoryEditor : Editor
         string weaponInventoryDirectory = Path.GetDirectoryName(weaponInventoryPath);
         string[] guids = AssetDatabase.FindAssets("t:SO_SingleWeaponClass", new[] { weaponInventoryDirectory });
 
-        weaponInventory.allWeapons.Clear();
+        weaponInventory.weaponClassDatabase.Clear();
         foreach (string guid in guids)
         {
             string assetPath = AssetDatabase.GUIDToAssetPath(guid);
             SO_SingleWeaponClass weaponData = AssetDatabase.LoadAssetAtPath<SO_SingleWeaponClass>(assetPath);
             if (weaponData != null)
             {
-                weaponInventory.allWeapons.Add(weaponData);
+                weaponInventory.weaponClassDatabase.Add(weaponData);
             }
         }
 

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: BurstAttack
+  m_EditorClassIdentifier: 
+  weaponName: BurstAttack
+  weaponPrefabs:
+  - {fileID: 6258271373099525632, guid: c8864928f1626b4409e2bb3918d443b7, type: 3}
+  - {fileID: 6258271373099525632, guid: 77fe2871331fadf4e94b64155f38cffc, type: 3}
+  - {fileID: 6258271373099525632, guid: 306a79d4ae735d64c9d39b9b97bb85d0, type: 3}
+  - {fileID: 6258271373099525632, guid: add360aa51f546e48b4cfe0eda8075b1, type: 3}
+  - {fileID: 6258271373099525632, guid: 0732abba02cb3ff469c00651c307750e, type: 3}
+  - {fileID: 6258271373099525632, guid: 12d26fb34358b054e99453a2c03f845d, type: 3}
+  - {fileID: 6258271373099525632, guid: d924d3acbd456ee42bb770ccc59f0612, type: 3}
+  - {fileID: 6258271373099525632, guid: 23a8ce502f751b0439b4ef18b5eba8ff, type: 3}
+  - {fileID: 6258271373099525632, guid: d93bb60e0610a5d4abe93c9a92c83009, type: 3}
+  - {fileID: 6258271373099525632, guid: d38ad178bc3e9fc42b67a6c46c2c3aa1, type: 3}
+  - {fileID: 6258271373099525632, guid: 9ca604ef6f004a045a1f924116439630, type: 3}
+  weaponDescriptions:
+  - Shoot 4 shots spread out in all directions.
+  - Shoot 2 more shoots in all directions. 6 in total.
+  - Shoot 2 more shoots in all directions. 8 in total.
+  - Shoot 2 more shoots in all directions. 10 in total.
+  - Shoot 2 more shoots in all directions. 12 in total.
+  - Shoot 2 more shoots in all directions. 14 in total.
+  - Shoot 2 more shoots in all directions. 16 in total.
+  - Shoot 4 more shoots in all directions. 20 in total.
+  - Shoot 2 more shoots in all directions. 22 in total.
+  - Shoot 4 more shoots in all directions. 26 in total.
+  - Shoot 4 more shoots in all directions. 30 in total.
+  weaponCardInfo: {fileID: 11400000, guid: 6c665ca317d959043a924e39982bf14c, type: 2}

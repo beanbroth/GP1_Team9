@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class S_PlayerMovement : MonoBehaviour
 {
@@ -21,6 +18,7 @@ public class S_PlayerMovement : MonoBehaviour
         playerControls.Disable();
     }
 
+
     private void Update()
     {
         turnDirection = playerControls.Player.Turn.ReadValue<float>();
@@ -28,17 +26,23 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PauseManager.IsPaused) return; // If game is paused, exit method
+
         Turn();
         ForwardMovement();
     }
 
     private void ForwardMovement()
     {
+        if (PauseManager.IsPaused) return; // If game is paused, exit method
+
         transform.Translate(Vector3.forward * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void Turn()
     {
+        if (PauseManager.IsPaused) return; // If game is paused, exit method
+
         transform.Rotate(0.0f, turnDirection * turnSpeed, 0.0f);
     }
 }

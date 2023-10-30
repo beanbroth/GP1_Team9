@@ -5,14 +5,12 @@ using UnityEngine;
 public class S_QuarkController : MonoBehaviour
 {
     private static Transform player;
-    [SerializeField] private SO_QuarkManager quarkManager;
     [SerializeField] private float startingMoveSpeed = 5f;
     [SerializeField] private float maxSpeedMult = 8f;
-    [SerializeField] private float pickupRange = 7f;
+    [SerializeField] private static float pickupRange = 7f;
     [SerializeField] private AnimationCurve accelerationCurve;
     [SerializeField] private float lifetime = 30f;
     private float timer;
-
     private void OnEnable()
     {
         timer = lifetime;
@@ -47,7 +45,8 @@ public class S_QuarkController : MonoBehaviour
     {
         if (other.gameObject.transform.root.tag == "Player")
         {
-            quarkManager.AddQuarks(1);
+            QuarkManager.AddQuarks(1);
+            AudioManager.Instance.PlaySound3D("QuarkPickup", transform.position);
             ObjectPoolManager.ReturnObject(gameObject);
         }
     }
@@ -64,4 +63,5 @@ public class S_QuarkController : MonoBehaviour
     {
         pickupRange += extraRange;
     }
+    
 }
