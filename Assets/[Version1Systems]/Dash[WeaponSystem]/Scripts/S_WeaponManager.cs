@@ -11,7 +11,7 @@ public class S_WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        weaponInventory.ResetUnlockedWeapons();
+        // weaponInventory.ResetUnlockedWeapons();
     }
     void OnEnable()
     {

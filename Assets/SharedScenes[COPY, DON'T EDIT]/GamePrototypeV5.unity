@@ -10176,7 +10176,7 @@ MonoBehaviour:
   weaponInventory: {fileID: 11400000, guid: ae1bde78bde561a47a23150296d484a1, type: 2}
   upgradeCardManager: {fileID: 1466389497}
   upgradeCost: 3
-  upgradeChoices: 2
+  upgradeChoices: 3
   inputDelayTime: 0.05
   upgradeCostIncrease: 0.2
 --- !u!4 &1721716335
