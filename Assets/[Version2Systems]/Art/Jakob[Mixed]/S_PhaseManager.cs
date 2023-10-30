@@ -23,6 +23,9 @@ public class S_PhaseManager : MonoBehaviour
     private S_WinTimer winTimer;
     private bool isUpgrading = false;
 
+    [SerializeField] AudioClip cardSelectSound;
+    AudioSource audioSource;
+
     private void OnEnable()
     {
         S_WinTimer.newPhase += NewPhase;
@@ -40,6 +43,7 @@ public class S_PhaseManager : MonoBehaviour
         quarkController = FindFirstObjectByType<S_QuarkController>();
         winTimer = FindFirstObjectByType<S_WinTimer>();
         playerControls = new S_PlayerControls();
+        audioSource = GetComponent<AudioSource>();
         playerControls.Player.Turn.performed += context =>
         {
             if (isUpgrading)
@@ -53,6 +57,7 @@ public class S_PhaseManager : MonoBehaviour
                 {
                     quarkController.AddPickupRange(3f); //Hard coded right button, need to randomize cards
                 }
+                audioSource.PlayOneShot(cardSelectSound);
                 CloseCards();
             }
         };

@@ -35,3 +35,9 @@ MonoBehaviour:
   - level: 7
     description: Shoot more often.
     image: {fileID: 0}
+  - level: 7
+    description: Shoot more often.
+    image: {fileID: 0}
+  - level: 7
+    description: Shoot more often.
+    image: {fileID: 0}

@@ -34,7 +34,7 @@ public class S_LossMenu : MonoBehaviour
             {
                 // Go to main menu.
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene(0);
             }
 
             if (turnValue == -1f && isDead)
@@ -47,7 +47,6 @@ public class S_LossMenu : MonoBehaviour
 
         winTimer = FindFirstObjectByType<S_WinTimer>();
         phaseManager = FindFirstObjectByType<S_PhaseManager>();
-        Time.timeScale = 1f;
     }
     private void Start()
     {
@@ -55,27 +54,12 @@ public class S_LossMenu : MonoBehaviour
         lossMenuCanvas.gameObject.SetActive(false);    
     }
 
-    private void Update()
+    public void LoseGame()
     {
-        if (sHealthScript != null && lossMenuCanvas != null)
-        {
-            int healthValue = sHealthScript.health;
-
-            // Check if the health is 0 or less
-            if (healthValue <= 0)
-            {
-                // If health is 0 or less, activate the LossMenu Canvas
-                lossMenuCanvas.gameObject.SetActive(true);
-                isDead = true;
-                Time.timeScale = 0f;
-                loseTimerText.text = winTimer.TimerText();
-                losePhaseText.text = phaseManager.GetCurrentPhaseString();
-            }
-            else
-            {
-                // If health is greater than 0, make sure the LossMenu Canvas is inactive
-                lossMenuCanvas.gameObject.SetActive(false);
-            }
-        }
+        lossMenuCanvas.gameObject.SetActive(true);
+        isDead = true;
+        Time.timeScale = 0f;
+        loseTimerText.text = winTimer.TimerText();
+        losePhaseText.text = phaseManager.GetCurrentPhaseString();
     }
 }

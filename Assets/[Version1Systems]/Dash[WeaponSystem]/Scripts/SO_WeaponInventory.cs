@@ -26,7 +26,7 @@ public class SO_WeaponInventory : ScriptableObject
     {
         unlockedWeapons = new List<UnlockedWeaponInfo>();
     }
-    private void Awake()
+    private void Awake() //Also reset from the S_GameSceneReset script
     {
         if (resetInventoryOnEnable)
         {

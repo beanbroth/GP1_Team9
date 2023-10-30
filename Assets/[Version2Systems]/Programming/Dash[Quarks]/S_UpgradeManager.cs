@@ -9,7 +9,6 @@ public class S_UpgradeManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
     [SerializeField] SO_QuarkManager quarkManager;
-    [SerializeField] List<TextMeshProUGUI> cardText;
     [SerializeField] private int upgradeCost = 20;
     [SerializeField] private TextMeshProUGUI quarkCounterText;
     private bool isUpgrading;
@@ -22,9 +21,13 @@ public class S_UpgradeManager : MonoBehaviour
     Transform[] _cards;
     SO_SingleWeaponClass[] _weapons = new SO_SingleWeaponClass[2];
 
+    [SerializeField] AudioClip cardSelectSound;
+    AudioSource audioSource;
+
     private void Awake()
     {
         playerControls = new S_PlayerControls();
+        audioSource = GetComponent<AudioSource>();
         if(pauseMenu == null)
             pauseMenu = FindFirstObjectByType<S_PauseMenu>();
         playerControls.Player.Turn.performed += context =>
@@ -40,23 +43,26 @@ public class S_UpgradeManager : MonoBehaviour
                 {
                     UpgradeRight();
                 }
+                audioSource.PlayOneShot(cardSelectSound);
             }
         };
         Transform _rightCard = upgradeUIObject.transform.Find("UpgradeCards/RightCard");
         Transform _leftCard = upgradeUIObject.transform.Find("UpgradeCards/LeftCard");
         _cards = new Transform[] { _leftCard, _rightCard};
         upgradeUIObject.SetActive(false);
-        quarkManager.ResetQuarks();
+        quarkManager.ResetQuarks(); //tried moving to gamesceneresetmanager, didn't work
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
+        print("enable controls");
     }
 
     private void OnDisable()
     {
         playerControls.Disable();
+        print("disable controls");
     }
 
     private void Update()
@@ -82,9 +88,16 @@ public class S_UpgradeManager : MonoBehaviour
                         currentWeaponLevel = weaponInventory.GetUnlockedWeaponInfoForWeapon(weapon).level;
                     }
                     currentWeaponLevel++;
-                    _card.Find("Level").GetComponent<TextMeshProUGUI>().text = "LVL "+weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].level.ToString();
-                    _card.Find("Description").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].description;
-                    _card.Find("Icon").GetComponent<Image>().sprite = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].image;
+                    try
+                    {
+                        _card.Find("Level").GetComponent<TextMeshProUGUI>().text = "LVL " + weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].level.ToString();
+                        _card.Find("Description").GetComponent<TextMeshProUGUI>().text = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].description;
+                        _card.Find("Icon").GetComponent<Image>().sprite = weapon.weaponCardInfo.cardInfoPerLevel[currentWeaponLevel].image;
+                    }
+                    catch
+                    {
+                        print("Couldn't find weapon info for weapon: " + weapon.weaponName);
+                    }
                     idx++;
                 }
                 upgradeUIObject.SetActive(true);
@@ -124,12 +137,13 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void DisableText()
     {
-        foreach (TextMeshProUGUI text in cardText)
-        {
-            upgradeUIObject.SetActive(false);
-        }
-
+        upgradeUIObject.SetActive(false);
         isUpgrading = false;
         Time.timeScale = 1;
+    }
+
+    public SO_WeaponInventory GetWeaponInventory()
+    {
+        return weaponInventory;
     }
 }

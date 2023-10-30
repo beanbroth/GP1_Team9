@@ -9,7 +9,6 @@ public class S_CerntainDeathBoltController : MonoBehaviour
     private void OnEnable()
     {
         Invoke("DisableAfterTime", 0.5f);
-
     }
 
     void DisableAfterTime()

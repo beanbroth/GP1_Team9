@@ -1666,6 +1666,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _spawnerType: 
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
   _originalSpawnInterval: 1
@@ -1673,7 +1674,8 @@ MonoBehaviour:
   _finalSpawnInterval: 0.001
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _tempSpawnInterval: 0
+  _enemyPatternList: []
+  _patternCooldown: {x: 0, y: 0}
 --- !u!4 &369027988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81c4bfd59d2ee8e4e9382385ea80ae1a, type: 3}
@@ -6565,13 +6567,8 @@ MonoBehaviour:
   timeText: {fileID: 1245959810}
   currentTime: 600
   timeLimit: 0
-  phaseSlider: {fileID: 1792221392}
-  phasesObjects:
-  - {fileID: 2112219541}
-  - {fileID: 933271480}
-  - {fileID: 1656915972}
-  - {fileID: 1975763102}
-  - {fileID: 571562768}
+  phaseSlider: {fileID: 0}
+  phasesObjects: []
   timePerPhase: 120
   currentPhase: 1
 --- !u!1 &1313582278
@@ -6995,6 +6992,9 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 77b74a0d56eb9b640b25be8f32beb73f, type: 3}
   isInvincible: 0
   cooldownDuration: 2
+  playerAnimator: {fileID: 0}
+  damageSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!135 &1451518546
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8269,6 +8269,7 @@ MonoBehaviour:
   upgradeCost: 3
   quarkCounterText: {fileID: 827450419}
   pauseMenu: {fileID: 0}
+  upgradeUIObject: {fileID: 0}
 --- !u!4 &1721716335
 Transform:
   m_ObjectHideFlags: 0
@@ -10118,6 +10119,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _spawnerType: 
   _enemyPrefabList:
   - {fileID: 579091512583623384, guid: d3042fa2bb2168243a977bc474c3d796, type: 3}
   _originalSpawnInterval: 1
@@ -10125,7 +10127,8 @@ MonoBehaviour:
   _finalSpawnInterval: 0.5
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _tempSpawnInterval: 0
+  _enemyPatternList: []
+  _patternCooldown: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ public class S_WinTimer : MonoBehaviour
             currentTime = timeLimit;
             TimerText();
             enabled = false;
-            SceneManager.LoadScene("Victory");
+            SceneManager.LoadScene(2);
         }
 
         TimerText();
