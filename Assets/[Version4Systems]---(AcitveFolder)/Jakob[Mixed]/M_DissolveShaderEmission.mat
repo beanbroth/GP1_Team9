@@ -42,8 +42,9 @@ Material:
     m_Floats:
     - _AlbedoEmissionStrength: 1.08
     - _DefaultEmissionStrength: 1
-    - _DissolveAmount: 0.441
+    - _DissolveAmount: 1
     - _DissolveEmissionStrength: 4.36
     - _QueueControl: 0
-    m_Colors: []
+    m_Colors:
+    - _DissolveColor: {r: 0.17425247, g: 0, b: 4.291145, a: 0}
   m_BuildTextureStacks: []
