@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 563342054848135308, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_Name
-      value: RadiationArea 3
+      value: RadiationArea 6
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.x
@@ -74,11 +74,23 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9d2acf7ca967ff04085edd071b29e626, type: 3}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: damage
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: radius
-      value: 7
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
+      propertyPath: flashColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
+      propertyPath: flashColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
+      propertyPath: flashColor.r
+      value: 0.46226418
       objectReference: {fileID: 0}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: timeBetweenAttacks
