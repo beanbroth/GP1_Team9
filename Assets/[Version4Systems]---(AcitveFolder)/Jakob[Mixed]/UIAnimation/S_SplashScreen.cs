@@ -7,9 +7,14 @@ public class S_SplashScreen : MonoBehaviour
 {
     [SerializeField] float bounceDelay = 2.5f;
     [SerializeField] float animationDelay = 0.5f;
-    [SerializeField] float loadMenuDelay = 4f;
+    [SerializeField] float loadMenuDelay = 3.75f;
     UIScaleBounce bouncer;
     [SerializeField] Animator rotationAnimator;
+    S_SceneTransition sceneTransition;
+    private void Awake()
+    {
+        sceneTransition = FindFirstObjectByType<S_SceneTransition>();
+    }
     void Start()
     {
         bouncer = GetComponent<UIScaleBounce>();
@@ -27,6 +32,6 @@ public class S_SplashScreen : MonoBehaviour
     }
     void LoadMenu()
     {
-        SceneManager.LoadScene(S_SceneIndexManager.menuIndex);
+        sceneTransition.SceneFadeOutAndLoadScene(Color.white,S_SceneIndexManager.menuIndex);
     }
 }
