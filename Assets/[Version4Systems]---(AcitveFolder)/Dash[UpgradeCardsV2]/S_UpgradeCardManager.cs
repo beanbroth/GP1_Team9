@@ -13,7 +13,9 @@ public class S_UpgradeCardManager: MonoBehaviour
 
     private void SetSelectedCard(int ci)
     {
-        cardIndex = Mathf.Clamp(ci, 0, cards.Count-1);
+        cardIndex = ci;
+        cardIndex = Mathf.Clamp(cardIndex, 0, cards.Count-1);
+        Debug.Log("SET card index" + cardIndex);
         for (int i = 0; i < cards.Count; i++)
         {
             if (i == cardIndex)
@@ -34,6 +36,7 @@ public class S_UpgradeCardManager: MonoBehaviour
 
     public SO_SingleWeaponClass GetSelectedWeapon()
     {
+        Debug.Log(cardIndex);
         return cards[cardIndex].GetComponent<S_CardInfoController>().GetCardInfo().weaponClass;
     }
 

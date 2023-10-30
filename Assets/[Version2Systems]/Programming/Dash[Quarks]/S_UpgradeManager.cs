@@ -113,7 +113,11 @@ public class S_UpgradeManager : MonoBehaviour
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
         foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
         {
-            tempAvilibleWeapons.Add(weaponClass);
+
+            if (!weaponInventory.IsWeaponMaxLevel(weaponClass))
+            {
+                tempAvilibleWeapons.Add(weaponClass);
+            }
         }
 
         for (int i = 0; i < upgradeChoices; i++)

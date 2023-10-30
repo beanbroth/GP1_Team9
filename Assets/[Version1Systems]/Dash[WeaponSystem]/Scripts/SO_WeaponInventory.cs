@@ -3,11 +3,13 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponInventory", menuName = "WeaponSystem/WeaponInventory", order = 0)]
-public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
+public class SO_WeaponInventory : ScriptableObject
 {
-    [SerializeField] bool resetInventoryOnEnable = false;
-    [Header("Weapon Info")]
-    [SerializeField] public List<UnlockedWeaponInfo> unlockedWeapons;
+    [SerializeField] private bool resetInventoryOnEnable = false;
+
+    [Header("Weapon Info")] [SerializeField]
+    public List<UnlockedWeaponInfo> unlockedWeapons;
+
     [SerializeField] public List<SO_SingleWeaponClass> avalibleWeaponClasses;
     [SerializeField] public List<SO_SingleWeaponClass> weaponClassDatabase;
 
@@ -21,14 +23,15 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
 
     public void ResetUnlockedWeapons()
     {
+        Debug.Log("resetting weapon inventory");
         unlockedWeapons = new List<UnlockedWeaponInfo>();
         avalibleWeaponClasses.Clear();
         foreach (SO_SingleWeaponClass weapon in weaponClassDatabase)
         {
             avalibleWeaponClasses.Add(weapon);
         }
-
     }
+
     private void Awake() //Also reset from the S_GameSceneReset script
     {
         if (resetInventoryOnEnable)
@@ -48,8 +51,8 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
         {
             return;
         }
-        int weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
 
+        int weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
         if (weaponIndex != -1)
         {
             UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
@@ -60,7 +63,6 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
                 // Remove the weapon from avalibleWeapons list
                 avalibleWeaponClasses.Remove(weapon);
             }
-
         }
         else
         {
@@ -86,12 +88,11 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
                 return unlockedWeaponInfo;
             }
         }
-        
+
         UnlockedWeaponInfo newWeapon = new UnlockedWeaponInfo();
         newWeapon.weaponData = weapon;
         newWeapon.currentLevel = -1;
         newWeapon.maxLevel = weapon.WeaponPrefabs.Count;
-
         return newWeapon;
     }
 
@@ -103,6 +104,16 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
     public bool IsWeaponUnlocked(SO_SingleWeaponClass weapon)
     {
         return unlockedWeapons.Exists(x => x.weaponData == weapon);
+    }
+
+    public bool IsWeaponMaxLevel(SO_SingleWeaponClass weaponClass)
+    {
+        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=  GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel-1)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void AddWeapon(string weaponName)
@@ -137,6 +148,7 @@ public class SO_WeaponInventory : ScriptableSingleton<SO_WeaponInventory>
             {
                 return;
             }
+
             weapon.maxLevel = weapon.weaponData.WeaponPrefabs.Count;
             if (weapon.currentLevel > weapon.maxLevel - 1)
             {
@@ -163,4 +175,4 @@ public struct UnlockedWeaponInfo
     public SO_SingleWeaponClass weaponData;
     public int currentLevel;
     public int maxLevel;
-    }
+}
