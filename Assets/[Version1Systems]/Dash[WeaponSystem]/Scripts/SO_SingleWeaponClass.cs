@@ -7,8 +7,7 @@ public class SO_SingleWeaponClass : ScriptableObject
 {
     public string weaponName;
     public List<GameObject> weaponPrefabs = new List<GameObject>();
-
-    //make weapon prefabs a property
+    public List<string> weaponDescriptions = new List<string>();
 
     public List<GameObject> WeaponPrefabs
     {

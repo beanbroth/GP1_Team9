@@ -6,14 +6,16 @@ public class S_EnemyHealthController : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
-    [SerializeField] private float flashDuration = 0.1f;
-    private Color originalColor;
-    [SerializeField] private Color flashColor = Color.red;
+
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
     [SerializeField] GameObject directionalHitEffectPrefab;
     [SerializeField] GameObject topHitEffectPrefab;
+
+
+    [SerializeField] Animator animator;
+    S_FlashMaterials flasher;
 
     public int CurrentHealth
     {
@@ -29,7 +31,7 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private void Awake()
     {
-        originalColor = enemyRenderer.material.color;
+        flasher = GetComponent<S_FlashMaterials>();
     }
 
     private void OnEnable()
@@ -41,7 +43,10 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
-        StartCoroutine(FlashOnDamage());
+        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+
+        animator.SetTrigger("Take Damage");
+        flasher.Flash();
     }
 
     public void TakeDamage(int damage, Vector3 direction)
@@ -55,22 +60,20 @@ public class S_EnemyHealthController : MonoBehaviour
             Quaternion effectRotation = Quaternion.LookRotation(direction);
             ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
         }
-
-        currentHealth -= damage;
-        StartCoroutine(FlashOnDamage());
+        animator.SetTrigger("Take Damage");
+        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+         currentHealth -= damage;
+        flasher.Flash();
     }
 
-    private IEnumerator FlashOnDamage()
+    public void TrySpawnQuark()
     {
-        enemyRenderer.material.color = flashColor;
-        enemyAiBehviour.enabled = false;
-        yield return new WaitForSeconds(flashDuration);
-        enemyRenderer.material.color = originalColor;
-        enemyAiBehviour.enabled = true;
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
+
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
-            
+
             ObjectPoolManager.Destroy(gameObject);
         }
     }

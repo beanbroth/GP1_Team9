@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: ShootForward
+  m_EditorClassIdentifier: 
+  weaponName: ShootForward
+  weaponPrefabs:
+  - {fileID: 5744300782444405494, guid: caf111d1fdd08c449a71178d60e626af, type: 3}
+  - {fileID: 3801696055598656345, guid: 6cfbeb2d79ab92340ae0522b54c20a22, type: 3}
+  - {fileID: 3801696055598656345, guid: 07b373acbd41f9d41a25db28dc500b21, type: 3}
+  - {fileID: 3801696055598656345, guid: c40273a9e264b9847964156c39f26dd5, type: 3}
+  weaponDescriptions:
+  - Shoot a bullet forward.
+  - Shoot 3 bullets forward.
+  - Shoot 4 bullets forward.
+  - Shoot 10 bullets forward.
+  weaponCardInfo: {fileID: 11400000, guid: 25cdca3c0b694ce4b9bb9d2650bd9109, type: 2}

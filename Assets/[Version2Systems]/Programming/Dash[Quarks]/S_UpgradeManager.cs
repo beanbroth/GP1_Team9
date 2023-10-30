@@ -1,44 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class S_UpgradeManager : MonoBehaviour
 {
     [SerializeField] SO_WeaponInventory weaponInventory;
-    [SerializeField] SO_QuarkManager quarkManager;
-    [SerializeField] List<TextMeshProUGUI> cardText;
-    [SerializeField] private int upgradeCost = 20;
-    [SerializeField] private TextMeshProUGUI quarkCounterText;
+    [SerializeField] S_UpgradeCardManager upgradeCardManager;
+    [SerializeField] int upgradeCost = 3;
+    [SerializeField] int upgradeChoices = 3;
+    [SerializeField] float inputDelayTime = 0.05f;
     private bool isUpgrading;
-    private bool isWaitingToUpgrade;
-
     private S_PlayerControls playerControls;
+
+    private bool isHoldingLeft = false;
+    private bool isHoldingRight = false;
+    [SerializeField] private float upgradeCostIncrease = 0.2f;
 
     private void Awake()
     {
+        QuarkManager.upgradeCost = upgradeCost;
         playerControls = new S_PlayerControls();
-        playerControls.Player.Turn.performed += context =>
-        {
-            if (isUpgrading)
-            {
-                float turnDirection = context.ReadValue<float>();
-                if (turnDirection < 0)
-                {
-                    UpgradeLeft();
-                }
-                else if (turnDirection > 0)
-                {
-                    UpgradeRight();
-                }
-            }
-        };
-    }
-
-    private void OnEnable()
-    {
         playerControls.Enable();
+        QuarkManager.OnQuarkCountChanged += QuarkCountChanged;
     }
 
     private void OnDisable()
@@ -46,65 +35,120 @@ public class S_UpgradeManager : MonoBehaviour
         playerControls.Disable();
     }
 
+    private void OnDestroy()
+    {
+        QuarkManager.OnQuarkCountChanged -= QuarkCountChanged;
+    }
+
+    private void QuarkCountChanged(int newCount)
+    {
+        if (newCount >= upgradeCost)
+        {
+            QuarkManager.quarkCount = 0;
+            PauseManager.Pause();
+            isUpgrading = true;
+            InitCards();
+        }
+    }
+
+
+    private bool delayInProgress = false;
+
+    private IEnumerator MoveSelection(int value)
+    {
+        if (!delayInProgress)
+        {
+            delayInProgress = true;
+            // Add a delay of 0.1f seconds (or any other desired amount)
+            yield return new WaitForSecondsRealtime(inputDelayTime);
+            upgradeCardManager.MoveSelectedCard(value);
+            delayInProgress = false;
+        }
+    }
+
     private void Update()
     {
-        if (!isUpgrading)
+        if (!isUpgrading) return;
+        if (S_PauseMenu.IsPauseMenuActive) return;
+
+        float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
+        float turnRightValue = playerControls.Player.TurnRight.ReadValue<float>();
+
+        bool wasTurnLeftPressed = playerControls.Player.TurnLeft.WasPressedThisFrame();
+        bool wasTurnRightPressed = playerControls.Player.TurnRight.WasPressedThisFrame();
+
+        if (turnLeftValue < -0.5f)
         {
-            if (quarkManager.quarkCount >= upgradeCost && !isWaitingToUpgrade)
+            if (wasTurnLeftPressed)
             {
-                StartCoroutine(AllowUpgradeAfterDelay(1f));
-                Time.timeScale = 0;
-                foreach (TextMeshProUGUI text in cardText)
-                {
-                    SO_SingleWeaponClass weapon =
-                        weaponInventory.allWeapons[UnityEngine.Random.Range(0, weaponInventory.allWeapons.Count)];
-
-                    text.transform.parent.transform.gameObject.SetActive(true);
-
-                    text.text = weapon.weaponName;
-                }
+                StartCoroutine(MoveSelection(-1));
             }
-            quarkCounterText.text = $"{quarkManager.quarkCount} / {upgradeCost} quarks";
-
         }
 
-    }
-
-    private void UpgradeLeft()
-    {
-        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(cardText[1].text), 1);
-        DisableText();
-        quarkManager.quarkCount -= upgradeCost;
-        upgradeCost += Mathf.Max(1, (int)(upgradeCost * 0.2f));
-
-    }
-
-    private void UpgradeRight()
-    {
-        weaponInventory.LevelUpWeapon(weaponInventory.GetWeaponByName(cardText[0].text), 1);
-        DisableText();
-        quarkManager.quarkCount -= upgradeCost;
-        upgradeCost += Mathf.Max(1, (int)(upgradeCost * 0.2f));
-    }
-
-    private IEnumerator AllowUpgradeAfterDelay(float delay)
-    {
-        isWaitingToUpgrade = true;
-        yield return new WaitForSecondsRealtime(delay);
-        isUpgrading = true;
-        isWaitingToUpgrade = false;
-
-    }
-
-
-    private void DisableText()
-    {
-        foreach (TextMeshProUGUI text in cardText)
+        if (turnRightValue > 0.5f)
         {
-            text.transform.parent.transform.gameObject.SetActive(false);
+            if (wasTurnRightPressed)
+            {
+                StartCoroutine(MoveSelection(1));
+            }
         }
 
-        isUpgrading = false;
-        Time.timeScale = 1;
+        if (turnLeftValue < -0.5f && turnRightValue > 0.5f)
+        {
+            PerformUpgrade();
+        }
     }
+
+    private void PerformUpgrade()
+    {
+        weaponInventory.LevelUpWeapon(upgradeCardManager.GetSelectedWeapon(), 1);
+        upgradeCost += Mathf.Max(1, (int)(upgradeCost * upgradeCostIncrease));
+        QuarkManager.upgradeCost = upgradeCost;
+        QuarkManager.ResetQuarks();
+        isUpgrading = false;
+        upgradeCardManager.ClearCards();
+        PauseManager.Unpause();
+    }
+
+    private void InitCards()
+    {
+        List<UpgradeCardInfo> upgradeCardInfos = new List<UpgradeCardInfo>();
+
+        List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
+        foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
+        {
+            tempAvilibleWeapons.Add(weaponClass);
+        }
+
+        for (int i = 0; i < upgradeChoices; i++)
+        {
+            UpgradeCardInfo upgradeCardInfo = new UpgradeCardInfo();
+            SO_SingleWeaponClass weaponClass = tempAvilibleWeapons[UnityEngine.Random.Range(0, tempAvilibleWeapons.Count)];
+            tempAvilibleWeapons.Remove(weaponClass);
+            UnlockedWeaponInfo unlockedWeaponInfo = weaponInventory.GetUnlockedWeaponInfoForWeapon(weaponClass);
+
+            upgradeCardInfo.weaponClass = weaponClass;
+            upgradeCardInfo.name = weaponClass.weaponName;
+            upgradeCardInfo.level = unlockedWeaponInfo.currentLevel;
+            upgradeCardInfo.description = weaponClass.weaponDescriptions[upgradeCardInfo.level];
+            upgradeCardInfo.prefab = weaponClass.weaponPrefabs[upgradeCardInfo.level];
+
+            upgradeCardInfo.image = null;
+
+            upgradeCardInfos.Add(upgradeCardInfo);
+        }
+
+        upgradeCardManager.DisplayCards(upgradeCardInfos.ToArray());
+    }
+}
+
+public struct UpgradeCardInfo
+{
+    public SO_SingleWeaponClass weaponClass;
+    public string name;
+    public int level;
+    public string description;
+    public GameObject prefab;
+    public Texture image;
+
 }
