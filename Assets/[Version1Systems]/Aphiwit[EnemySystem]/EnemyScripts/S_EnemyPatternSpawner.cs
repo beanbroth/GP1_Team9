@@ -12,7 +12,7 @@ public class S_EnemyPatternSpawner : MonoBehaviour
     [SerializeField] Vector3 patternRepeatOffset;
 
     [SerializeField] GameObject[] enemyModels;
-    [SerializeField] patternUsageType patternUsageType;
+    [SerializeField] patternDesignType patternUsageType;
     [SerializeField] int enemyAmount;
     [SerializeField] float distanceBetweenEnemies;
     [SerializeField] float enemySpawnIntervall;

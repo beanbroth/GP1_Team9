@@ -11,9 +11,9 @@ public enum enemyPatternType
 }
 
 [System.Serializable]
-public enum patternUsageType
+public enum patternDesignType
 {
-    Static,
+    DIY,
     Random
 }
 
@@ -26,7 +26,7 @@ public class EnemyPattern : ScriptableObject
     public Vector3 patternRepeatOffset;
 
     public GameObject[] enemyModels;
-    public patternUsageType patternUsageType;
+    public patternDesignType patternUsageType;
     public int enemyAmount;
     public float distanceBetweenEnemies;
     public float enemySpawnIntervall;

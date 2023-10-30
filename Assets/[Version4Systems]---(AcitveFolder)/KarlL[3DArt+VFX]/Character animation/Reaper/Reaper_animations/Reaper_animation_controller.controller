@@ -65,7 +65,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack
+    m_ConditionEvent: Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8690610159118901866}
@@ -137,7 +137,7 @@ AnimatorController:
   m_Name: Reaper_animation_controller
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: attack
+  - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -185,7 +185,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.26334792
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.7366521
   m_HasExitTime: 0
