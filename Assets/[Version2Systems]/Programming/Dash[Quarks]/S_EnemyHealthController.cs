@@ -7,11 +7,6 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth = 3;
 
-    [Header("Flash When Taking Damage")]
-    [SerializeField] private float flashDuration = 0.1f;
-    [SerializeField] private Color flashColor = Color.red;
-    private Color originalColor;
-
     [SerializeField] private GameObject quarkPrefab;
     [SerializeField] private Renderer enemyRenderer;
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
@@ -39,7 +34,6 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private void Awake()
     {
-        originalColor = enemyRenderer.material.color;
         audioSource = GetComponent<AudioSource>();
         flasher = GetComponent<S_FlashMaterials>();
     }
@@ -73,7 +67,6 @@ public class S_EnemyHealthController : MonoBehaviour
         audioSource.PlayOneShot(damageSound);
         currentHealth -= damage;
         flasher.Flash();
-        //StartCoroutine(FlashOnDamage());
     }
 
     public void TrySpawnQuark()
@@ -82,22 +75,6 @@ public class S_EnemyHealthController : MonoBehaviour
         {
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
 
-            ObjectPoolManager.Destroy(gameObject);
-        }
-    }
-
-    private IEnumerator FlashOnDamage()
-    {
-        // Change from color editing to materials instead
-        enemyRenderer.material.color = flashColor;
-        enemyAiBehviour.enabled = false;
-        yield return new WaitForSeconds(flashDuration);
-        enemyRenderer.material.color = originalColor;
-        enemyAiBehviour.enabled = true;
-        if (currentHealth <= 0)
-        {
-            ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
-            
             ObjectPoolManager.Destroy(gameObject);
         }
     }
