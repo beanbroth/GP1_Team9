@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 92577242}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameObject(Holder)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,13 +1567,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8608577979144184021, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_Name
       value: EnemyPatternSpawner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1912,13 +1916,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8608577979144184021, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_Name
       value: EnemyPatternSpawner (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3724,13 +3732,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8608577979144184021, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_Name
       value: EnemyPatternSpawner (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12327,13 +12339,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8608577979144184021, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_Name
       value: EnemyPatternSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
