@@ -7,6 +7,11 @@ public class SO_WeaponInventory : ScriptableObject
 {
     [SerializeField] private bool resetInventoryOnEnable = false;
 
+    //event for weapon info change
+    public delegate void WeaponInfoChange();
+
+    public static event WeaponInfoChange OnWeaponInfoChange;
+
     [Header("Weapon Info")] [SerializeField]
     public List<UnlockedWeaponInfo> unlockedWeapons;
 
@@ -40,11 +45,6 @@ public class SO_WeaponInventory : ScriptableObject
         }
     }
 
-    //event for weapon info change
-    public delegate void WeaponInfoChange();
-
-    public static event WeaponInfoChange OnWeaponInfoChange;
-
     public void LevelUpWeapon(SO_SingleWeaponClass weapon, int levelIncrease)
     {
         if (levelIncrease <= 0)
@@ -58,9 +58,8 @@ public class SO_WeaponInventory : ScriptableObject
             UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
             weaponInfo.currentLevel += levelIncrease;
             unlockedWeapons[weaponIndex] = weaponInfo; // Update the weapon info in the list
-            if (weaponInfo.currentLevel >= weaponInfo.maxLevel)
+            if (weaponInfo.currentLevel >= weaponInfo.maxLevel - 1)
             {
-                // Remove the weapon from avalibleWeapons list
                 avalibleWeaponClasses.Remove(weapon);
             }
         }
@@ -108,7 +107,8 @@ public class SO_WeaponInventory : ScriptableObject
 
     public bool IsWeaponMaxLevel(SO_SingleWeaponClass weaponClass)
     {
-        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=  GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel-1)
+        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=
+            GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel - 1)
         {
             return true;
         }
