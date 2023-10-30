@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: DamageTrail
+  m_EditorClassIdentifier: 
+  weaponName: DamageTrail
+  weaponPrefabs:
+  - {fileID: 3629374011504788508, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+  - {fileID: 4213648422196081992, guid: 8b4b69a939ff8ce4cbd9d98a3c0f87b6, type: 3}
+  - {fileID: 4213648422196081992, guid: 828166f3c7a089e489b668c6d84a2f14, type: 3}
+  - {fileID: 4213648422196081992, guid: 72f9171a585850643a395c0e89700ab5, type: 3}
+  - {fileID: 4213648422196081992, guid: 1eee22713164d1248821e59934931532, type: 3}
+  weaponDescriptions:
+  - Add a trail that damages enemies behind you.
+  - Longer damage trail. Attack more often.
+  - Longer damage trail.
+  - Longer damage trail. Attack more often.
+  - Longer damage trail. Attack more often.
+  weaponCardInfo: {fileID: 11400000, guid: 3eeeaa5d2bb8179408e7b1601894efac, type: 2}

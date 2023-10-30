@@ -13,9 +13,6 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] GameObject directionalHitEffectPrefab;
     [SerializeField] GameObject topHitEffectPrefab;
 
-    [SerializeField] AudioClip damageSound;
-    [SerializeField] AudioClip deathSound; //Not used at the moment
-    AudioSource audioSource;
 
     [SerializeField] Animator animator;
     S_FlashMaterials flasher;
@@ -34,7 +31,6 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         flasher = GetComponent<S_FlashMaterials>();
     }
 
@@ -47,7 +43,8 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
         currentHealth -= damage;
-        audioSource.PlayOneShot(damageSound);
+        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+
         animator.SetTrigger("Take Damage");
         flasher.Flash();
     }
@@ -64,8 +61,8 @@ public class S_EnemyHealthController : MonoBehaviour
             ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
         }
         animator.SetTrigger("Take Damage");
-        audioSource.PlayOneShot(damageSound);
-        currentHealth -= damage;
+        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+         currentHealth -= damage;
         flasher.Flash();
     }
 
@@ -73,6 +70,8 @@ public class S_EnemyHealthController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
+
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
 
             ObjectPoolManager.Destroy(gameObject);

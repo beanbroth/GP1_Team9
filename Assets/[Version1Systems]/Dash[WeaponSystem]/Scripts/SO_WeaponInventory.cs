@@ -1,20 +1,18 @@
-
-
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "WeaponInventory", menuName = "WeaponSystem/WeaponInventory", order = 0)]
 public class SO_WeaponInventory : ScriptableObject
 {
-    [SerializeField] bool resetInventoryOnEnable = false;
-    [Header("Weapon Info")]
-    [SerializeField] public List<UnlockedWeaponInfo> unlockedWeapons;
-    [SerializeField] public List<SO_SingleWeaponClass> allWeapons;
-    
+    [SerializeField] private bool resetInventoryOnEnable = false;
+
+    [Header("Weapon Info")] [SerializeField]
+    public List<UnlockedWeaponInfo> unlockedWeapons;
+
+    [SerializeField] public List<SO_SingleWeaponClass> avalibleWeaponClasses;
+    [SerializeField] public List<SO_SingleWeaponClass> weaponClassDatabase;
+
     private void OnEnable()
     {
         if (resetInventoryOnEnable)
@@ -22,10 +20,18 @@ public class SO_WeaponInventory : ScriptableObject
             ResetUnlockedWeapons();
         }
     }
+
     public void ResetUnlockedWeapons()
     {
+        Debug.Log("resetting weapon inventory");
         unlockedWeapons = new List<UnlockedWeaponInfo>();
+        avalibleWeaponClasses.Clear();
+        foreach (SO_SingleWeaponClass weapon in weaponClassDatabase)
+        {
+            avalibleWeaponClasses.Add(weapon);
+        }
     }
+
     private void Awake() //Also reset from the S_GameSceneReset script
     {
         if (resetInventoryOnEnable)
@@ -43,56 +49,71 @@ public class SO_WeaponInventory : ScriptableObject
     {
         if (levelIncrease <= 0)
         {
-            //Debug.LogError("Level increase must be greater than 0");
             return;
         }
 
-        //Debug.Log($"Attempting to level up weapon: {weapon.weaponName} by {levelIncrease} levels.");
-
         int weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
-
         if (weaponIndex != -1)
         {
             UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
-            //Debug.Log($"Weapon level: {weaponInfo.level}");
-            weaponInfo.level += levelIncrease;
-            //Debug.Log($"Leveled up weapon: {weapon.weaponName} to level {weaponInfo.level}");
+            weaponInfo.currentLevel += levelIncrease;
             unlockedWeapons[weaponIndex] = weaponInfo; // Update the weapon info in the list
+            if (weaponInfo.currentLevel >= weaponInfo.maxLevel)
+            {
+                // Remove the weapon from avalibleWeapons list
+                avalibleWeaponClasses.Remove(weapon);
+            }
         }
         else
         {
             AddWeapon(weapon.weaponName);
             weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
             UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
-            weaponInfo.level += levelIncrease - 1;
+            weaponInfo.currentLevel += levelIncrease - 1;
             //Debug.Log($"Added and leveled up weapon: {weapon.weaponName} to level {weaponInfo.level}");
             unlockedWeapons[weaponIndex] = weaponInfo; // Update the weapon info in the list
         }
 
+        // Check if the weapon has been upgraded to max level
         ValidateWeaponLevels();
         OnWeaponInfoChange?.Invoke();
     }
 
     public UnlockedWeaponInfo GetUnlockedWeaponInfoForWeapon(SO_SingleWeaponClass weapon)
     {
-        foreach(UnlockedWeaponInfo unlockedWeaponInfo in unlockedWeapons)
+        foreach (UnlockedWeaponInfo unlockedWeaponInfo in unlockedWeapons)
         {
-            if(unlockedWeaponInfo.weaponData == weapon)
+            if (unlockedWeaponInfo.weaponData == weapon)
             {
                 return unlockedWeaponInfo;
             }
         }
-        return new UnlockedWeaponInfo();
+
+        UnlockedWeaponInfo newWeapon = new UnlockedWeaponInfo();
+        newWeapon.weaponData = weapon;
+        newWeapon.currentLevel = -1;
+        newWeapon.maxLevel = weapon.WeaponPrefabs.Count;
+        return newWeapon;
     }
 
     public SO_SingleWeaponClass GetWeaponByName(string weaponName)
     {
-        return allWeapons.Find(x => x.weaponName == weaponName);
+        return weaponClassDatabase.Find(x => x.weaponName == weaponName);
     }
 
     public bool IsWeaponUnlocked(SO_SingleWeaponClass weapon)
     {
         return unlockedWeapons.Exists(x => x.weaponData == weapon);
+    }
+
+    public bool IsWeaponMaxLevel(SO_SingleWeaponClass weaponClass)
+    {
+        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=  GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel-1)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void AddWeapon(string weaponName)
@@ -106,7 +127,7 @@ public class SO_WeaponInventory : ScriptableObject
 
         UnlockedWeaponInfo newWeapon = new UnlockedWeaponInfo();
         newWeapon.weaponData = weapon;
-        newWeapon.level = 0;
+        newWeapon.currentLevel = 0;
         newWeapon.maxLevel = weapon.WeaponPrefabs.Count;
         unlockedWeapons.Add(newWeapon);
         OnWeaponInfoChange?.Invoke();
@@ -127,19 +148,20 @@ public class SO_WeaponInventory : ScriptableObject
             {
                 return;
             }
+
             weapon.maxLevel = weapon.weaponData.WeaponPrefabs.Count;
-            if (weapon.level > weapon.maxLevel-1)
+            if (weapon.currentLevel > weapon.maxLevel - 1)
             {
                 if (Application.isPlaying)
                     Debug.Log("Weapon level is greater than max level");
-                weapon.level = weapon.maxLevel-1;
+                weapon.currentLevel = weapon.maxLevel - 1;
             }
 
-            if (weapon.level < 0)
+            if (weapon.currentLevel < 0)
             {
                 if (Application.isPlaying)
                     Debug.Log("Weapon level is less than 0");
-                weapon.level = 0;
+                weapon.currentLevel = 0;
             }
 
             unlockedWeapons[i] = weapon;
@@ -151,6 +173,6 @@ public class SO_WeaponInventory : ScriptableObject
 public struct UnlockedWeaponInfo
 {
     public SO_SingleWeaponClass weaponData;
-    public int level;
+    public int currentLevel;
     public int maxLevel;
 }

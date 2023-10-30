@@ -32,15 +32,22 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.IsPaused)
+        { 
+            return;
+        }
+
         // Check for player in range & chase player when they are in agro range
         playerInDetectionRange = Physics.CheckSphere(transform.position, detectionRange, playerLayerMask);
         playerInAgroRange = Physics.CheckSphere(transform.position, agroRange, playerLayerMask);
 
-       
+
     }
 
     private void FixedUpdate()
     {
+        if (PauseManager.IsPaused) return;
+
         // Add check to see if navagent is on field
         // Add intervall
         if (!playerInDetectionRange && !playerInAgroRange)
@@ -48,7 +55,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
             Patroling();
         }
 
-        if (playerInDetectionRange && !playerInAgroRange) 
+        if (playerInDetectionRange && !playerInAgroRange)
         {
             FollowPlayer();
         }
@@ -62,20 +69,20 @@ public class S_EnemyAiBehviour : MonoBehaviour
     private void Patroling()
     {
         // Searching for walkpoint
-         if (!walkPointSet)
+        if (!walkPointSet)
         {
             SearchWalkPoint();
         }
 
-         if (walkPointSet)
+        if (walkPointSet)
         {
             navMeshAgent.SetDestination(walkPoint);
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-         // Walkpoint reached
-         if (distanceToWalkPoint.magnitude <= 1f)
+        // Walkpoint reached
+        if (distanceToWalkPoint.magnitude <= 1f)
         {
             walkPointSet = false;
         }
@@ -117,7 +124,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere (transform.position, agroRange);
+        Gizmos.DrawWireSphere(transform.position, agroRange);
     }
 
 }

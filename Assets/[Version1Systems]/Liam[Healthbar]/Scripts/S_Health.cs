@@ -27,16 +27,10 @@ public class S_Health : MonoBehaviour
 
     S_FlashMaterials flasher;
 
-    [Header("Sounds")]
-    [SerializeField] AudioClip damageSound;
-    [SerializeField] AudioClip deathSound;
-    AudioSource audioSource;
-
     private void Awake()
     {
         UpdateHealthUI();
         loseMenu = FindFirstObjectByType<S_LossMenu>();
-        audioSource = GetComponent<AudioSource>();
         flasher = GetComponent<S_FlashMaterials>();
     }
 
@@ -54,11 +48,11 @@ public class S_Health : MonoBehaviour
                 {
                     playerAnimator.SetTrigger("Death");
                     loseMenu.LoseGame();
-                    audioSource.PlayOneShot(deathSound);
+                    AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
                 }
                 else
                 {
-                    audioSource.PlayOneShot(damageSound);
+                    AudioManager.Instance.PlaySound3D("PlayerHit", transform.position);
                     isInvincible = true;
                     playerAnimator.SetTrigger("Take Damage");
                     Invoke("DisableInvincibility", cooldownDuration);
