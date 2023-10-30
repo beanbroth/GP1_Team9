@@ -17,7 +17,6 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] float inputDelayTime = 0.05f;
     private bool isUpgrading;
     private S_PlayerControls playerControls;
-
     private bool isHoldingLeft = false;
     private bool isHoldingRight = false;
     [SerializeField] private float upgradeCostIncrease = 0.2f;
@@ -51,7 +50,6 @@ public class S_UpgradeManager : MonoBehaviour
         }
     }
 
-
     private bool delayInProgress = false;
 
     private IEnumerator MoveSelection(int value)
@@ -68,15 +66,14 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isUpgrading) return;
-        if (S_PauseMenu.IsPauseMenuActive) return;
-
+        if (!isUpgrading)
+            return;
+        if (S_PauseMenu.IsPauseMenuActive)
+            return;
         float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
         float turnRightValue = playerControls.Player.TurnRight.ReadValue<float>();
-
         bool wasTurnLeftPressed = playerControls.Player.TurnLeft.WasPressedThisFrame();
         bool wasTurnRightPressed = playerControls.Player.TurnRight.WasPressedThisFrame();
-
         if (turnLeftValue < -0.5f)
         {
             if (wasTurnLeftPressed)
@@ -113,7 +110,6 @@ public class S_UpgradeManager : MonoBehaviour
     private void InitCards()
     {
         List<UpgradeCardInfo> upgradeCardInfos = new List<UpgradeCardInfo>();
-
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
         foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
         {
@@ -123,18 +119,25 @@ public class S_UpgradeManager : MonoBehaviour
         for (int i = 0; i < upgradeChoices; i++)
         {
             UpgradeCardInfo upgradeCardInfo = new UpgradeCardInfo();
-            SO_SingleWeaponClass weaponClass = tempAvilibleWeapons[UnityEngine.Random.Range(0, tempAvilibleWeapons.Count)];
+            SO_SingleWeaponClass weaponClass =
+                tempAvilibleWeapons[UnityEngine.Random.Range(0, tempAvilibleWeapons.Count)];
             tempAvilibleWeapons.Remove(weaponClass);
             UnlockedWeaponInfo unlockedWeaponInfo = weaponInventory.GetUnlockedWeaponInfoForWeapon(weaponClass);
-
             upgradeCardInfo.weaponClass = weaponClass;
             upgradeCardInfo.name = weaponClass.weaponName;
-            upgradeCardInfo.level = unlockedWeaponInfo.currentLevel;
+            if (unlockedWeaponInfo.currentLevel < 0)
+            {
+                Debug.Log("weapon level is less than 0");
+                upgradeCardInfo.level = 0;
+            }
+            else
+            {
+                upgradeCardInfo.level = unlockedWeaponInfo.currentLevel + 1;
+            }
+
             upgradeCardInfo.description = weaponClass.weaponDescriptions[upgradeCardInfo.level];
             upgradeCardInfo.prefab = weaponClass.weaponPrefabs[upgradeCardInfo.level];
-
             upgradeCardInfo.image = null;
-
             upgradeCardInfos.Add(upgradeCardInfo);
         }
 
@@ -150,5 +153,4 @@ public struct UpgradeCardInfo
     public string description;
     public GameObject prefab;
     public Texture image;
-
 }

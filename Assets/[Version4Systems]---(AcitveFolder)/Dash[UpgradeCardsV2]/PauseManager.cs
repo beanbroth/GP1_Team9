@@ -9,14 +9,14 @@ public static class PauseManager
 
     public static bool IsPaused { get => isPaused;}
 
-    public static void TogglePause()
-    {
-        isPaused = !IsPaused;
-        // Call the pause event.
-        OnPauseStateChange?.Invoke(IsPaused);
-
-        Debug.Log("PauseManager: Game paused: " + IsPaused);
-    }
+    // public static void TogglePause()
+    // {
+    //     isPaused = !IsPaused;
+    //     // Call the pause event.
+    //     OnPauseStateChange?.Invoke(IsPaused);
+    //
+    //     Debug.Log("PauseManager: Game paused: " + IsPaused);
+    // }
 
     public static void Pause()
     {
