@@ -3,7 +3,7 @@ using UnityEngine;
 public class S_PlayerMovement : MonoBehaviour
 {
     S_PlayerControls playerControls;
-    private float turnDirection = 0f;
+    public float turnDirection = 0f;
     [SerializeField] private float turnSpeed = 0.7f;
     [SerializeField] private float moveSpeed = 6f;
 

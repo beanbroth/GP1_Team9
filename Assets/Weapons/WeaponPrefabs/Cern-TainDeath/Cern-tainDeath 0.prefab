@@ -54,7 +54,6 @@ MonoBehaviour:
   timeBetweenKills: 2
   boltLifetime: 0.05
   numKills: 1
-  boltSound: {fileID: 8300000, guid: 3a957a8d9a685be4a98184bc6386e88a, type: 3}
 --- !u!82 &3339570154344550175
 AudioSource:
   m_ObjectHideFlags: 0
