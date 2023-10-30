@@ -29,6 +29,8 @@ public class S_Health : MonoBehaviour
     S_DissolveController dissolveController;
     [SerializeField] S_CanvasGroupFader redScreenFlash;
     [SerializeField] UIScaleBounce healthBarContainer;
+    S_HUDManager hudManager;
+    S_LerpFOV cameraFOVLerper;
 
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class S_Health : MonoBehaviour
         loseMenu = FindFirstObjectByType<S_LossMenu>();
         flasher = GetComponent<S_FlashMaterials>();
         dissolveController= GetComponent<S_DissolveController>();
+        hudManager = FindFirstObjectByType<S_HUDManager>();
+        cameraFOVLerper = FindFirstObjectByType<S_LerpFOV>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,6 +78,8 @@ public class S_Health : MonoBehaviour
     {
         PauseManager.Pause();
         playerAnimator.SetTrigger("Death");
+        hudManager.ToggleHUD(false);
+        cameraFOVLerper.LerpFOV();
         dissolveController.StartDissolve();
         AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
         Invoke("OpenLoseMenu", dissolveController.GetDissolveDuration());

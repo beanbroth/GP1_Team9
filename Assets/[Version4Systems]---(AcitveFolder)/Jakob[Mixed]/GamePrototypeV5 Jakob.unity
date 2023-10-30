@@ -4943,6 +4943,55 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &925107131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925107132}
+  - component: {fileID: 925107133}
+  m_Layer: 0
+  m_Name: HUDManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &925107132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925107131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471060796}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925107133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925107131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dde78f5e2bed847939c81ac27bbcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudPanels:
+  - {fileID: 1657226223}
+  - {fileID: 1494458652}
+  - {fileID: 1313582278}
+  - {fileID: 2099586404}
 --- !u!1 &933271480
 GameObject:
   m_ObjectHideFlags: 0
@@ -8471,6 +8520,7 @@ Transform:
   - {fileID: 1310318105}
   - {fileID: 707007813}
   - {fileID: 2101277796}
+  - {fileID: 925107132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473811923
@@ -9425,6 +9475,7 @@ GameObject:
   - component: {fileID: 1668154420}
   - component: {fileID: 1668154421}
   - component: {fileID: 1668154422}
+  - component: {fileID: 1668154423}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9578,6 +9629,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afab86549c703247a1ff366e0d9b6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1668154423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668154415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb80371bca3dc04d9bb5ad528c87e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1668154417}
+  targetFOV: 20
+  lerpDuration: 1
 --- !u!1 &1686375459
 GameObject:
   m_ObjectHideFlags: 0

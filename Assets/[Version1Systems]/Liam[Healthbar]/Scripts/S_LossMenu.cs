@@ -17,6 +17,7 @@ public class S_LossMenu : MonoBehaviour
     S_SceneTransition sceneTransitionManager;
     [SerializeField] UIScaleBounce leftButtonUI;
     [SerializeField] UIScaleBounce rightButtonUI;
+    Transform playerPosition;
 
     private void OnEnable()
     {
@@ -50,6 +51,7 @@ public class S_LossMenu : MonoBehaviour
 
         winTimer = FindFirstObjectByType<S_WinTimer>();
         phaseManager = FindFirstObjectByType<S_PhaseManager>();
+        playerPosition = FindFirstObjectByType<S_PlayerMovement>().transform;
     }
     private void Start()
     {
@@ -60,6 +62,7 @@ public class S_LossMenu : MonoBehaviour
     public void LoseGame()
     {
         lossMenuCanvas.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySound3D("Game_Over", playerPosition.position);
         isDead = true;
         Time.timeScale = 0f;
         loseTimerText.text = winTimer.TimerText();
