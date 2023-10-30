@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,7 +19,18 @@ public class SO_WeaponInventory : ScriptableObject
     {
         if (resetInventoryOnEnable)
         {
-            unlockedWeapons = new List<UnlockedWeaponInfo>();
+            ResetUnlockedWeapons();
+        }
+    }
+    public void ResetUnlockedWeapons()
+    {
+        unlockedWeapons = new List<UnlockedWeaponInfo>();
+    }
+    private void Awake() //Also reset from the S_GameSceneReset script
+    {
+        if (resetInventoryOnEnable)
+        {
+            ResetUnlockedWeapons();
         }
     }
 
@@ -59,6 +71,18 @@ public class SO_WeaponInventory : ScriptableObject
 
         ValidateWeaponLevels();
         OnWeaponInfoChange?.Invoke();
+    }
+
+    public UnlockedWeaponInfo GetUnlockedWeaponInfoForWeapon(SO_SingleWeaponClass weapon)
+    {
+        foreach(UnlockedWeaponInfo unlockedWeaponInfo in unlockedWeapons)
+        {
+            if(unlockedWeaponInfo.weaponData == weapon)
+            {
+                return unlockedWeaponInfo;
+            }
+        }
+        return new UnlockedWeaponInfo();
     }
 
     public SO_SingleWeaponClass GetWeaponByName(string weaponName)

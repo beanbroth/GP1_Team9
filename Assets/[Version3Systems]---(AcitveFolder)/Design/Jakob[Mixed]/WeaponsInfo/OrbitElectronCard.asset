@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a36c81164a7c7b45aa79d1953e06cd5, type: 3}
+  m_Name: OrbitElectronCard
+  m_EditorClassIdentifier: 
+  weaponCardName: Orbital Electron
+  cardInfoPerLevel:
+  - level: 1
+    description: Two electrons spin around you and damage enemies.
+    image: {fileID: 0}
+  - level: 2
+    description: Add one more ring with 2 electrons.
+    image: {fileID: 0}
+  - level: 3
+    description: Add 4 more electrons.
+    image: {fileID: 0}
+  - level: 4
+    description: Add one more ring and 10 electrons.
+    image: {fileID: 0}
+  - level: 5
+    description: Add 10 more electrons.
+    image: {fileID: 0}
+  - level: 6
+    description: Add one more ring and 18 electrons.
+    image: {fileID: 0}
+  - level: 7
+    description: Add 18 more electrons.
+    image: {fileID: 0}
+  - level: 7
+    description: Add 18 more electrons.
+    image: {fileID: 0}
+  - level: 7
+    description: Add 18 more electrons.
+    image: {fileID: 0}
