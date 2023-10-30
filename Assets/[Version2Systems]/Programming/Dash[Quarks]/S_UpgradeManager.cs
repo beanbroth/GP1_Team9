@@ -127,7 +127,7 @@ public class S_UpgradeManager : MonoBehaviour
             upgradeCardInfo.name = weaponClass.weaponName;
             if (unlockedWeaponInfo.currentLevel < 0)
             {
-                Debug.Log("weapon level is less than 0");
+                //Debug.Log("weapon level is less than 0");
                 upgradeCardInfo.level = 0;
             }
             else

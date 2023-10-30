@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61b78164029113d4bb5a98dcac077cda
+guid: fb11875416ca99d4586c7bf6e44acfe0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,18 +33,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take Damage
-      takeName: Take 001
-      internalID: 1827226128182048838
-      firstFrame: 183
-      lastFrame: 243
+      name: hoveringrunning
+      takeName: hoveringrunning
+      internalID: 1690537226673289295
+      firstFrame: 61
+      lastFrame: 121
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -60,8 +60,8 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    isReadable: 1
+      additiveReferencePoseFrame: 61
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

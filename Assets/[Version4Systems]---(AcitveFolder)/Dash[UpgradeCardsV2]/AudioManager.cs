@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySound3D(string soundName, Vector3 position)
     {
         
-        Debug.Log("Playing sound: " + soundName);
+        //Debug.Log("Playing sound: " + soundName);
         foreach (AudioClipData audioClipData in audioClipDataList)
         {
             if (audioClipData.soundName == soundName)

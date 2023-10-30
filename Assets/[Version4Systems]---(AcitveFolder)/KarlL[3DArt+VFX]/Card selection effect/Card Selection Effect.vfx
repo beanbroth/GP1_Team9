@@ -4291,7 +4291,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615126}
   m_ExposedName: Rate
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -4569,7 +4569,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615149}
   m_ExposedName: Orb Colour
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:

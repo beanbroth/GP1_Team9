@@ -24,7 +24,7 @@ public static class PauseManager
 
         isPaused = true;
         OnPauseStateChange?.Invoke(IsPaused);
-        Debug.Log("PauseManager: Game paused: " + IsPaused);
+        //Debug.Log("PauseManager: Game paused: " + IsPaused);
     }
 
     public static void Unpause()
@@ -33,6 +33,6 @@ public static class PauseManager
 
         isPaused = false;
         OnPauseStateChange?.Invoke(IsPaused);
-        Debug.Log("PauseManager: Game unpaused: " + IsPaused);
+        //Debug.Log("PauseManager: Game unpaused: " + IsPaused);
     }
 }
