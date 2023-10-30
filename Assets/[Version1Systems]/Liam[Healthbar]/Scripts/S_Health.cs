@@ -28,6 +28,7 @@ public class S_Health : MonoBehaviour
     S_FlashMaterials flasher;
     S_DissolveController dissolveController;
     [SerializeField] S_CanvasGroupFader redScreenFlash;
+    [SerializeField] UIScaleBounce healthBarContainer;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class S_Health : MonoBehaviour
                 {
                     AudioManager.Instance.PlaySound3D("PlayerHit", transform.position);
                     redScreenFlash.FadeInAndOut();
+                    healthBarContainer.PerformBounceAnimation();
                     isInvincible = true;
                     playerAnimator.SetTrigger("Take Damage");
                     Invoke("DisableInvincibility", cooldownDuration);
