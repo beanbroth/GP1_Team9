@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class S_UpgradeManager : MonoBehaviour
 {
-    [SerializeField] SO_WeaponInventory weaponInventory;
+    [SerializeField] public SO_WeaponInventory weaponInventory;
     [SerializeField] S_UpgradeCardManager upgradeCardManager;
     [SerializeField] int upgradeCost = 3;
     [SerializeField] int upgradeChoices = 3;
@@ -23,6 +23,7 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void Awake()
     {
+        weaponInventory.ResetUnlockedWeapons();
         QuarkManager.upgradeCost = upgradeCost;
         playerControls = new S_PlayerControls();
         playerControls.Enable();

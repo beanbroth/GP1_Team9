@@ -17,12 +17,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
+      propertyPath: maxRange
+      value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 15d0668cb0dc794458ac346d283ee13d, type: 3}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: numberOfBullets
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: timeBetweenShots
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169841262531599814, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: m_Name
-      value: Atommatic 3
+      value: NewAtommatic 3
       objectReference: {fileID: 0}
     - target: {fileID: 7390883353186106700, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: m_LocalPosition.x

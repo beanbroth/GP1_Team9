@@ -25,6 +25,20 @@ public class S_WinTimer : MonoBehaviour
     private float maxTime;
     public int currentPhase = 1;
 
+    [Header("Music Management")]
+    [SerializeField] float[] timesForMusicSwitchs;
+    int currentMusicIndex = 0;
+    float timeUntilNextMusicSwitch;
+    S_MusicManager musicManager;
+
+    S_SceneTransition sceneTransitionManager;
+    private void Awake()
+    {
+        sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
+        musicManager = FindFirstObjectByType<S_MusicManager>();
+        timeUntilNextMusicSwitch = timesForMusicSwitchs[0];
+    }
+
     private void Start()
     {
         maxTime = currentTime;
@@ -48,12 +62,27 @@ public class S_WinTimer : MonoBehaviour
 
         currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
 
+        if (currentTime < timeUntilNextMusicSwitch)
+        {
+            currentMusicIndex++;
+            if (currentMusicIndex >= timesForMusicSwitchs.Length)
+            {
+                musicManager.SwitchToNextTrack();
+                timeUntilNextMusicSwitch = -1;
+            }
+            else
+            {
+                timeUntilNextMusicSwitch = timesForMusicSwitchs[currentMusicIndex];
+                musicManager.SwitchToNextTrack();
+            }
+        }
+
         if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
         {
             currentTime = timeLimit;
             TimerText();
             enabled = false;
-            SceneManager.LoadScene(2);
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
         }
 
         TimerText();
@@ -63,12 +92,12 @@ public class S_WinTimer : MonoBehaviour
         {
             currentPhase++;
             timeSinceLastPhase = 0f;
-            Debug.Log("New phase: " + currentPhase);
+            //Debug.Log("New phase: " + currentPhase);
             if (newPhase != null)
             {
                 newPhase.Invoke(currentPhase);
             }
-            ActivatePhaseObject(currentPhase - 1);
+            //ActivatePhaseObject(currentPhase - 1);
         }
         UpdatePhaseSlider((maxTime - currentTime) / maxTime);
     }
@@ -77,9 +106,13 @@ public class S_WinTimer : MonoBehaviour
     {
         phaseSlider.value = sliderPercent;
     }
-    private void ActivatePhaseObject(int objectIndex, bool status = true)
+    public void ActivatePhaseObject(int objectIndex, bool status = true, bool bounce = true)
     {
         phasesObjects[objectIndex].SetActive(status);
+        if (bounce)
+        {
+            phasesObjects[objectIndex].GetComponent<UIScaleBounce>().PerformBounceAnimation();
+        }
     }
 
     public string TimerText()
@@ -92,5 +125,8 @@ public class S_WinTimer : MonoBehaviour
         timeText.text = formattedText;
         return formattedText;
     }
-
+    public int GetCurrentPhase()
+    {
+        return currentPhase;
+    }
 }

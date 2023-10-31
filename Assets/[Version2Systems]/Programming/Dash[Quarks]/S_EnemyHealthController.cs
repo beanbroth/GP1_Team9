@@ -1,80 +1,85 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class S_EnemyHealthController : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int currentHealth = 3;
-
+    private int currentHealth;
+    private bool isDead = false;
     [SerializeField] private GameObject quarkPrefab;
-    [SerializeField] private Renderer enemyRenderer;
-    [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
-    [SerializeField] GameObject directionalHitEffectPrefab;
-    [SerializeField] GameObject topHitEffectPrefab;
-
-
-    [SerializeField] Animator animator;
-    S_FlashMaterials flasher;
-
-    public int CurrentHealth
-    {
-        get => currentHealth;
-        set => currentHealth = value;
-    }
-
-    public int MaxHealth
-    {
-        get => maxHealth;
-        set => maxHealth = value;
-    }
+    [SerializeField] private GameObject directionalHitEffectPrefab;
+    [SerializeField] private GameObject topHitEffectPrefab;
+    [SerializeField] private Animator animator;
+    private S_FlashMaterials flasher;
+    private S_DissolveController dissolveController;
+    private S_EnemyAiBehviour enemyAiBehviour;
 
     private void Awake()
     {
         flasher = GetComponent<S_FlashMaterials>();
+        dissolveController = GetComponent<S_DissolveController>();
+        enemyAiBehviour = GetComponent<S_EnemyAiBehviour>();
+
     }
 
     private void OnEnable()
     {
-        currentHealth = maxHealth;
+        ResetEnemy();
     }
 
-    public void TakeDamage(int damage)
+    private void ResetEnemy()
     {
-        ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+        currentHealth = maxHealth;
+        enemyAiBehviour.enabled = true;
+        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<NavMeshAgent>().enabled = true;
+        isDead = false;
+    }
+
+    public void TakeDamage(int damage, Vector3? direction = null)
+    {
+        if (isDead)
+            return;
         currentHealth -= damage;
         AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
-
         animator.SetTrigger("Take Damage");
-        flasher.Flash();
+        flasher.DefaultFlash();
+        InstantiateHitEffect(direction);
+        if (currentHealth <= 0 && !isDead)
+            Die();
     }
 
-    public void TakeDamage(int damage, Vector3 direction)
+    private void InstantiateHitEffect(Vector3? direction)
     {
-        if (direction.y < 0) // Assuming the hit is from the top if the direction has a negative Y value
+        GameObject hitEffectPrefab = topHitEffectPrefab;
+        Quaternion rotation = Quaternion.identity;
+        if (direction.HasValue)
         {
-            ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+            hitEffectPrefab = directionalHitEffectPrefab;
+            rotation = Quaternion.LookRotation(direction.Value);
         }
-        else
-        {
-            Quaternion effectRotation = Quaternion.LookRotation(direction);
-            ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
-        }
-        animator.SetTrigger("Take Damage");
-        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
-         currentHealth -= damage;
-        flasher.Flash();
+
+        ObjectPoolManager.Instantiate(hitEffectPrefab, transform.position, rotation);
     }
 
-    public void TrySpawnQuark()
+    private void Die()
     {
-        if (currentHealth <= 0)
-        {
-            AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
+        isDead = true;
+        AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
+        enemyAiBehviour.enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<NavMeshAgent>().enabled = false;
+        dissolveController.StartDissolve();
+        animator.SetTrigger("Death");
+        ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
+        Invoke("DestroyGameObject", dissolveController.GetDissolveDuration());
+    }
 
-            ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
-
-            ObjectPoolManager.Destroy(gameObject);
-        }
+    private void DestroyGameObject()
+    {
+        ObjectPoolManager.Destroy(gameObject);
     }
 }

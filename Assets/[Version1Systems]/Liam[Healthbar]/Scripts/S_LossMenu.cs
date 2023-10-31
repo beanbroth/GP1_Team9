@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class S_LossMenu : MonoBehaviour
 {
-    [SerializeField] S_Health sHealthScript;  // Reference to the S_Health script
     [SerializeField] Canvas lossMenuCanvas;  // Reference to the LossMenu Canvas
     [SerializeField] TextMeshProUGUI loseTimerText;
     [SerializeField] TextMeshProUGUI losePhaseText;
@@ -13,6 +13,10 @@ public class S_LossMenu : MonoBehaviour
     private bool isDead = false;
     S_WinTimer winTimer;
     S_PhaseManager phaseManager;
+    S_SceneTransition sceneTransitionManager;
+    [SerializeField] UIScaleBounce leftButtonUI;
+    [SerializeField] UIScaleBounce rightButtonUI;
+    Transform playerPosition;
 
     private void OnEnable()
     {
@@ -27,26 +31,28 @@ public class S_LossMenu : MonoBehaviour
     private void Awake()
     {
         playerControls = new S_PlayerControls(); // Initialize the player inputs.
+        sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
         playerControls.Player.Turn.performed += context =>
         {
             float turnValue = context.ReadValue<float>();
             if (turnValue == 1f && isDead)
             {
-                // Go to main menu.
-                Time.timeScale = 1f;
-                SceneManager.LoadScene(0);
+                rightButtonUI.PerformBounceAnimation();
+                sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.menu);
+                AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
             }
 
             if (turnValue == -1f && isDead)
             {
-                // Restart the game.
-                Time.timeScale = 1f;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                leftButtonUI.PerformBounceAnimation();
+                sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
+                AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
             }
         };
 
         winTimer = FindFirstObjectByType<S_WinTimer>();
         phaseManager = FindFirstObjectByType<S_PhaseManager>();
+        playerPosition = FindFirstObjectByType<S_PlayerMovement>().transform;
     }
     private void Start()
     {
@@ -57,6 +63,7 @@ public class S_LossMenu : MonoBehaviour
     public void LoseGame()
     {
         lossMenuCanvas.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySound3D("Game_Over", playerPosition.position);
         isDead = true;
         Time.timeScale = 0f;
         loseTimerText.text = winTimer.TimerText();

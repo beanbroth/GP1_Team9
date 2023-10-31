@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,8 +15,17 @@ public class S_UpgradeCardManager: MonoBehaviour
     private void SetSelectedCard(int ci)
     {
         cardIndex = ci;
-        cardIndex = Mathf.Clamp(cardIndex, 0, cards.Count-1);
-        Debug.Log("SET card index" + cardIndex);
+        cardIndex = Mathf.Max(0, cardIndex);
+        cardIndex = Mathf.Min(cards.Count - 1, cardIndex);
+
+        if (cardIndex < 0)
+        {
+            cardIndex = 0;
+        }
+        
+        // Debug.Log("SET card index" + cardIndex);
+        
+        
         for (int i = 0; i < cards.Count; i++)
         {
             if (i == cardIndex)
@@ -27,6 +37,7 @@ public class S_UpgradeCardManager: MonoBehaviour
                 cards[i].SetSelected(false);
             }
         }
+
     }
 
     public void MoveSelectedCard(int moveDirection)
@@ -36,7 +47,7 @@ public class S_UpgradeCardManager: MonoBehaviour
 
     public SO_SingleWeaponClass GetSelectedWeapon()
     {
-        Debug.Log(cardIndex);
+       // Debug.Log(cardIndex);
         return cards[cardIndex].GetComponent<S_CardInfoController>().GetCardInfo().weaponClass;
     }
 
