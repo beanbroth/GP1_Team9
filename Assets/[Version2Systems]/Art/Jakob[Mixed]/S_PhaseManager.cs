@@ -89,6 +89,7 @@ public class S_PhaseManager : MonoBehaviour
         phasesUICollectionObject.SetActive(false);
         Time.timeScale = 1;
         isUpgrading = false;
+        winTimer.ActivatePhaseObject(winTimer.GetCurrentPhase()-1, true, true);
     }
 
     public string GetCurrentPhaseString()

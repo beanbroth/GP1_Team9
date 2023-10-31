@@ -92,12 +92,12 @@ public class S_WinTimer : MonoBehaviour
         {
             currentPhase++;
             timeSinceLastPhase = 0f;
-            Debug.Log("New phase: " + currentPhase);
+            //Debug.Log("New phase: " + currentPhase);
             if (newPhase != null)
             {
                 newPhase.Invoke(currentPhase);
             }
-            ActivatePhaseObject(currentPhase - 1);
+            //ActivatePhaseObject(currentPhase - 1);
         }
         UpdatePhaseSlider((maxTime - currentTime) / maxTime);
     }
@@ -106,9 +106,13 @@ public class S_WinTimer : MonoBehaviour
     {
         phaseSlider.value = sliderPercent;
     }
-    private void ActivatePhaseObject(int objectIndex, bool status = true)
+    public void ActivatePhaseObject(int objectIndex, bool status = true, bool bounce = true)
     {
         phasesObjects[objectIndex].SetActive(status);
+        if (bounce)
+        {
+            phasesObjects[objectIndex].GetComponent<UIScaleBounce>().PerformBounceAnimation();
+        }
     }
 
     public string TimerText()
@@ -121,5 +125,8 @@ public class S_WinTimer : MonoBehaviour
         timeText.text = formattedText;
         return formattedText;
     }
-
+    public int GetCurrentPhase()
+    {
+        return currentPhase;
+    }
 }
