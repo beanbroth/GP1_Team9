@@ -7333,8 +7333,8 @@ MonoBehaviour:
   timePerPhase: 120
   currentPhase: 1
   timesForMusicSwitchs:
-  - 360
-  - 120
+  - 359
+  - 119
 --- !u!1 &1313582278
 GameObject:
   m_ObjectHideFlags: 0
