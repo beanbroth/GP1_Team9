@@ -7,8 +7,17 @@ public class UIScaleBounce : MonoBehaviour
     public RectTransform uiElement;  // Reference to the UI element's RectTransform
     public float bounceScale = 1.2f; // The scale factor for the bounce
     public float bounceDuration = 0.5f; // Duration of the bounce animation
+    [SerializeField] bool ignoreTimeScale = false;
 
     private Vector3 originalScale;  // The original scale of the UI element
+
+    private void Awake()
+    {
+        if(uiElement == null)
+        {
+            uiElement = GetComponent<RectTransform>();
+        }
+    }
 
     private void Start()
     {
@@ -42,11 +51,19 @@ public class UIScaleBounce : MonoBehaviour
             // Calculate the new scale with bounce effect
             Vector3 newScale = originalScale + (bounceScale - 1) * Mathf.Sin(t * Mathf.PI) * originalScale;
 
-            // Apply the new scale to the UI element
+            // Apply the new scale to the UI 
             uiElement.localScale = newScale;
 
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            if (!ignoreTimeScale)
+            {
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                elapsedTime += 0.015f;
+                yield return new WaitForSecondsRealtime(0.015f);
+            }
         }
 
         // Ensure the scale is back to the original size

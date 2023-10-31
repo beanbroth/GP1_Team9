@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class S_EnemyHealthController : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private S_EnemyAiBehviour enemyAiBehviour;
     [SerializeField] GameObject directionalHitEffectPrefab;
     [SerializeField] GameObject topHitEffectPrefab;
+    bool dying = false;
 
 
     [SerializeField] Animator animator;
     S_FlashMaterials flasher;
+    S_DissolveController dissolveController;
 
     public int CurrentHealth
     {
@@ -32,6 +35,7 @@ public class S_EnemyHealthController : MonoBehaviour
     private void Awake()
     {
         flasher = GetComponent<S_FlashMaterials>();
+        dissolveController = GetComponent<S_DissolveController>();
     }
 
     private void OnEnable()
@@ -41,40 +45,56 @@ public class S_EnemyHealthController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
-        currentHealth -= damage;
-        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+        if (!dying)
+        {
+            ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+            currentHealth -= damage;
+            AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
 
-        animator.SetTrigger("Take Damage");
-        flasher.Flash();
+            animator.SetTrigger("Take Damage");
+            flasher.Flash();
+        }
     }
 
     public void TakeDamage(int damage, Vector3 direction)
     {
-        if (direction.y < 0) // Assuming the hit is from the top if the direction has a negative Y value
+        if (!dying)
         {
-            ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+            if (direction.y < 0) // Assuming the hit is from the top if the direction has a negative Y value
+            {
+                ObjectPoolManager.Instantiate(topHitEffectPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Quaternion effectRotation = Quaternion.LookRotation(direction);
+                ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
+            }
+            animator.SetTrigger("Take Damage");
+            AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
+            currentHealth -= damage;
+            flasher.Flash();
         }
-        else
-        {
-            Quaternion effectRotation = Quaternion.LookRotation(direction);
-            ObjectPoolManager.Instantiate(directionalHitEffectPrefab, transform.position, effectRotation);
-        }
-        animator.SetTrigger("Take Damage");
-        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
-         currentHealth -= damage;
-        flasher.Flash();
     }
 
     public void TrySpawnQuark()
     {
         if (currentHealth <= 0)
         {
+            dying = true;
+
             AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
-
+            enemyAiBehviour.enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
+            dissolveController.StartDissolve();
+            animator.SetTrigger("Death");
             ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
-
-            ObjectPoolManager.Destroy(gameObject);
+            Invoke("DestroyGameobject", dissolveController.GetDissolveDuration());
         }
+    }
+
+    void DestroyGameobject()
+    {
+        ObjectPoolManager.Destroy(gameObject);
     }
 }

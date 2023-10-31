@@ -26,12 +26,20 @@ public class S_Health : MonoBehaviour
     S_LossMenu loseMenu;
 
     S_FlashMaterials flasher;
+    S_DissolveController dissolveController;
+    [SerializeField] S_CanvasGroupFader redScreenFlash;
+    [SerializeField] UIScaleBounce healthBarContainer;
+    S_HUDManager hudManager;
+    S_LerpFOV cameraFOVLerper;
 
     private void Awake()
     {
         UpdateHealthUI();
         loseMenu = FindFirstObjectByType<S_LossMenu>();
         flasher = GetComponent<S_FlashMaterials>();
+        dissolveController= GetComponent<S_DissolveController>();
+        hudManager = FindFirstObjectByType<S_HUDManager>();
+        cameraFOVLerper = FindFirstObjectByType<S_LerpFOV>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,13 +54,13 @@ public class S_Health : MonoBehaviour
                 flasher.Flash();
                 if (health <= 0)
                 {
-                    playerAnimator.SetTrigger("Death");
-                    loseMenu.LoseGame();
-                    AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
+                    PlayerDeath();
                 }
                 else
                 {
                     AudioManager.Instance.PlaySound3D("PlayerHit", transform.position);
+                    redScreenFlash.FadeInAndOut();
+                    healthBarContainer.PerformBounceAnimation();
                     isInvincible = true;
                     playerAnimator.SetTrigger("Take Damage");
                     Invoke("DisableInvincibility", cooldownDuration);
@@ -64,6 +72,22 @@ public class S_Health : MonoBehaviour
     private void DisableInvincibility()
     {
         isInvincible = false;
+    }
+
+    void PlayerDeath()
+    {
+        PauseManager.Pause();
+        playerAnimator.SetTrigger("Death");
+        hudManager.ToggleHUD(false);
+        cameraFOVLerper.LerpFOV();
+        dissolveController.StartDissolve();
+        AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
+        Invoke("OpenLoseMenu", dissolveController.GetDissolveDuration());
+    }
+
+    void OpenLoseMenu()
+    {
+        loseMenu.LoseGame();
     }
 
 
