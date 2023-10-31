@@ -7,6 +7,11 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSpeed = 0.7f;
     [SerializeField] private float moveSpeed = 6f;
 
+    public float TurnDirection
+    {
+        get => turnDirection;
+    }
+
     private void Awake()
     {
         playerControls = new S_PlayerControls();
@@ -18,7 +23,6 @@ public class S_PlayerMovement : MonoBehaviour
         playerControls.Disable();
     }
 
-
     private void Update()
     {
         turnDirection = playerControls.Player.Turn.ReadValue<float>();
@@ -26,23 +30,23 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PauseManager.IsPaused) return; // If game is paused, exit method
-
+        if (PauseManager.IsPaused)
+            return; // If game is paused, exit method
         Turn();
         ForwardMovement();
     }
 
     private void ForwardMovement()
     {
-        if (PauseManager.IsPaused) return; // If game is paused, exit method
-
+        if (PauseManager.IsPaused)
+            return; // If game is paused, exit method
         transform.Translate(Vector3.forward * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void Turn()
     {
-        if (PauseManager.IsPaused) return; // If game is paused, exit method
-
+        if (PauseManager.IsPaused)
+            return; // If game is paused, exit method
         transform.Rotate(0.0f, turnDirection * turnSpeed, 0.0f);
     }
 }
