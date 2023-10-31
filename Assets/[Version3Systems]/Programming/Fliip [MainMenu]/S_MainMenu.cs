@@ -32,7 +32,10 @@ public class S_MainMenu : MonoBehaviour
                 leftButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneToLoad);
            }
-       };
+
+           AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
+
+        };
     }
 
     void QuitGame()

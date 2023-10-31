@@ -49,7 +49,6 @@ public class S_PauseMenu : MonoBehaviour
                     Invoke("DelayedUnpause", resumeDelay);
                 }
             }
-            
         };
 
         playerControls.Player.Turn.performed += context =>
@@ -75,6 +74,7 @@ public class S_PauseMenu : MonoBehaviour
                     leftButtonUI.PerformBounceAnimation();
                     isPauseMenuActive = false;
                 }
+                AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
             }
         };
     }

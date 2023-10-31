@@ -40,12 +40,14 @@ public class S_LossMenu : MonoBehaviour
             {
                 rightButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.menu);
+                AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
             }
 
             if (turnValue == -1f && isDead)
             {
                 leftButtonUI.PerformBounceAnimation();
                 sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
+                AudioManager.Instance.PlaySound3D("Menu_Button_Press", transform.position);
             }
         };
 

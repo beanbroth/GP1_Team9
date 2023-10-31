@@ -537,95 +537,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70133675}
   m_CullTransparentMesh: 1
---- !u!1 &82971648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 82971650}
-  - component: {fileID: 82971649}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &82971649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82971648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4cec29713f2654ea0a8dc4955b946d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSourcePrefab: {fileID: 6160977956559847820, guid: 99ffd169a0894b24db555abc82aea4a6, type: 3}
-  poolSize: 10
-  audioClipDataList:
-  - soundName: Battle_Commence_Placeholder_Theme_1
-    audioClip: {fileID: 8300000, guid: e4a2af329ee25b4489abd0e86ac80333, type: 3}
-  - soundName: Battle_Commence_Placeholder_Theme_2
-    audioClip: {fileID: 8300000, guid: dfb98488e4dbf104184cb6f135ec79f6, type: 3}
-  - soundName: Battle_Commence_Placeholder_Theme_3
-    audioClip: {fileID: 8300000, guid: 29b478160cce9284c8d12aa97cda9bda, type: 3}
-  - soundName: Card_Select
-    audioClip: {fileID: 8300000, guid: 2cbabef9cdadee14e83e3a956e49ebfc, type: 3}
-  - soundName: Cern-TainDeath
-    audioClip: {fileID: 8300000, guid: 3a957a8d9a685be4a98184bc6386e88a, type: 3}
-  - soundName: EnemyDeath
-    audioClip: {fileID: 8300000, guid: 15e204cd334384443914fc174d04f3d2, type: 3}
-  - soundName: EnemyHit
-    audioClip: {fileID: 8300000, guid: ed2663252bd64cf45ad1f6e20955f447, type: 3}
-  - soundName: Enemy_Take_Damage
-    audioClip: {fileID: 8300000, guid: 9f63505c7af7cc54ca575d1a13668807, type: 3}
-  - soundName: Enemy_Take_Damage_New
-    audioClip: {fileID: 8300000, guid: 1559e14c59fa972458796582ba0ebf76, type: 3}
-  - soundName: Game_Over
-    audioClip: {fileID: 8300000, guid: 7556c82162182ff4db216b00710d6705, type: 3}
-  - soundName: Game_Won
-    audioClip: {fileID: 8300000, guid: 9a832f9153453e94dbda78b8f6bcdb3d, type: 3}
-  - soundName: Intro_Cutscene_Placeholder_Theme
-    audioClip: {fileID: 8300000, guid: b23dc514b6165094888497b5b042462c, type: 3}
-  - soundName: Menu_Button_Press
-    audioClip: {fileID: 8300000, guid: 9186d18aac41bc343a76977841904d5a, type: 3}
-  - soundName: Menu_Space_Ambience
-    audioClip: {fileID: 8300000, guid: 80c60ae6056f86342a22f8aa65aef386, type: 3}
-  - soundName: Outro_Cutscene_Placeholder_Theme
-    audioClip: {fileID: 8300000, guid: 3cb5f4da97a76024da6cda512e325d69, type: 3}
-  - soundName: QuarkPickup
-    audioClip: {fileID: 8300000, guid: f79bfe8dcb1ed524cbd3f2f7584ea82b, type: 3}
-  - soundName: PlayerHit
-    audioClip: {fileID: 8300000, guid: 8055887ebf539ec4faa09fcd2872647e, type: 3}
-  - soundName: Shooting_Pop_1
-    audioClip: {fileID: 8300000, guid: 15d0668cb0dc794458ac346d283ee13d, type: 3}
-  - soundName: Shooting_Pop_2
-    audioClip: {fileID: 8300000, guid: fd44739dcc261ba439f2baab27abefeb, type: 3}
-  - soundName: Barrier_Weapon_Pulse
-    audioClip: {fileID: 8300000, guid: 9d2acf7ca967ff04085edd071b29e626, type: 3}
-  - soundName: PlayerDeath
-    audioClip: {fileID: 8300000, guid: 8055887ebf539ec4faa09fcd2872647e, type: 3}
---- !u!4 &82971650
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82971648}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.84556955, y: -6.9354305, z: 7.305271}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92577241
 GameObject:
   m_ObjectHideFlags: 0
@@ -14351,6 +14262,63 @@ Transform:
   - {fileID: 8380652686838938279}
   m_Father: {fileID: 305685201136764447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7031739269407298148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.84556955
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.9354305
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.305271
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429326205996309440, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156937365035152385, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 553a19546e54fe9458bfae5d0419ffad, type: 3}
 --- !u!4 &7035193580617877176
 Transform:
   m_ObjectHideFlags: 0
@@ -14976,4 +14944,4 @@ SceneRoots:
   - {fileID: 1727308299}
   - {fileID: 1471060796}
   - {fileID: 1274544064}
-  - {fileID: 82971650}
+  - {fileID: 7031739269407298148}
