@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,31 @@ using UnityEngine.UI;
 
 public class S_CanvasGroupFader : MonoBehaviour
 {
+    [SerializeField] private bool fadeOnDamage = true;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] float animationFPS = 60f;
     [SerializeField] float animationDuration = 2f;
     [SerializeField] bool ignoreTimeScale = true;
     float timePerFrame;
+
+
+    private void OnEnable()
+    {
+        if (fadeOnDamage)
+        {
+            S_Health.OnDamage += FadeInAndOut;
+
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (fadeOnDamage)
+        {
+            S_Health.OnDamage -= FadeInAndOut;
+
+        }
+    }
 
     private void Awake()
     {

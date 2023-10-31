@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponInventory", menuName = "WeaponSystem/WeaponInventory", order = 0)]
 public class SO_WeaponInventory : ScriptableObject
 {
+    
     [SerializeField] private bool resetInventoryOnEnable = false;
 
     [Header("Weapon Info")] [SerializeField]
@@ -12,19 +13,20 @@ public class SO_WeaponInventory : ScriptableObject
 
     [SerializeField] public List<SO_SingleWeaponClass> avalibleWeaponClasses;
     [SerializeField] public List<SO_SingleWeaponClass> weaponClassDatabase;
-
+    
     private void OnEnable()
     {
         if (resetInventoryOnEnable)
         {
             ResetUnlockedWeapons();
         }
+
     }
 
     public void ResetUnlockedWeapons()
     {
-        Debug.Log("resetting weapon inventory");
-        unlockedWeapons = new List<UnlockedWeaponInfo>();
+//        Debug.Log("resetting weapon inventory");
+        unlockedWeapons.Clear();
         avalibleWeaponClasses.Clear();
         foreach (SO_SingleWeaponClass weapon in weaponClassDatabase)
         {

@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/SharedScenes[COPY, DON'T EDIT]/SplashScreen.unity
     guid: d6aafbe9abb33f24b9b75b12a4c2d811
   - enabled: 1
-    path: Assets/[Version4Systems]---(AcitveFolder)/Reyn[ColoredUI]/Menu.unity
-    guid: 9bd7f0fe68b3065448d6d1889f74a2bc
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/Menu.unity
+    guid: 87de922ef1f0cd74193ae3606e01d858
   - enabled: 1
     path: Assets/SharedScenes[COPY, DON'T EDIT]/IntroCutScene.unity
     guid: 6debdfc26f7e3144495f8e65499cc95d
   - enabled: 1
-    path: Assets/[Version1Systems]/Aphiwit[EnemySystem]/EnemySystemTestScenes/GamePrototypeV4.unity
-    guid: 43493ed4e50065f4099ae1d8a26cf16e
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/GamePrototypeV6.unity
+    guid: baf92b33e97890249be14d05da83adf8
   - enabled: 1
     path: Assets/SharedScenes[COPY, DON'T EDIT]/OutroCutScene.unity
     guid: 4e6515354492aa8418139e364d95cd38
   - enabled: 1
-    path: Assets/[Version4Systems]---(AcitveFolder)/Filip[VictoryScene]/VictoryScene.unity
-    guid: 8121c0bc9550aee4da6463bca4c1e85e
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/VictoryScene.unity
+    guid: 93170fb2e6fad764282f534406369c11
   - enabled: 1
     path: Assets/SharedScenes[COPY, DON'T EDIT]/CreditsScene.unity
     guid: 4a1bec41661165543bb83b1cd0710969

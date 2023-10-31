@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 
 public class S_LossMenu : MonoBehaviour
 {
-    [SerializeField] S_Health sHealthScript;  // Reference to the S_Health script
     [SerializeField] Canvas lossMenuCanvas;  // Reference to the LossMenu Canvas
     [SerializeField] TextMeshProUGUI loseTimerText;
     [SerializeField] TextMeshProUGUI losePhaseText;

@@ -42,6 +42,9 @@ public class S_SceneTransition : MonoBehaviour
         yield return new WaitForSecondsRealtime(animationDuration);
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneIndex);
+        PauseManager.Unpause();
+        //S_UpgradeManager.weaponInventory.ResetUnlockedWeapons();
+        QuarkManager.ResetQuarks();
     }
     
     IEnumerator FadeRoutine(Color fadeColor, bool fadeIn = true)

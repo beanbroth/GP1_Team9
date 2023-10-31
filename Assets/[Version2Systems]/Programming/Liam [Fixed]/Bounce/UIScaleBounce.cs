@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -10,6 +11,17 @@ public class UIScaleBounce : MonoBehaviour
     [SerializeField] bool ignoreTimeScale = false;
 
     private Vector3 originalScale;  // The original scale of the UI element
+
+    private void OnEnable()
+    {
+        S_Health.OnDamage += PerformBounceAnimation;
+    }
+    
+    private void OnDisable()
+    {
+        S_Health.OnDamage -= PerformBounceAnimation;
+    }
+    
 
     private void Awake()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,16 @@ public class S_LerpFOV : MonoBehaviour
     [SerializeField] float targetFOV = 15f;
     float startFOV;
     [SerializeField] float lerpDuration = 3f;
+
+    private void OnEnable()
+    {
+        S_Health.OnDeath += LerpFOV;
+    }
+    
+    private void OnDisable()
+    {
+        S_Health.OnDeath -= LerpFOV;
+    }
 
     private void Awake()
     {

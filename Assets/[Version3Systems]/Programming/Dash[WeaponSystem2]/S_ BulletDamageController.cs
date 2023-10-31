@@ -50,7 +50,7 @@ public class S_BulletDamageController : MonoBehaviour
 
         if (other.gameObject.tag != "Player" && destroyOnOtherCollision)
         {
-            Debug.Log("Bullet Destroyed on other" + other.gameObject.name);
+            //Debug.Log("Bullet Destroyed on other" + other.gameObject.name);
             ObjectPoolManager.Destroy(gameObject);
         }
     }

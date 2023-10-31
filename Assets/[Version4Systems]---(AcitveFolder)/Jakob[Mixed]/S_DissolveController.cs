@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,18 +14,37 @@ public class S_DissolveController : MonoBehaviour
     [SerializeField] bool dissolveOnStart = false;
     [SerializeField] bool ignoreIsPaused = false;
 
+    private void OnEnable()
+    {
+        S_Health.OnDeath += StartDissolve;
+        Reset();
+    }
+
+    private void OnDisable()
+    {
+        S_Health.OnDeath -= StartDissolve;
+    }
+
     private void Start()
     {
-        if(dissolveOnStart)
+        if (dissolveOnStart)
             StartDissolve();
+    }
+
+    public void Reset()
+    {
+        dissolveStarted = false;
+        timeSinceDissolveStarted = 0f;
+        UpdateMaterials(1f);
     }
 
     private void Awake()
     {
-        if(parentWithMaterials == null)
+        if (parentWithMaterials == null)
         {
             parentWithMaterials = transform;
         }
+
         renderers = parentWithMaterials.GetComponentsInChildren<Renderer>();
         materialArray = new Material[renderers.Length];
         int idx = 0;
@@ -41,8 +61,8 @@ public class S_DissolveController : MonoBehaviour
         if (dissolveStarted && (ignoreIsPaused || (!ignoreIsPaused && !PauseManager.IsPaused)))
         {
             timeSinceDissolveStarted += Time.fixedDeltaTime;
-            UpdateMaterials(1-timeSinceDissolveStarted/dissolveDuration);
-            if(timeSinceDissolveStarted > dissolveDuration)
+            UpdateMaterials(1 - timeSinceDissolveStarted / dissolveDuration);
+            if (timeSinceDissolveStarted > dissolveDuration)
             {
                 dissolveStarted = false;
             }
@@ -51,12 +71,13 @@ public class S_DissolveController : MonoBehaviour
 
     public void StartDissolve()
     {
+        Reset();
         dissolveStarted = true;
     }
 
     void UpdateMaterials(float dissolveAmount)
     {
-        foreach(Material material in materialArray)
+        foreach (Material material in materialArray)
         {
             material.SetFloat("_DissolveAmount", dissolveAmount);
         }

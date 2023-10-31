@@ -26,13 +26,11 @@ public class S_PauseMenu : MonoBehaviour
         playerControls = new S_PlayerControls();
         playerControls.Player.Pause.performed += context =>
         {
-            //pauseMenu.SetActive(!pauseMenu.activeSelf);
-            //isPauseMenuActive = pauseMenu.activeSelf;
+
             isPauseMenuActive = canvasGroupFader.GetIsActive();
             if (!isPauseMenuActive)
             {
                 originalPauseState = PauseManager.IsPaused;
-                Debug.Log("Pause button pressed: " + originalPauseState);
                 canvasGroupFader.FadeIn();
                 isPauseMenuActive = true;
                 if (!originalPauseState)
