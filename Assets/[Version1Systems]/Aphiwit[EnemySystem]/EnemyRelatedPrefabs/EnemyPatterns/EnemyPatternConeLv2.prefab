@@ -646,6 +646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPatternConeLv2
       objectReference: {fileID: 0}
+    - target: {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3447699366384952475, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}

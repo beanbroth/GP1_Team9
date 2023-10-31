@@ -7,9 +7,13 @@ public class S_EnemySpawnerManager : MonoBehaviour
     // Key time points
     //[SerializeField] float[] phaseTimeWindow;
 
-    // Attached spawners
+    // Attached Spawners
     [SerializeField] GameObject[] enemySpawners;
     [SerializeField] bool disableSpawnersOnAwake = true;
+    [System.NonSerialized] public int currentPhaseIndex = 1;
+
+    // Attached Managers
+    [SerializeField] S_WinTimer timer;
 
     /*private int currentIndex = 0;
     private float elapsedTime = 0;
@@ -21,10 +25,12 @@ public class S_EnemySpawnerManager : MonoBehaviour
     {
         S_WinTimer.newPhase += ActivateSpawner;
     }
+
     void OnDisable()
     {
         S_WinTimer.newPhase -= ActivateSpawner;
     }
+
     private void Awake()
     {
         if (disableSpawnersOnAwake)
@@ -34,12 +40,23 @@ public class S_EnemySpawnerManager : MonoBehaviour
                 spawner.SetActive(false);
             }
         }
-
     }
     private void Start()
     {
         ActivateSpawner(1);
     }
+
+    private void Update()
+    {
+        currentPhaseIndex = timer.currentPhase;
+    }
+
+    void ActivateSpawner(int spawnerIndex)
+    {
+        if(spawnerIndex < enemySpawners.Length)
+            enemySpawners[spawnerIndex-1].SetActive(true);
+    }
+}
 
     // Update is called once per frame
     /*void Update()
@@ -58,9 +75,3 @@ public class S_EnemySpawnerManager : MonoBehaviour
             canIncrease = false;
         }
     }*/
-    void ActivateSpawner(int spawnerIndex)
-    {
-        if(spawnerIndex < enemySpawners.Length)
-            enemySpawners[spawnerIndex-1].SetActive(true);
-    }
-}
