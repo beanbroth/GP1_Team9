@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: NewOrbitElectron
+  m_EditorClassIdentifier: 
+  weaponName: OrbitElectron
+  weaponPrefabs:
+  - {fileID: 6361174243417944010, guid: e3ce14e8ee17b8f4c9dd4478a15fb6e3, type: 3}
+  - {fileID: 3675861299822426158, guid: 83a222610fc4a5047b0680ff3b35fd5e, type: 3}
+  - {fileID: 3675861299822426158, guid: 12aa3625d19622043a638b04225e8e9e, type: 3}
+  - {fileID: 3675861299822426158, guid: 6bff6abc8ad284344b8ee28366e9b4fe, type: 3}
+  - {fileID: 3675861299822426158, guid: aaf355de91044c04cba78f08974f56f9, type: 3}
+  - {fileID: 3675861299822426158, guid: 6ee1e2b3a8524ed4ba9e96d50410bdcc, type: 3}
+  - {fileID: 3675861299822426158, guid: 6976a12db6e821448944370aa9507cb0, type: 3}
+  weaponDescriptions:
+  - Two electrons spin around you and damage enemies.
+  - Add one more ring with 2 electrons.
+  - Add 4 more electrons.
+  - Add one more ring and 10 electrons.
+  - Add 10 more electrons.
+  - Add one more ring and 18 electrons.
+  - Add 18 more electrons. >:]

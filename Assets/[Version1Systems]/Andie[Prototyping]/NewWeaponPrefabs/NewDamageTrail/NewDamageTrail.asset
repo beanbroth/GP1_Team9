@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: NewDamageTrail
+  m_EditorClassIdentifier: 
+  weaponName: DamageTrail
+  weaponPrefabs:
+  - {fileID: 3629374011504788508, guid: c254d76dea7ec01419df46e7aaa56334, type: 3}
+  - {fileID: 4213648422196081992, guid: 0b05d1f486deebd4db9480521e238f91, type: 3}
+  - {fileID: 4213648422196081992, guid: c191d9c91ab5228489ee7248be02974f, type: 3}
+  - {fileID: 4213648422196081992, guid: 7e0bd400d1e91274a9f4342f144ad7a8, type: 3}
+  - {fileID: 4213648422196081992, guid: 439afff02f437b84d8206bdac2f0246d, type: 3}
+  - {fileID: 4213648422196081992, guid: 65fcf595feabb824abb147f2a787e760, type: 3}
+  - {fileID: 4213648422196081992, guid: 0e3ec3dafe1241849ac3c3ddee0bcf91, type: 3}
+  weaponDescriptions:
+  - Add a trail that damages enemies behind you.
+  - Longer damage trail. Attack more often.
+  - Longer damage trail.
+  - Longer damage trail. Attack more often.
+  - Longer damage trail. Attack more often.
+  - 'Default Weapon Upgrade Description For: NewDamageTrail 5 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewDamageTrail 6 (UnityEngine.GameObject)'

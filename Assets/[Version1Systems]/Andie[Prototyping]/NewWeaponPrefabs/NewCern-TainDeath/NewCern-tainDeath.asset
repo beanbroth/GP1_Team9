@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: NewCern-tainDeath
+  m_EditorClassIdentifier: 
+  weaponName: Cern-tainDeath
+  weaponPrefabs:
+  - {fileID: 4765135944218552600, guid: fbdba268a2a97b447985138b0a0f314f, type: 3}
+  - {fileID: 4867354423592457395, guid: 97473c2f701dbb64f9c679a88c08a7f9, type: 3}
+  - {fileID: 4867354423592457395, guid: 1208be12734e6b74abdb434c756a3048, type: 3}
+  - {fileID: 4867354423592457395, guid: 20e6672f45880ee4090730d5d8505f08, type: 3}
+  - {fileID: 4867354423592457395, guid: aaaaa435d420e2246b8e794ade76a7cd, type: 3}
+  weaponDescriptions:
+  - Instantly kill a random nearby enemy.
+  - Instantly kill 1 extra random enemy, 2 in total.
+  - Instantly kill 1 extra random enemy, 3 in total.
+  - Instantly kill 1 extra random enemy, 4 in total. Attack twice as often.
+  - More damage. More often.
