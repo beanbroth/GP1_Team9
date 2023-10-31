@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: NewShootForward
+  m_EditorClassIdentifier: 
+  weaponName: ShootForward
+  weaponPrefabs:
+  - {fileID: 5744300782444405494, guid: 22432f58badbda640a29b6854db753d2, type: 3}
+  - {fileID: 3801696055598656345, guid: c7073301a54c75d4192e6984b7ae7c99, type: 3}
+  - {fileID: 3801696055598656345, guid: 0c098a95f98f0274e84711e4ac0855dd, type: 3}
+  - {fileID: 3801696055598656345, guid: d1e5c3208453ce247b1824b3ee1dee12, type: 3}
+  - {fileID: 3801696055598656345, guid: b55904473b0682a4f8eab09002344783, type: 3}
+  - {fileID: 3801696055598656345, guid: 1df8b49d0ab94ac4285891a7683eb4f2, type: 3}
+  - {fileID: 3801696055598656345, guid: 5a263b67e9b850140b994b92e34d7f77, type: 3}
+  weaponDescriptions:
+  - Shoot a bullet forward.
+  - Shoot 3 bullets forward.
+  - Shoot 4 bullets forward.
+  - Shoot 10 bullets forward.
+  - 'Default Weapon Upgrade Description For: NewShootForward 0 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 1 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 2 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 3 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 4 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 5 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewShootForward 6 (UnityEngine.GameObject)'

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
+  m_Name: NewRadiationArea
+  m_EditorClassIdentifier: 
+  weaponName: RadiationArea
+  weaponPrefabs:
+  - {fileID: 563342054848135308, guid: 5ab3b04f90260cb49a4086e6e5da0bc4, type: 3}
+  - {fileID: 1856572272474196961, guid: e3f40bafd9aa9304d83a951b0e65ca45, type: 3}
+  - {fileID: 1856572272474196961, guid: 0e4835f8525ff06428930aff02d29ceb, type: 3}
+  - {fileID: 1856572272474196961, guid: f23098f8fe6bcef4d8a2bc7b124e7f27, type: 3}
+  - {fileID: 1856572272474196961, guid: 65a73a02d7fef7c42bd9ba12193a2bbb, type: 3}
+  - {fileID: 1856572272474196961, guid: 2a4aa9413ece34346a08eb50263ed0fa, type: 3}
+  - {fileID: 1856572272474196961, guid: 510917b9cc0c7f74f9b9634165ea95a3, type: 3}
+  weaponDescriptions:
+  - Damage enemies near you.
+  - Larger damage area. Attack more often.
+  - Larger damage area. Attack more often.
+  - Larger damage area. Attack more often.
+  - 'Default Weapon Upgrade Description For: RadiationArea 4 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewRadiationArea 5 (UnityEngine.GameObject)'
+  - 'Default Weapon Upgrade Description For: NewRadiationArea 6 (UnityEngine.GameObject)'

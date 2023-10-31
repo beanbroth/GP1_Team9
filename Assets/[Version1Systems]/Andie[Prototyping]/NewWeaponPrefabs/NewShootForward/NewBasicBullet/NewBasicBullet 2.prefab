@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6243275298134339622}
   - component: {fileID: -6769431912794836646}
   m_Layer: 3
-  m_Name: BasicBullet
+  m_Name: NewBasicBullet 2
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyOnEnemyCollision: 1
   destroyOnOtherCollision: 0
-  damage: 1
-  penetration: 0
+  damage: 3
+  penetration: 2
 --- !u!1 &9139954468927611634
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,14 +224,6 @@ PrefabInstance:
     - target: {fileID: 2631292293560707853, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
       propertyPath: m_Name
       value: BoltVisuals 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2631292293560707853, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3806168922092475493, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
