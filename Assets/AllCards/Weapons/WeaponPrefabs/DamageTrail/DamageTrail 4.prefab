@@ -25,6 +25,10 @@ PrefabInstance:
       value: DamageTrail 4
       objectReference: {fileID: 0}
     - target: {fileID: 7270549768109097379, guid: ea894106cbf84c84286682ba0183e691, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270549768109097379, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9439348cd5476284f89540aabb27dcc7, type: 2}

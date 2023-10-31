@@ -1419,7 +1419,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":101.94495391845703,"g":60.66972732543945,"b":37.988922119140628,"a":1.0}'
+      m_SerializableObject: '{"r":118.03538513183594,"g":70.2455062866211,"b":43.984886169433597,"a":0.3137255012989044}'
     m_Space: 2147483647
   m_Property:
     name: _Color
@@ -1585,7 +1585,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 7
     m_Space: 2147483647
   m_Property:
     name: _VoronoiSpeed
