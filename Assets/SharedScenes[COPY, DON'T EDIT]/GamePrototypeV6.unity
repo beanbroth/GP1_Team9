@@ -6153,7 +6153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ededce08b1c020c49a1b78729e688ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInventory: {fileID: 11400000, guid: 0519ba4c28d1e884f859cc3d9ed15383, type: 2}
+  weaponInventory: {fileID: 11400000, guid: ae1bde78bde561a47a23150296d484a1, type: 2}
   weaponSpawnPoint: {fileID: 1058719849}
 --- !u!1 &1073204274
 GameObject:
@@ -10186,7 +10186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead29a2e9a55e2643a34bbd16b65ee03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponInventory: {fileID: 11400000, guid: 0519ba4c28d1e884f859cc3d9ed15383, type: 2}
+  weaponInventory: {fileID: 11400000, guid: ae1bde78bde561a47a23150296d484a1, type: 2}
   upgradeCardManager: {fileID: 1466389497}
   upgradeCost: 3
   upgradeChoices: 2
@@ -12772,9 +12772,9 @@ Transform:
   m_GameObject: {fileID: 3745238492210697377}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.47897, y: -10.28, z: -6.15}
+  m_LocalPosition: {x: 21.47897, y: -10.541, z: -6.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5668706941713747610}
   - {fileID: 3924377604049865331}
@@ -13361,8 +13361,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -21.50397, y: 10, z: 6.8050003}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 609900145349985542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13602,8 +13602,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: -21.5, y: 10, z: 7}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 609900145349985542}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
