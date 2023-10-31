@@ -25,10 +25,18 @@ public class S_WinTimer : MonoBehaviour
     private float maxTime;
     public int currentPhase = 1;
 
+    [Header("Music Management")]
+    [SerializeField] float[] timesForMusicSwitchs;
+    int currentMusicIndex = 0;
+    float timeUntilNextMusicSwitch;
+    S_MusicManager musicManager;
+
     S_SceneTransition sceneTransitionManager;
     private void Awake()
     {
         sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
+        musicManager = FindFirstObjectByType<S_MusicManager>();
+        timeUntilNextMusicSwitch = timesForMusicSwitchs[0];
     }
 
     private void Start()
@@ -53,6 +61,21 @@ public class S_WinTimer : MonoBehaviour
             return;
 
         currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
+
+        if (currentTime < timeUntilNextMusicSwitch)
+        {
+            currentMusicIndex++;
+            if (currentMusicIndex >= timesForMusicSwitchs.Length)
+            {
+                musicManager.SwitchToNextTrack();
+                timeUntilNextMusicSwitch = -1;
+            }
+            else
+            {
+                timeUntilNextMusicSwitch = timesForMusicSwitchs[currentMusicIndex];
+                musicManager.SwitchToNextTrack();
+            }
+        }
 
         if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
         {
