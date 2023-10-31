@@ -54,15 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9d2acf7ca967ff04085edd071b29e626, type: 3}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: radius
-      value: 3.3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: timeBetweenAttacks
