@@ -27,9 +27,9 @@ public class S_EnemySpawner : MonoBehaviour
     [SerializeField] float _maxSpawnRange=25f;
 
     [Header("For pattern spawner")]
-    [SerializeField] GameObjectArrayContainer[] _differentPhasesAndTheirPatterns;
-    [SerializeField] GameObjectArrayContainer _currentPhaseInPatternSpawner;
-    [SerializeField] GameObject[] _enemyPatternToUse;
+    [SerializeField] GameObjectArrayContainer[] _enemyPhaseAndPatternArrays;
+    [SerializeField] GameObjectArrayContainer _currentSelectedElement;
+    [SerializeField] GameObject[] _currentEnemyPattern;
     
     [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
@@ -77,21 +77,23 @@ public class S_EnemySpawner : MonoBehaviour
             _inSceneCooldown -= Time.deltaTime;
 
             // START OF NEW STUFF
-            if (_differentPhasesAndTheirPatterns.Length == 0)
+            if (_enemyPhaseAndPatternArrays.Length == 0)
             {
                 print("Different element array is empty");
             }
 
-            if (currentSpawnerPhase >= 0 && currentSpawnerPhase < _differentPhasesAndTheirPatterns.Length)
+            print("Phase and pattern array length: " + _enemyPhaseAndPatternArrays.Length);
+
+            if (currentSpawnerPhase >= 0 && currentSpawnerPhase < _enemyPhaseAndPatternArrays.Length)
             {
                 // Code here is useable as long as conditions fufilled
-                _currentPhaseInPatternSpawner = _differentPhasesAndTheirPatterns[currentSpawnerPhase - 1];
-                _enemyPatternToUse = _currentPhaseInPatternSpawner.enemyPatterns;
+                _currentSelectedElement = _enemyPhaseAndPatternArrays[currentSpawnerPhase - 1];
+                _currentEnemyPattern = _currentSelectedElement.enemyPatterns;
             }
 
-            if (_enemyPatternToUse.Length == 0)
+            if (_currentEnemyPattern.Length == 0)
             {
-                print("Enemy pattern to use is empty! ");
+                //print("Enemy pattern to use is empty! ");
             }
 
             // END OF NEW STUFF
@@ -105,10 +107,10 @@ public class S_EnemySpawner : MonoBehaviour
             enemyPatternBoxPosition = spawnCheck.Item1;
             canSpawn = spawnCheck.Item2;
 
-            if (canSpawn && _inSceneCooldown < 0 && enemyPatternBoxPosition != null && _enemyPatternToUse.Length != 0)
+            if (canSpawn && _inSceneCooldown < 0 && enemyPatternBoxPosition != null && _currentEnemyPattern.Length != 0)
             {
                 // Spawns enemy pattern on the location of the spawner
-                ObjectPoolManager.Instantiate(_enemyPatternToUse[UnityEngine.Random.Range(0, _enemyPatternToUse.Length)], enemyPatternBoxPosition, _player.rotation);
+                ObjectPoolManager.Instantiate(_currentEnemyPattern[UnityEngine.Random.Range(0, _currentEnemyPattern.Length)], enemyPatternBoxPosition, _player.rotation);
                 _inSceneCooldown = GetRandomPatternCooldown();
             }
         }

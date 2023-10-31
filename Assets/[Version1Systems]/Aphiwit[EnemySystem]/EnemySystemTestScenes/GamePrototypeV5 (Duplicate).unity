@@ -11082,10 +11082,10 @@ MonoBehaviour:
   _finalSpawnInterval: 1
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _differentPhasesAndTheirPatterns: []
-  _currentPhaseInPatternSpawner:
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
     enemyPatterns: []
-  _enemyPatternToUse: []
+  _currentEnemyPattern: []
   _patternCooldown: {x: 0, y: 0}
 --- !u!1 &1862134813
 GameObject:
@@ -13351,6 +13351,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 811487036}
     m_Modifications:
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[0].enemyPatterns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[1].enemyPatterns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[0].enemyPatterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[0].enemyPatterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 5750084403726946159, guid: 6d769dffa188add4c97a8301f9f13e9c, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[0].enemyPatterns.Array.data[2]
+      value: 
+      objectReference: {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _enemyPhaseAndPatternArrays.Array.data[1].enemyPatterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _differentPhasesAndTheirPatterns.Array.data[0].enemyPatterns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _differentPhasesAndTheirPatterns.Array.data[1].enemyPatterns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _differentPhasesAndTheirPatterns.Array.data[0].enemyPatterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _differentPhasesAndTheirPatterns.Array.data[0].enemyPatterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 5750084403726946159, guid: 6d769dffa188add4c97a8301f9f13e9c, type: 3}
+    - target: {fileID: 5004876371778392568, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
+      propertyPath: _differentPhasesAndTheirPatterns.Array.data[1].enemyPatterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 703111324287913547, guid: 2d7d818c1ffadda449e008cda96d8afb, type: 3}
     - target: {fileID: 8048827793485492525, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15174,10 +15222,10 @@ MonoBehaviour:
   _finalSpawnInterval: 0.5
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _differentPhasesAndTheirPatterns: []
-  _currentPhaseInPatternSpawner:
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
     enemyPatterns: []
-  _enemyPatternToUse: []
+  _currentEnemyPattern: []
   _patternCooldown: {x: 0, y: 0}
 --- !u!4 &8982027920790761980
 Transform:
