@@ -11,9 +11,11 @@ public class S_SplashScreen : MonoBehaviour
     UIScaleBounce bouncer;
     [SerializeField] Animator rotationAnimator;
     S_SceneTransition sceneTransition;
+    AudioSource audioSource;
     private void Awake()
     {
         sceneTransition = FindFirstObjectByType<S_SceneTransition>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -24,6 +26,7 @@ public class S_SplashScreen : MonoBehaviour
     }
     void PrepareAnimation()
     {
+        audioSource.Play();
         rotationAnimator.SetTrigger("Rotate");
     }
     void PrepareBounce()
