@@ -10,6 +10,8 @@ public class S_CardInfoController : MonoBehaviour
     [SerializeField] TextMeshPro lvlField;
     [SerializeField] Renderer preview;
 
+    private Texture texture;
+
     private UpgradeCardInfo cardInfo;
 
     public UpgradeCardInfo GetCardInfo() { return cardInfo; }
@@ -17,17 +19,14 @@ public class S_CardInfoController : MonoBehaviour
     public void SetCardInfo(UpgradeCardInfo cardInfo)
     {
         this.cardInfo = cardInfo;
+        preview.material.mainTexture = cardInfo.image;
         nameField.text = cardInfo.name;
         descriptionField.text = cardInfo.description;
         lvlField.text = "lvl " + cardInfo.level.ToString();
 
         if (cardInfo.image != null)
         {
-            preview.material.mainTexture = cardInfo.image;
-        }
-        if(cardInfo.prefab != null)
-        {
-            //spawn prefab in front of camera or something
+            preview.material.mainTexture  = cardInfo.image;
         }
 
     }
