@@ -11,11 +11,11 @@ public enum enemySpawnerType
     pattern
 }
 
-public class S_EnemySpawner : MonoBehaviour
+public class S_NormalEnemySpawner : EnemySpawnerMethods
 {
     public LayerMask groundLayerMask;
 
-    [SerializeField] int currentSpawnerPhase = 1; 
+    [SerializeField] int _currentSpawnerPhase = 1; 
     [SerializeField] enemySpawnerType _spawnerType;
 
     [Header("For normal spawner")]
@@ -27,10 +27,11 @@ public class S_EnemySpawner : MonoBehaviour
     [SerializeField] float _maxSpawnRange=25f;
 
     [Header("For pattern spawner")]
-    [SerializeField] GameObjectArrayContainer[] _enemyPhaseAndPatternArrays;
-    [SerializeField] GameObjectArrayContainer _currentSelectedElement;
+    [SerializeField] EnemyPhaseWithPatterns[] _enemyPhaseAndPatternArrays;
+    [SerializeField] EnemyPhaseWithPatterns _currentSelectedElement;
     [SerializeField] GameObject[] _currentEnemyPattern;
-    
+
+    [SerializeField] float minPatternCooldown, maxPatternCooldown;
     [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
 
@@ -41,14 +42,14 @@ public class S_EnemySpawner : MonoBehaviour
     void Start()
     {  
         _tempSpawnInterval = _originalSpawnInterval;
-        _inSceneCooldown = GetRandomPatternCooldown();
+        _inSceneCooldown = GetRandomPatternCooldown(minPatternCooldown, maxPatternCooldown);
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
-        currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
+        _currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
     }
 
     void Update()
     {
-        currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
+        _currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
 
         if (PauseManager.IsPaused)
             return;
@@ -84,10 +85,12 @@ public class S_EnemySpawner : MonoBehaviour
 
             print("Phase and pattern array length: " + _enemyPhaseAndPatternArrays.Length);
 
-            if (currentSpawnerPhase >= 0 && currentSpawnerPhase < _enemyPhaseAndPatternArrays.Length)
+            // Add if statement here to reduce phase index if it's more than array length
+
+            if (_currentSpawnerPhase >= 0 && _currentSpawnerPhase < _enemyPhaseAndPatternArrays.Length)
             {
                 // Code here is useable as long as conditions fufilled
-                _currentSelectedElement = _enemyPhaseAndPatternArrays[currentSpawnerPhase - 1];
+                _currentSelectedElement = _enemyPhaseAndPatternArrays[_currentSpawnerPhase - 1];
                 _currentEnemyPattern = _currentSelectedElement.enemyPatterns;
             }
 
@@ -111,30 +114,11 @@ public class S_EnemySpawner : MonoBehaviour
             {
                 // Spawns enemy pattern on the location of the spawner
                 ObjectPoolManager.Instantiate(_currentEnemyPattern[UnityEngine.Random.Range(0, _currentEnemyPattern.Length)], enemyPatternBoxPosition, _player.rotation);
-                _inSceneCooldown = GetRandomPatternCooldown();
+                _inSceneCooldown = GetRandomPatternCooldown(minPatternCooldown, maxPatternCooldown);
             }
         }
 
         // print("current spawner phase: " + currentSpawnerPhase);
-    }
-
-    private (Vector3, bool) CheckIfSpawnPointExist(Vector3 position, bool returnValue)
-    {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(position, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            position = hit.position;
-            return (position, true);
-        }
-        else
-        {
-            return (position, false);
-        }
-    }
-
-    float GetRandomPatternCooldown()
-    {
-        return UnityEngine.Random.Range(_patternCooldown.x, _patternCooldown.y);
     }
 
     private (Vector3, bool) GenerateRandomSpawnPoint()

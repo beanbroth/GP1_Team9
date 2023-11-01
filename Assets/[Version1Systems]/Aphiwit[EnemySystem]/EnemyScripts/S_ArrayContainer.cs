@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameObjectArrayContainer
+public class EnemyPhaseWithPatterns
 {
     public GameObject[] enemyPatterns;
 }
