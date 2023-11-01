@@ -11,7 +11,7 @@ public class S_RandomScreenKill : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     List<GameObject> killableEnemies = new List<GameObject>();
     public int initialBoltPoolSize = 10;
-    private int damage = 999;
+    public int damage = 999;
     public float killRange = 25;
     public float timeBetweenKills = 1f;
     public float boltLifetime = 0.1f;

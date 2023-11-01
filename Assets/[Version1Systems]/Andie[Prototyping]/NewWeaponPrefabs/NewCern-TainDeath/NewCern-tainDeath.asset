@@ -19,9 +19,13 @@ MonoBehaviour:
   - {fileID: 4867354423592457395, guid: 1208be12734e6b74abdb434c756a3048, type: 3}
   - {fileID: 4867354423592457395, guid: 20e6672f45880ee4090730d5d8505f08, type: 3}
   - {fileID: 4867354423592457395, guid: aaaaa435d420e2246b8e794ade76a7cd, type: 3}
+  - {fileID: 4867354423592457395, guid: 1ed1ddc66848b8d42888cf98910c7461, type: 3}
+  - {fileID: 4867354423592457395, guid: c00c6c82aab1c7c48a59d69cb9610b55, type: 3}
   weaponDescriptions:
   - Instantly kill a random nearby enemy.
   - Instantly kill 1 extra random enemy, 2 in total.
   - Instantly kill 1 extra random enemy, 3 in total.
-  - Instantly kill 1 extra random enemy, 4 in total. Attack twice as often.
-  - More damage. More often.
+  - Instantly kill 1 extra random enemy, 4 in total. Attacks more often
+  - Instantly kill 1 extra random enemy, 5 in total, Attacks more often
+  - Instantly kill 1 extra random enemy, 6 in total. Attacks more often
+  - Instantly kill 1 extra random enemy, 7 in total. Attacks more often

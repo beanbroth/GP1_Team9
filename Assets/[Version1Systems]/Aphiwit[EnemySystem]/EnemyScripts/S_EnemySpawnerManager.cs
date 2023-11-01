@@ -9,6 +9,7 @@ public class S_EnemySpawnerManager : MonoBehaviour
 
     // Attached spawners
     [SerializeField] GameObject[] enemySpawners;
+    [SerializeField] GameObject[] enemySpawnersToDisable;
     [SerializeField] bool disableSpawnersOnAwake = true;
 
     /*private int currentIndex = 0;
@@ -20,10 +21,12 @@ public class S_EnemySpawnerManager : MonoBehaviour
     void OnEnable()
     {
         S_WinTimer.enemySpawnerUpdate += ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate += DeactivateSpawner;
     }
     void OnDisable()
     {
         S_WinTimer.enemySpawnerUpdate -= ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate -= DeactivateSpawner;
     }
     private void Awake()
     {
@@ -62,5 +65,11 @@ public class S_EnemySpawnerManager : MonoBehaviour
     {
         if(spawnerIndex < enemySpawners.Length)
             enemySpawners[spawnerIndex-1].SetActive(true);
+    }
+
+    void DeactivateSpawner(int spawnerIndex)
+    {
+        if (spawnerIndex < enemySpawnersToDisable.Length)
+            enemySpawnersToDisable[spawnerIndex - 1].SetActive(false);
     }
 }

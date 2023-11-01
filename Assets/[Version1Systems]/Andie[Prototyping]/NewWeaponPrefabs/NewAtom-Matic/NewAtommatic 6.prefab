@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 6503858307881935170, guid: e2ab26b3e493e8a438e450d1c0871e49, type: 3}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: numberOfBullets
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: timeBetweenShots
