@@ -1749,7 +1749,7 @@ Transform:
   m_GameObject: {fileID: 273969041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1772,13 +1772,12 @@ MonoBehaviour:
     m_Bits: 256
   _currentSpawnerPhase: 0
   _enemyPhases:
+  - enemyPatterns: []
   - enemyPatterns:
     - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
     - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
     - {fileID: 6381930404305866309, guid: b181b5f1e5dfc614c9d9b59dc7d5f387, type: 3}
-  - enemyPatterns:
-    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
-    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+  - enemyPatterns: []
   _currentEnemyPhase:
     enemyPatterns: []
   _currentEnemyPatterns: []
@@ -2199,6 +2198,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384345055}
   m_CullTransparentMesh: 1
+--- !u!1 &410318438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410318439}
+  - component: {fileID: 410318440}
+  m_Layer: 6
+  m_Name: PatternEnemySpawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &410318439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410318438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733205300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &410318440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410318438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4d6fef1944dcc43b5a68aa6dce2df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _currentSpawnerPhase: 0
+  _enemyPhases:
+  - enemyPatterns:
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+    - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
+    - {fileID: 6381930404305866309, guid: b181b5f1e5dfc614c9d9b59dc7d5f387, type: 3}
+  - enemyPatterns:
+    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+  _currentEnemyPhase:
+    enemyPatterns: []
+  _currentEnemyPatterns: []
+  _randomPatternCooldown: 0
+  _minPatternCooldown: 0
+  _maxPatternCooldown: 3
 --- !u!1 &440288613
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,6 +4046,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273969042}
+  - {fileID: 1800767163}
+  - {fileID: 1833894865}
+  - {fileID: 410318439}
   m_Father: {fileID: 1727308299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &733205301
@@ -4000,8 +4064,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentPatternManagerPhase: 0
-  timer: {fileID: 0}
-  _enemyPatternSpawnerArray: []
+  staticArray: 1
+  _timer: {fileID: 0}
+  _keyTimeFrames: []
+  _enemyPatternSpawnerArray:
+  - {fileID: 273969041}
+  - {fileID: 1800767162}
+  - {fileID: 410318438}
   _enemyPatternSpawnerList: []
 --- !u!1 &747807358
 GameObject:
@@ -10736,6 +10805,130 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1800767162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800767163}
+  - component: {fileID: 1800767164}
+  m_Layer: 6
+  m_Name: PatternEnemySpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1800767163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800767162}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733205300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800767164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800767162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4d6fef1944dcc43b5a68aa6dce2df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _currentSpawnerPhase: 0
+  _enemyPhases:
+  - enemyPatterns:
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+    - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
+    - {fileID: 6381930404305866309, guid: b181b5f1e5dfc614c9d9b59dc7d5f387, type: 3}
+  - enemyPatterns:
+    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+  _currentEnemyPhase:
+    enemyPatterns: []
+  _currentEnemyPatterns: []
+  _randomPatternCooldown: 0
+  _minPatternCooldown: 0
+  _maxPatternCooldown: 3
+--- !u!1 &1833894864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833894865}
+  - component: {fileID: 1833894866}
+  m_Layer: 6
+  m_Name: PatternEnemySpawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1833894865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833894864}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733205300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1833894866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833894864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4d6fef1944dcc43b5a68aa6dce2df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _currentSpawnerPhase: 0
+  _enemyPhases:
+  - enemyPatterns:
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+    - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
+    - {fileID: 6381930404305866309, guid: b181b5f1e5dfc614c9d9b59dc7d5f387, type: 3}
+  - enemyPatterns:
+    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+  _currentEnemyPhase:
+    enemyPatterns: []
+  _currentEnemyPatterns: []
+  _randomPatternCooldown: 0
+  _minPatternCooldown: 0
+  _maxPatternCooldown: 3
 --- !u!1 &1834941731
 GameObject:
   m_ObjectHideFlags: 0

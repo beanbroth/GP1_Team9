@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 public class S_PatternEnemySpawnerManager : MonoBehaviour
 {
     public int CurrentPatternManagerPhase;
 
+    [SerializeField] bool staticArray;
     [SerializeField] S_WinTimer _timer;
     [SerializeField] float[] _keyTimeFrames;
     [SerializeField] List<GameObject> _enemyPatternSpawnerArray;
@@ -25,17 +27,20 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
             Debug.Log("Connected child objects: " + transform.childCount);
             Debug.Log("Array length in manager: " + _enemyPatternSpawnerArray.Count);
 
-            if (_enemyPatternSpawnerArray.Count != transform.childCount)
+            if (!staticArray)
             {
-                _enemyPatternSpawnerArray.Clear();
-
-                // Add connected spawners to _enemyPatternSpawnerArray
-                for (int i = 0; i < transform.childCount; i++)
+                if (_enemyPatternSpawnerArray.Count != transform.childCount)
                 {
-                    GameObject _childSpawner = transform.GetChild(i).gameObject;
-                    if (_childSpawner.gameObject.GetComponent<S_EnemyPatternSpawner>() != null)
+                    _enemyPatternSpawnerArray.Clear();
+
+                    // Add connected spawners to _enemyPatternSpawnerArray
+                    for (int i = 0; i < transform.childCount; i++)
                     {
-                        _enemyPatternSpawnerArray.Add(_childSpawner);
+                        GameObject _childSpawner = transform.GetChild(i).gameObject;
+                        if (_childSpawner.gameObject.GetComponent<S_EnemyPatternSpawner>() != null)
+                        {
+                            _enemyPatternSpawnerArray.Add(_childSpawner);
+                        }
                     }
                 }
             }
@@ -82,5 +87,12 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
                 }
             }
         }
+        //foreach (float keyTimeFrame in _keyTimeFrames)
+        //{
+        //    if (_enemyPatternSpawnerArray != null && CurrentPatternManagerPhase! > _enemyPatternSpawnerArray.Count && keyTimeFrame > )
+        //    {
+
+        //    }
+        //}
     }
 }

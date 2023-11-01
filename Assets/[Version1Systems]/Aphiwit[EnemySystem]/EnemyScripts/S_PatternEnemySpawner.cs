@@ -71,13 +71,15 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
         }
 
         _patternCooldown -= Time.deltaTime;
-        
+
+        // Updates _currentEnemyPhase and _currentEnemyPatterns
         if (_currentSpawnerPhase >= 0 && _currentSpawnerPhase < _enemyPhases.Length + 1)
         {
             _currentEnemyPhase = _enemyPhases[_currentSpawnerPhase - 1];
             _currentEnemyPatterns = _currentEnemyPhase.enemyPatterns;
         }
 
+        // Spawn enemies is condition triggerd
         if (_patternCooldown <= 0)
         {
             Vector3 enemyPatternSpawnPosition = transform.position;
