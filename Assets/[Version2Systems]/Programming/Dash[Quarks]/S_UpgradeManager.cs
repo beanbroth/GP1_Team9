@@ -13,12 +13,15 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] public SO_WeaponInventory weaponInventory;
     [SerializeField] S_UpgradeCardManager upgradeCardManager;
     [SerializeField] int upgradeCost = 3;
-    [SerializeField] int upgradeChoices = 3;
+    [SerializeField] int inititalUpgradeChoices = 3;
+    [SerializeField] int deafaultlUpgradeChoices = 2;
+    int upgradeChoices = 3;
     [SerializeField] float inputDelayTime = 0.05f;
     private bool isUpgrading;
     private S_PlayerControls playerControls;
     private bool isHoldingLeft = false;
     private bool isHoldingRight = false;
+    private bool firstSelectionComplete = false;
     [SerializeField] private float upgradeCostIncrease = 0.2f;
 
     private void Awake()
@@ -110,6 +113,15 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void InitCards()
     {
+        if (!firstSelectionComplete)
+        {
+            upgradeChoices = inititalUpgradeChoices;
+            firstSelectionComplete = true;
+        }
+        else
+        {
+            upgradeChoices = deafaultlUpgradeChoices;
+        }
         List<UpgradeCardInfo> upgradeCardInfos = new List<UpgradeCardInfo>();
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
         foreach (SO_SingleWeaponClass weaponClass in weaponInventory.availableWeaponClasses)

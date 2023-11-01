@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class S_UpgradeCardManager : MonoBehaviour
 {
+    public static UnityAction OpenUpgrade;
+    public static UnityAction CloseUpgrade;
     [SerializeField] private GameObject cardPrefab;
     private List<S_CardMovementController> cards = new List<S_CardMovementController>();
     [SerializeField] int testNumCards = 3;
@@ -56,6 +59,10 @@ public class S_UpgradeCardManager : MonoBehaviour
 
     public void DisplayCards(UpgradeCardInfo[] cardInfos)
     {
+        if(OpenUpgrade != null)
+        {
+            OpenUpgrade.Invoke();
+        }
         float numberOfCards = cardInfos.Length;
         float cardSpacing = totalWidth / (numberOfCards + 1);
         float cardWidth = totalWidth / numberOfCards;
@@ -94,6 +101,10 @@ public class S_UpgradeCardManager : MonoBehaviour
 
     public void ClearCards()
     {
+        if (CloseUpgrade != null)
+        {
+            CloseUpgrade.Invoke();
+        }
         cardPreviewController.DisableAllCardPods();
         cards.Clear();
         for (int i = transform.childCount - 1; i >= 0; i--)
