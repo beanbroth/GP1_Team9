@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
   m_Name: NewShootForward
   m_EditorClassIdentifier: 
-  weaponName: ShootForward
+  weaponName: Particle Accelerator
   weaponPrefabs:
   - {fileID: 5744300782444405494, guid: 22432f58badbda640a29b6854db753d2, type: 3}
   - {fileID: 3801696055598656345, guid: c7073301a54c75d4192e6984b7ae7c99, type: 3}

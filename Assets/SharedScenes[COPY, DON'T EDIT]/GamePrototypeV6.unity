@@ -5794,7 +5794,6 @@ MonoBehaviour:
   _enemyPatternSpawnerArray:
   - {fileID: 92577241}
   - {fileID: 92577241}
-  - {fileID: 92577241}
   - {fileID: 6587185687985286401}
   - {fileID: 92577241}
   - {fileID: 92577241}
@@ -5803,12 +5802,16 @@ MonoBehaviour:
   - {fileID: 92577241}
   - {fileID: 8824747384162647897}
   - {fileID: 8824747384869256210}
+  - {fileID: 92577241}
+  - {fileID: 92577241}
   _enemyPatternSpawnerDisableArray:
   - {fileID: 92577241}
   - {fileID: 92577241}
   - {fileID: 92577241}
   - {fileID: 92577241}
   - {fileID: 6587185687985286401}
+  - {fileID: 92577241}
+  - {fileID: 92577241}
   - {fileID: 92577241}
   - {fileID: 92577241}
   - {fileID: 92577241}
@@ -10418,6 +10421,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284910587}
   m_CullTransparentMesh: 1
+--- !u!1001 &1287486284
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3530424372874791026, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_Name
+      value: Clouds_PS (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.42745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.4750356
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5352973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
 --- !u!1 &1291088826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 906542042474088538, guid: f8801364add6d7c439691fec2d23a9c8, type: 3}
@@ -11911,6 +11987,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503858853}
   m_CullTransparentMesh: 1
+--- !u!1001 &1504854368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3530424372874791026, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_Name
+      value: Clouds_PS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.42745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.4750356
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5352973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591714897926874976, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169140939521995670, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504686cd78d67a64d86fd97af948dcf2, type: 3}
 --- !u!1 &1505946885
 GameObject:
   m_ObjectHideFlags: 0
@@ -18600,7 +18749,7 @@ MonoBehaviour:
   _currentEnemyPatterns: []
   _randomPatternCooldown: 1
   _minPatternCooldown: 1
-  _maxPatternCooldown: 5
+  _maxPatternCooldown: 2
 --- !u!4 &6781103879797501385
 Transform:
   m_ObjectHideFlags: 0
@@ -19128,8 +19277,8 @@ MonoBehaviour:
     enemyPatterns: []
   _currentEnemyPatterns: []
   _randomPatternCooldown: 1
-  _minPatternCooldown: 1
-  _maxPatternCooldown: 5
+  _minPatternCooldown: 2
+  _maxPatternCooldown: 4
 --- !u!1 &8824747384774122534
 GameObject:
   m_ObjectHideFlags: 0
@@ -19174,7 +19323,7 @@ MonoBehaviour:
   _currentEnemyPatterns: []
   _randomPatternCooldown: 1
   _minPatternCooldown: 1
-  _maxPatternCooldown: 5
+  _maxPatternCooldown: 2
 --- !u!1 &8824747384869256210
 GameObject:
   m_ObjectHideFlags: 0
@@ -19218,8 +19367,8 @@ MonoBehaviour:
     enemyPatterns: []
   _currentEnemyPatterns: []
   _randomPatternCooldown: 1
-  _minPatternCooldown: 1
-  _maxPatternCooldown: 10
+  _minPatternCooldown: 3
+  _maxPatternCooldown: 5
 --- !u!1 &9085502979422423946
 GameObject:
   m_ObjectHideFlags: 0
@@ -19263,3 +19412,5 @@ SceneRoots:
   - {fileID: 1274544064}
   - {fileID: 7232926639519353252}
   - {fileID: 744085354}
+  - {fileID: 1504854368}
+  - {fileID: 1287486284}

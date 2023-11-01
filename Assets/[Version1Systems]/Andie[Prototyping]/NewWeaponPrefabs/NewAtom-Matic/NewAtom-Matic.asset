@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceba3a2546659d14baa7fb3e43cfde68, type: 3}
   m_Name: NewAtom-Matic
   m_EditorClassIdentifier: 
-  weaponName: Atom-matic
+  weaponName: Atom-matic Gun
   weaponPrefabs:
   - {fileID: 3169841262531599814, guid: c051c44d276ef674d876cf0b280e6c27, type: 3}
   - {fileID: 3453280485183460316, guid: 683bd253a2800814a9ca67dfbeff5ac5, type: 3}

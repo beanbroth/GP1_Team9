@@ -88,6 +88,7 @@ public class S_RandomScreenKill : MonoBehaviour
         {
             KillRandomEnemy();
         }
+        AudioManager.Instance.PlaySound3D("Cern-TainDeath", transform.position);
     }
 
     private void KillRandomEnemy()
@@ -100,7 +101,6 @@ public class S_RandomScreenKill : MonoBehaviour
 
     private void CreateBolt(Transform enemyTransform)
     {
-        AudioManager.Instance.PlaySound3D("Cern-TainDeath", transform.position);
         GameObject bolt = GetBoltFromPool();
         bolt.transform.position = enemyTransform.position;
         bolt.transform.rotation = Quaternion.identity;
