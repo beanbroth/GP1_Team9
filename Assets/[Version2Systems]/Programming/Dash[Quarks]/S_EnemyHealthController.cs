@@ -33,6 +33,7 @@ public class S_EnemyHealthController : MonoBehaviour
     private void ResetEnemy()
     {
         currentHealth = maxHealth;
+
         enemyAiBehviour.enabled = true;
         GetComponent<SphereCollider>().enabled = true;
         GetComponent<NavMeshAgent>().enabled = true;

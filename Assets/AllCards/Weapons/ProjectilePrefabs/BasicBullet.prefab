@@ -90,6 +90,7 @@ MonoBehaviour:
   destroyOnOtherCollision: 0
   damage: 1
   penetration: 0
+  lifeTime: 10
 --- !u!1 &9139954468927611634
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +232,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806168922092475493, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959886495387732279, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
+      propertyPath: m_StartSeed
+      value: 114654911
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959886495387732279, guid: 417fc2b4cf16b6849a20ff4d7d608a16, type: 3}
+      propertyPath: m_ResetSeedOnPlay
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,11 +17,16 @@ public class S_RandomScreenKill : MonoBehaviour
     public float timeBetweenKills = 1f;
     public float boltLifetime = 0.1f;
     public int numKills = 1;
+    private float elapsedTime = 0f;
 
     private void Awake()
     {
         CreateBoltPool(initialBoltPoolSize);
-        InvokeRepeating("Kill", 0.0f, timeBetweenKills);
+    }
+
+    private void OnEnable()
+    {
+        elapsedTime = 0;
     }
 
     private void OnDisable()
@@ -29,6 +35,16 @@ public class S_RandomScreenKill : MonoBehaviour
         {
             if (bolt != null)
                 bolt.SetActive(false);
+        }
+    }
+    void Update()
+    {
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= timeBetweenKills)
+        {
+            elapsedTime = 0f;
+            Kill();
         }
     }
 
@@ -59,9 +75,6 @@ public class S_RandomScreenKill : MonoBehaviour
 
     private void Kill()
     {
-        if (PauseManager.IsPaused)
-            return;
-        
         killableEnemies.Clear();
         foreach (Collider enemy in Physics.OverlapSphere(transform.position, killRange, enemyLayer))
         {

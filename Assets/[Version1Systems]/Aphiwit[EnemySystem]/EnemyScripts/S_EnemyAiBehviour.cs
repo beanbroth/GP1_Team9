@@ -74,7 +74,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
             SearchWalkPoint();
         }
 
-        if (walkPointSet)
+        if (walkPointSet && navMeshAgent.isOnNavMesh)
         {
             navMeshAgent.SetDestination(walkPoint);
         }

@@ -142,6 +142,17 @@ public class SO_WeaponInventory : ScriptableObject
 
         return false;
     }
+    
+    public bool IsWeaponOneBeforeMaxLevel(SO_SingleWeaponClass weaponClass)
+    {
+        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=
+            GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel - 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     public void AddWeapon(string weaponName)
     {

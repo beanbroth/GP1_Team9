@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,7 +10,26 @@ public class S_CardPreviewController : MonoBehaviour
     [SerializeField] List<GameObject> cameraPods = new List<GameObject>();
     [SerializeField] List<GameObject> dummyPrefabs = new List<GameObject>();
 
+    private void Awake()
+    {
+        DisableAllCardPods();
+        PauseManager.OnPauseStateChange += PauseStateChanged;
+    }
 
+    private void OnDestroy()
+    {
+        PauseManager.OnPauseStateChange -= PauseStateChanged;
+    }
+
+
+    void PauseStateChanged(bool isPuaused)
+    {
+        if (!isPuaused)
+        {
+            DisableAllCardPods();
+        }
+    }
+    
     public void SetUpCardPreview(GameObject weaponPrefab, int ix)
     {
         //enable the correct dummy prefab
