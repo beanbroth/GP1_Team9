@@ -7,7 +7,8 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
 {
     public int CurrentPatternManagerPhase;
 
-    [SerializeField] S_WinTimer timer;
+    [SerializeField] S_WinTimer _timer;
+    [SerializeField] float[] _keyTimeFrames;
     [SerializeField] List<GameObject> _enemyPatternSpawnerArray;
     [SerializeField] List<S_EnemyPatternSpawner> _enemyPatternSpawnerList; 
 
@@ -42,9 +43,9 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
             Debug.Log("New Array length in manager: " + _enemyPatternSpawnerArray.Count);
         }
 
-        timer = FindFirstObjectByType<S_WinTimer>();
+        _timer = FindFirstObjectByType<S_WinTimer>();
 
-        CurrentPatternManagerPhase = timer.currentPhase;
+        CurrentPatternManagerPhase = _timer.currentPhase;
 
         if (_enemyPatternSpawnerArray != null)
         {
@@ -68,14 +69,15 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentPatternManagerPhase != timer.currentPhase)
+        if (CurrentPatternManagerPhase != _timer.currentPhase)
         {
-            CurrentPatternManagerPhase = timer.currentPhase;
+            CurrentPatternManagerPhase = _timer.currentPhase;
 
             if (_enemyPatternSpawnerArray != null && CurrentPatternManagerPhase !> _enemyPatternSpawnerArray.Count)
             {
                 foreach (S_EnemyPatternSpawner spawner in _enemyPatternSpawnerList)
                 {
+                    spawner.gameObject.SetActive(true);
                     spawner._currentSpawnerPhase = CurrentPatternManagerPhase;                
                 }
             }
