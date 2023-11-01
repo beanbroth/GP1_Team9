@@ -9,11 +9,15 @@ public class S_HUDManager : MonoBehaviour
     private void OnEnable()
     {
         S_Health.OnDeath += TurnHUDOff;
+        S_UpgradeCardManager.OpenUpgrade += TurnHUDOff;
+        S_UpgradeCardManager.CloseUpgrade += TurnHUDOn;
     }
     
     private void OnDisable()
     {
         S_Health.OnDeath -= TurnHUDOff;
+        S_UpgradeCardManager.OpenUpgrade -= TurnHUDOff;
+        S_UpgradeCardManager.CloseUpgrade -= TurnHUDOn;
     }
 
     [SerializeField] GameObject[] hudPanels;

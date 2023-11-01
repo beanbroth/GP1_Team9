@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,9 +11,11 @@ public class S_BulletDamageController : MonoBehaviour
     [SerializeField] private bool destroyOnOtherCollision = true;
     [SerializeField] int damage = 1;
     [SerializeField] private int penetration;
+    [SerializeField] private float lifeTime = 10f;
     private int bulletHealth;
     private Vector3 lastPos;
     private Vector3 velocityDir;
+    private float timeSinceSpawn;
 
     private void Start()
     {
@@ -20,8 +23,24 @@ public class S_BulletDamageController : MonoBehaviour
         bulletHealth = penetration;
     }
 
+    private void OnEnable()
+    {
+        timeSinceSpawn = 0f;
+    }
+
     private void FixedUpdate()
     {
+        if (PauseManager.IsPaused)
+        {
+            return;
+        }
+
+        timeSinceSpawn += Time.deltaTime;
+        if (timeSinceSpawn > lifeTime)
+        {
+            ObjectPoolManager.Destroy(gameObject);
+        }
+
         velocityDir = (transform.position - lastPos).normalized;
         lastPos = transform.position;
     }

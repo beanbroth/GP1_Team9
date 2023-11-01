@@ -6,38 +6,22 @@ using UnityEngine.UI;
 
 public class S_CanvasGroupFader : MonoBehaviour
 {
-    [SerializeField] private bool fadeOnDamage = true;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] float animationFPS = 60f;
-    [SerializeField] float animationDuration = 2f;
+    public float animationDuration = 2f;
     [SerializeField] bool ignoreTimeScale = true;
     float timePerFrame;
-
-
-    private void OnEnable()
-    {
-        if (fadeOnDamage)
-        {
-            S_Health.OnDamage += FadeInAndOut;
-
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (fadeOnDamage)
-        {
-            S_Health.OnDamage -= FadeInAndOut;
-
-        }
-    }
+    [SerializeField] bool transparentAtStart = true;
 
     private void Awake()
     {
         if(canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
         timePerFrame = 1 / animationFPS;
-        canvasGroup.alpha = 0;
+        if(transparentAtStart)
+            canvasGroup.alpha = 0;
+        else
+            canvasGroup.alpha = 1;
     }
 
     public void FadeIn()

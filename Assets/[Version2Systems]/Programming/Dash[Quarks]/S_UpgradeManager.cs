@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -13,13 +14,19 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] public SO_WeaponInventory weaponInventory;
     [SerializeField] S_UpgradeCardManager upgradeCardManager;
     [SerializeField] int upgradeCost = 3;
-    [SerializeField] int upgradeChoices = 3;
+    [SerializeField] int inititalUpgradeChoices = 3;
+    [SerializeField] int deafaultlUpgradeChoices = 2;
+    int upgradeChoices = 3;
     [SerializeField] float inputDelayTime = 0.05f;
     private bool isUpgrading;
     private S_PlayerControls playerControls;
     private bool isHoldingLeft = false;
     private bool isHoldingRight = false;
+    private bool firstSelectionComplete = false;
     [SerializeField] private float upgradeCostIncrease = 0.2f;
+    public static UnityAction ScrollLeft;
+    public static UnityAction ScrollRight;
+    public static UnityAction SelectCard;
 
     private void Awake()
     {
@@ -80,6 +87,10 @@ public class S_UpgradeManager : MonoBehaviour
             if (wasTurnLeftPressed)
             {
                 StartCoroutine(MoveSelection(-1));
+                if(ScrollLeft != null)
+                {
+                    ScrollLeft.Invoke();
+                }
             }
         }
 
@@ -88,12 +99,20 @@ public class S_UpgradeManager : MonoBehaviour
             if (wasTurnRightPressed)
             {
                 StartCoroutine(MoveSelection(1));
+                if (ScrollRight != null)
+                {
+                    ScrollRight.Invoke();
+                }
             }
         }
 
         if (turnLeftValue < -0.5f && turnRightValue > 0.5f)
         {
             PerformUpgrade();
+            if (SelectCard != null)
+            {
+                SelectCard.Invoke();
+            }
         }
     }
 
@@ -110,9 +129,18 @@ public class S_UpgradeManager : MonoBehaviour
 
     private void InitCards()
     {
+        if (!firstSelectionComplete)
+        {
+            upgradeChoices = inititalUpgradeChoices;
+            firstSelectionComplete = true;
+        }
+        else
+        {
+            upgradeChoices = deafaultlUpgradeChoices;
+        }
         List<UpgradeCardInfo> upgradeCardInfos = new List<UpgradeCardInfo>();
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
-        foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
+        foreach (SO_SingleWeaponClass weaponClass in weaponInventory.availableWeaponClasses)
         {
             if (!weaponInventory.IsWeaponMaxLevel(weaponClass))
             {
