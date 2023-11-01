@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5776176286410508426}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,11 +47,25 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  currentSpawnerPhase: 1
+  _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
   _originalSpawnInterval: 1
-  _spawnIntervalReductionValue: 0.03
+  _spawnIntervalReductionValue: 0.002
   _finalSpawnInterval: 0.001
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _tempSpawnInterval: 0
+  _differentPhasesAndTheirPatterns:
+  - enemyPatterns:
+    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
+    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
+    - {fileID: 5750084403726946159, guid: 6d769dffa188add4c97a8301f9f13e9c, type: 3}
+  - enemyPatterns:
+    - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
+    - {fileID: 3770562052151307150, guid: 4b976322d8c18dd40a797cabdf040648, type: 3}
+    - {fileID: 703111324287913547, guid: 2d7d818c1ffadda449e008cda96d8afb, type: 3}
+  _currentPhaseInPatternSpawner:
+    enemyPatterns: []
+  _enemyPatternToUse: []
+  _patternCooldown: {x: 0, y: 0}

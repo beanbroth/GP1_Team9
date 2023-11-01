@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,11 @@ public enum enemySpawnerType
     pattern
 }
 
-public class S_EnemySpawner : MonoBehaviour
+public class S_NormalEnemySpawner : EnemySpawnerMethods
 {
     public LayerMask groundLayerMask;
 
+    [SerializeField] int _currentSpawnerPhase = 1; 
     [SerializeField] enemySpawnerType _spawnerType;
 
     [Header("For normal spawner")]
@@ -25,8 +27,11 @@ public class S_EnemySpawner : MonoBehaviour
     [SerializeField] float _maxSpawnRange=25f;
 
     [Header("For pattern spawner")]
-    [SerializeField] GameObject[] _enemyPatternList;
-    [SerializeField] Vector2 _patternCooldown;
+    [SerializeField] EnemyPhaseWithPatterns[] _enemyPhaseAndPatternArrays;
+    [SerializeField] EnemyPhaseWithPatterns _currentSelectedElement;
+    [SerializeField] GameObject[] _currentEnemyPattern;
+
+    [SerializeField] float minPatternCooldown, maxPatternCooldown;
     private float _inSceneCooldown;
 
     private float _tempSpawnInterval;
@@ -34,19 +39,17 @@ public class S_EnemySpawner : MonoBehaviour
     Transform _player;
 
     void Start()
-    {
+    {  
         _tempSpawnInterval = _originalSpawnInterval;
-        _inSceneCooldown = GetRandomPatternCooldown();
+        _inSceneCooldown = GetRandomCooldown(minPatternCooldown, maxPatternCooldown);
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
-    }
-
-    float GetRandomPatternCooldown()
-    {
-        return Random.Range(_patternCooldown.x, _patternCooldown.y);
+        _currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
     }
 
     void Update()
     {
+        _currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
+
         if (PauseManager.IsPaused)
             return;
 
@@ -73,6 +76,30 @@ public class S_EnemySpawner : MonoBehaviour
         {
             _inSceneCooldown -= Time.deltaTime;
 
+            // START OF NEW STUFF
+            if (_enemyPhaseAndPatternArrays.Length == 0)
+            {
+                print("Different element array is empty");
+            }
+
+            print("Phase and pattern array length: " + _enemyPhaseAndPatternArrays.Length);
+
+            // Add if statement here to reduce phase index if it's more than array length
+
+            if (_currentSpawnerPhase >= 0 && _currentSpawnerPhase < _enemyPhaseAndPatternArrays.Length)
+            {
+                // Code here is useable as long as conditions fufilled
+                _currentSelectedElement = _enemyPhaseAndPatternArrays[_currentSpawnerPhase - 1];
+                _currentEnemyPattern = _currentSelectedElement.enemyPatterns;
+            }
+
+            if (_currentEnemyPattern.Length == 0)
+            {
+                //print("Enemy pattern to use is empty! ");
+            }
+
+            // END OF NEW STUFF
+
             // Temp values
             bool canSpawn = false;
             Vector3 enemyPatternBoxPosition = transform.position;
@@ -82,22 +109,23 @@ public class S_EnemySpawner : MonoBehaviour
             enemyPatternBoxPosition = spawnCheck.Item1;
             canSpawn = spawnCheck.Item2;
 
-            if (canSpawn && _inSceneCooldown < 0 && enemyPatternBoxPosition != null)
+            if (canSpawn && _inSceneCooldown < 0 && enemyPatternBoxPosition != null && _currentEnemyPattern.Length != 0)
             {
                 // Spawns enemy pattern on the location of the spawner
-                ObjectPoolManager.Instantiate(_enemyPatternList[Random.Range(0, _enemyPrefabList.Length)], enemyPatternBoxPosition, _player.rotation);
-                _inSceneCooldown = GetRandomPatternCooldown();
+                ObjectPoolManager.Instantiate(_currentEnemyPattern[UnityEngine.Random.Range(0, _currentEnemyPattern.Length)], enemyPatternBoxPosition, _player.rotation);
+                _inSceneCooldown = GetRandomCooldown(minPatternCooldown, maxPatternCooldown);
             }
-            
         }
+
+        // print("current spawner phase: " + currentSpawnerPhase);
     }
 
     private (Vector3, bool) GenerateRandomSpawnPoint()
     {
         Vector3 spawnPoint;
         bool returnValue = false;
-        float randomAngle = Random.Range(0, 360);
-        float randomDistance = Random.Range(_minSpawnRange, _maxSpawnRange);
+        float randomAngle = UnityEngine.Random.Range(0, 360);
+        float randomDistance = UnityEngine.Random.Range(_minSpawnRange, _maxSpawnRange);
 
         spawnPoint = new Vector3(transform.position.x + randomDistance * Mathf.Cos(randomAngle), 0, transform.position.z + randomDistance * Mathf.Sin(randomAngle));
 
@@ -107,20 +135,7 @@ public class S_EnemySpawner : MonoBehaviour
 
         return (spawnPoint, returnValue);
     }
-
-    private (Vector3, bool) CheckIfSpawnPointExist(Vector3 position, bool returnValue)
-    {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(position, out hit, 1.0f, NavMesh.AllAreas))
-        {
-            position = hit.position;
-            return (position, true);
-        } else
-        {
-            return (position, false);
-        }            
-    }
-
+    
     private float RandomSpawnEnemy()
     {
         var result = GenerateRandomSpawnPoint();
@@ -128,7 +143,7 @@ public class S_EnemySpawner : MonoBehaviour
         bool canSpawn = result.Item2;
         if (canSpawn)
         {
-            ObjectPoolManager.Instantiate(_enemyPrefabList[Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
+            ObjectPoolManager.Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
         }
         return _tempSpawnInterval = _originalSpawnInterval;
     }

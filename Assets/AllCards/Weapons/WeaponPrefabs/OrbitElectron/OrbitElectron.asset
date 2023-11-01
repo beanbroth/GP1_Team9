@@ -17,9 +17,6 @@ MonoBehaviour:
   - {fileID: 6361174243417944010, guid: d8b6b7c2ab5d0c847bd25089a038f09b, type: 3}
   - {fileID: 3675861299822426158, guid: 4e958ae4076729d4b86b3d951482fd45, type: 3}
   - {fileID: 3675861299822426158, guid: 5f3a2dd2800cfb243a43c48d91a89866, type: 3}
-  - {fileID: 3675861299822426158, guid: 191f4e03bdeb9de489e95f7bd6dd5031, type: 3}
-  - {fileID: 3675861299822426158, guid: 74d9e1c341a74e44ab99cda3b1b88129, type: 3}
-  - {fileID: 3675861299822426158, guid: 3d06030591bc01c4ba424d5150f27d57, type: 3}
   - {fileID: 3675861299822426158, guid: d03f851708585c34eae44c0618e30659, type: 3}
   weaponDescriptions:
   - Two electrons spin around you and damage enemies.
