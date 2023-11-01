@@ -26,21 +26,13 @@ public class S_Health : MonoBehaviour
     // S_LossMenu loseMenu;
     S_FlashMaterials flasher;
 
-     S_DissolveController dissolveController;
      [SerializeField] S_CanvasGroupFader redScreenFlash;
     [SerializeField] UIScaleBounce healthBarContainer;
-    S_HUDManager hudManager;
-     S_LerpFOV cameraFOVLerper;
 
     private void Awake()
     {
         UpdateHealthUI();
         flasher = GetComponent<S_FlashMaterials>();
-
-        //Jacob's stuff
-        //dissolveController= GetComponent<S_DissolveController>();
-        // hudManager = FindFirstObjectByType<S_HUDManager>();
-        //cameraFOVLerper = FindFirstObjectByType<S_LerpFOV>();
     }
 
     private void OnTriggerEnter(Collider other)
