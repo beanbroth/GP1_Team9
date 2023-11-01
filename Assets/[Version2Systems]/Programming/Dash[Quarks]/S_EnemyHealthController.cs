@@ -46,11 +46,16 @@ public class S_EnemyHealthController : MonoBehaviour
             return;
         currentHealth -= damage;
         AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
-        animator.SetTrigger("Take Damage");
         flasher.DefaultFlash();
         InstantiateHitEffect(direction);
         if (currentHealth <= 0 && !isDead)
+        {
             Die();
+        }
+        else
+        {
+            animator.SetTrigger("Take Damage");
+        }
     }
 
     private void InstantiateHitEffect(Vector3? direction)
