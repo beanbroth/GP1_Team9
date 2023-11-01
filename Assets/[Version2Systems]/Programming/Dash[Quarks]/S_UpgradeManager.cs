@@ -112,7 +112,7 @@ public class S_UpgradeManager : MonoBehaviour
     {
         List<UpgradeCardInfo> upgradeCardInfos = new List<UpgradeCardInfo>();
         List<SO_SingleWeaponClass> tempAvilibleWeapons = new List<SO_SingleWeaponClass>();
-        foreach (SO_SingleWeaponClass weaponClass in weaponInventory.avalibleWeaponClasses)
+        foreach (SO_SingleWeaponClass weaponClass in weaponInventory.availableWeaponClasses)
         {
             if (!weaponInventory.IsWeaponMaxLevel(weaponClass))
             {
