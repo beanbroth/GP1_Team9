@@ -138,8 +138,8 @@ MonoBehaviour:
   playerMovement: {fileID: 1727308302}
   radiusMaterial: {fileID: 2100000, guid: b778a6b2e9f2edb48add97376539b406, type: 2}
   objectToRotate: {fileID: 3924377604049865331}
-  rotationAngleNegative: 83
-  rotationAnglePositive: 83
+  rotationAngleNegative: 90
+  rotationAnglePositive: 90
   rotationSpeed: 5
 --- !u!1 &10915073 stripped
 GameObject:
@@ -11569,7 +11569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981431459
@@ -13360,13 +13360,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6862842050952079540}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -21.50397, y: 10, z: 6.8050003}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 609900145349985542}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &3951330696694987452
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13830,7 +13830,7 @@ GameObject:
   - component: {fileID: 1233211}
   m_Layer: 6
   m_Name: Arrow
-  m_TagString: Radius
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
