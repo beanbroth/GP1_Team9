@@ -26,8 +26,8 @@ public class S_WinTimer : MonoBehaviour
     public int currentPhase = 1;
 
     [Header("Enemy Spawning")]
-    public static Action<int> enemySpawnerUpdate;
     [SerializeField] float enemySpawnInterval = 60;
+    public static Action<int> enemySpawnerUpdate;
     private float timeSinceLastSpawn = 0;
     private int enemySpawnerPhase = 1;
 
