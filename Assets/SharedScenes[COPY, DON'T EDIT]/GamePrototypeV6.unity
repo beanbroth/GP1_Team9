@@ -3630,6 +3630,62 @@ MonoBehaviour:
   timer: {fileID: 1310318106}
   _enemyPatternSpawnerArray: []
   _enemyPatternSpawnerList: []
+--- !u!1 &744085352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744085354}
+  - component: {fileID: 744085353}
+  m_Layer: 0
+  m_Name: EnvironmentDetailSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &744085353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744085352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0dcf1487af79b4faf2c330a44cff4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailPrefabs:
+  - {fileID: 9126930811519911098, guid: fce483761bc9d3345ac222a9f4a0193d, type: 3}
+  - {fileID: 9175112401287462139, guid: cb2546c7c5c07d04d8473c3e912a88f5, type: 3}
+  - {fileID: 4512659153268229824, guid: e6752019c25f5e645b1093b3f49160bd, type: 3}
+  - {fileID: 1145712119453295886, guid: aface7b881dfe1f43b9a99c3038ee469, type: 3}
+  - {fileID: 2197606845356792325, guid: b5f2ff2af1861224987e8a30b05a4e9e, type: 3}
+  savedPositions: []
+  scaleRange: {x: 1, y: 1}
+  radius: 69
+  amount: 200
+  height: -0.5
+  onlyRotateY: 1
+--- !u!4 &744085354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744085352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747807358
 GameObject:
   m_ObjectHideFlags: 0
@@ -14029,3 +14085,4 @@ SceneRoots:
   - {fileID: 1471060796}
   - {fileID: 1274544064}
   - {fileID: 7232926639519353252}
+  - {fileID: 744085354}
