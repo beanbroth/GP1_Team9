@@ -40,11 +40,6 @@ public class S_EnemySpawner : MonoBehaviour
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
     }
 
-    float GetRandomPatternCooldown()
-    {
-        return Random.Range(_patternCooldown.x, _patternCooldown.y);
-    }
-
     void Update()
     {
         if (PauseManager.IsPaused)
@@ -88,8 +83,11 @@ public class S_EnemySpawner : MonoBehaviour
                 ObjectPoolManager.Instantiate(_enemyPatternList[Random.Range(0, _enemyPrefabList.Length)], enemyPatternBoxPosition, _player.rotation);
                 _inSceneCooldown = GetRandomPatternCooldown();
             }
-            
         }
+    }
+    float GetRandomPatternCooldown()
+    {
+        return Random.Range(_patternCooldown.x, _patternCooldown.y);
     }
 
     private (Vector3, bool) GenerateRandomSpawnPoint()
