@@ -3820,12 +3820,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detailPrefabs:
-  - {fileID: 6812286567117723628, guid: ae8f25e596de70546bb0082e657acf44, type: 3}
-  - {fileID: 3051357046825449272, guid: b6ce472a7025f4a419a7097012e52381, type: 3}
+  - {fileID: 9126930811519911098, guid: fce483761bc9d3345ac222a9f4a0193d, type: 3}
+  - {fileID: 9175112401287462139, guid: cb2546c7c5c07d04d8473c3e912a88f5, type: 3}
+  - {fileID: 4512659153268229824, guid: e6752019c25f5e645b1093b3f49160bd, type: 3}
+  - {fileID: 1145712119453295886, guid: aface7b881dfe1f43b9a99c3038ee469, type: 3}
+  - {fileID: 2197606845356792325, guid: b5f2ff2af1861224987e8a30b05a4e9e, type: 3}
   savedPositions: []
-  scaleRange: {x: 1, y: 2}
+  scaleRange: {x: 1, y: 1}
   radius: 69
-  amount: 100
+  amount: 200
   height: -0.5
   onlyRotateY: 1
 --- !u!4 &744085354

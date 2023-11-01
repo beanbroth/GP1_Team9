@@ -5,7 +5,7 @@ using UnityEngine;
 public class S_EnvironmentDetailSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] detailPrefabs;
-    [SerializeField] List<Vector3> savedPositions;
+    [SerializeField] private List<Vector3> savedPositions;
     [SerializeField] private Vector2 scaleRange;
     [SerializeField] private float radius;
     [SerializeField] private int amount;
