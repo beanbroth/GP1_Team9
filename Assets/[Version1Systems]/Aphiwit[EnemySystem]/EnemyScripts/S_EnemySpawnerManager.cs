@@ -19,11 +19,11 @@ public class S_EnemySpawnerManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        S_WinTimer.newPhase += ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate += ActivateSpawner;
     }
     void OnDisable()
     {
-        S_WinTimer.newPhase -= ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate -= ActivateSpawner;
     }
     private void Awake()
     {
