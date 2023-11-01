@@ -7742,6 +7742,7 @@ MonoBehaviour:
   - {fileID: 571562768}
   timePerPhase: 120
   currentPhase: 1
+  enemySpawnInterval: 60
   timesForMusicSwitchs:
   - 359
   - 119
@@ -7755,7 +7756,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1313582279}
   - component: {fileID: 1313582281}
-  - component: {fileID: 1313582280}
   m_Layer: 5
   m_Name: 'PhaseBar '
   m_TagString: Untagged
@@ -7790,19 +7790,6 @@ RectTransform:
   m_AnchoredPosition: {x: 246.66666, y: 186.1}
   m_SizeDelta: {x: 749.62695, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1313582280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313582278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2876c49486cf18847b7526acab7f94e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiScaleBounce: {fileID: 1313582281}
 --- !u!114 &1313582281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8512,8 +8499,8 @@ MonoBehaviour:
   cooldownDuration: 2
   playerAnimator: {fileID: 7628690258377287922}
   loseScreenDelay: 3.5
-  redScreenFlash: {fileID: 0}
-  healthBarContainer: {fileID: 0}
+  redScreenFlash: {fileID: 2050641306}
+  healthBarContainer: {fileID: 1686375461}
 --- !u!135 &1451518546
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9997,6 +9984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1686375460}
   - component: {fileID: 1686375461}
+  - component: {fileID: 1686375462}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -10041,6 +10029,18 @@ MonoBehaviour:
   bounceScale: 1.1
   bounceDuration: 0.3
   ignoreTimeScale: 0
+--- !u!114 &1686375462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686375459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a79699dfc66b3e4088080cb42abc0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695511094
 GameObject:
   m_ObjectHideFlags: 0
@@ -11404,7 +11404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd6508cb85483940b533d103ba333f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnDamage: 0
   canvasGroup: {fileID: 0}
   animationFPS: 60
   animationDuration: 1
@@ -11765,6 +11764,7 @@ GameObject:
   - component: {fileID: 2050641308}
   - component: {fileID: 2050641307}
   - component: {fileID: 2050641306}
+  - component: {fileID: 2050641310}
   m_Layer: 0
   m_Name: RedFlash
   m_TagString: Untagged
@@ -11803,7 +11803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd6508cb85483940b533d103ba333f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnDamage: 1
   canvasGroup: {fileID: 0}
   animationFPS: 60
   animationDuration: 0.2
@@ -11858,6 +11857,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050641304}
   m_CullTransparentMesh: 1
+--- !u!114 &2050641310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050641304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eaa7cb64696dd2489fbfc60799fc0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2063693011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7755462592807679037, guid: e1c463faa3bbcd940878455947814d84, type: 3}
