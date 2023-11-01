@@ -7776,6 +7776,7 @@ MonoBehaviour:
   - {fileID: 571562768}
   timePerPhase: 120
   currentPhase: 1
+  enemySpawnInterval: 0
   timesForMusicSwitchs:
   - 359
   - 119
@@ -11550,7 +11551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1981431458
 RectTransform:
   m_ObjectHideFlags: 0
