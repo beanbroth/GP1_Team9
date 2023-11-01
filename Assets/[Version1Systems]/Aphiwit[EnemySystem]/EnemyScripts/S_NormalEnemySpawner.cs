@@ -32,7 +32,6 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
     [SerializeField] GameObject[] _currentEnemyPattern;
 
     [SerializeField] float minPatternCooldown, maxPatternCooldown;
-    [SerializeField] Vector2 _patternCooldown;
     private float _inSceneCooldown;
 
     private float _tempSpawnInterval;
@@ -42,7 +41,7 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
     void Start()
     {  
         _tempSpawnInterval = _originalSpawnInterval;
-        _inSceneCooldown = GetRandomPatternCooldown(minPatternCooldown, maxPatternCooldown);
+        _inSceneCooldown = GetRandomCooldown(minPatternCooldown, maxPatternCooldown);
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
         _currentSpawnerPhase = GetComponentInParent<S_EnemySpawnerManager>().currentPhaseIndex;
     }
@@ -114,7 +113,7 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
             {
                 // Spawns enemy pattern on the location of the spawner
                 ObjectPoolManager.Instantiate(_currentEnemyPattern[UnityEngine.Random.Range(0, _currentEnemyPattern.Length)], enemyPatternBoxPosition, _player.rotation);
-                _inSceneCooldown = GetRandomPatternCooldown(minPatternCooldown, maxPatternCooldown);
+                _inSceneCooldown = GetRandomCooldown(minPatternCooldown, maxPatternCooldown);
             }
         }
 
