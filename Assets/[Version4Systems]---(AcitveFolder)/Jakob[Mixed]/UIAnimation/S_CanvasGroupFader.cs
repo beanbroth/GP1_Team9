@@ -8,16 +8,20 @@ public class S_CanvasGroupFader : MonoBehaviour
 {
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] float animationFPS = 60f;
-    [SerializeField] float animationDuration = 2f;
+    public float animationDuration = 2f;
     [SerializeField] bool ignoreTimeScale = true;
     float timePerFrame;
+    [SerializeField] bool transparentAtStart = true;
 
     private void Awake()
     {
         if(canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
         timePerFrame = 1 / animationFPS;
-        canvasGroup.alpha = 0;
+        if(transparentAtStart)
+            canvasGroup.alpha = 0;
+        else
+            canvasGroup.alpha = 1;
     }
 
     public void FadeIn()
