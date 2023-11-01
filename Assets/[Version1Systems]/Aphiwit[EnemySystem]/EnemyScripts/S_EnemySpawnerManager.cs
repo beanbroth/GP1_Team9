@@ -9,6 +9,7 @@ public class S_EnemySpawnerManager : MonoBehaviour
 
     // Attached Spawners
     [SerializeField] GameObject[] enemySpawners;
+    [SerializeField] GameObject[] enemySpawnersToDisable;
     [SerializeField] bool disableSpawnersOnAwake = true;
     [System.NonSerialized] public int currentPhaseIndex = 1;
 
@@ -23,12 +24,14 @@ public class S_EnemySpawnerManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        S_WinTimer.newPhase += ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate += ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate += DeactivateSpawner;
     }
 
     void OnDisable()
     {
-        S_WinTimer.newPhase -= ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate -= ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate -= DeactivateSpawner;
     }
 
     private void Awake()
@@ -50,28 +53,16 @@ public class S_EnemySpawnerManager : MonoBehaviour
     {
         currentPhaseIndex = timer.currentPhase;
     }
-
+    
     void ActivateSpawner(int spawnerIndex)
     {
         if(spawnerIndex < enemySpawners.Length)
             enemySpawners[spawnerIndex-1].SetActive(true);
     }
-}
 
-    // Update is called once per frame
-    /*void Update()
+    void DeactivateSpawner(int spawnerIndex)
     {
-        elapsedTime += Time.deltaTime;
-
-        if (elapsedTime >= phaseTimeWindow[currentIndex])
-        {
-            enemySpawners[currentIndex].SetActive(true);
-            canIncrease = true;
-        }
-
-        if (canIncrease && currentIndex != phaseTimeWindow.Length - 1)
-        {
-            currentIndex++;
-            canIncrease = false;
-        }
-    }*/
+        if (spawnerIndex < enemySpawnersToDisable.Length)
+            enemySpawnersToDisable[spawnerIndex - 1].SetActive(false);
+    }
+}

@@ -18,22 +18,14 @@ MonoBehaviour:
   - {fileID: 6258271373099525632, guid: 220abe9875bebb9449d95b8142767af9, type: 3}
   - {fileID: 6258271373099525632, guid: 89c93ed20b96df84f9f38d0b3dd73119, type: 3}
   - {fileID: 6258271373099525632, guid: 0f4f35523f31e8440a742e7d0716e00a, type: 3}
-  - {fileID: 6258271373099525632, guid: a1d2fef1246f84d42841f9cc459249c0, type: 3}
-  - {fileID: 6258271373099525632, guid: 39ae68ccfd2ae854e8b9fcde634073c3, type: 3}
   - {fileID: 6258271373099525632, guid: c6f668f9a7c45df45b50ab89477bc971, type: 3}
-  - {fileID: 6258271373099525632, guid: e5d3a748a1e16924a99ebbb9b50f6d01, type: 3}
   - {fileID: 6258271373099525632, guid: f9d724e1aa41d1c46ad9008e5dbfad1b, type: 3}
-  - {fileID: 6258271373099525632, guid: 39e12a2f67ae5514fa5263abe708c7a4, type: 3}
   - {fileID: 6258271373099525632, guid: 34f1e77ce5af66743b1a4aa11f5d19fa, type: 3}
   weaponDescriptions:
   - Shoot 4 shots spread out in all directions.
   - Shoot 2 more shoots in all directions. 6 in total.
   - Shoot 2 more shoots in all directions. 8 in total.
   - Shoot 2 more shoots in all directions. 10 in total.
-  - Shoot 2 more shoots in all directions. 12 in total.
-  - Shoot 2 more shoots in all directions. 14 in total.
   - Shoot 2 more shoots in all directions. 16 in total.
-  - Shoot 4 more shoots in all directions. 20 in total.
-  - Shoot 2 more shoots in all directions. 22 in total.
-  - Shoot 4 more shoots in all directions. 26 in total.
-  - Shoot 4 more shoots in all directions. 30 in total.
+  - Shoot 6 more shoots in all directions. 22 in total.
+  - Shoot 8 more shoots in all directions. 30 in total.

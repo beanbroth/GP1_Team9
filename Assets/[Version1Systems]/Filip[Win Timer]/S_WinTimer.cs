@@ -25,6 +25,12 @@ public class S_WinTimer : MonoBehaviour
     private float maxTime;
     public int currentPhase = 1;
 
+    [Header("Enemy Spawning")]
+    public static Action<int> enemySpawnerUpdate;
+    [SerializeField] float enemySpawnInterval = 60;
+    private float timeSinceLastSpawn = 0;
+    private int enemySpawnerPhase = 1;
+
     [Header("Music Management")]
     [SerializeField] float[] timesForMusicSwitchs;
     int currentMusicIndex = 0;
@@ -60,8 +66,10 @@ public class S_WinTimer : MonoBehaviour
         if (PauseManager.IsPaused)
             return;
 
+        //Current time
         currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
 
+        //Music track management
         if (currentTime < timeUntilNextMusicSwitch)
         {
             currentMusicIndex++;
@@ -77,6 +85,7 @@ public class S_WinTimer : MonoBehaviour
             }
         }
 
+        //Win timer
         if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
         {
             currentTime = timeLimit;
@@ -84,9 +93,21 @@ public class S_WinTimer : MonoBehaviour
             enabled = false;
             sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
         }
-
         TimerText();
 
+        //Enemy spawner timer
+        timeSinceLastSpawn += Time.deltaTime;
+        if (timeSinceLastSpawn > enemySpawnInterval)
+        {
+            enemySpawnerPhase++;
+            timeSinceLastSpawn = 0f;
+            if (enemySpawnerUpdate != null)
+            {
+                enemySpawnerUpdate.Invoke(enemySpawnerPhase);
+            }
+        }
+
+        //Phase timer
         timeSinceLastPhase += Time.deltaTime;
         if (timeSinceLastPhase > timePerPhase)
         {

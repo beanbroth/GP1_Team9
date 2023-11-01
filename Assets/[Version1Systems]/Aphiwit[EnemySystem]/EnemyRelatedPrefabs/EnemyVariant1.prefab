@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: reaper_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 6299692658485467548, guid: b0bea413818f53941b451e120fd187ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7333e58eafe4356469858956a0aa8685, type: 2}
+    - target: {fileID: 8248015347021958986, guid: b0bea413818f53941b451e120fd187ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7333e58eafe4356469858956a0aa8685, type: 2}
+    - target: {fileID: 8447801625481390068, guid: b0bea413818f53941b451e120fd187ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7333e58eafe4356469858956a0aa8685, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 5009145312998265242}
     - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: deathSound
@@ -196,9 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentWithMaterials: {fileID: 3214845074200373958}
   flashMaterial: {fileID: 2100000, guid: 3655fbc06b26c8b4e941ef9810bd688c, type: 2}
-  isEnemy: 1
-  flashDuration: 0.2
-  enemyAiBehviour: {fileID: 0}
+  defaultFlashDuration: 0.1
 --- !u!114 &6396207061026490461
 MonoBehaviour:
   m_ObjectHideFlags: 0

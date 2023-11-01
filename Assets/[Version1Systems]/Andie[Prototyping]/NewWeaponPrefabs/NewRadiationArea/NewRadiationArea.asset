@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: RadiationArea
   weaponPrefabs:
-  - {fileID: 563342054848135308, guid: 5ab3b04f90260cb49a4086e6e5da0bc4, type: 3}
-  - {fileID: 1856572272474196961, guid: e3f40bafd9aa9304d83a951b0e65ca45, type: 3}
-  - {fileID: 1856572272474196961, guid: 0e4835f8525ff06428930aff02d29ceb, type: 3}
-  - {fileID: 1856572272474196961, guid: f23098f8fe6bcef4d8a2bc7b124e7f27, type: 3}
-  - {fileID: 1856572272474196961, guid: 65a73a02d7fef7c42bd9ba12193a2bbb, type: 3}
-  - {fileID: 1856572272474196961, guid: 2a4aa9413ece34346a08eb50263ed0fa, type: 3}
-  - {fileID: 1856572272474196961, guid: 510917b9cc0c7f74f9b9634165ea95a3, type: 3}
+  - {fileID: 563342054848135308, guid: 8d9fee3a04824614ba8a69ff4654ad31, type: 3}
+  - {fileID: 1856572272474196961, guid: 158e50ce866bc8d4c8e73f299c7da50e, type: 3}
+  - {fileID: 1856572272474196961, guid: 1ff7bfbcc85470849ad4bd48f437458d, type: 3}
+  - {fileID: 1856572272474196961, guid: 23868eb039ac7ed4ea48608621409010, type: 3}
+  - {fileID: 1856572272474196961, guid: 78c5409448f3aeb43bf0b1fed3699c1e, type: 3}
+  - {fileID: 1856572272474196961, guid: e0e48fe46e2b5b64582b165417168f1a, type: 3}
+  - {fileID: 1856572272474196961, guid: 29c33f23d584db94db802bf8ef84c3c2, type: 3}
   weaponDescriptions:
   - Damage enemies near you.
   - Larger damage area. Attack more often.

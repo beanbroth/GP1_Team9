@@ -50,19 +50,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 563342054848135308, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_Name
-      value: RadiationArea 2
+      value: NewRadiationArea 2
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614649231414568621, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 7.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7313408384421174347, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: Loop
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
