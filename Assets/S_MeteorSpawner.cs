@@ -43,6 +43,9 @@ public class S_MeteorSpawner : MonoBehaviour
 
     private void Update()
     {
+        if(PauseManager.IsPaused)
+            return;
+            
         // Update the timer
         timer -= Time.deltaTime;
 
