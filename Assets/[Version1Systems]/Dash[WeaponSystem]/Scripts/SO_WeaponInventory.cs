@@ -1,46 +1,69 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "WeaponInventory", menuName = "WeaponSystem/WeaponInventory", order = 0)]
 public class SO_WeaponInventory : ScriptableObject
 {
-    
     [SerializeField] private bool resetInventoryOnEnable = false;
 
     [Header("Weapon Info")] [SerializeField]
     public List<UnlockedWeaponInfo> unlockedWeapons;
 
-    [SerializeField] public List<SO_SingleWeaponClass> avalibleWeaponClasses;
+    [SerializeField] public List<SO_SingleWeaponClass> initialAvailableWeaponClasses;
+    [SerializeField] public List<SO_SingleWeaponClass> availableWeaponClasses;
     [SerializeField] public List<SO_SingleWeaponClass> weaponClassDatabase;
-    
+
     private void OnEnable()
     {
+        availableWeaponClasses.Clear();
+        foreach (SO_SingleWeaponClass weaponClass in initialAvailableWeaponClasses)
+        {
+            availableWeaponClasses.Add(weaponClass);
+        }
+        
         if (resetInventoryOnEnable)
         {
             ResetUnlockedWeapons();
         }
+    }
+    
+    private void Awake() //Also reset from the S_GameSceneReset script
+    {
+        availableWeaponClasses.Clear();
+        foreach (SO_SingleWeaponClass weaponClass in initialAvailableWeaponClasses)
+        {
+            availableWeaponClasses.Add(weaponClass);
+        }
 
+        if (resetInventoryOnEnable)
+        {
+            ResetUnlockedWeapons();
+        }
+    }
+
+    private void FillAvailableWeaponList()
+    {
+        availableWeaponClasses.Clear();
+        foreach (SO_SingleWeaponClass weaponClass in weaponClassDatabase)
+        {
+            if (!IsWeaponMaxLevel(weaponClass))
+            {
+                availableWeaponClasses.Add(weaponClass);
+            }
+        }
     }
 
     public void ResetUnlockedWeapons()
     {
-//        Debug.Log("resetting weapon inventory");
+        Debug.Log("resetting weapon inventory");
         unlockedWeapons.Clear();
-        avalibleWeaponClasses.Clear();
-        foreach (SO_SingleWeaponClass weapon in weaponClassDatabase)
-        {
-            avalibleWeaponClasses.Add(weapon);
-        }
     }
 
-    private void Awake() //Also reset from the S_GameSceneReset script
-    {
-        if (resetInventoryOnEnable)
-        {
-            ResetUnlockedWeapons();
-        }
-    }
+
 
     //event for weapon info change
     public delegate void WeaponInfoChange();
@@ -55,6 +78,7 @@ public class SO_WeaponInventory : ScriptableObject
         }
 
         int weaponIndex = unlockedWeapons.FindIndex(x => x.weaponData == weapon);
+        FillAvailableWeaponList();
         if (weaponIndex != -1)
         {
             UnlockedWeaponInfo weaponInfo = unlockedWeapons[weaponIndex];
@@ -63,7 +87,7 @@ public class SO_WeaponInventory : ScriptableObject
             if (weaponInfo.currentLevel >= weaponInfo.maxLevel)
             {
                 // Remove the weapon from avalibleWeapons list
-                avalibleWeaponClasses.Remove(weapon);
+                availableWeaponClasses.Remove(weapon);
             }
         }
         else
@@ -110,7 +134,8 @@ public class SO_WeaponInventory : ScriptableObject
 
     public bool IsWeaponMaxLevel(SO_SingleWeaponClass weaponClass)
     {
-        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=  GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel-1)
+        if (GetUnlockedWeaponInfoForWeapon(weaponClass).currentLevel >=
+            GetUnlockedWeaponInfoForWeapon(weaponClass).maxLevel - 1)
         {
             return true;
         }

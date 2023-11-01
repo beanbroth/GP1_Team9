@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 5c44b57f495f6dd43a8dd5b4f5024308, type: 2}
---- !u!114 &1233211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6862842050952079540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65adb64e077b7464990c327ddf3e8cad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 1727308302}
-  objectToRotate: {fileID: 3924377604049865331}
-  rotationAngleNegative: 83
-  rotationAnglePositive: 83
-  rotationSpeed: 5
 --- !u!1 &10915073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8824747384590748993, guid: 20c4a363f029b6a4891e1a928532370e, type: 3}
@@ -10189,7 +10172,7 @@ MonoBehaviour:
   weaponInventory: {fileID: 11400000, guid: ae1bde78bde561a47a23150296d484a1, type: 2}
   upgradeCardManager: {fileID: 1466389497}
   upgradeCost: 3
-  upgradeChoices: 2
+  upgradeChoices: 3
   inputDelayTime: 0.05
   upgradeCostIncrease: 0.2
 --- !u!4 &1721716335
@@ -11568,7 +11551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981431459
@@ -13139,16 +13122,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4186954238374045028, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 537532103230169245, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1677025374829464875, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
 --- !u!1 &2673870509248636880
 GameObject:
@@ -13835,7 +13809,7 @@ GameObject:
   - component: {fileID: 3924377604049865331}
   - component: {fileID: 5749422029311680395}
   - component: {fileID: 4542867755111476022}
-  - component: {fileID: 1233211}
+  - component: {fileID: 6862842050952079541}
   m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
@@ -13843,6 +13817,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6862842050952079541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862842050952079540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b4e58a09d96974185663e94783d627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1727308302}
+  objectToRotate: {fileID: 3924377604049865331}
+  rotationAngleNegative: 80
+  rotationAnglePositive: 80
+  rotationSpeed: 5
 --- !u!4 &7035193580617877176
 Transform:
   m_ObjectHideFlags: 0
@@ -14160,7 +14151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSourcePrefab: {fileID: 6160977956559847820, guid: 99ffd169a0894b24db555abc82aea4a6, type: 3}
-  poolSize: 10
+  poolSize: 200
   audioClipDataList:
   - soundName: Battle_Commence_Placeholder_Theme_1
     audioClip: {fileID: 8300000, guid: e4a2af329ee25b4489abd0e86ac80333, type: 3}

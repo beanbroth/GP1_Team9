@@ -59,6 +59,9 @@ public class S_RandomScreenKill : MonoBehaviour
 
     private void Kill()
     {
+        if (PauseManager.IsPaused)
+            return;
+        
         killableEnemies.Clear();
         foreach (Collider enemy in Physics.OverlapSphere(transform.position, killRange, enemyLayer))
         {
