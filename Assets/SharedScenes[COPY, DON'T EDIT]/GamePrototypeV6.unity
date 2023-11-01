@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1727308302}
+  radiusMaterial: {fileID: 2100000, guid: b778a6b2e9f2edb48add97376539b406, type: 2}
   objectToRotate: {fileID: 3924377604049865331}
   rotationAngleNegative: 83
   rotationAnglePositive: 83
@@ -12840,7 +12841,7 @@ GameObject:
   - component: {fileID: 8242706183179937027}
   m_Layer: 6
   m_Name: Radius
-  m_TagString: Untagged
+  m_TagString: Radius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13139,16 +13140,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4186954238374045028, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 537532103230169245, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1677025374829464875, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
 --- !u!1 &2673870509248636880
 GameObject:
@@ -13838,7 +13830,7 @@ GameObject:
   - component: {fileID: 1233211}
   m_Layer: 6
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Radius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
