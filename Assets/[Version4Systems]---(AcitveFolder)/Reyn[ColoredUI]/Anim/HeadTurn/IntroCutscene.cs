@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -7,25 +8,75 @@ using UnityEngine.Serialization;
 public class IntroCutscene : MonoBehaviour
 {
     [SerializeField] private GameObject[] Scenes;
-    
+
     [SerializeField] GameObject[] Texts;
 
     [SerializeField] private float[] Scene1Times;
-    
+
     [SerializeField] GameObject Camera;
-    
+
     int SceneIndex = 0;
     float SceneTimer = 0;
     float SceneTimeTarget = 0;
     bool SceneDone = false;
-    
-    [FormerlySerializedAs("CameraTransitionSpeed")] [SerializeField] float CameraTransitionTime = 0.1f;
+
+    [FormerlySerializedAs("CameraTransitionSpeed")][SerializeField] float CameraTransitionTime = 0.1f;
     float CameraTransitionTimer = 0;
     float CameraTransitionTarget = 0;
     bool StartTransition = false;
-    
-    
+
+    S_SceneTransition sceneTransitionManager;
+    private S_PlayerControls playerControls;
+    [SerializeField] GameObject button;
+
     private Vector3[] SceneCameraPosistions = new Vector3[3];
+
+    private void Awake()
+    {
+        sceneTransitionManager = FindFirstObjectByType<S_SceneTransition>();
+
+        playerControls = new S_PlayerControls();
+        playerControls.Player.Turn.performed += context =>
+        {
+            float turnValue = context.ReadValue<float>();
+            if (turnValue == 1f && SceneDone)
+            {
+                SceneDone = false;
+                UIScaleBounce bouncer = button.GetComponent<UIScaleBounce>();
+                bouncer.PerformBounceAnimation();
+
+                SceneIndex++;
+                if (SceneIndex >= Scenes.Length)
+                {
+                    StartCoroutine(DisableButtonAndTransitionScene(bouncer, true));
+                    return;
+                }
+                StartCoroutine(DisableButtonAndTransitionScene(bouncer, false));
+                StartTransition = true;
+            }
+        };
+
+        button.SetActive(false);
+    }
+
+    IEnumerator DisableButtonAndTransitionScene(UIScaleBounce bouncer, bool transitionScene)
+    {
+        yield return new WaitForSecondsRealtime(bouncer.bounceDuration);
+        button.SetActive(false);
+        if(transitionScene)
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
+    }
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,21 +121,22 @@ public class IntroCutscene : MonoBehaviour
         if (SceneTimer >= SceneTimeTarget)
         {
             SceneDone = true;
+            button.SetActive(true);
         }
         //Debug.Log(SceneTimer);
 
-        if (Input.GetKeyDown(KeyCode.Space) && SceneDone)
+        /*if (Input.GetKeyDown(KeyCode.Space) && SceneDone)
         {
             SceneDone = false;
             
             SceneIndex++;
             if (SceneIndex >= Scenes.Length)
             {
-                SceneManager.LoadScene(3);
+                sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
                 return;
             }
             StartTransition = true;
-        }
+        }*/
     }
     void CameraTransition()
     {
