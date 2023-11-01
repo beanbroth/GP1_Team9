@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 3a957a8d9a685be4a98184bc6386e88a, type: 3}
     - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: timeBetweenKills
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3339570154344550175, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: m_audioClip
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765135944218552600, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: m_Name
-      value: Cern-tainDeath 4
+      value: NewCern-tainDeath 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

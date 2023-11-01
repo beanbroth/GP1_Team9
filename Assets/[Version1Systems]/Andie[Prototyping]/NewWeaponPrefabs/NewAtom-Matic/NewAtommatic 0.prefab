@@ -47,12 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6503858307881935170, guid: b5a762650f720cd4b92a1694bae5b7fa, type: 3}
   numberOfBullets: 1
-  timeBetweenShots: 1
+  timeBetweenShots: 2
   maxRange: 20
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  shootSound: {fileID: 8300000, guid: 15d0668cb0dc794458ac346d283ee13d, type: 3}
 --- !u!82 &-6272747292299362416
 AudioSource:
   m_ObjectHideFlags: 0

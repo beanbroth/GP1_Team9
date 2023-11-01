@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: DamageTrail
   weaponPrefabs:
-  - {fileID: 3629374011504788508, guid: c254d76dea7ec01419df46e7aaa56334, type: 3}
-  - {fileID: 4213648422196081992, guid: 0b05d1f486deebd4db9480521e238f91, type: 3}
-  - {fileID: 4213648422196081992, guid: c191d9c91ab5228489ee7248be02974f, type: 3}
-  - {fileID: 4213648422196081992, guid: 7e0bd400d1e91274a9f4342f144ad7a8, type: 3}
-  - {fileID: 4213648422196081992, guid: 439afff02f437b84d8206bdac2f0246d, type: 3}
-  - {fileID: 4213648422196081992, guid: 65fcf595feabb824abb147f2a787e760, type: 3}
-  - {fileID: 4213648422196081992, guid: 0e3ec3dafe1241849ac3c3ddee0bcf91, type: 3}
+  - {fileID: 3629374011504788508, guid: b03958a5a536beb4c92c1953734b23da, type: 3}
+  - {fileID: 4213648422196081992, guid: 387e9664b00f32d4eac6c6fcc0dfe6d8, type: 3}
+  - {fileID: 4213648422196081992, guid: 87be7de5a9bd20b41ad8ca794fa573e9, type: 3}
+  - {fileID: 4213648422196081992, guid: 2d6f63ca1de157b40805ba44efb62099, type: 3}
+  - {fileID: 4213648422196081992, guid: 18ce3b419c056754e8ac1ac15ee3c4d7, type: 3}
+  - {fileID: 4213648422196081992, guid: e9642ad5a62176c4ea7986f6f25f636c, type: 3}
+  - {fileID: 4213648422196081992, guid: c4b2dd89a02bfd7429a0332a98313b9e, type: 3}
   weaponDescriptions:
   - Add a trail that damages enemies behind you.
   - Longer damage trail. Attack more often.

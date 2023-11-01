@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 2104966506817567291}
     - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -6220054719649422734, guid: 824ce03d151821c45b9568bf9d155e52, type: 3}
       propertyPath: deathSound
@@ -196,9 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentWithMaterials: {fileID: 1141841034111033504}
   flashMaterial: {fileID: 2100000, guid: 3655fbc06b26c8b4e941ef9810bd688c, type: 2}
-  isEnemy: 1
-  flashDuration: 0.2
-  enemyAiBehviour: {fileID: 0}
+  defaultFlashDuration: 0.1
 --- !u!114 &664123032952005281
 MonoBehaviour:
   m_ObjectHideFlags: 0
