@@ -64,7 +64,7 @@ public class IntroCutscene : MonoBehaviour
         yield return new WaitForSecondsRealtime(bouncer.bounceDuration);
         button.SetActive(false);
         if(transitionScene)
-            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.game);
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.black, sceneEnum.game);
     }
 
     private void OnEnable()

@@ -9,12 +9,13 @@ public class S_CardInfoController : MonoBehaviour
     [SerializeField] TextMeshPro descriptionField;
     [SerializeField] TextMeshPro lvlField;
     [SerializeField] Renderer preview;
-
     private Texture texture;
-
     private UpgradeCardInfo cardInfo;
 
-    public UpgradeCardInfo GetCardInfo() { return cardInfo; }
+    public UpgradeCardInfo GetCardInfo()
+    {
+        return cardInfo;
+    }
 
     public void SetCardInfo(UpgradeCardInfo cardInfo)
     {
@@ -23,11 +24,14 @@ public class S_CardInfoController : MonoBehaviour
         nameField.text = cardInfo.name;
         descriptionField.text = cardInfo.description;
         lvlField.text = "lvl " + cardInfo.level.ToString();
+        if (FindFirstObjectByType<S_UpgradeManager>().weaponInventory.IsWeaponOneBeforeMaxLevel(cardInfo.weaponClass))
+        {
+            lvlField.text = "MAX";
+        }
 
         if (cardInfo.image != null)
         {
-            preview.material.mainTexture  = cardInfo.image;
+            preview.material.mainTexture = cardInfo.image;
         }
-
     }
 }

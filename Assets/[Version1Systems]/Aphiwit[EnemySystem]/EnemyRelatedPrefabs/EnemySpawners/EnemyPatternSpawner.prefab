@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8824747384590748993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -102,7 +102,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  currentSpawnerPhase: 1
+  _currentSpawnerPhase: 1
   _spawnerType: 1
   _enemyPrefabList: []
   _originalSpawnInterval: 0
@@ -129,16 +129,9 @@ MonoBehaviour:
   _finalSpawnInterval: 0
   _minSpawnRange: 0
   _maxSpawnRange: 0
-  _differentPhasesAndTheirPatterns:
-  - enemyPatterns:
-    - {fileID: 2365914501344155956, guid: 91d924dbc54d4bf408d15410942cb345, type: 3}
-    - {fileID: 8845130669415158930, guid: c3be4d8b66dd6d84c9ba4ee95f825992, type: 3}
-    - {fileID: 5750084403726946159, guid: 6d769dffa188add4c97a8301f9f13e9c, type: 3}
-  - enemyPatterns:
-    - {fileID: 5356320928914141303, guid: 585a46ee8fb098248aff56b3749da074, type: 3}
-    - {fileID: 3770562052151307150, guid: 4b976322d8c18dd40a797cabdf040648, type: 3}
-    - {fileID: 703111324287913547, guid: 2d7d818c1ffadda449e008cda96d8afb, type: 3}
-  _currentPhaseInPatternSpawner:
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
     enemyPatterns: []
-  _enemyPatternToUse: []
-  _patternCooldown: {x: 1, y: 5}
+  _currentEnemyPattern: []
+  minPatternCooldown: 0
+  maxPatternCooldown: 0

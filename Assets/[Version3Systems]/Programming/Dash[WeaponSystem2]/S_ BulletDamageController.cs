@@ -35,14 +35,16 @@ public class S_BulletDamageController : MonoBehaviour
             return;
         }
 
-        timeSinceSpawn += Time.deltaTime;
-        if (timeSinceSpawn > lifeTime)
-        {
-            ObjectPoolManager.Destroy(gameObject);
-        }
-
         velocityDir = (transform.position - lastPos).normalized;
         lastPos = transform.position;
+        if (destroyOnEnemyCollision || destroyOnOtherCollision)
+        {
+            timeSinceSpawn += Time.deltaTime;
+            if (timeSinceSpawn > lifeTime)
+            {
+                ObjectPoolManager.Destroy(gameObject);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)

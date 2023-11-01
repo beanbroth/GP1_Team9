@@ -26,7 +26,7 @@ public class S_OnboardingUIPopUp : MonoBehaviour
             {
                 onboardingUI.FadeOut();
                 button.GetComponent<UIScaleBounce>().PerformBounceAnimation();
-                sceneTransition.GetComponent<S_SceneTransition>().SceneFadeIn(Color.white);
+                sceneTransition.GetComponent<S_SceneTransition>().SceneFadeIn(Color.black);
                 StartCoroutine(DelayedDestruction(onboardingUI.animationDuration));
             }
         };
