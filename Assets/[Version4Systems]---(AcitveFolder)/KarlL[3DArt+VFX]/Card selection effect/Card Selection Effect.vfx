@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 660
     y: -190
     width: 1494
-    height: 2307
+    height: 2308
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +328,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614860}
   - {fileID: 8926484042661615059}
   - {fileID: 8926484042661614580}
-  m_UIPosition: {x: 936, y: 104}
+  m_UIPosition: {x: 936, y: 103}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -853,7 +853,7 @@ MonoBehaviour:
   zTestMode: 0
   useAlphaClipping: 0
   generateMotionVector: 0
-  excludeFromTAA: 0
+  excludeFromTUAndAA: 0
   sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661614590}
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   zTestMode: 0
   useAlphaClipping: 0
   generateMotionVector: 0
-  excludeFromTAA: 0
+  excludeFromTUAndAA: 0
   sortingPriority: 0
   m_SubOutputs: []
   colorMapping: 0
