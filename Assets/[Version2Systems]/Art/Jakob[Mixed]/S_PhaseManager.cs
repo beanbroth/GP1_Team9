@@ -16,6 +16,7 @@ public class S_PhaseManager : MonoBehaviour
     [SerializeField] GameObject passiveCardsUIObject;
     [SerializeField] TextMeshProUGUI leftCardName;
     [SerializeField] TextMeshProUGUI rightCardName;
+    S_HUDManager hudManager;
 
     private S_PlayerControls playerControls;
     private S_Health healthManager;
@@ -36,6 +37,7 @@ public class S_PhaseManager : MonoBehaviour
     private void Awake()
     {
         healthManager = FindFirstObjectByType<S_Health>();
+        hudManager = FindFirstObjectByType<S_HUDManager>();
         quarkController = FindFirstObjectByType<S_QuarkController>();
         winTimer = FindFirstObjectByType<S_WinTimer>();
         playerControls = new S_PlayerControls();
@@ -70,6 +72,7 @@ public class S_PhaseManager : MonoBehaviour
         phaseNameUI.text = phases[phase-1].GetPhaseName();
         phaseIconUI.sprite = phases[phase-1].GetPhaseIcon();
         phaseUIObject.SetActive(true);
+        hudManager.TurnHUDOff();
         StartCoroutine(OpenCardSelect());
     }
 
@@ -78,7 +81,7 @@ public class S_PhaseManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
         phaseUIObject.SetActive(false); // Add animations out
         leftCardName.text = "+1 HEALTH"; //Hard coded left selection, need to randomize cards
-        rightCardName.text = "+3 PICKUP RANGE"; //Hard coded right selection, need to randomize cards
+        rightCardName.text = "+3 QUARK PICKUP RANGE"; //Hard coded right selection, need to randomize cards
         passiveCardsUIObject.SetActive(true); //Add animations in
         isUpgrading = true;
     }
@@ -89,6 +92,7 @@ public class S_PhaseManager : MonoBehaviour
         phasesUICollectionObject.SetActive(false);
         Time.timeScale = 1;
         isUpgrading = false;
+        hudManager.TurnHUDOn();
         winTimer.ActivatePhaseObject(winTimer.GetCurrentPhase()-1, true, true);
     }
 
