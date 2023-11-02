@@ -4216,7 +4216,9 @@ MonoBehaviour:
   - {fileID: 801236559}
   - {fileID: 10915073}
   - {fileID: 1107685640}
+  enemySpawnersToDisable: []
   disableSpawnersOnAwake: 1
+  timer: {fileID: 0}
 --- !u!1 &822373141
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,7 +5140,9 @@ MonoBehaviour:
   - {fileID: 2572774073997615275}
   - {fileID: 1848639881}
   - {fileID: 2067990950}
+  enemySpawnersToDisable: []
   disableSpawnersOnAwake: 1
+  timer: {fileID: 0}
 --- !u!1 &961409126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5657,6 +5661,7 @@ GameObject:
   - component: {fileID: 1010254916}
   - component: {fileID: 1010254918}
   - component: {fileID: 1010254917}
+  - component: {fileID: 1010254919}
   m_Layer: 5
   m_Name: hp7
   m_TagString: Untagged
@@ -5721,6 +5726,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010254915}
   m_CullTransparentMesh: 1
+--- !u!114 &1010254919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010254915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020df9ae1f5bd54aa4cff8bcd586926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 90
 --- !u!1 &1012698987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5732,6 +5750,7 @@ GameObject:
   - component: {fileID: 1012698988}
   - component: {fileID: 1012698990}
   - component: {fileID: 1012698989}
+  - component: {fileID: 1012698991}
   m_Layer: 5
   m_Name: hp8
   m_TagString: Untagged
@@ -5796,6 +5815,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012698987}
   m_CullTransparentMesh: 1
+--- !u!114 &1012698991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012698987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020df9ae1f5bd54aa4cff8bcd586926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 90
 --- !u!1 &1016632606
 GameObject:
   m_ObjectHideFlags: 0
@@ -7775,8 +7807,9 @@ MonoBehaviour:
   - {fileID: 1656915972}
   - {fileID: 1975763102}
   - {fileID: 571562768}
-  timePerPhase: 120
+  timePerPhase: 5
   currentPhase: 1
+  enemySpawnInterval: 60
   timesForMusicSwitchs:
   - 359
   - 119
@@ -8648,6 +8681,8 @@ MonoBehaviour:
   cardPrefab: {fileID: 9111192502792718104, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
   testNumCards: 2
   totalWidth: 17
+  cardRenderTextures: []
+  cardPreviewController: {fileID: 0}
 --- !u!1 &1471060795
 GameObject:
   m_ObjectHideFlags: 0
@@ -9972,8 +10007,8 @@ MonoBehaviour:
   - {fileID: 6322104384955361398, guid: f590fe37d208e5b4982c645cac75a1a7, type: 3}
   - {fileID: 6322104384955361398, guid: 62450c9019a90294fbf5161f88977295, type: 3}
   spawnInterval: 2
-  xOffset: 12
-  yOffset: -18.2
+  xOffset: 17
+  yOffset: -19
   minZOffset: 7
   maxZOffset: 18
   xSpeed: 20
@@ -10043,6 +10078,7 @@ GameObject:
   - component: {fileID: 1695511095}
   - component: {fileID: 1695511097}
   - component: {fileID: 1695511096}
+  - component: {fileID: 1695511098}
   m_Layer: 5
   m_Name: hp9
   m_TagString: Untagged
@@ -10107,6 +10143,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695511094}
   m_CullTransparentMesh: 1
+--- !u!114 &1695511098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695511094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020df9ae1f5bd54aa4cff8bcd586926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 90
 --- !u!1 &1715734642
 GameObject:
   m_ObjectHideFlags: 0
@@ -10214,9 +10263,12 @@ MonoBehaviour:
   weaponInventory: {fileID: 11400000, guid: ae1bde78bde561a47a23150296d484a1, type: 2}
   upgradeCardManager: {fileID: 1466389497}
   upgradeCost: 3
-  upgradeChoices: 2
+  inititalUpgradeChoices: 3
+  deafaultlUpgradeChoices: 2
   inputDelayTime: 0.05
   upgradeCostIncrease: 0.2
+  _levelUpEffect: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!4 &1721716335
 Transform:
   m_ObjectHideFlags: 0
@@ -10937,6 +10989,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _currentSpawnerPhase: 1
   _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: 6b4e7035801949545b7a4cce802f1cfc, type: 3}
@@ -10945,8 +10998,12 @@ MonoBehaviour:
   _finalSpawnInterval: 1
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _enemyPatternList: []
-  _patternCooldown: {x: 0, y: 0}
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
+    enemyPatterns: []
+  _currentEnemyPattern: []
+  minPatternCooldown: 0
+  maxPatternCooldown: 0
 --- !u!1 &1862134813
 GameObject:
   m_ObjectHideFlags: 0
@@ -11261,11 +11318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd6508cb85483940b533d103ba333f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnDamage: 0
   canvasGroup: {fileID: 0}
   animationFPS: 60
   animationDuration: 1
   ignoreTimeScale: 1
+  transparentAtStart: 1
 --- !u!225 &1942502625
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11645,6 +11702,7 @@ GameObject:
   - component: {fileID: 2004604062}
   - component: {fileID: 2004604064}
   - component: {fileID: 2004604063}
+  - component: {fileID: 2004604065}
   m_Layer: 5
   m_Name: hp6
   m_TagString: Untagged
@@ -11709,6 +11767,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004604061}
   m_CullTransparentMesh: 1
+--- !u!114 &2004604065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004604061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b020df9ae1f5bd54aa4cff8bcd586926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 90
 --- !u!1 &2050641304
 GameObject:
   m_ObjectHideFlags: 0
@@ -11760,11 +11831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd6508cb85483940b533d103ba333f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnDamage: 1
   canvasGroup: {fileID: 0}
   animationFPS: 60
   animationDuration: 0.2
   ignoreTimeScale: 1
+  transparentAtStart: 1
 --- !u!225 &2050641307
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -14298,6 +14369,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  _currentSpawnerPhase: 1
   _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 3064681967817674891, guid: 8bfe6dbabf620624594142c1d41ba67a, type: 3}
@@ -14306,8 +14378,12 @@ MonoBehaviour:
   _finalSpawnInterval: 0.5
   _minSpawnRange: 20
   _maxSpawnRange: 25
-  _enemyPatternList: []
-  _patternCooldown: {x: 0, y: 0}
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
+    enemyPatterns: []
+  _currentEnemyPattern: []
+  minPatternCooldown: 0
+  maxPatternCooldown: 0
 --- !u!1 &9085502979422423946
 GameObject:
   m_ObjectHideFlags: 0

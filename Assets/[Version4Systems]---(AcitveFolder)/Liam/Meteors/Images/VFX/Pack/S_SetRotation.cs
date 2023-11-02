@@ -9,6 +9,9 @@ public class S_SetRotation : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         // Get the current rotation
         Vector3 currentRotation = transform.eulerAngles;
 
