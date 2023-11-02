@@ -9964,20 +9964,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1668154415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c79800a5d21454ea1fdc209edf344e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5779a2c164c51b3429d9d7db20d2218b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   meteorPrefabs:
-  - {fileID: 665043430045162510, guid: be3d85b8e332e054bbd0fc1fe48550ac, type: 3}
-  - {fileID: 3172060860385635693, guid: 0b547de3fa615074cb413385d4af8da2, type: 3}
-  - {fileID: 2407525897475018455, guid: 340dd0be9bcbbe24dac2230856443836, type: 3}
-  spawnInterval: 3
+  - {fileID: 6322104384955361398, guid: b44a7cb754d8de24294c6ad33e7dc957, type: 3}
+  - {fileID: 6322104384955361398, guid: f590fe37d208e5b4982c645cac75a1a7, type: 3}
+  - {fileID: 6322104384955361398, guid: 62450c9019a90294fbf5161f88977295, type: 3}
+  spawnInterval: 2
   xOffset: 12
   yOffset: -18.2
   minZOffset: 7
   maxZOffset: 18
   xSpeed: 20
-  zRotationSpeed: 100
+  zRotationSpeed: 90
 --- !u!1 &1686375459
 GameObject:
   m_ObjectHideFlags: 0
@@ -11593,7 +11593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981431459
