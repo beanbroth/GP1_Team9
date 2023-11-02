@@ -1298,13 +1298,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8ad2baf5aea9dfd49a86948ed4d7b771, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.367
+  m_Pitch: 0.95
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 2
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -7218,9 +7218,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5427661440578837802, guid: b4b7a6925dc5b514e831a3f6239acd54, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6067658308347897170, guid: b4b7a6925dc5b514e831a3f6239acd54, type: 3}
       propertyPath: m_Name
       value: LevelUpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067658308347897170, guid: b4b7a6925dc5b514e831a3f6239acd54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13949,7 +13957,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -16326,6 +16334,7 @@ MonoBehaviour:
   deafaultlUpgradeChoices: 2
   inputDelayTime: 0.05
   upgradeCostIncrease: 0.2
+  cardControlsDelay: 1
   _levelUpEffect: {fileID: 138635234}
   _player: {fileID: 1727308299}
 --- !u!4 &1721716335
