@@ -40,9 +40,11 @@ public class S_UpgradeManager : MonoBehaviour
         playerControls = new S_PlayerControls();
         playerControls.Enable();
         QuarkManager.OnQuarkCountChanged += QuarkCountChanged;
+
         // New addition
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
         _levelUpEffect.SetActive(false);
+        
     }
 
     private void OnDisable()
@@ -151,7 +153,7 @@ public class S_UpgradeManager : MonoBehaviour
         effect.SetActive(false);
 
         // If VisualEffectAsset
-        //VisualEffectAsset.PlayEventID
+        //VisualEffectAsset.PlayEventName<effect>();
     }
 
     private void InitCards()

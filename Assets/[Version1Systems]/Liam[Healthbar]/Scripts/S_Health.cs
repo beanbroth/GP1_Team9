@@ -103,6 +103,10 @@ public class S_Health : MonoBehaviour
         {
             if (i < health)
             {
+                if (i != 0)
+                {
+                    hearts[i].transform.rotation = hearts[i - 1].transform.rotation;
+                }
                 hearts[i].GetComponent<Image>().sprite = fullHeart;
                 hearts[i].SetActive(true);
             }
