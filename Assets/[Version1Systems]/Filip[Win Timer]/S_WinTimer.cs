@@ -5,13 +5,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Events;
 
 public class S_WinTimer : MonoBehaviour
 {
     [Header("Time Management")]
     [SerializeField] private TextMeshProUGUI timeText;
-
+    public static UnityAction winEvent;
     [SerializeField] float currentTime = 600f;
     [SerializeField] float timeLimit = 0f;
     private bool countUp = false; //if true, change the maxtime current time calculation for the phase slider
@@ -76,7 +76,9 @@ public class S_WinTimer : MonoBehaviour
             currentTime = timeLimit;
             TimerText();
             enabled = false;
-            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
+            winEvent.Invoke();
+            PauseManager.Pause();
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene,2f);
         }
         TimerText();
 

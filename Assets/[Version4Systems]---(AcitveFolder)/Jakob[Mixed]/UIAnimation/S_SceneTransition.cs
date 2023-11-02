@@ -29,16 +29,19 @@ public class S_SceneTransition : MonoBehaviour
         StartCoroutine(FadeRoutine(fadeColor,false));
     }
 
-    public void SceneFadeOutAndLoadScene(Color fadeColor, sceneEnum sceneRef)
+    public void SceneFadeOutAndLoadScene(Color fadeColor, sceneEnum sceneRef, float delay=0)
     {
         backgroundImage.enabled = true;
         backgroundImage.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 0);
-        StartCoroutine(FadeRoutine(fadeColor, true));
-        StartCoroutine(LoadSceneRoutine(S_SceneIndexManager.GetIndexFromEnum(sceneRef)));
+        StartCoroutine(FadeRoutine(fadeColor, true,delay));
+        StartCoroutine(LoadSceneRoutine(S_SceneIndexManager.GetIndexFromEnum(sceneRef),delay));
     }
 
-    IEnumerator LoadSceneRoutine(int sceneIndex)
+    IEnumerator LoadSceneRoutine(int sceneIndex, float delay=0)
     {
+        if (delay > 0)
+            yield return new WaitForSecondsRealtime(delay);
+
         yield return new WaitForSecondsRealtime(animationDuration);
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneIndex);
@@ -47,9 +50,11 @@ public class S_SceneTransition : MonoBehaviour
         QuarkManager.ResetQuarks();
     }
     
-    IEnumerator FadeRoutine(Color fadeColor, bool fadeIn = true)
+    IEnumerator FadeRoutine(Color fadeColor, bool fadeIn = true, float delay=0)
     {
-        
+        if(delay>0)
+            yield return new WaitForSecondsRealtime(delay);
+
         float animationTime = 0f;
         float timePerFrame = 1 / animationFPS;
         float currentAlpha = 0;

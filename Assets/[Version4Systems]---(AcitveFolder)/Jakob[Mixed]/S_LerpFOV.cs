@@ -9,15 +9,23 @@ public class S_LerpFOV : MonoBehaviour
     [SerializeField] float targetFOV = 15f;
     float startFOV;
     [SerializeField] float lerpDuration = 3f;
+    [SerializeField] bool zoomOnWin = false;
+    [SerializeField] bool zoomOnLose = true;
 
     private void OnEnable()
     {
-        S_Health.OnDeath += LerpFOV;
+        if(zoomOnLose)
+            S_Health.OnDeath += LerpFOV;
+        if (zoomOnWin)
+            S_WinTimer.winEvent += LerpFOV;
     }
     
     private void OnDisable()
     {
-        S_Health.OnDeath -= LerpFOV;
+        if (zoomOnLose)
+            S_Health.OnDeath -= LerpFOV;
+        if (zoomOnWin)
+            S_WinTimer.winEvent -= LerpFOV;
     }
 
     private void Awake()

@@ -5626,6 +5626,7 @@ MonoBehaviour:
   _enemyPatternSpawnerArray: []
   _enemyPatternSpawnerDisableArray: []
   _enemyPatternSpawnerList: []
+  disableSpawnersOnWin: 1
 --- !u!4 &735720809
 Transform:
   m_ObjectHideFlags: 0
@@ -6564,6 +6565,7 @@ MonoBehaviour:
   - {fileID: 92577241}
   - {fileID: 92577241}
   disableSpawnersOnAwake: 1
+  disableSpawnersOnWin: 1
   timer: {fileID: 1310318106}
 --- !u!114 &811487038
 MonoBehaviour:
@@ -6606,6 +6608,7 @@ MonoBehaviour:
   - {fileID: 92577241}
   - {fileID: 92577241}
   _enemyPatternSpawnerList: []
+  disableSpawnersOnWin: 1
 --- !u!1 &822373141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7904,6 +7907,7 @@ MonoBehaviour:
   - {fileID: 1494458652}
   - {fileID: 1313582278}
   - {fileID: 2099586404}
+  - {fileID: 3745238492210697377}
 --- !u!1 &926575724
 GameObject:
   m_ObjectHideFlags: 0
@@ -8271,6 +8275,7 @@ MonoBehaviour:
   - {fileID: 2067990950}
   - {fileID: 2067990950}
   disableSpawnersOnAwake: 1
+  disableSpawnersOnWin: 1
   timer: {fileID: 1310318106}
 --- !u!1 &961409126
 GameObject:
@@ -12957,6 +12962,7 @@ MonoBehaviour:
   dissolveDuration: 3
   dissolveOnStart: 0
   ignoreIsPaused: 1
+  dissolveOnWin: 0
 --- !u!1 &1460266508
 GameObject:
   m_ObjectHideFlags: 0
@@ -15487,6 +15493,8 @@ MonoBehaviour:
   cam: {fileID: 1668154417}
   targetFOV: 20
   lerpDuration: 1
+  zoomOnWin: 0
+  zoomOnLose: 1
 --- !u!1 &1673497460
 GameObject:
   m_ObjectHideFlags: 0
