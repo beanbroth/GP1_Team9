@@ -72,7 +72,7 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
         
         if (_currentSpawnerPhase >= 0 && _currentSpawnerPhase < _enemyPhases.Length + 1)
         {
-            _currentEnemyPhase = _enemyPhases[_currentSpawnerPhase - 1];
+            _currentEnemyPhase = _enemyPhases[0];//[_currentSpawnerPhase - 1];
             _currentEnemyPatterns = _currentEnemyPhase.enemyPatterns;
         }
 
@@ -84,7 +84,8 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
 
             if (_currentEnemyPatterns != null)
             {
-                ObjectPoolManager.Instantiate(_currentEnemyPatterns[UnityEngine.Random.Range(0, _currentEnemyPatterns.Length)], enemyPatternSpawnPosition, _playerTransform.rotation);
+                ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], enemyPatternSpawnPosition, _playerTransform.rotation);
+                //ObjectPoolManager.Instantiate(_currentEnemyPatterns[UnityEngine.Random.Range(0, _currentEnemyPatterns.Length)], enemyPatternSpawnPosition, _playerTransform.rotation);
             }
 
             if (_randomPatternCooldown && _patternCooldown <= 0)

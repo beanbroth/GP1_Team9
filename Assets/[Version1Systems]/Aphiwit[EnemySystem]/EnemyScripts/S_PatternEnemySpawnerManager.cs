@@ -9,10 +9,23 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
 
     [SerializeField] S_WinTimer timer;
     [SerializeField] List<GameObject> _enemyPatternSpawnerArray;
-    [SerializeField] List<S_EnemyPatternSpawner> _enemyPatternSpawnerList; 
+    [SerializeField] List<GameObject> _enemyPatternSpawnerDisableArray;
+    [SerializeField] List<S_EnemyPatternSpawner> _enemyPatternSpawnerList;
 
+    private void OnEnable()
+    {
+        S_WinTimer.enemySpawnerUpdate += ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate += DisableSpawner;
+    }
+    private void OnDisable()
+    {
+        S_WinTimer.enemySpawnerUpdate -= ActivateSpawner;
+        S_WinTimer.enemySpawnerUpdate -= DisableSpawner;
+    }
+
+    
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         if (transform.childCount == 0)
         {
@@ -63,10 +76,10 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
             // Set active the first spawner if the list is not empty
             _enemyPatternSpawnerArray[0].SetActive(true);
         }
-    }
+    }*/
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (CurrentPatternManagerPhase != timer.currentPhase)
         {
@@ -76,9 +89,42 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
             {
                 foreach (S_EnemyPatternSpawner spawner in _enemyPatternSpawnerList)
                 {
+                    spawner.gameObject.SetActive(true);
                     spawner._currentSpawnerPhase = CurrentPatternManagerPhase;                
                 }
             }
+        }
+    }*/
+
+    void ActivateSpawner(int phase)
+    {
+        CurrentPatternManagerPhase = phase;
+        if (_enemyPatternSpawnerArray != null)
+        {
+            print(phase);
+            GameObject spawner = _enemyPatternSpawnerArray[phase - 1];
+            spawner.gameObject.SetActive(true);
+            S_EnemyPatternSpawner pattern = spawner.GetComponent<S_EnemyPatternSpawner>();
+            if(pattern != null)
+                pattern._currentSpawnerPhase = 0; 
+            /*foreach (S_EnemyPatternSpawner spawner in _enemyPatternSpawnerList)
+            {
+                spawner.gameObject.SetActive(true);
+                spawner._currentSpawnerPhase = phase;
+            }*/
+        }
+    }
+    void DisableSpawner(int phase)
+    {
+        if (_enemyPatternSpawnerDisableArray != null)
+        {
+            GameObject spawner = _enemyPatternSpawnerDisableArray[phase - 1];
+            spawner.gameObject.SetActive(false);
+            /*foreach (S_EnemyPatternSpawner spawner in _enemyPatternSpawnerList)
+            {
+                spawner.gameObject.SetActive(true);
+                spawner._currentSpawnerPhase = phase;
+            }*/
         }
     }
 }
