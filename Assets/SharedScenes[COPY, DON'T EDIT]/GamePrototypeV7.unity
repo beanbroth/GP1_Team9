@@ -14007,7 +14007,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -20945,7 +20945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125608345539510263, guid: 96e2674807791ef40a490e83a6a32ed6, type: 3}
       propertyPath: _originalSpawnInterval
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8125608345539510263, guid: 96e2674807791ef40a490e83a6a32ed6, type: 3}
       propertyPath: _spawnIntervalReductionValue
@@ -21383,9 +21383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4cec29713f2654ea0a8dc4955b946d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPlayInterval: 0.02
+  minPlayInterval: 0.3
   audioSourcePrefab: {fileID: 6160977956559847820, guid: 99ffd169a0894b24db555abc82aea4a6, type: 3}
-  poolSize: 200
+  poolSize: 400
   audioClipDataList:
   - soundName: Battle_Commence_Placeholder_Theme_1
     audioClip: {fileID: 8300000, guid: e4a2af329ee25b4489abd0e86ac80333, type: 3}
