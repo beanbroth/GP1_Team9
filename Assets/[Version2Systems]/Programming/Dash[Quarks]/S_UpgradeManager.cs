@@ -28,6 +28,8 @@ public class S_UpgradeManager : MonoBehaviour
     public static UnityAction ScrollLeft;
     public static UnityAction ScrollRight;
     public static UnityAction SelectCard;
+    bool cardControlsEnabled = false;
+    [SerializeField] float cardControlsDelay = 1f;
 
     // New addition
     [SerializeField] GameObject _levelUpEffect;
@@ -68,11 +70,18 @@ public class S_UpgradeManager : MonoBehaviour
             QuarkManager.quarkCount = 0;
             PauseManager.Pause();
             isUpgrading = true;
+            StartCoroutine(EnableButtons());
             InitCards();
         }
     }
 
     private bool delayInProgress = false;
+
+    private IEnumerator EnableButtons()
+    {
+        yield return new WaitForSeconds(cardControlsDelay);
+        cardControlsEnabled = true;
+    }
 
     private IEnumerator MoveSelection(int value)
     {
@@ -91,6 +100,8 @@ public class S_UpgradeManager : MonoBehaviour
         if (!isUpgrading)
             return;
         if (S_PauseMenu.IsPauseMenuActive)
+            return;
+        if (!cardControlsEnabled)
             return;
 
         float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
@@ -130,6 +141,7 @@ public class S_UpgradeManager : MonoBehaviour
             }
             // New addition
             StartCoroutine(EffectSwitch(_levelUpEffect, 1f));
+            cardControlsEnabled = false;
         }
     }
 
