@@ -18,10 +18,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e56a10b10752d73408a21c4b24e8bc16, type: 2}
   - {fileID: 11400000, guid: 9c34889256e509847bf76da580294a21, type: 2}
   - {fileID: 11400000, guid: da139c55316735e4aba852f000d98001, type: 2}
+  - {fileID: 11400000, guid: 2fc4f4f3406866b43b96b5643fec1ad8, type: 2}
   availableWeaponClasses:
   - {fileID: 11400000, guid: e56a10b10752d73408a21c4b24e8bc16, type: 2}
   - {fileID: 11400000, guid: 9c34889256e509847bf76da580294a21, type: 2}
   - {fileID: 11400000, guid: da139c55316735e4aba852f000d98001, type: 2}
+  - {fileID: 11400000, guid: 2fc4f4f3406866b43b96b5643fec1ad8, type: 2}
   weaponClassDatabase:
   - {fileID: 11400000, guid: 5ef6a1418840f694a9c3d09db09aaa79, type: 2}
   - {fileID: 11400000, guid: b6e2cf11bf9b3694f8b3075b2ba83965, type: 2}

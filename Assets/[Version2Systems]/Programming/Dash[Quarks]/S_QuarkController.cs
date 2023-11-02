@@ -11,34 +11,59 @@ public class S_QuarkController : MonoBehaviour
     [SerializeField] private AnimationCurve accelerationCurve;
     [SerializeField] private float lifetime = 30f;
     private float timer;
+
+    private bool isDelayComplete = false;
+    [SerializeField] private float delayDuration = 0.3f;
+    private float delayTimer = 0.0f;
+
     private void OnEnable()
     {
+        isDelayComplete = false;
+        delayTimer = 0.0f;
         timer = lifetime;
+
     }
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        // If the delay is not complete, increment the delay timer
+        if (!isDelayComplete)
         {
-            ObjectPoolManager.ReturnObject(gameObject);
+            delayTimer += Time.deltaTime;
+
+            // If the delay timer exceeds the delay duration, mark the delay as complete
+            if (delayTimer >= delayDuration)
+            {
+                isDelayComplete = true;
+                timer = lifetime;
+            }
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                ObjectPoolManager.ReturnObject(gameObject);
+            }
+
+            if (player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").gameObject.transform.root;
+            }
+
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            if (distanceToPlayer <= pickupRange)
+            {
+                float maxSpeed = startingMoveSpeed * maxSpeedMult;
+                float speedFactor = 1 - (distanceToPlayer / pickupRange);
+                float curveValue = accelerationCurve.Evaluate(speedFactor);
+                float currentSpeed = Mathf.Lerp(startingMoveSpeed, maxSpeed, curveValue);
+                float moveSpeedMult = currentSpeed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeedMult);
+            }
         }
 
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").gameObject.transform.root;
-        }
 
-        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        if (distanceToPlayer <= pickupRange)
-        {
-            float maxSpeed = startingMoveSpeed * maxSpeedMult;
-            float speedFactor = 1 - (distanceToPlayer / pickupRange);
-            float curveValue = accelerationCurve.Evaluate(speedFactor);
-            float currentSpeed = Mathf.Lerp(startingMoveSpeed, maxSpeed, curveValue);
-            float moveSpeedMult = currentSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeedMult);
-        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -63,5 +88,5 @@ public class S_QuarkController : MonoBehaviour
     {
         pickupRange += extraRange;
     }
-    
+
 }

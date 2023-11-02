@@ -7,11 +7,15 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [System.Serializable]
-    public struct AudioClipData
+    public class AudioClipData
     {
         public string soundName;
         public AudioClip audioClip;
+        public float volume = 1f;
     }
+
+    private Dictionary<string, float> lastPlayedAt = new Dictionary<string, float>();
+    [SerializeField] private float minPlayInterval = 0.02f; // or whatever interval you want
 
     [SerializeField] private GameObject audioSourcePrefab;
     [SerializeField] private int poolSize = 10;
@@ -42,7 +46,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound3D(string soundName, Vector3 position)
     {
-        
+        if (lastPlayedAt.ContainsKey(soundName) && Time.time - lastPlayedAt[soundName] < minPlayInterval)
+        {
+            return;
+        }
+
+        lastPlayedAt[soundName] = Time.time;
+
         //Debug.Log("Playing sound: " + soundName);
         foreach (AudioClipData audioClipData in audioClipDataList)
         {
@@ -54,6 +64,7 @@ public class AudioManager : MonoBehaviour
                     audioSource.gameObject.SetActive(true);
                     audioSource.clip = audioClipData.audioClip;
                     audioSource.transform.position = position;
+                    audioSource.volume = audioClipData.volume;
                     audioSource.Play();
 
                     StartCoroutine(DisableAudioSourceWhenFinished(audioSource));

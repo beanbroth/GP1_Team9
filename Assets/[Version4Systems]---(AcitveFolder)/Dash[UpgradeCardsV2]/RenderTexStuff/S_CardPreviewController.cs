@@ -37,7 +37,7 @@ public class S_CardPreviewController : MonoBehaviour
         
         //enable the correct camera pod
         cameraPods[ix].SetActive(true);
-        
+
         //instantiate the weapon prefab as a child of the dummy prefab
         GameObject weapon = Instantiate(weaponPrefab, dummyPrefabs[ix].transform);
         weapon.transform.localPosition = Vector3.zero;

@@ -17,6 +17,7 @@ public class S_UpgradeCardManager : MonoBehaviour
     [SerializeField] private List<RenderTexture> cardRenderTextures = new List<RenderTexture>();
     [SerializeField] private S_CardPreviewController cardPreviewController;
 
+
     private void SetSelectedCard(int ci)
     {
         cardIndex = ci;
@@ -59,7 +60,7 @@ public class S_UpgradeCardManager : MonoBehaviour
 
     public void DisplayCards(UpgradeCardInfo[] cardInfos)
     {
-        if(OpenUpgrade != null)
+        if (OpenUpgrade != null)
         {
             OpenUpgrade.Invoke();
         }
@@ -75,6 +76,7 @@ public class S_UpgradeCardManager : MonoBehaviour
             {
                 cardPreviewController.SetUpCardPreview(cardInfos[i].prefab, i);
                 UpgradeCardInfo tempCardInfo = cardInfos[i];
+
                 tempCardInfo.image = cardRenderTextures[i];
                 cardInfos[i] = tempCardInfo;
             }

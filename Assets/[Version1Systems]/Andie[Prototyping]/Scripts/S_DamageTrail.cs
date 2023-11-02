@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
@@ -18,9 +19,11 @@ public class S_DamageTrailController: MonoBehaviour
     private Queue<GameObject> trailBulletQueue;
     private float trailWdith;
     private TrailRenderer trailRenderer;
+    private bool isOnPlayer;
 
     private void Start()
     {
+        isOnPlayer = gameObject.transform.root.tag == "Player";
         maxTrailLength = Mathf.FloorToInt(trailLengthTime / spawnInterval);
         trailBulletQueue = new Queue<GameObject>();
         trailRenderer = GetComponent<TrailRenderer>();
@@ -31,6 +34,11 @@ public class S_DamageTrailController: MonoBehaviour
 
     private void Update()
     {
+        if (!isOnPlayer)
+        {
+            transform.localPosition = new Vector3(0f, 0f, 3 + math.sin(Time.time * 3) * 3f);
+        }
+
         spawnTimer += Time.deltaTime;
         damageTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval)

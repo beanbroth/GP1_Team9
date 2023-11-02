@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -19,6 +20,13 @@ public class S_PlayerBulletSpawner : MonoBehaviour
     public Color gizmoColor = Color.green;
     public float gizmoRadius = 2f;
     public int gizmoSegments = 20;
+    private bool isOnPlayer;
+
+
+    private void Start()
+    {
+        isOnPlayer = transform.root.tag == "Player";
+    }
 
     void Update()
     {
@@ -51,7 +59,19 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         if (bulletsPerShot <= 1)
         {
-            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, angleCenter, 0f) * transform.root.rotation);
+            if (isOnPlayer)
+            {
+                ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, angleCenter, 0f) * transform.root.rotation);
+
+
+            }
+            else
+            {
+                Debug.Log("not on player shot");
+                GameObject bullet = ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(-Vector3.forward));
+                bullet.transform.rotation = Quaternion.Euler(0f, -180 + angleCenter, 0f);
+            }
+
             return;
         }
 
@@ -59,7 +79,18 @@ public class S_PlayerBulletSpawner : MonoBehaviour
         {
             float currentAngle = minAngle + angleStep * i;
             Quaternion rotation = Quaternion.Euler(new Vector3(0f, currentAngle, 0f));
-            ObjectPoolManager.Instantiate(bulletPrefab, transform.position, rotation * transform.root.rotation);
+            if (isOnPlayer)
+            {
+                ObjectPoolManager.Instantiate(bulletPrefab, transform.position, rotation * transform.root.rotation);
+
+            }
+            else
+            {
+                Debug.Log("not on player shot");
+                GameObject bullet = ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(-Vector3.forward));
+                bullet.transform.rotation = Quaternion.Euler(new Vector3(0f, -180, 0f)) * rotation;
+            }
+
         }
     }
 

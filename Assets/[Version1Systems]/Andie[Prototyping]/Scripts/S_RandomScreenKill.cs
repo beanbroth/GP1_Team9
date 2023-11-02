@@ -26,6 +26,7 @@ public class S_RandomScreenKill : MonoBehaviour
 
     private void OnEnable()
     {
+        Kill();
         elapsedTime = 0;
     }
 
