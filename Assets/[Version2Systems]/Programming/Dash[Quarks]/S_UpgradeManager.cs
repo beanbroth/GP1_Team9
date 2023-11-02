@@ -44,7 +44,11 @@ public class S_UpgradeManager : MonoBehaviour
         // New addition
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
         _levelUpEffect.SetActive(false);
-        
+        firstSelectionComplete = false;
+    }
+    private void Start()
+    {
+        upgradeChoices = inititalUpgradeChoices;
     }
 
     private void OnDisable()
