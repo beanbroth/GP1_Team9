@@ -12003,6 +12003,7 @@ MonoBehaviour:
   - {fileID: 571562768}
   timePerPhase: 120
   currentPhase: 1
+  maxPhases: 5
   enemySpawnInterval: 60.5
   timesForMusicSwitchs:
   - 359

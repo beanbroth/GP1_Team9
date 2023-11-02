@@ -24,6 +24,7 @@ public class S_WinTimer : MonoBehaviour
     private float timeSinceLastPhase;
     private float maxTime;
     public int currentPhase = 1;
+    [SerializeField] int maxPhases = 4;
 
     [Header("Enemy Spawning")]
     [SerializeField] float enemySpawnInterval = 60;
@@ -114,7 +115,7 @@ public class S_WinTimer : MonoBehaviour
             currentPhase++;
             timeSinceLastPhase = 0f;
             //Debug.Log("New phase: " + currentPhase);
-            if (newPhase != null)
+            if (newPhase != null && currentPhase <= maxPhases)
             {
                 newPhase.Invoke(currentPhase);
             }
