@@ -37,7 +37,7 @@ public class S_AtomaticGunController : MonoBehaviour
 
     private void Shoot(Transform targetEnemy)
     {
-        AudioManager.Instance.PlaySound3D("AtomaticGunShot", transform.position);
+        AudioManager.Instance.PlaySound3D("AtomMaticShot", transform.position);
         GameObject bullet = ObjectPoolManager.Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         S_AtomaticBulletController bulletController = bullet.GetComponent<S_AtomaticBulletController>();
         bulletController.SetTarget(targetEnemy);

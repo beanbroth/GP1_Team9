@@ -45,16 +45,17 @@ public class S_EnemyHealthController : MonoBehaviour
         if (isDead)
             return;
         currentHealth -= damage;
-        AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
         flasher.DefaultFlash();
         InstantiateHitEffect(direction);
         if (currentHealth <= 0 && !isDead)
         {
+            AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
             Die();
         }
         else
         {
             animator.SetTrigger("Take Damage");
+            AudioManager.Instance.PlaySound3D("EnemyHit", transform.position);
         }
     }
 
@@ -74,7 +75,6 @@ public class S_EnemyHealthController : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        AudioManager.Instance.PlaySound3D("EnemyDeath", transform.position);
         enemyAiBehviour.enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;

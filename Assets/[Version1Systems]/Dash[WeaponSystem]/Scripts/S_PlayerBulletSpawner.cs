@@ -56,6 +56,7 @@ public class S_PlayerBulletSpawner : MonoBehaviour
 
     void SpawnEvenBullets()
     {
+        AudioManager.Instance.PlaySound3D("BulletShot",transform.position);
         float angleStep = (maxAngle - minAngle) / (bulletsPerShot - 1);
         if (bulletsPerShot <= 1)
         {

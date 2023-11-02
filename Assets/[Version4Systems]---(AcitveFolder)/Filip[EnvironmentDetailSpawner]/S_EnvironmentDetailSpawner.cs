@@ -32,7 +32,7 @@ public class S_EnvironmentDetailSpawner : MonoBehaviour
                 }
             }
 
-            Instantiate(prefabToInstantiate, position, rotation).transform.localScale = scale;
+            Instantiate(prefabToInstantiate, position, rotation,transform).transform.localScale = scale;
             savedPositions.Add(position);
         }
     }

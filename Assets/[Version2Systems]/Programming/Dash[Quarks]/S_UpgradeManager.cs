@@ -157,7 +157,7 @@ public class S_UpgradeManager : MonoBehaviour
         PauseManager.Unpause();
     }
 
-    private IEnumerator EffectSwitch(GameObject effect, float delay)
+    public IEnumerator EffectSwitch(GameObject effect, float delay)
     {
         // If particle effect
         //effect.Play();
@@ -166,6 +166,7 @@ public class S_UpgradeManager : MonoBehaviour
 
         // If GameObject
         effect.SetActive(true);
+        AudioManager.Instance.PlaySound3D("Game_Won", transform.position);
         yield return new WaitForSeconds(delay);
         effect.SetActive(false);
 
