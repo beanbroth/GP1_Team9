@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/SharedScenes[COPY, DON'T EDIT]/IntroCutScene.unity
     guid: 6debdfc26f7e3144495f8e65499cc95d
   - enabled: 1
-    path: Assets/SharedScenes[COPY, DON'T EDIT]/GamePrototypeV6.unity
-    guid: baf92b33e97890249be14d05da83adf8
+    path: Assets/SharedScenes[COPY, DON'T EDIT]/GamePrototypeV7.unity
+    guid: 5bfabeda6d30fca4caa77236dc8d1044
   - enabled: 1
     path: Assets/SharedScenes[COPY, DON'T EDIT]/OutroCutScene.unity
     guid: 4e6515354492aa8418139e364d95cd38

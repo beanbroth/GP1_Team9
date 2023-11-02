@@ -5496,6 +5496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735720809}
+  - component: {fileID: 735720810}
   m_Layer: 0
   m_Name: EnemySpawner4
   m_TagString: Untagged
@@ -5568,6 +5569,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 954070444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735720810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726336854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a6d86f29bf41a459ac68e62c07ee37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _currentSpawnerPhase: 1
+  _spawnerType: 0
+  _enemyPrefabList:
+  - {fileID: 3064681967817674891, guid: 6de6f45bd5afe1d45aece06c18dfd82f, type: 3}
+  _originalSpawnInterval: 4
+  _spawnIntervalReductionValue: 0.01
+  _finalSpawnInterval: 1
+  _minSpawnRange: 20
+  _maxSpawnRange: 25
+  _enemyPhaseAndPatternArrays: []
+  _currentSelectedElement:
+    enemyPatterns: []
+  _currentEnemyPattern: []
+  minPatternCooldown: 0
+  maxPatternCooldown: 0
 --- !u!1 &744085352
 GameObject:
   m_ObjectHideFlags: 0
