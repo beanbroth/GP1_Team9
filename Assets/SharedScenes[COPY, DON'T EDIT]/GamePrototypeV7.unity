@@ -13813,7 +13813,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -20234,6 +20234,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8491714799130019422, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491714799130019422, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97a3c4703b76dcb4ab48aeb62edf1153, type: 2}
     - target: {fileID: 9111192502792718104, guid: 003ccd24d74a3af45b56b93186ac1098, type: 3}
       propertyPath: m_Name
       value: 3DCard

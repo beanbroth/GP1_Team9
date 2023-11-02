@@ -24,6 +24,9 @@ public class S_CardMovementController : MonoBehaviour
     private float minAngle = 0.01f;
     private Vector3 camDir;
     private Quaternion initalRotation;
+    [SerializeField] Material highlightMaterial;
+    [SerializeField] Renderer rend;
+
 
     private void Start()
     {
@@ -58,12 +61,14 @@ public class S_CardMovementController : MonoBehaviour
 
         if (isSelected)
         {
+            rend.materials = new Material[] { rend.materials[0] ,highlightMaterial };
             Vector3 offsetPosition = initialLocalPosition + (camDir * zOffset);
             transform.localPosition = Vector3.Lerp(transform.localPosition, offsetPosition, selectionScaleSpeed);
             transform.localRotation = Quaternion.Lerp(transform.localRotation, initalRotation, selectionScaleSpeed);
         }
         else
         {
+            rend.materials = new Material[] { rend.materials[0] };
             Vector3 floatPosition = new Vector3(initialLocalPosition.x, initialLocalPosition.y, initialLocalPosition.z + zFloat);
             transform.localPosition = Vector3.Lerp(transform.localPosition, floatPosition, selectionScaleSpeed);
 

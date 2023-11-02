@@ -857,6 +857,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  highlightMaterial: {fileID: 2100000, guid: 97a3c4703b76dcb4ab48aeb62edf1153, type: 2}
+  rend: {fileID: 8491714799130019422}
 --- !u!114 &5592930830231606594
 MonoBehaviour:
   m_ObjectHideFlags: 0
