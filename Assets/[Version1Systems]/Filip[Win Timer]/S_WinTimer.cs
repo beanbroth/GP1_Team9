@@ -69,6 +69,16 @@ public class S_WinTimer : MonoBehaviour
         //Current time
         currentTime = countUp ? currentTime += Time.deltaTime : currentTime -= Time.deltaTime;
 
+        //Win timer
+        if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
+        {
+            currentTime = timeLimit;
+            TimerText();
+            enabled = false;
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
+        }
+        TimerText();
+
         //Music track management
         if (currentTime < timeUntilNextMusicSwitch)
         {
@@ -84,16 +94,6 @@ public class S_WinTimer : MonoBehaviour
                 musicManager.SwitchToNextTrack();
             }
         }
-
-        //Win timer
-        if ((countUp && currentTime >= timeLimit) || (!countUp && currentTime <= timeLimit))
-        {
-            currentTime = timeLimit;
-            TimerText();
-            enabled = false;
-            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.outroCutScene);
-        }
-        TimerText();
 
         //Enemy spawner timer
         timeSinceLastSpawn += Time.deltaTime;
