@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class S_UpgradeManager : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class S_UpgradeManager : MonoBehaviour
     public static UnityAction ScrollRight;
     public static UnityAction SelectCard;
 
+    // New addition
+    [SerializeField] GameObject _levelUpEffect;
+    [SerializeField] Transform _player;
+
     private void Awake()
     {
         weaponInventory.ResetUnlockedWeapons();
@@ -35,6 +40,9 @@ public class S_UpgradeManager : MonoBehaviour
         playerControls = new S_PlayerControls();
         playerControls.Enable();
         QuarkManager.OnQuarkCountChanged += QuarkCountChanged;
+        // New addition
+        _player = FindFirstObjectByType<S_PlayerMovement>().transform;
+        _levelUpEffect.SetActive(false);
     }
 
     private void OnDisable()
@@ -78,6 +86,7 @@ public class S_UpgradeManager : MonoBehaviour
             return;
         if (S_PauseMenu.IsPauseMenuActive)
             return;
+
         float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
         float turnRightValue = playerControls.Player.TurnRight.ReadValue<float>();
         bool wasTurnLeftPressed = playerControls.Player.TurnLeft.WasPressedThisFrame();
@@ -113,6 +122,8 @@ public class S_UpgradeManager : MonoBehaviour
             {
                 SelectCard.Invoke();
             }
+            // New addition
+            StartCoroutine(EffectSwitch(_levelUpEffect, 1f));
         }
     }
 
@@ -125,6 +136,22 @@ public class S_UpgradeManager : MonoBehaviour
         isUpgrading = false;
         upgradeCardManager.ClearCards();
         PauseManager.Unpause();
+    }
+
+    private IEnumerator EffectSwitch(GameObject effect, float delay)
+    {
+        // If particle effect
+        //effect.Play();
+        //yield return new WaitForSeconds(delay);
+        //effect.Stop();
+
+        // If GameObject
+        effect.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        effect.SetActive(false);
+
+        // If VisualEffectAsset
+        //VisualEffectAsset.PlayEventID
     }
 
     private void InitCards()
