@@ -15,6 +15,7 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] public SO_WeaponInventory weaponInventory;
     [SerializeField] S_UpgradeCardManager upgradeCardManager;
     [SerializeField] int upgradeCost = 3;
+    private float upgradeLevel = 0;
     [SerializeField] int inititalUpgradeChoices = 3;
     [SerializeField] int deafaultlUpgradeChoices = 2;
     int upgradeChoices = 3;
@@ -25,6 +26,7 @@ public class S_UpgradeManager : MonoBehaviour
     private bool isHoldingRight = false;
     private bool firstSelectionComplete = false;
     [SerializeField] private float upgradeCostIncrease = 0.2f;
+    [SerializeField] private AnimationCurve upgradeCostAnimationCurve;
     public static UnityAction ScrollLeft;
     public static UnityAction ScrollRight;
     public static UnityAction SelectCard;
@@ -149,7 +151,9 @@ public class S_UpgradeManager : MonoBehaviour
     private void PerformUpgrade()
     {
         weaponInventory.LevelUpWeapon(upgradeCardManager.GetSelectedWeapon(), 1);
-        upgradeCost += Mathf.Max(1, (int)(upgradeCost * upgradeCostIncrease));
+        //upgradeCost += Mathf.Max(1, (int)(upgradeCost * upgradeCostIncrease));
+        upgradeLevel++;
+        upgradeCost = (int)upgradeCostAnimationCurve.Evaluate(upgradeLevel);
         QuarkManager.upgradeCost = upgradeCost;
         QuarkManager.ResetQuarks();
         isUpgrading = false;
