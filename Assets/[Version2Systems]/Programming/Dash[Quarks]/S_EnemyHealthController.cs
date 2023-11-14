@@ -13,6 +13,7 @@ public class S_EnemyHealthController : MonoBehaviour
     [SerializeField] private GameObject directionalHitEffectPrefab;
     [SerializeField] private GameObject topHitEffectPrefab;
     [SerializeField] private Animator animator;
+    S_Explode explosionManager;
     private S_FlashMaterials flasher;
     private S_DissolveController dissolveController;
     private S_EnemyAiBehviour enemyAiBehviour;
@@ -22,7 +23,7 @@ public class S_EnemyHealthController : MonoBehaviour
         flasher = GetComponent<S_FlashMaterials>();
         dissolveController = GetComponent<S_DissolveController>();
         enemyAiBehviour = GetComponent<S_EnemyAiBehviour>();
-
+        explosionManager = GetComponent<S_Explode>();
     }
 
     private void OnEnable()
@@ -78,11 +79,25 @@ public class S_EnemyHealthController : MonoBehaviour
         enemyAiBehviour.enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
+        if (explosionManager != null)
+        {
+            if(!explosionManager.GetIsExploding())
+                explosionManager.InitiateExplosion();
+        }
+        else
+        {
+            DissolveEnemy();
+        }
+    }
+    
+    public void DissolveEnemy()
+    {
         dissolveController.StartDissolve();
         animator.SetTrigger("Death");
         ObjectPoolManager.Instantiate(quarkPrefab, transform.position, Quaternion.identity);
         Invoke("DestroyGameObject", dissolveController.GetDissolveDuration());
     }
+
 
     private void DestroyGameObject()
     {
