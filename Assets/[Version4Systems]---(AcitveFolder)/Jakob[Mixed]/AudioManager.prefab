@@ -140,3 +140,11 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4484b21dfecdd114eabd35f60234fd56, type: 3}
     volume: 0.1
     priority: 4
+  - soundName: ExplosionBeep
+    audioClip: {fileID: 8300000, guid: cbb641ed3d82cac4f866ac92f0e9e06d, type: 3}
+    volume: 0.4
+    priority: 3
+  - soundName: Explosion
+    audioClip: {fileID: 8300000, guid: 38dec82f6e9855947ac67ef4fb5b2587, type: 3}
+    volume: 1
+    priority: 3

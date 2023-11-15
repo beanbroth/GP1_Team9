@@ -37,7 +37,7 @@ public class S_Explode : MonoBehaviour
         {
             Instantiate(explosion, transform.position, transform.rotation, null);
         }
-        AudioManager.Instance.PlaySound3D("PlayerDeath", transform.position);
+        AudioManager.Instance.PlaySound3D("Explosion", transform.position);
         Collider[] closeEnemies = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
         foreach (Collider enemy in closeEnemies)
         {
@@ -61,7 +61,7 @@ public class S_Explode : MonoBehaviour
 
     void Beep()
     {
-        AudioManager.Instance.PlaySound3D("PlayerHit",transform.position);
+        AudioManager.Instance.PlaySound3D("ExplosionBeep",transform.position);
     }
     public bool GetIsExploding()
     {
