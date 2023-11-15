@@ -16477,7 +16477,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  cardControlsDelay: 1
+  cardControlsDelay: 0.5
   _levelUpEffect: {fileID: 138635234}
   _player: {fileID: 1727308299}
 --- !u!4 &1721716335

@@ -103,6 +103,8 @@ public class S_UpgradeManager : MonoBehaviour
             return;
         if (S_PauseMenu.IsPauseMenuActive)
             return;
+        if (!cardControlsEnabled)
+            return;
 
         float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
         float turnRightValue = playerControls.Player.TurnRight.ReadValue<float>();
@@ -131,9 +133,6 @@ public class S_UpgradeManager : MonoBehaviour
                 }
             }
         }
-
-        if (!cardControlsEnabled)
-            return;
 
         if (turnLeftValue < -0.5f && turnRightValue > 0.5f)
         {

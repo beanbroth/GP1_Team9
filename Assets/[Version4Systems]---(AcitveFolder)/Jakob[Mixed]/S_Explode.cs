@@ -8,7 +8,7 @@ public class S_Explode : MonoBehaviour
     S_FlashMaterials flasher;
     [SerializeField] float[] beepTimes = {1,1,0.5f,0.5f,0.25f,0.25f,0.1f,0.1f,0.1f};
     [SerializeField] int damage = 30;
-    [SerializeField] float radius = 3;
+    [SerializeField] float radius = 5;
     [SerializeField] GameObject explosion;
     bool isExploding = false;
     S_EnemyHealthController healthManager;
