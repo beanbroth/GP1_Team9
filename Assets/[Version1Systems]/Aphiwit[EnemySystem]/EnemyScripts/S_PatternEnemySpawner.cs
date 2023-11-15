@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -19,6 +20,10 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
     private float _patternCooldown;
 
     private Transform _playerTransform;
+
+    [Header("Spawn Mode")]
+    [SerializeField] bool useSpawnPoints = true;
+    [SerializeField] Transform[] spawnPoints;
     //[Header("Scriptable Objects Related")]
     //[SerializeField] EnemyPattern[] enemyPatterns;
     //[SerializeField] string patternName;
@@ -78,13 +83,19 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
 
         if (_patternCooldown <= 0)
         {
-            Vector3 enemyPatternSpawnPosition = transform.position;
+            //Vector3 enemyPatternSpawnPosition = transform.position;
+            Transform spawnPoint = transform;
+            if (useSpawnPoints)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            }
+
             bool canSpawn = false;
-            (Vector3, bool) spawnCheck = CheckIfSpawnPointExist(enemyPatternSpawnPosition, canSpawn);
+            (Vector3, bool) spawnCheck = CheckIfSpawnPointExist(spawnPoint.position, canSpawn);
 
             if (_currentEnemyPatterns != null)
             {
-                ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], enemyPatternSpawnPosition, _playerTransform.rotation);
+                ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation);
                 //ObjectPoolManager.Instantiate(_currentEnemyPatterns[UnityEngine.Random.Range(0, _currentEnemyPatterns.Length)], enemyPatternSpawnPosition, _playerTransform.rotation);
             }
 
