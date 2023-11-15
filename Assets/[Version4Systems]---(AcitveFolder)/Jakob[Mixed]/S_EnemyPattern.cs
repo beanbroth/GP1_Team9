@@ -8,7 +8,8 @@ using UnityEngine;
     line,
     cone,
     circle,
-    spiral
+    spiral,
+    v
 }
 
 public class S_EnemyPattern : MonoBehaviour
@@ -46,13 +47,19 @@ public class S_EnemyPattern : MonoBehaviour
                 StartCoroutine(SpawnSpiral());
                 return;
             case enemyPatternType2.row:
-                SpawnRow(false, 0);
+                SpawnRow(numberOfEnemies,false, 0);
                 break;
             case enemyPatternType2.line:
-                SpawnRow(true, 0);
+                SpawnRow(numberOfEnemies,true, 0);
                 break;
             case enemyPatternType2.circle:
                 SpawnCircle();
+                break;
+            case enemyPatternType2.cone:
+                SpawnCone();
+                break;
+            case enemyPatternType2.v:
+                SpawnV();
                 break;
         }
         if (turnTowardsParent)
@@ -63,7 +70,7 @@ public class S_EnemyPattern : MonoBehaviour
     }
     int GetEnemyIndexInEnemyPattern(int i)
     {
-        return 0;// (int)fullPatternString[i];
+        return int.Parse(fullPatternString[i].ToString());
     }
 
     private void SpawnCircle()
@@ -107,13 +114,13 @@ public class S_EnemyPattern : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void SpawnRow(bool vertical = false, float relativeOffset = 0)
+    void SpawnRow(int amount, bool vertical = false, float relativeOffset = 0)
     {
         if (!vertical)
         {
-            float startX = -(numberOfEnemies * spacing) / 2;
+            float startX = -(amount * spacing) / 2;
             float posX = startX;
-            for (int i = 0; i < numberOfEnemies; i++)
+            for (int i = 0; i < amount; i++)
             {
                 ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(posX, 0, relativeOffset), Quaternion.identity, transform);
                 posX += spacing;
@@ -121,13 +128,49 @@ public class S_EnemyPattern : MonoBehaviour
         }
         else
         {
-            float startY = -(numberOfEnemies * spacing) / 2;
+            float startY = -(amount * spacing) / 2;
             float posY = startY;
-            for (int i = 0; i < numberOfEnemies; i++)
+            for (int i = 0; i < amount; i++)
             {
                 ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, posY), Quaternion.identity, transform);
                 posY += spacing;
             }
+        }
+    }
+
+    void SpawnCone()
+    {
+        List<int> configurations = new List<int> { 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66};
+        if (configurations.Contains(numberOfEnemies))
+        {
+            int numberOfRows = configurations.IndexOf(numberOfEnemies);
+            for (int i = 1; i <= numberOfRows; i++)
+            {
+                SpawnRow(i,false,-spacing*(i-1));
+            }
+        }
+        else
+        {
+            print("Enemy Cone Pattern: Number of enemies not viable.");
+        }
+    }
+    void SpawnV()
+    {
+        List<int> configurations = new List<int> { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27 };
+        if (numberOfEnemies%2 != 0)
+        {
+            int numberOfRows = Mathf.CeilToInt(numberOfEnemies/2);
+            ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(0)], Vector3.zero, Quaternion.identity, transform);
+            for (int i = 1; i <= numberOfRows; i++)
+            {
+                float relativeOffset = (spacing * i)/2;
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(-relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
+            }
+        }
+        else
+        {
+            print("Enemy Cone Pattern: Number of enemies not viable.");
         }
     }
 }

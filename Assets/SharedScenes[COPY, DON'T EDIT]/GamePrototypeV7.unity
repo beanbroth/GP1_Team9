@@ -11449,14 +11449,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf462d1687a471b44863c5a8971bd20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternType: 0
+  patternType: 5
   enemyPrefabs:
   - {fileID: 3064681967817674891, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
   - {fileID: 3064681967817674891, guid: 8bfe6dbabf620624594142c1d41ba67a, type: 3}
-  numberOfEnemies: 4
+  numberOfEnemies: 21
   spacing: 3
-  enemyPrefabPattern: 010
+  enemyPrefabPattern: 01
   turnTowardsParent: 1
+  radius: 22.5
+  spiralDelay: 0.25
 --- !u!1 &1208597132
 GameObject:
   m_ObjectHideFlags: 0
