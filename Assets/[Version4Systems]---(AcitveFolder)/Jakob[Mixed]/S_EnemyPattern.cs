@@ -20,6 +20,9 @@ public class S_EnemyPattern : MonoBehaviour
     [SerializeField] string enemyPrefabPattern = "0";
     string fullPatternString = "";
     [SerializeField] bool turnTowardsParent;
+    [Header("Type Specific Vairables")]
+    [SerializeField] float radius = 22.5f;
+    [SerializeField] float spiralDelay = 0.25f;
 
     private void Awake()
     {
@@ -39,6 +42,9 @@ public class S_EnemyPattern : MonoBehaviour
         print("enemypattern: "+fullPatternString);
         switch (patternType)
         {
+            case enemyPatternType2.spiral:
+                StartCoroutine(SpawnSpiral());
+                return;
             case enemyPatternType2.row:
                 SpawnRow(false, 0);
                 break;
@@ -46,20 +52,61 @@ public class S_EnemyPattern : MonoBehaviour
                 SpawnRow(true, 0);
                 break;
             case enemyPatternType2.circle:
-
+                SpawnCircle();
                 break;
         }
         if (turnTowardsParent)
         {
             transform.LookAt(transform.parent.position);
         }
-        transform.DetachChildren();
-        Destroy(gameObject);
+        DetatchChildrenAndDestroy();
     }
     int GetEnemyIndexInEnemyPattern(int i)
     {
         return 0;// (int)fullPatternString[i];
     }
+
+    private void SpawnCircle()
+    {
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            float angle = i * 360f / numberOfEnemies;
+            GameObject orbitingObject =
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
+            Vector3 spawnPosition =
+                new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
+            orbitingObject.transform.localPosition = spawnPosition;
+            if (turnTowardsParent)
+            {
+                orbitingObject.transform.LookAt(transform.parent.position);
+            }
+        }
+    }
+    IEnumerator SpawnSpiral()
+    {
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            float angle = i * 360f / numberOfEnemies;
+            GameObject orbitingObject =
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
+            Vector3 spawnPosition =
+                new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
+            orbitingObject.transform.localPosition = spawnPosition;
+            if (turnTowardsParent)
+            {
+                orbitingObject.transform.LookAt(transform.parent.position);
+            }
+            yield return new WaitForSeconds(spiralDelay);
+        }
+        DetatchChildrenAndDestroy();
+    }
+
+    void DetatchChildrenAndDestroy()
+    {
+        transform.DetachChildren();
+        Destroy(gameObject);
+    }
+
     void SpawnRow(bool vertical = false, float relativeOffset = 0)
     {
         if (!vertical)
