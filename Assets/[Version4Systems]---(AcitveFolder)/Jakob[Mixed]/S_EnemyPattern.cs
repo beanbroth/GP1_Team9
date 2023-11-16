@@ -10,7 +10,9 @@ using UnityEngine;
     circle,
     spiral,
     v,
-    reverseV
+    reverseV,
+    horizontalWalls,
+    verticalWalls
 }
 
 public class S_EnemyPattern : MonoBehaviour
@@ -65,6 +67,12 @@ public class S_EnemyPattern : MonoBehaviour
             case enemyPatternType2.reverseV:
                 SpawnReverseV();
                 break;
+            case enemyPatternType2.horizontalWalls:
+                SpawnWalls(false);
+                break;
+            case enemyPatternType2.verticalWalls:
+                SpawnWalls(true);
+                break;
         }
         if (turnTowardsParent)
         {
@@ -118,6 +126,19 @@ public class S_EnemyPattern : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void SpawnWalls(bool vertical)
+    {
+        if (vertical)
+        {
+            SpawnRow(numberOfEnemies,true,radius);
+            SpawnRow(numberOfEnemies, true, -radius);
+        }
+        else
+        {
+            SpawnRow(numberOfEnemies, false, radius);
+            SpawnRow(numberOfEnemies, false, -radius);
+        }
+    }
     void SpawnRow(int amount, bool vertical = false, float relativeOffset = 0)
     {
         if (!vertical)
@@ -187,8 +208,8 @@ public class S_EnemyPattern : MonoBehaviour
             for (int i = numberOfRows; i >= 0; i--)
             {
                 float relativeOffset = (spacing * i) / 2;
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, -spacing * (numberOfRows-i)), Quaternion.identity, transform);
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(-relativeOffset, 0, -spacing * (numberOfRows - i)), Quaternion.identity, transform);
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(relativeOffset, 0, -spacing * (numberOfRows-i)), Quaternion.identity, transform);
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(-relativeOffset, 0, -spacing * (numberOfRows - i)), Quaternion.identity, transform);
             }
         }
         else
