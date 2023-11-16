@@ -32,29 +32,22 @@ public class S_Explode : MonoBehaviour
             flasher.Flash(i / 2);
             yield return new WaitForSeconds(i);
         }
-        print("BOOM");
         if(explosion != null)
         {
             Instantiate(explosion, transform.position, transform.rotation, null);
         }
         AudioManager.Instance.PlaySound3D("Explosion", transform.position);
-        Collider[] closeEnemies = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
+        Collider[] closeEnemies = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy","Player"));
         foreach (Collider enemy in closeEnemies)
         {
-            enemy.GetComponent<S_EnemyHealthController>().TakeDamage(damage);
-        }
-
-        Collider[] cols = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Player"));
-        print(closeEnemies.Length);
-        GameObject player = null;
-        if(cols.Length > 0)
-        {
-            player = cols[0].gameObject;
-            print(cols[0]);
-        }
-        if (player != null)
-        {
-            player.GetComponent<S_Health>().TakeDamage();
+            if(enemy.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                enemy.GetComponent<S_EnemyHealthController>().TakeDamage(damage);
+            }
+            else if(enemy.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                enemy.GetComponent<S_Health>().TakeDamage();
+            }
         }
         healthManager.DissolveEnemy();
     }

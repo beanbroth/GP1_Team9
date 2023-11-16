@@ -12,6 +12,11 @@ public class EnemySpawnerMethods : MonoBehaviour
         if (NavMesh.SamplePosition(position, out hit, 1.0f, NavMesh.AllAreas))
         {
             position = hit.position;
+            Collider[] overlappingColliders = Physics.OverlapSphere(position, 0.5f, LayerMask.GetMask("Enemy", "Player"));
+            if (overlappingColliders.Length>0)
+            {
+                return (position, false);
+            }
             return (position, true);
         }
         else
