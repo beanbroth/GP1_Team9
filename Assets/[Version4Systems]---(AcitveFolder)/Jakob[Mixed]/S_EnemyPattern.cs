@@ -9,7 +9,8 @@ using UnityEngine;
     cone,
     circle,
     spiral,
-    v
+    v,
+    reverseV
 }
 
 public class S_EnemyPattern : MonoBehaviour
@@ -60,6 +61,9 @@ public class S_EnemyPattern : MonoBehaviour
                 break;
             case enemyPatternType2.v:
                 SpawnV();
+                break;
+            case enemyPatternType2.reverseV:
+                SpawnReverseV();
                 break;
         }
         if (turnTowardsParent)
@@ -151,13 +155,13 @@ public class S_EnemyPattern : MonoBehaviour
         }
         else
         {
-            print("Enemy Cone Pattern: Number of enemies not viable.");
+            print("Enemy Cone Pattern: Number of enemies incompatible with configurations.");
         }
     }
     void SpawnV()
     {
         List<int> configurations = new List<int> { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27 };
-        if (numberOfEnemies%2 != 0)
+        if (configurations.Contains(numberOfEnemies))
         {
             int numberOfRows = Mathf.CeilToInt(numberOfEnemies/2);
             ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(0)], Vector3.zero, Quaternion.identity, transform);
@@ -170,7 +174,26 @@ public class S_EnemyPattern : MonoBehaviour
         }
         else
         {
-            print("Enemy Cone Pattern: Number of enemies not viable.");
+            print("Enemy V Pattern: Number of enemies incompatible with configurations.");
+        }
+    }
+    void SpawnReverseV()
+    {
+        List<int> configurations = new List<int> { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27 };
+        if (configurations.Contains(numberOfEnemies))
+        {
+            int numberOfRows = Mathf.CeilToInt(numberOfEnemies / 2);
+            //ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(0)], Vector3.zero, Quaternion.identity, transform);
+            for (int i = numberOfRows; i >= 0; i--)
+            {
+                float relativeOffset = (spacing * i) / 2;
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, -spacing * (numberOfRows-i)), Quaternion.identity, transform);
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(-relativeOffset, 0, -spacing * (numberOfRows - i)), Quaternion.identity, transform);
+            }
+        }
+        else
+        {
+            print("Enemy V Pattern: Number of enemies incompatible with configurations.");
         }
     }
 }
