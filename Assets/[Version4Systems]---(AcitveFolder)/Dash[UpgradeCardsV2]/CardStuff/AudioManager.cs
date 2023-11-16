@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
         public string soundName;
         public AudioClip audioClip;
         public float volume = 1f;
+        public int priority = 128;
     }
 
     private Dictionary<string, float> lastPlayedAt = new Dictionary<string, float>();
@@ -65,6 +66,7 @@ public class AudioManager : MonoBehaviour
                     audioSource.clip = audioClipData.audioClip;
                     audioSource.transform.position = position;
                     audioSource.volume = audioClipData.volume;
+                    audioSource.priority = audioClipData.priority;
                     audioSource.Play();
 
                     StartCoroutine(DisableAudioSourceWhenFinished(audioSource));

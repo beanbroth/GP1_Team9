@@ -13,16 +13,21 @@ public class S_DissolveController : MonoBehaviour
     float timeSinceDissolveStarted = 0f;
     [SerializeField] bool dissolveOnStart = false;
     [SerializeField] bool ignoreIsPaused = false;
+    [SerializeField] bool dissolveOnWin = true;
 
     private void OnEnable()
     {
         S_Health.OnDeath += StartDissolve;
+        if(dissolveOnWin)
+            S_WinTimer.winEvent += StartDissolve;
         Reset();
     }
 
     private void OnDisable()
     {
         S_Health.OnDeath -= StartDissolve;
+        if (dissolveOnWin)
+            S_WinTimer.winEvent -= StartDissolve;
     }
 
     private void Start()

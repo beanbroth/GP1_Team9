@@ -16,11 +16,13 @@ public class S_PhaseManager : MonoBehaviour
     [SerializeField] GameObject passiveCardsUIObject;
     [SerializeField] TextMeshProUGUI leftCardName;
     [SerializeField] TextMeshProUGUI rightCardName;
-    S_HUDManager hudManager;
+    [SerializeField] GameObject levelUpEffect;
 
+    private S_HUDManager hudManager;
     private S_PlayerControls playerControls;
     private S_Health healthManager;
     private S_QuarkController quarkController;
+    private S_UpgradeManager upgradeManager;
     private S_WinTimer winTimer;
     private bool isUpgrading = false;
     private void OnEnable()
@@ -40,6 +42,7 @@ public class S_PhaseManager : MonoBehaviour
         hudManager = FindFirstObjectByType<S_HUDManager>();
         quarkController = FindFirstObjectByType<S_QuarkController>();
         winTimer = FindFirstObjectByType<S_WinTimer>();
+        upgradeManager = FindFirstObjectByType<S_UpgradeManager>();
         playerControls = new S_PlayerControls();
         playerControls.Player.Turn.performed += context =>
         {
@@ -55,6 +58,7 @@ public class S_PhaseManager : MonoBehaviour
                     quarkController.AddPickupRange(3f); //Hard coded right button, need to randomize cards
                 }
                 AudioManager.Instance.PlaySound3D("CardSelect", transform.position);
+
                 CloseCards();
             }
         };
@@ -88,6 +92,7 @@ public class S_PhaseManager : MonoBehaviour
 
     void CloseCards()
     {
+        upgradeManager.StartCoroutine(upgradeManager.EffectSwitch(levelUpEffect, 1));
         passiveCardsUIObject.SetActive(false); //Add animations out
         phasesUICollectionObject.SetActive(false);
         Time.timeScale = 1;

@@ -11,16 +11,29 @@ public class S_PatternEnemySpawnerManager : MonoBehaviour
     [SerializeField] List<GameObject> _enemyPatternSpawnerArray;
     [SerializeField] List<GameObject> _enemyPatternSpawnerDisableArray;
     [SerializeField] List<S_EnemyPatternSpawner> _enemyPatternSpawnerList;
+    [SerializeField] bool disableSpawnersOnWin = true;
 
     private void OnEnable()
     {
         S_WinTimer.enemySpawnerUpdate += ActivateSpawner;
         S_WinTimer.enemySpawnerUpdate += DisableSpawner;
+        if (disableSpawnersOnWin)
+            S_WinTimer.winEvent += DisableAllSpawners;
     }
     private void OnDisable()
     {
         S_WinTimer.enemySpawnerUpdate -= ActivateSpawner;
         S_WinTimer.enemySpawnerUpdate -= DisableSpawner;
+        if (disableSpawnersOnWin)
+            S_WinTimer.winEvent -= DisableAllSpawners;
+    }
+
+    void DisableAllSpawners()
+    {
+        foreach(GameObject spawner in _enemyPatternSpawnerArray)
+        {
+            spawner.SetActive(false);
+        }
     }
 
     

@@ -39,22 +39,26 @@ public class S_Health : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
+            TakeDamage();
+        }
+    }
+    public void TakeDamage()
+    {
+        if (!isInvincible) // Checks if the player is invincible, if it's not, it takes damage and becomes invincible for 2 seconds
+        {
+            health--;
+            health = Mathf.Clamp(health, 0, numOfHearts);
+            UpdateHealthUI();
+            flasher.DefaultFlash();
+            if (health <= 0)
             {
-                health--;
-                health = Mathf.Clamp(health, 0, numOfHearts);
-                UpdateHealthUI();
-                flasher.DefaultFlash();
-                if (health <= 0)
-                {
-                    PlayerDeath();
-                    OnDeath?.Invoke();
-                }
-                else
-                {
-                    PlayerHurt();
-                    OnDamage?.Invoke();
-                }
+                PlayerDeath();
+                OnDeath?.Invoke();
+            }
+            else
+            {
+                PlayerHurt();
+                OnDamage?.Invoke();
             }
         }
     }

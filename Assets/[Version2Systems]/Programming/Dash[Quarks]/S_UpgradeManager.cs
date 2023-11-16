@@ -15,6 +15,7 @@ public class S_UpgradeManager : MonoBehaviour
     [SerializeField] public SO_WeaponInventory weaponInventory;
     [SerializeField] S_UpgradeCardManager upgradeCardManager;
     [SerializeField] int upgradeCost = 3;
+    private float upgradeLevel = 0;
     [SerializeField] int inititalUpgradeChoices = 3;
     [SerializeField] int deafaultlUpgradeChoices = 2;
     int upgradeChoices = 3;
@@ -25,9 +26,12 @@ public class S_UpgradeManager : MonoBehaviour
     private bool isHoldingRight = false;
     private bool firstSelectionComplete = false;
     [SerializeField] private float upgradeCostIncrease = 0.2f;
+    [SerializeField] private AnimationCurve upgradeCostAnimationCurve;
     public static UnityAction ScrollLeft;
     public static UnityAction ScrollRight;
     public static UnityAction SelectCard;
+    bool cardControlsEnabled = false;
+    [SerializeField] float cardControlsDelay = 1f;
 
     // New addition
     [SerializeField] GameObject _levelUpEffect;
@@ -44,7 +48,11 @@ public class S_UpgradeManager : MonoBehaviour
         // New addition
         _player = FindFirstObjectByType<S_PlayerMovement>().transform;
         _levelUpEffect.SetActive(false);
-        
+        firstSelectionComplete = false;
+    }
+    private void Start()
+    {
+        upgradeChoices = inititalUpgradeChoices;
     }
 
     private void OnDisable()
@@ -64,11 +72,18 @@ public class S_UpgradeManager : MonoBehaviour
             QuarkManager.quarkCount = 0;
             PauseManager.Pause();
             isUpgrading = true;
+            StartCoroutine(EnableButtons());
             InitCards();
         }
     }
 
     private bool delayInProgress = false;
+
+    private IEnumerator EnableButtons()
+    {
+        yield return new WaitForSeconds(cardControlsDelay);
+        cardControlsEnabled = true;
+    }
 
     private IEnumerator MoveSelection(int value)
     {
@@ -87,6 +102,8 @@ public class S_UpgradeManager : MonoBehaviour
         if (!isUpgrading)
             return;
         if (S_PauseMenu.IsPauseMenuActive)
+            return;
+        if (!cardControlsEnabled)
             return;
 
         float turnLeftValue = playerControls.Player.TurnLeft.ReadValue<float>();
@@ -126,13 +143,16 @@ public class S_UpgradeManager : MonoBehaviour
             }
             // New addition
             StartCoroutine(EffectSwitch(_levelUpEffect, 1f));
+            cardControlsEnabled = false;
         }
     }
 
     private void PerformUpgrade()
     {
         weaponInventory.LevelUpWeapon(upgradeCardManager.GetSelectedWeapon(), 1);
-        upgradeCost += Mathf.Max(1, (int)(upgradeCost * upgradeCostIncrease));
+        //upgradeCost += Mathf.Max(1, (int)(upgradeCost * upgradeCostIncrease));
+        upgradeLevel++;
+        upgradeCost = (int)upgradeCostAnimationCurve.Evaluate(upgradeLevel);
         QuarkManager.upgradeCost = upgradeCost;
         QuarkManager.ResetQuarks();
         isUpgrading = false;
@@ -140,7 +160,7 @@ public class S_UpgradeManager : MonoBehaviour
         PauseManager.Unpause();
     }
 
-    private IEnumerator EffectSwitch(GameObject effect, float delay)
+    public IEnumerator EffectSwitch(GameObject effect, float delay)
     {
         // If particle effect
         //effect.Play();
@@ -149,6 +169,7 @@ public class S_UpgradeManager : MonoBehaviour
 
         // If GameObject
         effect.SetActive(true);
+        AudioManager.Instance.PlaySound3D("Game_Won", transform.position);
         yield return new WaitForSeconds(delay);
         effect.SetActive(false);
 

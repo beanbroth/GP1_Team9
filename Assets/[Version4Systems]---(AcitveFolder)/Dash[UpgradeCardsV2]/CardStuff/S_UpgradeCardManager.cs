@@ -74,7 +74,7 @@ public class S_UpgradeCardManager : MonoBehaviour
             GameObject card = Instantiate(cardPrefab, transform);
             if (cardInfos[i].prefab != null)
             {
-                cardPreviewController.SetUpCardPreview(cardInfos[i].prefab, i);
+                cardPreviewController.SetUpCardPreview(cardInfos[i].prefab.gameObject, i);
                 UpgradeCardInfo tempCardInfo = cardInfos[i];
 
                 tempCardInfo.image = cardRenderTextures[i];

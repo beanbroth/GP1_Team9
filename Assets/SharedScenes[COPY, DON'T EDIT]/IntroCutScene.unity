@@ -1446,8 +1446,8 @@ MonoBehaviour:
   - {fileID: 907282213}
   Scene1Times:
   - 3
-  - 5
-  - 6
+  - 1.75
+  - 3
   Camera: {fileID: 2074252284}
   CameraTransitionTime: 1
   button: {fileID: 1510934544}
