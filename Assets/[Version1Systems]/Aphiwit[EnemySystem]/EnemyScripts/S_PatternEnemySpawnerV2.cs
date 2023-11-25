@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class S_EnemyPatternSpawnerV2 : EnemySpawnerMethods
 {
-    // Testing
     [SerializeField] LayerMask groundLayerMask;
     [SerializeField] GameObject[] enemyPatterns;
 
@@ -36,7 +35,6 @@ public class S_EnemyPatternSpawnerV2 : EnemySpawnerMethods
         _patternCooldown = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(enemyPatterns.Length <= 0 || enemyPatterns == null)
@@ -72,11 +70,7 @@ public class S_EnemyPatternSpawnerV2 : EnemySpawnerMethods
                 spawnPoint = centerSpawnPoint;
             }
 
-            GameObject enemyPattern = Instantiate(enemyPatterns[patternIndex], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation, spawnPoint.parent);
-            print("spawned");
-            //ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation);
-            //ObjectPoolManager.Instantiate(_currentEnemyPatterns[UnityEngine.Random.Range(0, _currentEnemyPatterns.Length)], enemyPatternSpawnPosition, _playerTransform.rotation);
-
+            Instantiate(enemyPatterns[patternIndex], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation, spawnPoint.parent);
             _patternCooldown = GetRandomCooldown();
         }
     }

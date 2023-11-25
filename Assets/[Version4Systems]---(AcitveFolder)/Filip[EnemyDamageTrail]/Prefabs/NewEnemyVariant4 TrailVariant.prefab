@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3064681967817674891, guid: 6de6f45bd5afe1d45aece06c18dfd82f, type: 3}
       propertyPath: m_Name
-      value: NewEnemyVariant4 Variant
+      value: NewEnemyVariant4 TrailVariant
       objectReference: {fileID: 0}
     - target: {fileID: 3064681967817674891, guid: 6de6f45bd5afe1d45aece06c18dfd82f, type: 3}
       propertyPath: m_IsActive

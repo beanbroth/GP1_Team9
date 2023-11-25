@@ -237,6 +237,7 @@ MonoBehaviour:
   dissolveOnStart: 0
   ignoreIsPaused: 1
   dissolveOnWin: 1
+  dissolveOnLose: 1
 --- !u!82 &6373488474481860022
 AudioSource:
   m_ObjectHideFlags: 0

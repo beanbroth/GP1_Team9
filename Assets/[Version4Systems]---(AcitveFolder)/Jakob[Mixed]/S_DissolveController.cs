@@ -14,10 +14,12 @@ public class S_DissolveController : MonoBehaviour
     [SerializeField] bool dissolveOnStart = false;
     [SerializeField] bool ignoreIsPaused = false;
     [SerializeField] bool dissolveOnWin = true;
+    [SerializeField] bool dissolveOnLose = true;
 
     private void OnEnable()
     {
-        S_Health.OnDeath += StartDissolve;
+        if(dissolveOnLose)
+            S_Health.OnDeath += StartDissolve;
         if(dissolveOnWin)
             S_WinTimer.winEvent += StartDissolve;
         Reset();
@@ -25,7 +27,8 @@ public class S_DissolveController : MonoBehaviour
 
     private void OnDisable()
     {
-        S_Health.OnDeath -= StartDissolve;
+        if (dissolveOnLose)
+            S_Health.OnDeath -= StartDissolve;
         if (dissolveOnWin)
             S_WinTimer.winEvent -= StartDissolve;
     }

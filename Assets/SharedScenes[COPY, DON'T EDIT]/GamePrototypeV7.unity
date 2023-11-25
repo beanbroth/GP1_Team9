@@ -14305,6 +14305,7 @@ MonoBehaviour:
   dissolveOnStart: 0
   ignoreIsPaused: 1
   dissolveOnWin: 0
+  dissolveOnLose: 1
 --- !u!1 &1460266508
 GameObject:
   m_ObjectHideFlags: 0

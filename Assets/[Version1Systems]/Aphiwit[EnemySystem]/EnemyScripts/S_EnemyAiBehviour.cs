@@ -14,10 +14,14 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     [SerializeField] LayerMask groundLayerMask, playerLayerMask;
 
+
     // Patroling and chasing
     [SerializeField] float walkPointRange;
     private Vector3 walkPoint;
     [SerializeField] bool walkPointSet;
+
+    public Vector3 spawnPosition;
+    bool gameLost = false;
 
 
     // States
@@ -28,6 +32,15 @@ public class S_EnemyAiBehviour : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+    private void OnEnable()
+    {
+        spawnPosition = transform.position;
+        S_Health.OnDeath += GoBackToSpawn;
+    }
+    private void OnDisable()
+    {
+        S_Health.OnDeath -= GoBackToSpawn;
     }
 
     private void Update()
@@ -46,7 +59,7 @@ public class S_EnemyAiBehviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (PauseManager.IsPaused) return;
+        if (PauseManager.IsPaused || gameLost) return;
 
         // Add check to see if navagent is on field
         // Add intervall
@@ -115,6 +128,12 @@ public class S_EnemyAiBehviour : MonoBehaviour
         navMeshAgent.SetDestination(playerTransform.position);
 
         // Edit enemy speed variable
+    }
+
+    private void GoBackToSpawn()
+    {
+        navMeshAgent.SetDestination(spawnPosition);
+        gameLost = true;
     }
 
     private void OnDrawGizmos()

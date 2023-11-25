@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6396207061026490461, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
+      propertyPath: dissolveOnLose
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -83,3 +87,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mine: {fileID: 2460169008758210530, guid: b8dee1de477d21a4898b44945d020f8d, type: 3}
   dropInterval: 1.5
+  dropDistance: 1
