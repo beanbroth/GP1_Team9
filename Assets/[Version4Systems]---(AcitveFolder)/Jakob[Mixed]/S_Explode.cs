@@ -12,6 +12,21 @@ public class S_Explode : MonoBehaviour
     [SerializeField] GameObject explosion;
     bool isExploding = false;
     S_EnemyHealthController healthManager;
+    bool gameIsPaused = false;
+    private void OnEnable()
+    {
+        PauseManager.OnPauseStateChange += OnPauseChange;
+    }
+
+    private void OnDisable()
+    {
+        PauseManager.OnPauseStateChange -= OnPauseChange;
+    }
+    private void OnPauseChange(bool gamePaused)
+    {
+        gameIsPaused = gamePaused;
+    }
+
 
     private void Awake()
     {
@@ -28,6 +43,12 @@ public class S_Explode : MonoBehaviour
     {
         foreach(float i in beepTimes)
         {
+            while (gameIsPaused)
+            {
+                print("paused");
+                yield return null;
+            }
+            print("not paused");
             Beep();
             flasher.Flash(i / 2);
             yield return new WaitForSeconds(i);
