@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8970566434003744284}
   - component: {fileID: 1811822176800538384}
   m_Layer: 0
-  m_Name: EnemyPattern_Cone_9_E1-EE
+  m_Name: EnemyPattern_Cone_15_E1-EE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,9 +48,9 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 400158273942652318, guid: 32f10bf9fd5dbf24ebe06aecec99ef07, type: 3}
   - {fileID: 3064681967817674891, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
-  numberOfEnemies: 9
+  numberOfEnemies: 15
   spacing: 3
-  enemyPrefabPattern: 1000000000
+  enemyPrefabPattern: 011111111111111111111111111111
   turnTowardsParent: 1
   radius: 22.5
   spiralDelay: 0.25

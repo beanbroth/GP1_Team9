@@ -47,7 +47,6 @@ public class S_EnemyPattern : MonoBehaviour
         if (numberOfEnemies > enemyPrefabPattern.Length)
         {
             float patternRepetition = numberOfEnemies / enemyPrefabPattern.Length;
-            print(patternRepetition);
             for(int i = 0; i <= Mathf.CeilToInt(patternRepetition); i++)
             {
                 fullPatternString += enemyPrefabPattern;
@@ -57,7 +56,6 @@ public class S_EnemyPattern : MonoBehaviour
         {
             fullPatternString = enemyPrefabPattern;
         }
-        print("enemypattern: "+fullPatternString);
         switch (patternType)
         {
             case enemyPatternType2.spiral:
@@ -133,6 +131,7 @@ public class S_EnemyPattern : MonoBehaviour
             {
                 orbitingObject.transform.LookAt(transform.parent.position);
             }
+            orbitingObject.transform.parent = null;
             yield return new WaitForSeconds(spiralDelay);
         }
         DetatchChildrenAndDestroy();
@@ -157,7 +156,7 @@ public class S_EnemyPattern : MonoBehaviour
             SpawnRow(numberOfEnemies, false, -radius);
         }
     }
-    void SpawnRow(int amount, bool vertical = false, float relativeOffset = 0)
+    void SpawnRow(int amount, bool vertical = false, float relativeOffset = 0, int startPatternIndex = 0)
     {
         if (!vertical)
         {
@@ -165,7 +164,8 @@ public class S_EnemyPattern : MonoBehaviour
             float posX = startX;
             for (int i = 0; i < amount; i++)
             {
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(posX, 0, relativeOffset), Quaternion.identity, transform);
+                int idx = startPatternIndex + i;
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(posX, 0, relativeOffset), Quaternion.identity, transform);
                 posX += spacing;
             }
         }
@@ -175,7 +175,8 @@ public class S_EnemyPattern : MonoBehaviour
             float posY = startY;
             for (int i = 0; i < amount; i++)
             {
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, posY), Quaternion.identity, transform);
+                int idx = startPatternIndex + i;
+                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(relativeOffset, 0, posY), Quaternion.identity, transform);
                 posY += spacing;
             }
         }
@@ -187,9 +188,11 @@ public class S_EnemyPattern : MonoBehaviour
         if (configurations.Contains(numberOfEnemies))
         {
             int numberOfRows = configurations.IndexOf(numberOfEnemies);
+            int spawnCount = 0;
             for (int i = 1; i <= numberOfRows; i++)
             {
-                SpawnRow(i,false,-spacing*(i-1));
+                SpawnRow(i,false,-spacing*(i-1),spawnCount);
+                spawnCount += i;
             }
         }
         else
