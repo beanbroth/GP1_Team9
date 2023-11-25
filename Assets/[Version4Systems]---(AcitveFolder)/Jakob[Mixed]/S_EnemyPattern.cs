@@ -19,14 +19,28 @@ public class S_EnemyPattern : MonoBehaviour
 {
     [SerializeField] enemyPatternType2 patternType;
     [SerializeField] GameObject[] enemyPrefabs;
-    [SerializeField] int numberOfEnemies;
-    [SerializeField] float spacing;
+    [SerializeField] int numberOfEnemies = 5;
+    [SerializeField] float spacing = 3f;
     [SerializeField] string enemyPrefabPattern = "0";
     string fullPatternString = "";
-    [SerializeField] bool turnTowardsParent;
+    [SerializeField] bool turnTowardsParent = true;
     [Header("Type Specific Vairables")]
     [SerializeField] float radius = 22.5f;
     [SerializeField] float spiralDelay = 0.25f;
+    bool gameIsPaused = false;
+    private void OnEnable()
+    {
+        PauseManager.OnPauseStateChange += OnPauseChange;
+    }
+
+    private void OnDisable()
+    {
+        PauseManager.OnPauseStateChange -= OnPauseChange;
+    }
+    private void OnPauseChange(bool gamePaused)
+    {
+        gameIsPaused = gamePaused;
+    }
 
     private void Awake()
     {
@@ -105,6 +119,10 @@ public class S_EnemyPattern : MonoBehaviour
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
+            while (gameIsPaused)
+            {
+                yield return null;
+            }
             float angle = i * 360f / numberOfEnemies;
             GameObject orbitingObject =
                 ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);

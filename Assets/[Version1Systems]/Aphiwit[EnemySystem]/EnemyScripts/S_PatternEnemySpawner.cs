@@ -95,7 +95,9 @@ public class S_EnemyPatternSpawner : EnemySpawnerMethods
 
             if (_currentEnemyPatterns != null)
             {
-                ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation);
+                GameObject enemyPattern = Instantiate(_currentEnemyPatterns[0], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation, spawnPoint.parent);
+                print("spawned");
+                //ObjectPoolManager.Instantiate(_currentEnemyPatterns[0], spawnPoint.position, useSpawnPoints ? spawnPoint.rotation : _playerTransform.rotation);
                 //ObjectPoolManager.Instantiate(_currentEnemyPatterns[UnityEngine.Random.Range(0, _currentEnemyPatterns.Length)], enemyPatternSpawnPosition, _playerTransform.rotation);
             }
 
