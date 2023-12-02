@@ -34,7 +34,6 @@ public class S_HUDManager : MonoBehaviour
 
     public void TurnHUDOff()
     {
-        Debug.Log("hud off");
         foreach (GameObject panel in hudPanels)
         {
             panel.SetActive(false);
