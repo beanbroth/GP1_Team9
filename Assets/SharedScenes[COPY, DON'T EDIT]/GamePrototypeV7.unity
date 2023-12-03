@@ -13949,7 +13949,7 @@ MonoBehaviour:
   - {fileID: 1656915972}
   - {fileID: 1975763102}
   - {fileID: 571562768}
-  timePerPhase: 120.5
+  timePerPhase: 120.1
   currentPhase: 1
   maxPhases: 5
   enemySpawnInterval: 30.1

@@ -48,7 +48,7 @@ public class OutroCutscene : MonoBehaviour
         yield return new WaitForSecondsRealtime(bouncer.bounceDuration);
         button.SetActive(false);
         if (transitionScene)
-            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.victoryScreen);
+            sceneTransitionManager.SceneFadeOutAndLoadScene(Color.white, sceneEnum.credits);
     }
 
     private void OnEnable()
