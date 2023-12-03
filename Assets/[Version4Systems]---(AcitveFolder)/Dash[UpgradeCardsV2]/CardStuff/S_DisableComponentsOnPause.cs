@@ -4,7 +4,7 @@ using UnityEngine;
 public class S_DisableComponentsOnPause : MonoBehaviour
 {
     [SerializeField]
-    private List<Behaviour> componentsToDisable;
+    protected List<Behaviour> componentsToDisable;
     private bool previousPauseState;
 
     private void Awake()
@@ -39,7 +39,7 @@ public class S_DisableComponentsOnPause : MonoBehaviour
         }
     }
 
-    private void DisableComponents()
+    public virtual void DisableComponents()
     {
         foreach (var component in componentsToDisable)
         {
@@ -47,7 +47,7 @@ public class S_DisableComponentsOnPause : MonoBehaviour
         }
     }
 
-    private void EnableComponents()
+    public virtual void EnableComponents()
     {
         foreach (var component in componentsToDisable)
         {
