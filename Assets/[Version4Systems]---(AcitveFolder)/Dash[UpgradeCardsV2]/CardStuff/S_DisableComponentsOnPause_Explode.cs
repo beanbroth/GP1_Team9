@@ -17,7 +17,7 @@ public class S_DisableComponentsOnPauseExplode : S_DisableComponentsOnPause
         {
             component.enabled = false;
         }
-        isExploding = explodeManager.isExploding;
+        isExploding = explodeManager.GetIsExploding();
     }
 
     public override void EnableComponents()

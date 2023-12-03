@@ -212,9 +212,6 @@ MonoBehaviour:
   beepTimes:
   - 0.75
   - 0.75
-  - 0.3
-  - 0.3
-  - 0.3
   - 0.1
   - 0.1
   - 0.1
@@ -222,7 +219,6 @@ MonoBehaviour:
   damage: 30
   radius: 4
   explosion: {fileID: 1378445561581991514, guid: d289cc0b3ab88dc46a657ace00d7a2b6, type: 3}
-  isExploding: 0
 --- !u!114 &1686753036210992724
 MonoBehaviour:
   m_ObjectHideFlags: 0
