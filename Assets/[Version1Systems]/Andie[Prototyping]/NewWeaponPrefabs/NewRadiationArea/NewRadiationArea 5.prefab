@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9d2acf7ca967ff04085edd071b29e626, type: 3}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: radius
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8959113588454195761, guid: 58ec7ae1ad375854abb04a18ba0fe89e, type: 3}
       propertyPath: timeBetweenAttacks

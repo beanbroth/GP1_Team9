@@ -23,9 +23,9 @@ MonoBehaviour:
   - {fileID: 3801696055598656345, guid: 5a263b67e9b850140b994b92e34d7f77, type: 3}
   weaponDescriptions:
   - Shoot a bullet forward.
+  - Shoot 2 bullets forward. Shoot more often
   - Shoot 3 bullets forward. Shoot more often
-  - Shoot 4 bullets forward. Shoot more often
-  - Shoot 10 bullets forward. Shoot more often
-  - Shoot 13 bullets forward.
+  - Shoot 5 bullets forward. Shoot more often
+  - Shoot 9 bullets forward.
   - Shoot 13 bullets forward. Shoot more often
-  - Shoot 13 bullets forward. Shoot more often
+  - Shoot more often

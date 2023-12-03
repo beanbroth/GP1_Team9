@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022acef42b4d2774081c505bc639b8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  damage: 1
+  maxBulletSpeed: 20
+  bulletAcceleration: 5
 --- !u!114 &-3041828212687546103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +136,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyOnEnemyCollision: 1
   destroyOnOtherCollision: 1
-  damage: 1
+  damage: 20
   penetration: 3
+  lifeTime: 10
 --- !u!1001 &2765796500011987756
 PrefabInstance:
   m_ObjectHideFlags: 0

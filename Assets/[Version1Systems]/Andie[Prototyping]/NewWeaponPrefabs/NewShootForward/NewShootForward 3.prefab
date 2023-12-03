@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 9021839866227342375, guid: 1c9ca411f3c2e0a4cac4d188bc3bad4f, type: 3}
     - target: {fileID: 267914013692334002, guid: caf111d1fdd08c449a71178d60e626af, type: 3}
       propertyPath: bulletsPerShot
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 267914013692334002, guid: caf111d1fdd08c449a71178d60e626af, type: 3}
       propertyPath: timeBetweenShots

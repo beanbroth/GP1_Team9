@@ -3098,6 +3098,125 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306914189}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &308029051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308029052}
+  - component: {fileID: 308029055}
+  - component: {fileID: 308029054}
+  - component: {fileID: 308029053}
+  m_Layer: 0
+  m_Name: PS_AllAround_E4-5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &308029052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308029051}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.16, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 811487036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &308029053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308029051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf5df431b259384ebfb336fcf273d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyPatterns:
+  - {fileID: 4522738848303559148, guid: 1e1381d33a353034a94d963bb3d3df97, type: 3}
+  - {fileID: 1465876517216797982, guid: a07da0cb0fff75640b1c8b82a4369990, type: 3}
+  - {fileID: 4294271661070409329, guid: d770930eb7e6c4b4480e15387ae32d02, type: 3}
+  - {fileID: 4294271661070409329, guid: 8a587dd12c2010440b26bf49d44ac786, type: 3}
+  _useRandomPatternCooldown: 1
+  _minPatternCooldown: 5
+  _maxPatternCooldown: 15
+  useSpawnPoints: 1
+  spawnPoints:
+  - {fileID: 1635178098}
+  - {fileID: 963771327}
+  - {fileID: 1078893567}
+  - {fileID: 1001262431}
+  - {fileID: 1114850693}
+  - {fileID: 1433765496}
+  - {fileID: 814314080}
+  - {fileID: 1652782305}
+  centerSpawnPoint: {fileID: 1237693000}
+  patternIndexesToSpawnInCenter: 000000000100000002000000030000000400000005000000
+--- !u!23 &308029054
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308029051}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &308029055
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308029051}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &338794261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,8 +3404,8 @@ MonoBehaviour:
   - {fileID: 8871711303201341494, guid: c2f47b5110196924cb7ece9968e57012, type: 3}
   - {fileID: 2011077743775580654, guid: 08a3ef53eb966324e8f6e42473462075, type: 3}
   _useRandomPatternCooldown: 1
-  _minPatternCooldown: 8
-  _maxPatternCooldown: 16
+  _minPatternCooldown: 15
+  _maxPatternCooldown: 30
   useSpawnPoints: 1
   spawnPoints:
   - {fileID: 1635178098}
@@ -3628,7 +3747,7 @@ GameObject:
   - component: {fileID: 375528697}
   - component: {fileID: 375528696}
   m_Layer: 0
-  m_Name: PS_AllAround_E4-5
+  m_Name: PS_AllAround_E4-5Lite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7506,6 +7625,7 @@ Transform:
   - {fileID: 851227160}
   - {fileID: 1167928418}
   - {fileID: 375528695}
+  - {fileID: 308029052}
   - {fileID: 1527268712}
   m_Father: {fileID: 1471060796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7636,10 +7756,11 @@ MonoBehaviour:
   - spawners:
     - {fileID: 363320338}
   - spawners: []
-  - spawners: []
   - spawners:
     - {fileID: 375528694}
   - spawners: []
+  - spawners:
+    - {fileID: 308029051}
   - spawners: []
   _spawnersToDisable:
   - spawners: []
@@ -7668,10 +7789,11 @@ MonoBehaviour:
   - spawners:
     - {fileID: 1692276595}
   - spawners: []
-  - spawners: []
   - spawners:
     - {fileID: 1167928417}
   - spawners: []
+  - spawners:
+    - {fileID: 375528694}
   - spawners: []
   disableSpawnersOnWin: 1
   disableSpawnersOnAwake: 1

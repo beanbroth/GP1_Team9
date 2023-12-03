@@ -24,11 +24,11 @@ MonoBehaviour:
   weaponDescriptions:
   - Atomatically shoot the nearest enemy.
   - Shoot more often.
+  - Shoot more often. Shots deal more damage and penetrate one enemy.
   - Shoot more often.
-  - Shoot more often.
-  - Shoot more often.
-  - Shoot more often.
-  - Shoot more often.
+  - Shots deal more damage and penetrate one more enemy.
+  - Shots deal more damage and penetrate one more enemy.
+  - Shots deal more damage and penetrate one more enemy.
   - Shoot more often.
   - Shoot more often.
   - Shoot more often.

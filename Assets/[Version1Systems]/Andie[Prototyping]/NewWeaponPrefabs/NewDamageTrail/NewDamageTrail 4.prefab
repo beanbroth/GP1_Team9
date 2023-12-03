@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: damageAmount
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: flashColor.a

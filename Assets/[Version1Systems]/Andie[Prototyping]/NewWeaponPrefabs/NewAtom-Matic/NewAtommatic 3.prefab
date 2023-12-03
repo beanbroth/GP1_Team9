@@ -22,19 +22,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: maxRange
-      value: 9999
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 15d0668cb0dc794458ac346d283ee13d, type: 3}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6503858307881935170, guid: 138877ae0ad07e7409b9795779af4095, type: 3}
+    - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: numberOfBullets
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: timeBetweenShots
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3169841262531599814, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: m_Name

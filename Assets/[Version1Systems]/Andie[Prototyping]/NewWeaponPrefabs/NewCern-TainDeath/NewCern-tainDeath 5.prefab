@@ -50,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: damage
-      value: 40
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: numKills
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2659274248336965947, guid: bf63e2ed79c816c44ba78cecff3ba0b2, type: 3}
       propertyPath: boltSound

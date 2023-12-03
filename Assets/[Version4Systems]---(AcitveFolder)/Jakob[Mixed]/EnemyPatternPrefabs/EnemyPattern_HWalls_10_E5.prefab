@@ -48,7 +48,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 3064681967817674891, guid: 6b4e7035801949545b7a4cce802f1cfc, type: 3}
   numberOfEnemies: 10
-  spacing: 3
+  spacing: 5
   enemyPrefabPattern: 0
   turnTowardsParent: 1
   radius: 22.5

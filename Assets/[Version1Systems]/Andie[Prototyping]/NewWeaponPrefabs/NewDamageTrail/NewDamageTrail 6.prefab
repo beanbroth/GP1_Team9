@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: damageAmount
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: flashColor.a
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: trailLengthTime
-      value: 4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: -365354314727690350, guid: ea894106cbf84c84286682ba0183e691, type: 3}
       propertyPath: damageTickInterval

@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1874696131077711651, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: timeBetweenShots
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3169841262531599814, guid: 384e7abfb31bbe746bf56e68ca13abb1, type: 3}
       propertyPath: m_Name

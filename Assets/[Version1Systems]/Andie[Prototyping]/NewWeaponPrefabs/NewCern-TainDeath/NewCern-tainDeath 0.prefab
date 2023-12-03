@@ -50,7 +50,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   initialBoltPoolSize: 10
-  damage: 20
+  damage: 99
   killRange: 15
   timeBetweenKills: 5
   boltLifetime: 0.05
