@@ -35,6 +35,6 @@ public class S_SplashScreen : MonoBehaviour
     }
     void LoadMenu()
     {
-        sceneTransition.SceneFadeOutAndLoadScene(Color.white,sceneEnum.menu);
+        sceneTransition.SceneFadeOutAndLoadScene(Color.white,sceneEnum.onboarding);
     }
 }
