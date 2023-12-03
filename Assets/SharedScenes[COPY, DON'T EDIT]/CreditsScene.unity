@@ -613,8 +613,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 100}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 131, y: 100}
+  m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544128944
 MonoBehaviour:
@@ -636,12 +636,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Jakob Ferenius\n\nKarl Lindblom\nElias Lineruth\n\nAlice Tambour\nKarl
-    Haag\n\nAndie Larsson\nFanny Silverberg\nReyn Teru\n\n\nDash Corning\nAphiwit
+  m_text: "Jakob Ferenius\n\n\nKarl Lindblom\nElias Lineruth\n\nAlice Tambour\nKarl
+    Haag\n\nAndie Larsson\nFanny Silfverberg\nReyn Teru\n\n\nDash Corning\nAphiwit
     Lekphet\nFilip J. \xC5kerlund\nLiam Ribaric"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49d588463b3c00f428a321312e96d979, type: 2}
-  m_sharedMaterial: {fileID: -6044788081530333243, guid: 49d588463b3c00f428a321312e96d979, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 313f21684a1980e4e87838fee6679121, type: 2}
+  m_sharedMaterial: {fileID: -8066511332252207766, guid: 313f21684a1980e4e87838fee6679121, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1008,7 +1008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 100}
+  m_AnchoredPosition: {x: -208, y: 100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753842728
@@ -1047,11 +1047,10 @@ MonoBehaviour:
 
 
 
-
     Programmers'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49d588463b3c00f428a321312e96d979, type: 2}
-  m_sharedMaterial: {fileID: -6044788081530333243, guid: 49d588463b3c00f428a321312e96d979, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 313f21684a1980e4e87838fee6679121, type: 2}
+  m_sharedMaterial: {fileID: -8066511332252207766, guid: 313f21684a1980e4e87838fee6679121, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1287,7 +1286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 103, y: 208}
+  m_AnchoredPosition: {x: 108, y: 208}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551933096
@@ -1312,8 +1311,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49d588463b3c00f428a321312e96d979, type: 2}
-  m_sharedMaterial: {fileID: -6044788081530333243, guid: 49d588463b3c00f428a321312e96d979, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 313f21684a1980e4e87838fee6679121, type: 2}
+  m_sharedMaterial: {fileID: -8066511332252207766, guid: 313f21684a1980e4e87838fee6679121, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
