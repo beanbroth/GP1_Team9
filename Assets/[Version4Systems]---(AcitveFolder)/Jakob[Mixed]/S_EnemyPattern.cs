@@ -187,7 +187,7 @@ public class S_EnemyPattern : MonoBehaviour
         List<int> configurations = new List<int> { 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66};
         if (configurations.Contains(numberOfEnemies))
         {
-            int numberOfRows = configurations.IndexOf(numberOfEnemies);
+            int numberOfRows = configurations.IndexOf(numberOfEnemies)+1;
             int spawnCount = 0;
             for (int i = 1; i <= numberOfRows; i++)
             {

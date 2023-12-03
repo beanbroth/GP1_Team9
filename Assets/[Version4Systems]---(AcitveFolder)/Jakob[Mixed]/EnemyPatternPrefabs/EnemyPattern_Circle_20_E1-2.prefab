@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2207750836465841796}
   - component: {fileID: 7603434433875865304}
   m_Layer: 0
-  m_Name: EnemyPattern_Circle_20_E2-3
+  m_Name: EnemyPattern_Circle_20_E1-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternType: 3
   enemyPrefabs:
+  - {fileID: 3064681967817674891, guid: bafd3248bc82f2c448905a4900de5543, type: 3}
   - {fileID: 3064681967817674891, guid: 7a11164308bc7724ab5210e72fd1a5b0, type: 3}
-  - {fileID: 3064681967817674891, guid: 8bfe6dbabf620624594142c1d41ba67a, type: 3}
   numberOfEnemies: 20
   spacing: 3
-  enemyPrefabPattern: 10
+  enemyPrefabPattern: 01
   turnTowardsParent: 1
   radius: 22.5
   spiralDelay: 0.25

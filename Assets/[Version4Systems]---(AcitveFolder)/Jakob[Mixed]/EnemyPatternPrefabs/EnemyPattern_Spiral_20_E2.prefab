@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4522738848303559148
+--- !u!1 &1465876517216797982
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2207750836465841796}
-  - component: {fileID: 7603434433875865304}
+  - component: {fileID: 3854742664561873598}
+  - component: {fileID: 2272798652910423823}
   m_Layer: 0
-  m_Name: EnemyPattern_Circle_20_E2-3
+  m_Name: EnemyPattern_Spiral_20_E2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2207750836465841796
+--- !u!4 &3854742664561873598
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4522738848303559148}
+  m_GameObject: {fileID: 1465876517216797982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,25 +32,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7603434433875865304
+--- !u!114 &2272798652910423823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4522738848303559148}
+  m_GameObject: {fileID: 1465876517216797982}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf462d1687a471b44863c5a8971bd20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternType: 3
+  patternType: 4
   enemyPrefabs:
   - {fileID: 3064681967817674891, guid: 7a11164308bc7724ab5210e72fd1a5b0, type: 3}
-  - {fileID: 3064681967817674891, guid: 8bfe6dbabf620624594142c1d41ba67a, type: 3}
   numberOfEnemies: 20
   spacing: 3
-  enemyPrefabPattern: 10
+  enemyPrefabPattern: 0
   turnTowardsParent: 1
   radius: 22.5
   spiralDelay: 0.25
