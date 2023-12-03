@@ -16,10 +16,11 @@ GameObject:
   - component: {fileID: 4125973643630556235}
   - component: {fileID: 7912857627773451477}
   - component: {fileID: 4034217513713371820}
-  - component: {fileID: 3910830254007633644}
+  - component: {fileID: 1532893147298336344}
   - component: {fileID: 1588259991323907211}
   - component: {fileID: 1686753036210992724}
   - component: {fileID: 6373488474481860022}
+  - component: {fileID: -6533874810365929846}
   m_Layer: 7
   m_Name: EnemyVariantExploding1
   m_TagString: Enemy
@@ -117,6 +118,7 @@ MonoBehaviour:
     m_Bits: 64
   walkPointRange: 0
   walkPointSet: 0
+  spawnPosition: {x: 0, y: 0, z: 0}
   detectionRange: 100
   agroRange: 10
   playerInDetectionRange: 0
@@ -180,7 +182,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3910830254007633644
+--- !u!114 &1532893147298336344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 400158273942652318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd56e1da78d38c14dac08d6612ce58b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7684f70efd74f5d4aaffb7266d2b84e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentsToDisable:
@@ -218,8 +220,9 @@ MonoBehaviour:
   - 0.1
   - 0.1
   damage: 30
-  radius: 5
+  radius: 4
   explosion: {fileID: 1378445561581991514, guid: d289cc0b3ab88dc46a657ace00d7a2b6, type: 3}
+  isExploding: 0
 --- !u!114 &1686753036210992724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +337,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6533874810365929846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400158273942652318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2809484f26ceefc409483ed82083d6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &456443424384569896
 GameObject:
   m_ObjectHideFlags: 0

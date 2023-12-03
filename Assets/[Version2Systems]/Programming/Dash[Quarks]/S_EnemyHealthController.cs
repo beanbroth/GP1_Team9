@@ -79,10 +79,9 @@ public class S_EnemyHealthController : MonoBehaviour
         enemyAiBehviour.enabled = false;
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
-        if (explosionManager != null)
+        if (explosionManager != null && !explosionManager.GetIsExploding())
         {
-            if(!explosionManager.GetIsExploding())
-                explosionManager.InitiateExplosion();
+            explosionManager.InitiateExplosion();
         }
         else
         {
@@ -101,6 +100,19 @@ public class S_EnemyHealthController : MonoBehaviour
 
     private void DestroyGameObject()
     {
-        ObjectPoolManager.Destroy(gameObject);
+        StopAllCoroutines();
+        if (explosionManager != null)
+        {
+            explosionManager.StopAllCoroutines();
+            explosionManager.SetIsExploding(false);
+        }
+        if(GetComponent<S_DoNotPool>() != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            ObjectPoolManager.Destroy(gameObject);
+        }
     }
 }

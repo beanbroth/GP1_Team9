@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [System.Serializable] public enum enemyPatternType2
 {
@@ -97,13 +98,25 @@ public class S_EnemyPattern : MonoBehaviour
         return int.Parse(fullPatternString[i].ToString());
     }
 
+    private GameObject SpawnEnemy(GameObject prefab, Vector3 position, Quaternion rotation, UnityEngine.Transform parent)
+    {
+        if(prefab.GetComponent<S_DoNotPool>() != null)
+        {
+            return Instantiate(prefab, position, rotation, parent);
+        }
+        else
+        {
+            return ObjectPoolManager.Instantiate(prefab, position, rotation, parent);
+        }
+    }
+
     private void SpawnCircle()
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
             float angle = i * 360f / numberOfEnemies;
             GameObject orbitingObject =
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
             Vector3 spawnPosition =
                 new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
             orbitingObject.transform.localPosition = spawnPosition;
@@ -123,7 +136,7 @@ public class S_EnemyPattern : MonoBehaviour
             }
             float angle = i * 360f / numberOfEnemies;
             GameObject orbitingObject =
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], Vector3.zero, Quaternion.identity, transform);
             Vector3 spawnPosition =
                 new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
             orbitingObject.transform.localPosition = spawnPosition;
@@ -165,7 +178,7 @@ public class S_EnemyPattern : MonoBehaviour
             for (int i = 0; i < amount; i++)
             {
                 int idx = startPatternIndex + i;
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(posX, 0, relativeOffset), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(posX, 0, relativeOffset), Quaternion.identity, transform);
                 posX += spacing;
             }
         }
@@ -176,7 +189,7 @@ public class S_EnemyPattern : MonoBehaviour
             for (int i = 0; i < amount; i++)
             {
                 int idx = startPatternIndex + i;
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(relativeOffset, 0, posY), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(idx)], new Vector3(relativeOffset, 0, posY), Quaternion.identity, transform);
                 posY += spacing;
             }
         }
@@ -206,12 +219,12 @@ public class S_EnemyPattern : MonoBehaviour
         if (configurations.Contains(numberOfEnemies))
         {
             int numberOfRows = Mathf.CeilToInt(numberOfEnemies/2);
-            ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(0)], Vector3.zero, Quaternion.identity, transform);
+            SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(0)], Vector3.zero, Quaternion.identity, transform);
             for (int i = 1; i <= numberOfRows; i++)
             {
                 float relativeOffset = (spacing * i)/2;
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(-relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern(i)], new Vector3(-relativeOffset, 0, -spacing * i), Quaternion.identity, transform);
             }
         }
         else
@@ -229,8 +242,8 @@ public class S_EnemyPattern : MonoBehaviour
             for (int i = numberOfRows; i >= 0; i--)
             {
                 float relativeOffset = (spacing * i) / 2;
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(relativeOffset, 0, -spacing * (numberOfRows-i)), Quaternion.identity, transform);
-                ObjectPoolManager.Instantiate(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(-relativeOffset, 0, -spacing * (numberOfRows - i)), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(relativeOffset, 0, -spacing * (numberOfRows-i)), Quaternion.identity, transform);
+                SpawnEnemy(enemyPrefabs[GetEnemyIndexInEnemyPattern((numberOfRows - i))], new Vector3(-relativeOffset, 0, -spacing * (numberOfRows - i)), Quaternion.identity, transform);
             }
         }
         else

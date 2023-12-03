@@ -7732,6 +7732,7 @@ MonoBehaviour:
     - {fileID: 1342077794}
   - spawners:
     - {fileID: 121293880}
+    - {fileID: 1554678481}
   - spawners:
     - {fileID: 1848639881}
     - {fileID: 1423747443}
@@ -16762,8 +16763,8 @@ MonoBehaviour:
   _spawnerType: 0
   _enemyPrefabList:
   - {fileID: 400158273942652318, guid: 32f10bf9fd5dbf24ebe06aecec99ef07, type: 3}
-  _originalSpawnInterval: 4
-  _spawnIntervalReductionValue: 0.01
+  _originalSpawnInterval: 10
+  _spawnIntervalReductionValue: 0.015
   _finalSpawnInterval: 1
   _minSpawnRange: 20
   _maxSpawnRange: 25

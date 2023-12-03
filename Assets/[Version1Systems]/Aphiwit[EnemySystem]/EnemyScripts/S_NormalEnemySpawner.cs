@@ -143,7 +143,14 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
         bool canSpawn = result.Item2;
         if (canSpawn)
         {
-            ObjectPoolManager.Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity).transform.LookAt(_player.position);
+            if(GetComponent<S_DoNotPool>() != null)
+            {
+                Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity).transform.LookAt(_player.position);
+            }
+            else
+            {
+                ObjectPoolManager.Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity).transform.LookAt(_player.position);
+            }
         }
         return _tempSpawnInterval = _originalSpawnInterval;
     }

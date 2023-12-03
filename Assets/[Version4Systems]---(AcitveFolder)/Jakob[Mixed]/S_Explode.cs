@@ -10,7 +10,7 @@ public class S_Explode : MonoBehaviour
     [SerializeField] int damage = 30;
     [SerializeField] float radius = 5;
     [SerializeField] GameObject explosion;
-    bool isExploding = false;
+    private bool isExploding = false;
     S_EnemyHealthController healthManager;
     bool gameIsPaused = false;
     private void OnEnable()
@@ -45,10 +45,8 @@ public class S_Explode : MonoBehaviour
         {
             while (gameIsPaused)
             {
-                print("paused");
                 yield return null;
             }
-            print("not paused");
             Beep();
             flasher.Flash(i / 2);
             yield return new WaitForSeconds(i);
@@ -80,5 +78,9 @@ public class S_Explode : MonoBehaviour
     public bool GetIsExploding()
     {
         return isExploding;
+    }
+    public void SetIsExploding(bool status)
+    {
+        isExploding = status;
     }
 }
