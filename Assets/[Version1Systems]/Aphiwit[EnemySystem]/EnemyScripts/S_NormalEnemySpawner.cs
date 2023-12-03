@@ -127,7 +127,7 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
         float randomAngle = UnityEngine.Random.Range(0, 360);
         float randomDistance = UnityEngine.Random.Range(_minSpawnRange, _maxSpawnRange);
 
-        spawnPoint = new Vector3(transform.position.x + randomDistance * Mathf.Cos(randomAngle), 0, transform.position.z + randomDistance * Mathf.Sin(randomAngle));
+        spawnPoint = new Vector3(_player.position.x + randomDistance * Mathf.Cos(randomAngle), 0, _player.position.z + randomDistance * Mathf.Sin(randomAngle));
 
         var updatedResult = CheckIfSpawnPointExist(spawnPoint, returnValue);
         spawnPoint = updatedResult.Item1;
@@ -143,7 +143,7 @@ public class S_NormalEnemySpawner : EnemySpawnerMethods
         bool canSpawn = result.Item2;
         if (canSpawn)
         {
-            ObjectPoolManager.Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity);
+            ObjectPoolManager.Instantiate(_enemyPrefabList[UnityEngine.Random.Range(0, _enemyPrefabList.Length)], spawnPoint, Quaternion.identity).transform.LookAt(_player.position);
         }
         return _tempSpawnInterval = _originalSpawnInterval;
     }
